@@ -97,8 +97,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\Work\HomeworkChecker\Mail\openssl\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\Work\HomeworkChecker\Mail\openssl\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\Mail\openssl\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\Mail\openssl\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
