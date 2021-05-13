@@ -8,7 +8,6 @@
 #ifndef DBManager_hpp
 #define DBManager_hpp
 
-#include <iostream>
 #include <string>
 
 #include "mysql.h"
@@ -29,10 +28,6 @@ typedef enum DBActionType {
     UPDATE,
     DELETE
 } DBActionType;
-
-MYSQL mysql;
-MYSQL_RES* queryResult = NULL;
-std::string errMsg = "";
 
 bool connectDatabase(DBAccount account);
 void closeConnection();

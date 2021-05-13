@@ -6,7 +6,12 @@
 //
 
 #include "DBManager.hpp"
-using namespace DBManager;
+#include <iostream>
+namespace DBManager {
+
+MYSQL mysql;
+MYSQL_RES* queryResult = NULL;
+std::string errMsg = "";
 
 /// 连接数据库
 /// @param account 数据库帐号
@@ -48,19 +53,19 @@ int query(std::string queryString) {
 int query(std::string queryString, DBActionType actionType) {
     std::string actionTypeStr;
     switch (actionType) {
-        case DBManager::QUERY:
+        case QUERY:
             actionTypeStr = "query";
             break;
-        case DBManager::SELECT:
+        case SELECT:
             actionTypeStr = "SELECT";
             break;
-        case DBManager::INSERT:
+        case INSERT:
             actionTypeStr = "INSERT";
             break;
-        case DBManager::UPDATE:
+        case UPDATE:
             actionTypeStr = "UPDATE";
             break;
-        case DBManager::DELETE:
+        case DELETE:
             actionTypeStr = "DELETE";
             break;
         default:
@@ -80,7 +85,7 @@ int query(std::string queryString, DBActionType actionType) {
 /// @param table 表名
 /// @param columnNames 列名（SQL格式）
 int select(std::string table, std::string columnNames) {
-    return query("SELECT " + columnNames + " FROM " + table, DBManager::SELECT);
+    return query("SELECT " + columnNames + " FROM " + table, SELECT);
 }
 
 /// 获取数据
@@ -89,7 +94,7 @@ int select(std::string table, std::string columnNames) {
 /// @param conditions 条件（SQL格式）
 int select(std::string table, std::string columnNames, std::string conditions) {
     std::string queryStr = "SELECT " + columnNames + " FROM " + table + " WHERE " + conditions;
-    return query(queryStr, DBManager::SELECT);
+    return query(queryStr, SELECT);
 }
 
 /// 获取数据
@@ -99,7 +104,7 @@ int select(std::string table, std::string columnNames, std::string conditions) {
 /// @param order 排序方式（SQL格式）
 int select(std::string table, std::string columnNames, std::string conditions, std::string order) {
     std::string queryStr = "SELECT " + columnNames + " FROM " + table + " WHERE " + conditions + " ORDER BY " + order;
-    return query(queryStr, DBManager::SELECT);
+    return query(queryStr, SELECT);
 }
 
 /// 插入数据
@@ -108,7 +113,7 @@ int select(std::string table, std::string columnNames, std::string conditions, s
 /// @param values 数据字符串（SQL格式）
 int insert(std::string table, std::string columnNames, std::string values) {
     std::string queryStr = "INSERT INTO " + table + " (" + columnNames + ") VALUES (" + values + ")";
-    return query(queryStr, DBManager::INSERT);
+    return query(queryStr, INSERT);
 }
 
 /// 更新数据
@@ -116,7 +121,7 @@ int insert(std::string table, std::string columnNames, std::string values) {
 /// @param columnAndValue 列名-值（SQL格式）
 int update(std::string table, std::string columnAndValue) {
     std::string queryStr = "UPDATE " + table + " SET " + columnAndValue;
-    return query(queryStr, DBManager::UPDATE);
+    return query(queryStr, UPDATE);
 }
 
 /// 更新数据
@@ -125,7 +130,7 @@ int update(std::string table, std::string columnAndValue) {
 /// @param conditions 条件（SQL格式）
 int update(std::string table, std::string columnAndValue, std::string conditions) {
     std::string queryStr = "UPDATE " + table + " SET " + columnAndValue + " WHERE " + conditions;
-    return query(queryStr, DBManager::UPDATE);
+    return query(queryStr, UPDATE);
 }
 
 /// 删除数据
@@ -133,9 +138,11 @@ int update(std::string table, std::string columnAndValue, std::string conditions
 /// @param conditions 匹配条件（SQL WHERE语句格式）
 int remove(std::string table, std::string conditions) {
     std::string queryStr = "DELETE FROM " + table + " WHERE " + conditions;
-    return query(queryStr, DBManager::DELETE);
+    return query(queryStr, DELETE);
 }
 
 unsigned long affectedRowCount() {
     return mysql_affected_rows(&mysql);
+}
+
 }

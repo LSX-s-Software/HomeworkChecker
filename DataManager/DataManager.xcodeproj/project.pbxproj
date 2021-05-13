@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		F578291F264CFD6B00C25AAE /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F578291E264CFD6B00C25AAE /* test.cpp */; };
 		F5782927264CFDBD00C25AAE /* DBManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5782925264CFDBD00C25AAE /* DBManager.cpp */; };
+		F5782930264D6F1A00C25AAE /* libcrypto.1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F578292F264D6F1A00C25AAE /* libcrypto.1.1.dylib */; };
+		F5782931264D6F1A00C25AAE /* libcrypto.1.1.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = F578292F264D6F1A00C25AAE /* libcrypto.1.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F5782934264D6F2500C25AAE /* libssl.1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F5782933264D6F2400C25AAE /* libssl.1.1.dylib */; };
+		F5782935264D6F2500C25AAE /* libssl.1.1.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = F5782933264D6F2400C25AAE /* libssl.1.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -21,6 +25,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		F5782932264D6F1A00C25AAE /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F5782931264D6F1A00C25AAE /* libcrypto.1.1.dylib in Embed Libraries */,
+				F5782935264D6F2500C25AAE /* libssl.1.1.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +44,8 @@
 		F578291E264CFD6B00C25AAE /* test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
 		F5782925264CFDBD00C25AAE /* DBManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DBManager.cpp; sourceTree = "<group>"; };
 		F5782926264CFDBD00C25AAE /* DBManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DBManager.hpp; sourceTree = "<group>"; };
+		F578292F264D6F1A00C25AAE /* libcrypto.1.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.1.1.dylib; path = "../../../../../../../../usr/local/mysql-connector-c++-8.0.25/lib64/libcrypto.1.1.dylib"; sourceTree = "<group>"; };
+		F5782933264D6F2400C25AAE /* libssl.1.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.1.1.dylib; path = "../../../../../../../../usr/local/mysql-connector-c++-8.0.25/lib64/libssl.1.1.dylib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +53,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5782930264D6F1A00C25AAE /* libcrypto.1.1.dylib in Frameworks */,
+				F5782934264D6F2500C25AAE /* libssl.1.1.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +66,7 @@
 			children = (
 				F578291D264CFD6B00C25AAE /* DataManager */,
 				F578291C264CFD6B00C25AAE /* Products */,
+				F578292D264D6EFA00C25AAE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +88,15 @@
 			path = DataManager;
 			sourceTree = "<group>";
 		};
+		F578292D264D6EFA00C25AAE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F5782933264D6F2400C25AAE /* libssl.1.1.dylib */,
+				F578292F264D6F1A00C25AAE /* libcrypto.1.1.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,6 +107,7 @@
 				F5782917264CFD6B00C25AAE /* Sources */,
 				F5782918264CFD6B00C25AAE /* Frameworks */,
 				F5782919264CFD6B00C25AAE /* CopyFiles */,
+				F5782932264D6F1A00C25AAE /* Embed Libraries */,
 			);
 			buildRules = (
 			);
@@ -263,6 +294,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DataManager",
+					"/usr/local/mysql-connector-c++-8.0.25/lib64",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -275,6 +307,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DataManager",
+					"/usr/local/mysql-connector-c++-8.0.25/lib64",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -290,7 +323,7 @@
 				F5782921264CFD6B00C25AAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		F5782922264CFD6B00C25AAE /* Build configuration list for PBXNativeTarget "DataManager" */ = {
 			isa = XCConfigurationList;
@@ -299,7 +332,7 @@
 				F5782924264CFD6B00C25AAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
