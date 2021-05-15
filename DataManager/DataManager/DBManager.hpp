@@ -29,12 +29,15 @@ typedef enum DBActionType {
     DELETE
 } DBActionType;
 
+bool connectDatabase();
 bool connectDatabase(DBAccount account);
 void closeConnection();
 int query(std::string queryString);
 int select(std::string table, std::string columnNames);
 int select(std::string table, std::string columnNames, std::string conditions);
 int select(std::string table, std::string columnNames, std::string conditions, std::string order);
+unsigned long numRows();
+MYSQL_ROW fetchRow();
 int insert(std::string table, std::string columnNames, std::string values);
 int update(std::string table, std::string columnAndValue);
 int update(std::string table, std::string columnAndValue, std::string conditions);

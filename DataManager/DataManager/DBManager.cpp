@@ -7,50 +7,86 @@
 
 #include "DBManager.hpp"
 #include <iostream>
+
+#define DEBUG
+
 namespace DBManager {
 
-MYSQL mysql;
+MYSQL* mysql = NULL;
 MYSQL_RES* queryResult = NULL;
 std::string errMsg = "";
 
 /// 连接数据库
 /// @param account 数据库帐号
 bool connectDatabase(DBAccount account) {
-    mysql_init(&mysql); //初始化连接
-    bool result = mysql_real_connect(&mysql, account.host.c_str(), account.username.c_str(), account.password.c_str(), "hw_assist", account.port, NULL, 0);
-    if (result) {
-        std::cout << "[INFO] [DBManager] MySQL connected" << std::endl;
+    mysql = mysql_init(NULL); //初始化连接
+    mysql = mysql_real_connect(mysql, account.host.c_str(), account.username.c_str(), account.password.c_str(), "homework_checker", account.port, NULL, 0);
+    if (mysql) {
+#ifdef DEBUG
+        std::cout << "[INFO] [DBManager] MySQL connected, conectionPtr=" << mysql << std::endl;
+#endif
         errMsg = "";
         return true;
     }
     else {
-        errMsg = mysql_error(&mysql);
+        errMsg = mysql_error(mysql);
+#ifdef DEBUG
         std::cout << "[ERROR] [DBManager] MySQL connect failed: " << errMsg << std::endl;
+#endif
         return false;
     }
+}
+
+/// 使用默认账号密码连接数据库
+bool connectDatabase() {
+    DBManager::DBAccount account;
+    account.username = "root";
+    account.password = "gh8rv_aGdd";
+    return connectDatabase(account);
 }
 
 /// 关闭数据库连接并释放查询结果使用的内存
 void closeConnection() {
     if (queryResult != NULL)
         mysql_free_result(queryResult);  //释放一个结果集合使用的内存
-    mysql_close(&mysql);
+    queryResult = NULL;
+    mysql_close(mysql);
+#ifdef DEBUG
+    std::cout << "[INFO] [DBManager] MySQL disconnected" << std::endl;
+#endif
 }
 
 /// 查询数据库
 /// @param queryString SQL语句
 /// @returns code 错误代码（0=成功）
 int query(std::string queryString) {
-    int code = mysql_query(&mysql, queryString.c_str());
+#ifdef DEBUG
+    std::cout << "[LOG] [DBManager] queryStr: " << queryString << std::endl;
+#endif
+    int code = mysql_query(mysql, queryString.c_str());
     if (code) {
-        errMsg = mysql_error(&mysql);
+        errMsg = mysql_error(mysql);
+#ifdef DEBUG
         std::cout << "[ERROR] [DBManager] MySQL query failed: " << errMsg << std::endl;
-    } else
+#endif
+    } else {
         errMsg = "";
+        queryResult = mysql_store_result(mysql);
+    }
     return code;
 }
 
 int query(std::string queryString, DBActionType actionType) {
+    if (!mysql) {
+#ifdef DEBUG
+        std::cout << "[ERROR] [DBManager] MySQL is not connected: " << errMsg << std::endl;
+#endif
+        return -1;
+    }
+    if (queryResult != NULL) {
+        mysql_free_result(queryResult);
+        queryResult = NULL;
+    }
     std::string actionTypeStr;
     switch (actionType) {
         case QUERY:
@@ -72,12 +108,16 @@ int query(std::string queryString, DBActionType actionType) {
             actionTypeStr = "query";
             break;
     }
-    int code = mysql_query(&mysql, queryString.c_str());
+    int code = mysql_query(mysql, queryString.c_str());
     if (code) {
-        errMsg = mysql_error(&mysql);
+        errMsg = mysql_error(mysql);
+#ifdef DEBUG
         std::cout << "[ERROR] [DBManager] MySQL " + actionTypeStr + " failed: " << errMsg << std::endl;
-    } else
+#endif
+    } else {
         errMsg = "";
+        queryResult = mysql_store_result(mysql);
+    }
     return code;
 }
 
@@ -105,6 +145,20 @@ int select(std::string table, std::string columnNames, std::string conditions) {
 int select(std::string table, std::string columnNames, std::string conditions, std::string order) {
     std::string queryStr = "SELECT " + columnNames + " FROM " + table + " WHERE " + conditions + " ORDER BY " + order;
     return query(queryStr, SELECT);
+}
+
+unsigned long numRows() {
+    if (queryResult == NULL) {
+        return 0;
+    }
+    return mysql_num_rows(queryResult);
+}
+
+/// 获取结果的下一行，等于mysql_fetch_row
+MYSQL_ROW fetchRow() {
+    if (!queryResult)
+        return NULL;
+    return mysql_fetch_row(queryResult);
 }
 
 /// 插入数据
@@ -142,7 +196,7 @@ int remove(std::string table, std::string conditions) {
 }
 
 unsigned long affectedRowCount() {
-    return mysql_affected_rows(&mysql);
+    return mysql_affected_rows(mysql);
 }
 
 }
