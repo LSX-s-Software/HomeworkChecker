@@ -2,8 +2,6 @@
 
 ## Homework Checker
 
-------
-
 ## 开发者
 
 [**@NagisaCo** NagisaCo](https://github.com/NagisaCo)
@@ -11,8 +9,6 @@
 [**@LSX-s-Software** Sixing Lin](https://github.com/LSX-s-Software)
 
 [**@WuSiye** Siye Wu](https://github.com/WuSiye)
-
-------
 
 ## 产品介绍
 
