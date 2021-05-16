@@ -1,7 +1,9 @@
 #pragma once
 #include <exception>
 #include <string>
-
+/// <summary>
+/// ws¡¨Ω”¥ÌŒÛ
+/// </summary>
 class WsConnectError : public std::exception
 {
 public:

@@ -1,6 +1,8 @@
 #include "PrivateMessageSender.h"
 #include "WebsocketClient.h"
-
+/// <summary>
+/// ws客户端 位于QQMessage
+/// </summary>
 extern WebsocketClient wsClient;
 
 PrivateMessageSender::PrivateMessageSender(long long targetId, std::string data) :targetId(targetId), data(data) {}

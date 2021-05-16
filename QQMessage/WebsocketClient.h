@@ -1,3 +1,6 @@
+#define ASIO_STANDALONE
+#define _WEBSOCKETPP_CPP11_RANDOM_DEVICE_
+#define _WEBSOCKETPP_CPP11_TYPE_TRAITS_
 #pragma once
 
 // ²»°üº¬TLS Client

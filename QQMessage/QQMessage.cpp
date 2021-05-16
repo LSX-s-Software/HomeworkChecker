@@ -8,12 +8,25 @@
 
 #include "QQMessage.h"
 #include "Tools.h"
-
+/// <summary>
+/// 连接url
+/// </summary>
 std::string connectUrl;
+/// <summary>
+/// 一级菜单状态记录【qq号，状态】
+/// </summary>
 std::map<long long, PeerStatus> status;
+/// <summary>
+/// 二级菜单 注册 状态记录【qq号，注册信息】
+/// </summary>
 std::map<long long, RegInfo> regStatus;
+/// <summary>
+/// 本地保存学号，可判断是否注册【qq号，学号】
+/// </summary>
 std::map<long long, long long> getSchoolId;
-
+/// <summary>
+/// ws客户端
+/// </summary>
 WebsocketClient wsClient;
 
 void QQMessage::onOpen()
@@ -34,16 +47,16 @@ void QQMessage::onFail()
 
 void QQMessage::readMessage(const std::string& message)
 {
-	auto decode = nlohmann::json::parse(message);
-	if (decode.contains("post_type"))
+	auto decode = nlohmann::json::parse(message);//解析json
+	if (decode.contains("post_type"))//判断存在post_type
 	{
-		if (decode.at("post_type") == "meta_event") return; //heartbeat
+		if (decode.at("post_type") == "meta_event") return; //收到心跳包
 		if (decode.at("post_type") == "message")
 		{
-			if (decode.at("message_type") == "private")
+			if (decode.at("message_type") == "private")//收到私聊消息
 			{
-				PrivateMessageGetter getter(decode);
-				AnaText(Tools::to_utf16(getter.getRawData()), getter.getSenderId());
+				PrivateMessageGetter getter(decode);//获取消息
+				AnaText(Tools::to_utf16(getter.getRawData()), getter.getSenderId());//对消息文本分析
 			}
 
 		}
@@ -54,7 +67,7 @@ void QQMessage::readMessage(const std::string& message)
 void QQMessage::_Init(std::string url)
 {
 	connectUrl = "ws://" + url;
-
+	//设置回调函数
 	wsClient.SetOnOpenFunc(onOpen);
 	wsClient.SetOnCloseFunc(onClose);
 	wsClient.SetOnFailFunc(onFail);

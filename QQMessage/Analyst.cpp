@@ -2,9 +2,9 @@
 #include <iostream>
 #include <map>
 #include <sstream>
-#include "Analyst.h"
 #include "Tools.h"
 #include "PrivateMessageSender.h"
+#include "Analyst.h"
 
 extern std::string connectUrl;
 extern std::map<long long, PeerStatus> status;
@@ -13,33 +13,8 @@ extern std::map<long long, long long> getSchoolId;
 
 extern WebsocketClient wsClient;
 
-
-bool isNum(std::string str)
-{
-	std::stringstream sin(str);
-	double d;
-	char c;
-	if (!(sin >> d))
-	{
-		return false;
-	}
-	if (sin >> c)
-	{
-		return false;
-	}
-	return true;
-}
-
-void delSpaceAhead(std::u16string& x)
-{
-	while (x.substr(0, 1) == u" ")
-	{
-		x = x.substr(1, x.length() - 1);
-	}
-	return;
-}
-
 void RegCommand(std::u16string data, long long qq_id);
+void HomCommand(std::u16string data, long long qq_id);
 
 void AnaText(std::u16string data, long long qq_id)
 {
@@ -53,7 +28,7 @@ void AnaText(std::u16string data, long long qq_id)
 	if (!getSchoolId.count(qq_id))
 	{
 		//TODO:Check for SId in databse
-		if (0)
+		if (1)
 		{
 			registered = true;
 			long long sid;
@@ -66,8 +41,16 @@ void AnaText(std::u16string data, long long qq_id)
 	if (status[qq_id] == PeerStatus::REGISTER)//注册中
 	{
 		subCom = data;
-		delSpaceAhead(subCom);
+		Tools::delSpaceAhead(subCom);
 		RegCommand(subCom, qq_id);
+		return;
+	}
+
+	if (status[qq_id] == PeerStatus::HOMEWORK)//提交作业中
+	{
+		subCom = data;
+		Tools::delSpaceAhead(subCom);
+		HomCommand(subCom, qq_id);
 		return;
 	}
 
@@ -79,8 +62,7 @@ void AnaText(std::u16string data, long long qq_id)
 			sender.send();
 			return;
 		}
-		subCom = data.substr(2, data.length() - 2);
-		delSpaceAhead(subCom);
+		subCom = Tools::delFirstCom(data, 2);
 		status[qq_id] = PeerStatus::REGISTER;
 		RegCommand(subCom, qq_id);
 		return;
@@ -93,8 +75,90 @@ void AnaText(std::u16string data, long long qq_id)
 		return;
 	}
 
-	if (status[qq_id] == PeerStatus::REGISTER)
+	if (status[qq_id] == PeerStatus::IDLE)
 	{
+		if (data.substr(0, 6) == u"查询个人信息")//TODO:查询个人信息 数据库 返回班级、老师、姓名、学号
+		{
+			return;
+		}
+
+		
+		if (data.substr(0, 4) == u"查询作业")//TODO:查询作业（n）：状态【0未完成 1已提交 2已批改】，分数，评语，作业内容，正文，附件表
+		{
+			std::string homewordId_str = Tools::to_utf8(Tools::delFirstCom(data, 4));
+			if (!Tools::isNum(homewordId_str))
+			{
+				PrivateMessageSender sender(qq_id, u8"作业列表如下");//TODO: vector 遍历 未完成：
+				{
+
+				}
+				sender.send();
+				return;
+			}
+#include <stdlib.h>
+			int homeworkID = atoi(homewordId_str.c_str());
+			
+			int homeworkStatus=0;
+			if (homeworkStatus == -1)//无作业
+			{
+				PrivateMessageSender sender(qq_id, u8"暂无该作业，请重试");
+				sender.send();
+				return;
+			}
+			if (homeworkStatus == 0)//未提交
+			{
+				
+				return;
+			}
+			if (homeworkStatus == 1)//已提交
+			{
+
+				return;
+			}
+			if (homeworkStatus == 2)//已批改
+			{
+
+				return;
+			}
+			return;
+		}
+
+		if (data.substr(0, 4) == u"提交作业" || data.substr(0, 4) == u"修改作业")
+		{
+			std::string homewordId_str = Tools::to_utf8(Tools::delFirstCom(data, 4));
+			if (!Tools::isNum(homewordId_str))
+			{
+				PrivateMessageSender sender(qq_id, u8"未知命令，请重试");
+				sender.send();
+				return;
+			}
+#include <stdlib.h>
+			int homeworkID = atoi(homewordId_str.c_str());
+
+			int homeworkStatus=0;
+			if (homeworkStatus == -1)//无作业
+			{
+				PrivateMessageSender sender(qq_id, u8"暂无该作业，请重试");
+				sender.send();
+				return;
+			}
+			if (homeworkStatus == 0)//未提交
+			{
+
+				return;
+			}
+			if (homeworkStatus == 1)//已提交
+			{
+
+				return;
+			}
+			if (homeworkStatus == 2)//已批改
+			{
+
+				return;
+			}
+			return;
+		}
 	}
 
 
@@ -134,7 +198,7 @@ void RegCommand(std::u16string data, long long qq_id)
 		}
 		long long getclassId = 123;
 
-		std::string classInfo = u8"您加入的课程：xxxxx\\r\\n\ \ \ \ \ \ \ 任课老师：yyyyyy\\n\\n请输入姓名";
+		std::string classInfo = u8"您加入的课程：xxxxx\\r\\n任课老师：yyyyyy\\r\\n\\r\\n请输入姓名";
 
 		PrivateMessageSender sender(qq_id, classInfo);
 		sender.send();
@@ -159,7 +223,7 @@ void RegCommand(std::u16string data, long long qq_id)
 	{
 		std::string schoolID_str = Tools::to_utf8(data.substr(0, data.find_first_of(u" ")));
 
-		if (!isNum(schoolID_str))
+		if (!Tools::isNum(schoolID_str)||schoolID_str.length()>18)
 		{
 			PrivateMessageSender sender(qq_id, u8"学号格式错误，请重试");
 			sender.send();
@@ -198,4 +262,9 @@ void RegCommand(std::u16string data, long long qq_id)
 		getSchoolId[qq_id] = regInfo.schoolId;
 		return;
 	}
+}
+
+void HomCommand(std::u16string data, long long qq_id)
+{
+	
 }
