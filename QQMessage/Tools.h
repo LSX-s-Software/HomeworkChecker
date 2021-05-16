@@ -37,4 +37,10 @@ public:
 	/// <param name="data">前序命令长度</param>
 	/// <returns>二级消息</returns>
 	static std::u16string delFirstCom(std::u16string data,int len);
+
+	/// <summary>
+	/// 获取当前时间戳
+	/// </summary>
+	/// <returns></returns>
+	static long long getTimestamp();
 };

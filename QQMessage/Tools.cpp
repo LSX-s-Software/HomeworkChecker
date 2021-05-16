@@ -1,9 +1,11 @@
+#define _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS
 #include <iostream>
 #include <map>
 #include <sstream>
 #include <string>
 #include <locale>
 #include <codecvt>
+#include <chrono>
 #include "Tools.h"
 
 std::u16string Tools::to_utf16(std::string str)
@@ -46,4 +48,10 @@ std::u16string Tools::delFirstCom(std::u16string data,int len)
 	std::u16string subCom = data.substr(len, data.length() - len);
 	Tools::delSpaceAhead(subCom);
 	return subCom;
+}
+
+long long Tools::getTimestamp()
+{
+	auto timeNow = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch());
+	return timeNow.count();
 }
