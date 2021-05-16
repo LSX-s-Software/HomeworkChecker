@@ -42,7 +42,7 @@ class Student {
     int id;
     std::string schoolNum;
     std::string qq;
-    int classId;
+    long classId;
     std::string name;
     long register_time;
     
@@ -50,7 +50,7 @@ public:
     Student() {
         id = -1;
     }
-    Student(int id, std::string schoolNum, std::string qq, int classId, std::string name, long registerTime) {
+    Student(int id, std::string schoolNum, std::string qq, long classId, std::string name, long registerTime) {
         this->id = id;
         this->schoolNum = schoolNum;
         this->qq = qq;
@@ -71,7 +71,7 @@ public:
     std::string getQQ() {
         return qq;
     }
-    int getClassId() {
+    long getClassId() {
         return classId;
     }
     std::string getName() {
@@ -82,7 +82,7 @@ public:
     }
     
     DMError setSchoolNum(std::string newNum);
-    DMError setClassId(int newClassId);
+    DMError setClassId(long newClassId);
     DMError setName(std::string newName);
     
     //MARK: Other Operations
@@ -99,7 +99,7 @@ typedef enum {
 } ClassStatus;
 
 class Class {
-    int id;
+    long id;
     int teacherId;
     std::string name;
     std::string location;
@@ -111,7 +111,7 @@ public:
     Class() {
         id = -1;
     }
-    Class(int id, int teacherId, std::string name, std::string location, std::string time, std::string inviteCode, ClassStatus status) {
+    Class(long id, int teacherId, std::string name, std::string location, std::string time, std::string inviteCode, ClassStatus status) {
         this->id = id;
         this->teacherId = teacherId;
         this->name = name;
@@ -124,7 +124,7 @@ public:
     //MARK: Getters & Setters
     //WARNING: 不要在调用默认构造函数之后直接调用以下的接口
     
-    int getId() {
+    long getId() {
         return id;
     }
     std::string getName() {
@@ -160,8 +160,9 @@ public:
 std::vector<Student> getStudentList(int classId);
 Student getStudent(int id);
 std::vector<Class> getClassList(int teacherId);
-Class getClass(int id);
-DMError deleteClass(int id);
+Class getClass(long id);
+Class getClass(std::string inviteCode);
+DMError deleteClass(long id);
 
 }
 

@@ -26,7 +26,7 @@ typedef enum DBActionType {
     SELECT,
     INSERT,
     UPDATE,
-    DELETE
+    DEL
 } DBActionType;
 
 bool connectDatabase();

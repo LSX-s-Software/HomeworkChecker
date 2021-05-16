@@ -101,7 +101,7 @@ int query(std::string queryString, DBActionType actionType) {
         case UPDATE:
             actionTypeStr = "UPDATE";
             break;
-        case DELETE:
+        case DEL:
             actionTypeStr = "DELETE";
             break;
         default:
@@ -192,7 +192,7 @@ int update(std::string table, std::string columnAndValue, std::string conditions
 /// @param conditions 匹配条件（SQL WHERE语句格式）
 int remove(std::string table, std::string conditions) {
     std::string queryStr = "DELETE FROM " + table + " WHERE " + conditions;
-    return query(queryStr, DELETE);
+    return query(queryStr, DEL);
 }
 
 unsigned long affectedRowCount() {

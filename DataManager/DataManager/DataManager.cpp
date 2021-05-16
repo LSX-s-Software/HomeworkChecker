@@ -87,7 +87,7 @@ DMError Student::setSchoolNum(std::string newNum) {
     }
 }
 
-DMError Student::setClassId(int newClassId) {
+DMError Student::setClassId(long newClassId) {
     if (id == -1)
         return ARGUMENT_ERROR;
     if (DBManager::connectDatabase()) {
@@ -258,7 +258,7 @@ DMError Class::newClass(int teacherId, std::string name, std::string location, s
                     if (!DBManager::select("classes", "id", "name='" + name + "'") && DBManager::numRows() == 1) {
                         MYSQL_ROW row = DBManager::fetchRow();
                         std::string idStr = row[0];
-                        id = atoi(idStr.c_str());
+                        id = atol(idStr.c_str());
                         this->teacherId = teacherId;
                         this->name = name;
                         this->location = location;
@@ -282,14 +282,15 @@ DMError Class::newClass(int teacherId, std::string name, std::string location, s
 
 /// 获取学生列表
 /// @param classId 班级ID
-std::vector<Student> getStudentList(int classId) {
+std::vector<Student> getStudentList(long classId) {
     std::vector<Student> result;
     if (DBManager::connectDatabase()) {
-        DBManager::select("students", "*", "class_id=" + std::to_string(classId) + "");
-        MYSQL_ROW row;
-        while ((row = DBManager::fetchRow())) {
-            std::string idStr = row[0], timeStr = row[5];
-            result.push_back(Student(atoi(idStr.c_str()), row[1], row[2], classId, row[4], atol(timeStr.c_str())));
+        if (!DBManager::select("students", "*", "class_id=" + std::to_string(classId) + "")) {
+            MYSQL_ROW row;
+            while ((row = DBManager::fetchRow())) {
+                std::string idStr = row[0], timeStr = row[5];
+                result.push_back(Student(atoi(idStr.c_str()), row[1], row[2], classId, row[4], atol(timeStr.c_str())));
+            }
         }
     }
     return result;
@@ -300,10 +301,11 @@ std::vector<Student> getStudentList(int classId) {
 Student getStudent(int id) {
     Student emptyResult;
     if (DBManager::connectDatabase()) {
-        DBManager::select("students", "*", "id=" + std::to_string(id));
-        MYSQL_ROW row = DBManager::fetchRow();
-        std::string classIdStr = row[3], timeStr = row[5];
-        return Student(id, row[1], row[2], atoi(classIdStr.c_str()), row[4], atol(timeStr.c_str()));
+        if (!DBManager::select("students", "*", "id=" + std::to_string(id))) {
+            MYSQL_ROW row = DBManager::fetchRow();
+            std::string classIdStr = row[3], timeStr = row[5];
+            return Student(id, row[1], row[2], atoi(classIdStr.c_str()), row[4], atol(timeStr.c_str()));
+        }
     }
     return emptyResult;
 }
@@ -313,11 +315,12 @@ Student getStudent(int id) {
 std::vector<Class> getClassList(int teacherId) {
     std::vector<Class> result;
     if (DBManager::connectDatabase()) {
-        DBManager::select("classes", "*", "teacher_id=" + std::to_string(teacherId) + "");
-        MYSQL_ROW row;
-        while ((row = DBManager::fetchRow())) {
-            std::string idStr = row[0], statusStr = row[6];
-            result.push_back(Class(atoi(idStr.c_str()), teacherId, row[2], row[3], row[4], row[5], (atoi(statusStr.c_str()) ? CLASS_ENDED : CLASS_RUNNING)));
+        if (!DBManager::select("classes", "*", "teacher_id=" + std::to_string(teacherId) + "")) {
+            MYSQL_ROW row;
+            while ((row = DBManager::fetchRow())) {
+                std::string idStr = row[0], statusStr = row[6];
+                result.push_back(Class(atol(idStr.c_str()), teacherId, row[2], row[3], row[4], row[5], (atoi(statusStr.c_str()) ? CLASS_ENDED : CLASS_RUNNING)));
+            }
         }
     }
     return result;
@@ -325,20 +328,35 @@ std::vector<Class> getClassList(int teacherId) {
 
 /// 获取班级
 /// @param id 班级ID
-Class getClass(int id) {
+Class getClass(long id) {
     Class emptyResult;
     if (DBManager::connectDatabase()) {
-        DBManager::select("students", "*", "id=" + std::to_string(id));
-        MYSQL_ROW row = DBManager::fetchRow();
-        std::string teacherIdStr = row[1], statusStr = row[6];
-        return Class(id, atoi(teacherIdStr.c_str()), row[2], row[3], row[4], row[5], (atoi(statusStr.c_str()) ? CLASS_ENDED : CLASS_RUNNING));
+        if (!DBManager::select("classes", "*", "id=" + std::to_string(id))) {
+            MYSQL_ROW row = DBManager::fetchRow();
+            std::string teacherIdStr = row[1], statusStr = row[6];
+            return Class(id, atoi(teacherIdStr.c_str()), row[2], row[3], row[4], row[5], (atoi(statusStr.c_str()) ? CLASS_ENDED : CLASS_RUNNING));
+        }
+    }
+    return emptyResult;
+}
+
+/// 获取班级
+/// @param inviteCode 邀请码
+Class getClass(std::string inviteCode) {
+    Class emptyResult;
+    if (inviteCode.length() == 4 && DBManager::connectDatabase()) {
+        if (!DBManager::select("classes", "*", "code=" + inviteCode) && DBManager::numRows() > 0) {
+            MYSQL_ROW row = DBManager::fetchRow();
+            std::string idStr = row[0], teacherIdStr = row[1], statusStr = row[6];
+            return Class(atol(idStr.c_str()), atoi(teacherIdStr.c_str()), row[2], row[3], row[4], inviteCode, (atoi(statusStr.c_str()) ? CLASS_ENDED : CLASS_RUNNING));
+        }
     }
     return emptyResult;
 }
 
 /// 删除班级
 /// @param id 班级ID
-DMError deleteClass(int id) {
+DMError deleteClass(long id) {
     DMError error = SUCCESS;
     if (DBManager::connectDatabase()) {
         int code = DBManager::remove("classes", "id=" + std::to_string(id));
