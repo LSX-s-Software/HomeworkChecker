@@ -78,6 +78,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\packages\mysql\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\packages\mysql\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -151,7 +153,17 @@
     <ClCompile Include="DataManager\test.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="C:\Program Files\MySQL\MySQL Server 8.0\lib\libmysql.dll">
+    <CopyFileToFolders Include="..\packages\mysql\lib\libmysql.dll">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="..\packages\mysql\lib\libssl-1_1-x64.dll">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="..\packages\mysql\lib\libcrypto-1_1-x64.dll">
       <FileType>Document</FileType>
     </CopyFileToFolders>
   </ItemGroup>
