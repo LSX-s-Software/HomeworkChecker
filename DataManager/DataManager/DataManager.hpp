@@ -9,23 +9,21 @@
 #define DataManager_hpp
 
 #include "DBManager.hpp"
+#include <vector>
 
 namespace DataManager {
 
-typedef enum {
-    LOGIN_SUCCESS,
-    LOGIN_INVALID_EMAIL,
-    LOGIN_INVALID_PASSWOOD,
-    LOGIN_DATABASE_OPERATION_ERROR,
-    LOGIN_CONNECTION_ERROR
-} LoginError;
+//MARK: - User类定义
 
 typedef enum {
-    REG_SUCCESS,
-    REG_INVALID_EMAIL,
-    REG_DATABASE_OPERATION_ERROR,
-    REG_CONNECTION_ERROR
-} RegisterError;
+    SUCCESS,
+    INVALID_EMAIL,
+    INVALID_PASSWOOD,
+    TARGET_EXISTED,
+    DATABASE_OPERATION_ERROR,
+    CONNECTION_ERROR,
+    ARGUMENT_ERROR
+} DMError;
 
 class User {
     int id;
@@ -34,9 +32,136 @@ class User {
     int type;
     
 public:
-    LoginError login(std::string email, std::string password);
-    RegisterError reg(std::string email, std::string password);
+    DMError login(std::string email, std::string password);
+    DMError reg(std::string email, std::string password);
 };
+
+//MARK: - Student类定义
+
+class Student {
+    int id;
+    std::string schoolNum;
+    std::string qq;
+    int classId;
+    std::string name;
+    long register_time;
+    
+public:
+    Student() {
+        id = -1;
+    }
+    Student(int id, std::string schoolNum, std::string qq, int classId, std::string name, long registerTime) {
+        this->id = id;
+        this->schoolNum = schoolNum;
+        this->qq = qq;
+        this->classId = classId;
+        this->name = name;
+        this->register_time = registerTime;
+    }
+    
+    //MARK: Getters & Setters
+    //WARNING: 不要在调用默认构造函数之后直接调用以下的接口
+    
+    int getId() {
+        return id;
+    }
+    std::string getSchoolNum() {
+        return schoolNum;
+    }
+    std::string getQQ() {
+        return qq;
+    }
+    int getClassId() {
+        return classId;
+    }
+    std::string getName() {
+        return name;
+    }
+    long getRegTime() {
+        return register_time;
+    }
+    
+    DMError setSchoolNum(std::string newNum);
+    DMError setClassId(int newClassId);
+    DMError setName(std::string newName);
+    
+    //MARK: Other Operations
+    
+    /// 学生注册
+    DMError reg(std::string schoolNum, std::string qq, std::string name);
+};
+
+//MARK: - Class类定义
+
+typedef enum {
+    CLASS_RUNNING,
+    CLASS_ENDED
+} ClassStatus;
+
+class Class {
+    int id;
+    int teacherId;
+    std::string name;
+    std::string location;
+    std::string time;
+    std::string inviteCode;
+    ClassStatus status;
+    
+public:
+    Class() {
+        id = -1;
+    }
+    Class(int id, int teacherId, std::string name, std::string location, std::string time, std::string inviteCode, ClassStatus status) {
+        this->id = id;
+        this->teacherId = teacherId;
+        this->name = name;
+        this->location = location;
+        this->time = time;
+        this->inviteCode = inviteCode;
+        this->status = status;
+    }
+    
+    //MARK: Getters & Setters
+    //WARNING: 不要在调用默认构造函数之后直接调用以下的接口
+    
+    int getId() {
+        return id;
+    }
+    std::string getName() {
+        return name;
+    }
+    std::string getLocation() {
+        return location;
+    }
+    std::string getTime() {
+        return time;
+    }
+    std::string getInviteCode() {
+        return inviteCode;
+    }
+    ClassStatus getStatus() {
+        return status;
+    }
+    
+    DMError setName(std::string newName);
+    DMError setLocation(std::string newLocation);
+    DMError setTime(std::string newTime);
+    DMError setInviteCode(std::string newCode);
+    DMError endClass();
+    
+    //MARK: Other Operations
+    
+    /// 新增班级
+    DMError newClass(int teacherId, std::string name, std::string location, std::string time);
+};
+
+//MARK: 数据库操作
+
+std::vector<Student> getStudentList(int classId);
+Student getStudent(int id);
+std::vector<Class> getClassList(int teacherId);
+Class getClass(int id);
+DMError deleteClass(int id);
 
 }
 

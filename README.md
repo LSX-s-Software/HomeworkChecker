@@ -62,7 +62,7 @@
 - 学生提交的作业类（Homework）
   - ID
   - 标题
-  - 内容
+  - 内容URL
   - 附件URL
   - 成绩
   - 评语
@@ -99,10 +99,10 @@
 
 - 班级表（classes）
 
-| 字段     | id     | teacher_id | name        | location    | time        | code    |
-| -------- | ------ | ---------- | ----------- | ----------- | ----------- | ------- |
-| 数据类型 | BIGINT | INT        | VARCHAR(25) | VARCHAR(20) | VARCHAR(10) | CHAR(4) |
-| 描述     |        | 教师ID     | 名称        | 上课地点    | 上课时间    | 邀请码  |
+| 字段     | id     | teacher_id | name        | location    | time        | code    | status             |
+| -------- | ------ | ---------- | ----------- | ----------- | ----------- | ------- | ------------------ |
+| 数据类型 | BIGINT | INT        | VARCHAR(25) | VARCHAR(20) | VARCHAR(10) | CHAR(4) | TINYINT(1)         |
+| 描述     |        | 教师ID     | 名称        | 上课地点    | 上课时间    | 邀请码  | 0=未结课，1=已结课 |
 
 - 学生表（students）
 
@@ -118,5 +118,3 @@
 链接：
 
 教师端：https://lanhuapp.com/url/O1nmX
-
-学生端：https://lanhuapp.com/url/Kk0cp
