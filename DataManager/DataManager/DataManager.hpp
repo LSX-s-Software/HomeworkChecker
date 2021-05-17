@@ -60,7 +60,7 @@ public:
     }
     
     //MARK: Getters & Setters
-    //WARNING: 不要在调用默认构造函数之后直接调用以下的接口
+    //WARNING: 不要在调用默认构造函数之后直接调用以下的get接口
     
     int getId() {
         return id;
@@ -122,7 +122,7 @@ public:
     }
     
     //MARK: Getters & Setters
-    //WARNING: 不要在调用默认构造函数之后直接调用以下的接口
+    //WARNING: 不要在调用默认构造函数之后直接调用以下的get接口
     
     long getId() {
         return id;
@@ -157,11 +157,28 @@ public:
 
 //MARK: 数据库操作
 
+/// 获取学生列表
+/// @param classId 班级ID
 std::vector<Student> getStudentList(int classId);
+
+/// 获取学生
+/// @param id 学生ID
 Student getStudent(int id);
+
+/// 获取班级列表
+/// @param teacherId 教师ID
 std::vector<Class> getClassList(int teacherId);
+
+/// 获取班级
+/// @param id 班级ID
 Class getClass(long id);
+
+/// 获取班级
+/// @param inviteCode 邀请码
 Class getClass(std::string inviteCode);
+
+/// 删除班级
+/// @param id 班级ID
 DMError deleteClass(long id);
 
 }

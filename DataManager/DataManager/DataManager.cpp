@@ -280,8 +280,6 @@ DMError Class::newClass(int teacherId, std::string name, std::string location, s
 
 //MARK: - 数据库操作实现
 
-/// 获取学生列表
-/// @param classId 班级ID
 std::vector<Student> getStudentList(long classId) {
     std::vector<Student> result;
     if (DBManager::connectDatabase()) {
@@ -296,8 +294,6 @@ std::vector<Student> getStudentList(long classId) {
     return result;
 }
 
-/// 获取学生
-/// @param id 学生ID
 Student getStudent(int id) {
     Student emptyResult;
     if (DBManager::connectDatabase()) {
@@ -310,8 +306,6 @@ Student getStudent(int id) {
     return emptyResult;
 }
 
-/// 获取班级列表
-/// @param teacherId 教师ID
 std::vector<Class> getClassList(int teacherId) {
     std::vector<Class> result;
     if (DBManager::connectDatabase()) {
@@ -326,8 +320,6 @@ std::vector<Class> getClassList(int teacherId) {
     return result;
 }
 
-/// 获取班级
-/// @param id 班级ID
 Class getClass(long id) {
     Class emptyResult;
     if (DBManager::connectDatabase()) {
@@ -340,8 +332,6 @@ Class getClass(long id) {
     return emptyResult;
 }
 
-/// 获取班级
-/// @param inviteCode 邀请码
 Class getClass(std::string inviteCode) {
     Class emptyResult;
     if (inviteCode.length() == 4 && DBManager::connectDatabase()) {
@@ -354,8 +344,6 @@ Class getClass(std::string inviteCode) {
     return emptyResult;
 }
 
-/// 删除班级
-/// @param id 班级ID
 DMError deleteClass(long id) {
     DMError error = SUCCESS;
     if (DBManager::connectDatabase()) {
