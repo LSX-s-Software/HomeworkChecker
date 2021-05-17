@@ -61,6 +61,8 @@
   - 目标班级
 - 学生提交的作业类（Homework）
   - ID
+  - 学生ID
+  - 布置的作业ID
   - 标题
   - 内容URL
   - 附件URL
@@ -92,10 +94,10 @@
 
 - 提交的作业表（homework）
 
-| 字段     | id     | student_id | content_url | attachment_url | score    | comments |
-| -------- | ------ | ---------- | ----------- | -------------- | -------- | -------- |
-| 数据类型 | BIGINT | INT        | VARCHAR(60) | VARCHAR(60)    | SMALLINT | TEXT     |
-| 描述     |        | 学生ID     | 作答文件URL | 附件URL        | 成绩     | 评语     |
+| 字段     | id     | student_id | assignment_id | content_url | attachment_url | score    | comments |
+| -------- | ------ | ---------- | ------------- | ----------- | -------------- | -------- | -------- |
+| 数据类型 | BIGINT | INT        | BIGINT        | VARCHAR(60) | VARCHAR(60)    | SMALLINT | TEXT     |
+| 描述     |        | 学生ID     |               | 作答文件URL | 附件URL        | 成绩     | 评语     |
 
 - 班级表（classes）
 

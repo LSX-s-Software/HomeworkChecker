@@ -55,9 +55,19 @@ void closeConnection() {
 }
 
 int query(std::string queryString) {
+    if (!mysql) {
+#ifdef DEBUG
+        std::cout << "[ERROR] [DBManager] MySQL is not connected: " << errMsg << std::endl;
+#endif
+        return -1;
+    }
 #ifdef DEBUG
     std::cout << "[LOG] [DBManager] queryStr: " << queryString << std::endl;
 #endif
+    if (queryResult != NULL) {
+        mysql_free_result(queryResult);
+        queryResult = NULL;
+    }
     int code = mysql_query(mysql, queryString.c_str());
     if (code) {
         errMsg = mysql_error(mysql);
@@ -78,6 +88,9 @@ int query(std::string queryString, DBActionType actionType) {
 #endif
         return -1;
     }
+#ifdef DEBUG
+    std::cout << "[LOG] [DBManager] queryStr: " << queryString << std::endl;
+#endif
     if (queryResult != NULL) {
         mysql_free_result(queryResult);
         queryResult = NULL;

@@ -9,9 +9,8 @@
 #include "DataManager.hpp"
 
 int main(int argc, const char * argv[]) {
-    DataManager::User me;
-    std::cout << me.reg("123456", "123456") << std::endl;
-    std::cout << me.login("123456", "123456") << std::endl;
+    DataManager::Student stu = DataManager::getStudent(1);
+    std::cout << stu.getId() << stu.getName() << std::endl;
     
     return 0;
 }
