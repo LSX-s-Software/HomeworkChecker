@@ -95,11 +95,11 @@ public:
 
 /// 获取学生列表
 /// @param classId 班级ID
-std::vector<Student> getStudentList(int classId);
+std::vector<Student> getStudentList(int classId) throw(DMError);
 
 /// 获取学生
 /// @param id 学生ID
-Student getStudent(int id);
+Student getStudent(int id) throw(DMError);
 
 /// 获取学生
 /// @param qq 学生ID
@@ -171,15 +171,15 @@ public:
 
 /// 获取班级列表
 /// @param teacherId 教师ID
-std::vector<Class> getClassList(int teacherId);
+std::vector<Class> getClassList(int teacherId) throw(DMError);
 
 /// 获取班级
 /// @param id 班级ID
-Class getClass(long id);
+Class getClass(long id) throw(DMError);
 
 /// 获取班级
 /// @param inviteCode 邀请码
-Class getClass(std::string inviteCode);
+Class getClass(std::string inviteCode) throw(DMError);
 
 /// 删除班级
 /// @param id 班级ID
@@ -264,15 +264,15 @@ public:
 
 /// 获取某个学生提交的作业列表
 /// @param studentId 学生ID
-std::vector<Homework> getHomeworkListByStuId(int studentId);
+std::vector<Homework> getHomeworkListByStuId(int studentId) throw(DMError);
 
 /// 按布置的作业ID来获取作业列表
 /// @param assignmentId 布置的作业ID
-std::vector<Homework> getHomeworkListByAsmId(long assignmentId);
+std::vector<Homework> getHomeworkListByAsmId(long assignmentId) throw(DMError);
 
 /// 获取作业
 /// @param id 作业ID
-Homework getHomework(long id);
+Homework getHomework(long id) throw(DMError);
 
 //MARK: - Assignment类定义
 
