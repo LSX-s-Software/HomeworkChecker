@@ -105,6 +105,10 @@ std::vector<Student> getStudentList(int classId);
 /// @param id 学生ID
 Student getStudent(int id);
 
+/// 获取学生
+/// @param qq 学生ID
+Student getStudent(std::string qq) throw(DMError);
+
 //MARK: - Class类定义
 
 typedef enum {
@@ -214,6 +218,11 @@ public:
         this->comments = comments;
     }
     
+    /// 创建作业提交记录
+    /// @param studentId 学生ID
+    /// @param assignmentId 布置的作业ID
+    Homework(int studentId, long assignmentId) throw(DMError);
+    
     bool isEmpty() {
         return id == -1;
     }
@@ -250,11 +259,10 @@ public:
     
     //MARK: Other Operations
     
-    /// 创建作业提交记录
-    /// @param studentId 学生ID
-    /// @param contentURL 正文路径
-    /// @param attachmentURL 附件路径
-    DMError newHomework(int studentId, long assignmentId, std::string contentURL, std::string attachmentURL);
+    /// 提交正文和附件
+    /// @param contentURL 正文URL
+    /// @param attachmentURL 附件URL
+    DMError submit(std::string contentURL, std::string attachmentURL);
     
     /// 作业打分
     /// @param score 分数

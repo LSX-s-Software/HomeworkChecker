@@ -62,7 +62,7 @@ int query(std::string queryString) {
         return -1;
     }
 #ifdef DEBUG
-    std::cout << "[LOG] [DBManager] queryStr: " << queryString << std::endl;
+    std::cout << "[LOG] [DBManager] queryStr: \"" << queryString << "\"" << std::endl;
 #endif
     if (queryResult != NULL) {
         mysql_free_result(queryResult);
@@ -89,7 +89,7 @@ int query(std::string queryString, DBActionType actionType) {
         return -1;
     }
 #ifdef DEBUG
-    std::cout << "[LOG] [DBManager] queryStr: " << queryString << std::endl;
+    std::cout << "[LOG] [DBManager] queryStr: \"" << queryString << "\"" << std::endl;
 #endif
     if (queryResult != NULL) {
         mysql_free_result(queryResult);
