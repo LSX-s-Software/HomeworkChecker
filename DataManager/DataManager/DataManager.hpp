@@ -60,6 +60,7 @@ public:
         this->name = name;
         this->register_time = registerTime;
     }
+    Student(std::string schoolNum, std::string qq, std::string name) throw(DMError);
     
     bool isEmpty() {
         return id == -1;
@@ -90,20 +91,15 @@ public:
     DMError setSchoolNum(std::string newNum);
     DMError setClassId(long newClassId);
     DMError setName(std::string newName);
-    
-    //MARK: Other Operations
-    
-    /// 学生注册
-    DMError reg(std::string schoolNum, std::string qq, std::string name);
 };
 
 /// 获取学生列表
 /// @param classId 班级ID
-std::vector<Student> getStudentList(int classId);
+std::vector<Student> getStudentList(int classId) throw(DMError);
 
 /// 获取学生
 /// @param id 学生ID
-Student getStudent(int id);
+Student getStudent(int id) throw(DMError);
 
 /// 获取学生
 /// @param qq 学生ID
@@ -138,6 +134,7 @@ public:
         this->inviteCode = inviteCode;
         this->status = status;
     }
+    Class(int teacherId, std::string name, std::string location, std::string time) throw(DMError);
     
     bool isEmpty() {
         return id == -1;
@@ -170,24 +167,19 @@ public:
     DMError setTime(std::string newTime);
     DMError setInviteCode(std::string newCode);
     DMError endClass();
-    
-    //MARK: Other Operations
-    
-    /// 新增班级
-    DMError newClass(int teacherId, std::string name, std::string location, std::string time);
 };
 
 /// 获取班级列表
 /// @param teacherId 教师ID
-std::vector<Class> getClassList(int teacherId);
+std::vector<Class> getClassList(int teacherId) throw(DMError);
 
 /// 获取班级
 /// @param id 班级ID
-Class getClass(long id);
+Class getClass(long id) throw(DMError);
 
 /// 获取班级
 /// @param inviteCode 邀请码
-Class getClass(std::string inviteCode);
+Class getClass(std::string inviteCode) throw(DMError);
 
 /// 删除班级
 /// @param id 班级ID
@@ -272,15 +264,90 @@ public:
 
 /// 获取某个学生提交的作业列表
 /// @param studentId 学生ID
-std::vector<Homework> getHomeworkListByStuId(int studentId);
+std::vector<Homework> getHomeworkListByStuId(int studentId) throw(DMError);
 
 /// 按布置的作业ID来获取作业列表
 /// @param assignmentId 布置的作业ID
-std::vector<Homework> getHomeworkListByAsmId(long assignmentId);
+std::vector<Homework> getHomeworkListByAsmId(long assignmentId) throw(DMError);
 
 /// 获取作业
 /// @param id 作业ID
-Homework getHomework(long id);
+Homework getHomework(long id) throw(DMError);
+
+//MARK: - Assignment类定义
+
+class Assignment {
+    unsigned long id;
+    unsigned int teacherId;
+    std::string title;
+    std::string description;
+    long startTime;
+    long deadline;
+    unsigned long classId;
+    
+public:
+    Assignment() {
+        id = 0;
+    }
+    Assignment(unsigned long id, unsigned int teacherId, std::string title, std::string description, long startTime, long deadline, unsigned long classId) {
+        this->id = id;
+        this->teacherId = teacherId;
+        this->title = title;
+        this->description = description;
+        this->startTime = startTime;
+        this->deadline = deadline;
+        this->classId = classId;
+    }
+    /// 创建作业
+    /// @param teacherId 教师ID
+    /// @param title 标题
+    /// @param description 描述
+    /// @param deadline 截止时间
+    /// @param classId 班级ID
+    Assignment(unsigned int teacherId, std::string title, std::string description, long deadline, unsigned long classId) throw(DMError);
+    
+    bool isEmpty() {
+        return id == 0;
+    }
+    
+    //MARK: Getters & Setters
+    //WARNING: 不要在调用默认构造函数之后直接调用以下的get接口
+    
+    unsigned long getId() {
+        return id;
+    }
+    unsigned int getTeacherId() {
+        return teacherId;
+    }
+    std::string getTitle() {
+        return title;
+    }
+    std::string getDescription() {
+        return description;
+    }
+    long getStartTime() {
+        return startTime;
+    }
+    long getDeadline() {
+        return deadline;
+    }
+    unsigned long getClassId() {
+        return classId;
+    }
+    
+    DMError setTitle(std::string title);
+    DMError setDescription(std::string description);
+    DMError setDeadline(long time);
+};
+
+/// 获取作业列表
+/// @param teacherId 教师ID
+std::vector<Assignment> getAssignmentList(unsigned int teacherId) throw(DMError);
+
+/// 删除布置的作业，同时从数据库移除提交到该任务的所有作业记录
+/// @param id 布置的作业ID
+/// @param handler 接受提交的作业列表的函数
+DMError deleteAssignment(unsigned long id, bool (* handler)(std::vector<Homework>) = NULL);
 
 }
 
