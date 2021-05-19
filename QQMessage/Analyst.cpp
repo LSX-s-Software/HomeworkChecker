@@ -2,14 +2,16 @@
 #include <iostream>
 #include <map>
 #include <sstream>
+#include <stdlib.h>
 #include "Tools.h"
 #include "PrivateMessageSender.h"
 #include "Analyst.h"
+#include <DataManager.hpp>
 
 extern std::string connectUrl;
 extern std::map<long long, PeerStatus> status;
 extern std::map<long long, RegInfo> regStatus;
-extern std::map<long long, long long> getSchoolId;
+extern std::map<long long, long long> getStudentId;
 
 extern WebsocketClient wsClient;
 
@@ -21,21 +23,22 @@ void AnaText(std::u16string data, long long qq_id)
 	typedef std::pair<long long, PeerStatus> pair;
 	std::u16string subCom, retInfo;
 
-	bool registered = false;
-
 	if (!status.count(qq_id)) status.insert(pair(qq_id, PeerStatus::IDLE));//添加当前状态
 
-	if (!getSchoolId.count(qq_id))
+	if ((status[qq_id] != PeerStatus::REGISTER)&&!getStudentId.count(qq_id) && (status[qq_id] != PeerStatus::UNREG))
 	{
-		//TODO:Check for SId in databse
-		if (1)
+		long long sid;
+		try
 		{
-			registered = true;
-			long long sid;
-			getSchoolId.insert(std::pair<long long, long long>(qq_id, sid));
+			DataManager::Student st=DataManager::getStudent(std::to_string(qq_id));
+			sid = st.getId();
+			getStudentId.insert(std::pair<long long, long long>(qq_id, sid));
+		}
+		catch (DataManager::DMError& e)
+		{
+			status[qq_id] = PeerStatus::UNREG;
 		}
 	}
-	else registered = true;
 
 
 	if (status[qq_id] == PeerStatus::REGISTER)//注册中
@@ -56,7 +59,9 @@ void AnaText(std::u16string data, long long qq_id)
 
 	if (data.substr(0, 2) == u"注册")//开始注册
 	{
-		if (registered)
+		if (status[qq_id] == PeerStatus::UNREG)
+			status[qq_id] = PeerStatus::REGISTER;
+		if (getStudentId.count(qq_id))
 		{
 			PrivateMessageSender sender(qq_id, u8"您已注册");
 			sender.send();
@@ -68,7 +73,7 @@ void AnaText(std::u16string data, long long qq_id)
 		return;
 	}
 
-	if (!registered)//未注册
+	if (status[qq_id] == PeerStatus::UNREG)//未注册
 	{
 		PrivateMessageSender sender(qq_id, u8"未注册账号，请输入注册以开始");
 		sender.send();
@@ -79,6 +84,11 @@ void AnaText(std::u16string data, long long qq_id)
 	{
 		if (data.substr(0, 6) == u"查询个人信息")//TODO:查询个人信息 数据库 返回班级、老师、姓名、学号
 		{
+			DataManager::Student st = DataManager::getStudent(getStudentId[qq_id]);
+			DataManager::Class cl = DataManager::getClass(st.getClassId());
+			std::string send = u8"您的个人信息如下\n\r姓名：" + st.getName() + u8"\n\r学号：" + st.getSchoolNum() + u8"\n\r班级：" + cl.getName() + u8"\n\r老师：";
+			PrivateMessageSender sender(qq_id, send);
+			sender.send();
 			return;
 		}
 
@@ -253,13 +263,24 @@ void RegCommand(std::u16string data, long long qq_id)
 			status[qq_id] = PeerStatus::IDLE;
 			return;
 		}
-		//TODO: Send register info
-
+		
+		try
+		{
+			DataManager::Student st;
+			st.reg(std::to_string(regInfo.schoolId), std::to_string(qq_id), regInfo.name);
+		}
+		catch(DataManager::DMError& e)
+		{
+			PrivateMessageSender sender(qq_id, u8"注册失败，请重试");
+			sender.send();
+			regStatus.erase(qq_id);
+			status[qq_id] = PeerStatus::UNREG;
+		}
 		PrivateMessageSender sender(qq_id, u8"注册成功");
 		sender.send();
 		regStatus.erase(qq_id);
 		status[qq_id] = PeerStatus::IDLE;
-		getSchoolId[qq_id] = regInfo.schoolId;
+		getStudentId[qq_id] = regInfo.schoolId;
 		return;
 	}
 }

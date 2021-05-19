@@ -84,6 +84,7 @@ File::File(long long classId, long long schoolId, long long homeworkId, long lon
 	}
 	catch (std::exception& e)
 	{
+		std::cerr << e.what();
 		throw FileError(e.what());
 	}
 }

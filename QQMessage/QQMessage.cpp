@@ -23,7 +23,7 @@ std::map<long long, RegInfo> regStatus;
 /// <summary>
 /// 本地保存学号，可判断是否注册【qq号，学号】
 /// </summary>
-std::map<long long, long long> getSchoolId;
+std::map<long long, long long> getStudentId;
 /// <summary>
 /// ws客户端
 /// </summary>

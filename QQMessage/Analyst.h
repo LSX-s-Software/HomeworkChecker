@@ -20,7 +20,11 @@ enum class PeerStatus {
 	/// <summary>
 	/// 提交作业中
 	/// </summary>
-	HOMEWORK
+	HOMEWORK,
+	/// <summary>
+	/// 未注册
+	/// </summary>
+	UNREG
 };
 
 /// <summary>

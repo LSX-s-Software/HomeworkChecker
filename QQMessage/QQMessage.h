@@ -1,5 +1,7 @@
 #pragma once
 #include "Analyst.h"
+#include "WebsocketServer.h"
+
 /// <summary>
 /// 静态类
 /// <para>管理QQ消息</para>
