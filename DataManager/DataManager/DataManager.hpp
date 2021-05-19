@@ -9,33 +9,33 @@
 #define DataManager_hpp
 
 #include "DBManager.hpp"
+#include "DMError.hpp"
 #include <vector>
 
 namespace DataManager {
 
 //MARK: - User类定义
 
-typedef enum {
-    SUCCESS,
-    INVALID_EMAIL,
-    INVALID_PASSWOOD,
-    TARGET_EXISTED,
-    TARGET_NOT_FOUND,
-    DATABASE_OPERATION_ERROR,
-    CONNECTION_ERROR,
-    INVALID_ARGUMENT,
-    OBJECT_NOT_INITED
-} DMError;
-
 class User {
     int id;
     std::string email;
     std::string password;
+    std::string name;
     int type;
     
 public:
-    DMError login(std::string email, std::string password);
-    DMError reg(std::string email, std::string password);
+    User() {
+        id = -1;
+    }
+    
+    DMErrorType login(std::string email, std::string password);
+    DMErrorType reg(std::string email, std::string password);
+    
+    std::string getName() {
+        return name;
+    }
+    DMErrorType setName(std::string name);
+    
 };
 
 //MARK: - Student类定义
@@ -88,9 +88,9 @@ public:
         return register_time;
     }
     
-    DMError setSchoolNum(std::string newNum);
-    DMError setClassId(long newClassId);
-    DMError setName(std::string newName);
+    DMErrorType setSchoolNum(std::string newNum);
+    DMErrorType setClassId(long newClassId);
+    DMErrorType setName(std::string newName);
 };
 
 /// 获取学生列表
@@ -162,11 +162,11 @@ public:
         return status;
     }
     
-    DMError setName(std::string newName);
-    DMError setLocation(std::string newLocation);
-    DMError setTime(std::string newTime);
-    DMError setInviteCode(std::string newCode);
-    DMError endClass();
+    DMErrorType setName(std::string newName);
+    DMErrorType setLocation(std::string newLocation);
+    DMErrorType setTime(std::string newTime);
+    DMErrorType setInviteCode(std::string newCode);
+    DMErrorType endClass();
 };
 
 /// 获取班级列表
@@ -183,7 +183,7 @@ Class getClass(std::string inviteCode) throw(DMError);
 
 /// 删除班级
 /// @param id 班级ID
-DMError deleteClass(long id);
+DMErrorType deleteClass(long id);
 
 //MARK: - Homework类定义
 
@@ -244,22 +244,22 @@ public:
         return comments;
     }
     
-    DMError setContentURL(std::string newURL);
-    DMError setAttachmentURL(std::string newURL);
-    DMError setScore(unsigned short newScore);
-    DMError setComments(std::string newComments);
+    DMErrorType setContentURL(std::string newURL);
+    DMErrorType setAttachmentURL(std::string newURL);
+    DMErrorType setScore(unsigned short newScore);
+    DMErrorType setComments(std::string newComments);
     
     //MARK: Other Operations
     
     /// 提交正文和附件
     /// @param contentURL 正文URL
     /// @param attachmentURL 附件URL
-    DMError submit(std::string contentURL, std::string attachmentURL);
+    DMErrorType submit(std::string contentURL, std::string attachmentURL);
     
     /// 作业打分
     /// @param score 分数
     /// @param comments 评语
-    DMError review(unsigned short score, std::string comments);
+    DMErrorType review(unsigned short score, std::string comments);
 };
 
 /// 获取某个学生提交的作业列表
@@ -335,9 +335,9 @@ public:
         return classId;
     }
     
-    DMError setTitle(std::string title);
-    DMError setDescription(std::string description);
-    DMError setDeadline(long time);
+    DMErrorType setTitle(std::string title);
+    DMErrorType setDescription(std::string description);
+    DMErrorType setDeadline(long time);
 };
 
 /// 获取作业列表
@@ -347,7 +347,7 @@ std::vector<Assignment> getAssignmentList(unsigned int teacherId) throw(DMError)
 /// 删除布置的作业，同时从数据库移除提交到该任务的所有作业记录
 /// @param id 布置的作业ID
 /// @param handler 接受提交的作业列表的函数
-DMError deleteAssignment(unsigned long id, bool (* handler)(std::vector<Homework>) = NULL);
+DMErrorType deleteAssignment(unsigned long id, bool (* handler)(std::vector<Homework>) = NULL);
 
 }
 
