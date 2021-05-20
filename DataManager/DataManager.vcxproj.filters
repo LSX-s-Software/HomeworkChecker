@@ -21,6 +21,9 @@
     <ClInclude Include="DataManager\DataManager.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="DataManager\DMError.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DataManager\DataManager.cpp">
@@ -30,6 +33,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="DataManager\test.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DataManager\DMError.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

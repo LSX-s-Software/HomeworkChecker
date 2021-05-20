@@ -40,7 +40,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -119,6 +119,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Program Files\MySQL\MySQL Server 8.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4290;4819</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -146,10 +147,12 @@
   <ItemGroup>
     <ClInclude Include="DataManager\DataManager.hpp" />
     <ClInclude Include="DataManager\DBManager.hpp" />
+    <ClInclude Include="DataManager\DMError.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DataManager\DataManager.cpp" />
     <ClCompile Include="DataManager\DBManager.cpp" />
+    <ClCompile Include="DataManager\DMError.cpp" />
     <ClCompile Include="DataManager\test.cpp" />
   </ItemGroup>
   <ItemGroup>

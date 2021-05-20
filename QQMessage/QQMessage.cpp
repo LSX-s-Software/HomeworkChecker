@@ -21,9 +21,17 @@ std::map<long long, PeerStatus> status;
 /// </summary>
 std::map<long long, RegInfo> regStatus;
 /// <summary>
-/// 本地保存学号，可判断是否注册【qq号，学号】
+/// 本地学生信息，可判断是否注册【qq号，id号】
 /// </summary>
-std::map<long long, long long> getSchoolId;
+std::map<long long, StuInfo> getStuInfo;
+/// <summary>
+/// 本地保存作业提交详情
+/// </summary>
+std::map<long long, HomeworkInfo> getHomeworkInfo;
+/// <summary>
+/// 本地保存作业提交id，提交后销毁
+/// </summary>
+std::map<long long, long long>getSubmitId;
 /// <summary>
 /// ws客户端
 /// </summary>

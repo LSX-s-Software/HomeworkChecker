@@ -7,6 +7,7 @@
 
 #include "DBManager.hpp"
 #include <iostream>
+#pragma comment(lib, "libmysql.lib")
 
 #ifndef DEBUG
 #define DEBUG
@@ -43,7 +44,7 @@ bool connectDatabase(DBAccount account) {
 bool connectDatabase() {
     DBManager::DBAccount account;
     account.username = "root";
-    account.password = "gh8rv_aGdd";
+    account.password = "Whu2020";
     return connectDatabase(account);
 }
 

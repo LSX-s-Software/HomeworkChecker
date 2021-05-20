@@ -2,43 +2,196 @@
 #include <iostream>
 #include <map>
 #include <sstream>
+#include <stdlib.h>
 #include "Tools.h"
 #include "PrivateMessageSender.h"
 #include "Analyst.h"
+#include <DataManager.hpp>
+#include "File.h"
+#include <ctime>
 
 extern std::string connectUrl;
 extern std::map<long long, PeerStatus> status;
 extern std::map<long long, RegInfo> regStatus;
-extern std::map<long long, long long> getSchoolId;
+extern std::map<long long, StuInfo> getStuInfo;
+extern std::map<long long, HomeworkInfo> getHomeworkInfo;
 
 extern WebsocketClient wsClient;
 
 void RegCommand(std::u16string data, long long qq_id);
 void HomCommand(std::u16string data, long long qq_id);
+/// <summary>
+/// 转换作业状态
+/// </summary>
+/// <param name="id">状态id</param>
+/// <returns></returns>
+std::string getHomeworkStatus(int id)
+{
+	if (id == 0) return u8"未提交";
+	if (id == 1) return u8"已提交";
+	if (id == 2) return u8"已批改";
+	return u8"未知状态";
+}
+/// <summary>
+/// 字符串分隔
+/// </summary>
+/// <param name="s">原始字符串</param>
+/// <param name="seperator">分隔符 可多个</param>
+/// <returns>分隔后字符串列表</returns>
+std::vector<std::string> split(const std::string& s, const std::string& seperator) {
+	std::vector<std::string> result;
+	typedef std::string::size_type string_size;
+	string_size i = 0;
+
+	while (i != s.size()) {
+		//找到字符串中首个不等于分隔符的字母；
+		int flag = 0;
+		while (i != s.size() && flag == 0) {
+			flag = 1;
+			for (string_size x = 0; x < seperator.size(); ++x)
+				if (s[i] == seperator[x]) {
+					++i;
+					flag = 0;
+					break;
+				}
+		}
+
+		//找到又一个分隔符，将两个分隔符之间的字符串取出；
+		flag = 0;
+		string_size j = i;
+		while (j != s.size() && flag == 0) {
+			for (string_size x = 0; x < seperator.size(); ++x)
+				if (s[j] == seperator[x]) {
+					flag = 1;
+					break;
+				}
+			if (flag == 0)
+				++j;
+		}
+		if (i != j) {
+			result.push_back(s.substr(i, j - i));
+			i = j;
+		}
+	}
+	return result;
+}
+
+/// <summary>
+/// 字符串分隔
+/// </summary>
+/// <param name="s">原始字符串</param>
+/// <param name="seperator">分隔符 可多个</param>
+/// <returns>分隔后字符串列表</returns>
+std::vector<std::u16string> split(const std::u16string& s, const std::u16string& seperator) {
+	std::vector<std::u16string> result;
+	typedef std::u16string::size_type string_size;
+	string_size i = 0;
+
+	while (i != s.size()) {
+		//找到字符串中首个不等于分隔符的字母；
+		int flag = 0;
+		while (i != s.size() && flag == 0) {
+			flag = 1;
+			for (string_size x = 0; x < seperator.size(); ++x)
+				if (s[i] == seperator[x]) {
+					++i;
+					flag = 0;
+					break;
+				}
+		}
+
+		//找到又一个分隔符，将两个分隔符之间的字符串取出；
+		flag = 0;
+		string_size j = i;
+		while (j != s.size() && flag == 0) {
+			for (string_size x = 0; x < seperator.size(); ++x)
+				if (s[j] == seperator[x]) {
+					flag = 1;
+					break;
+				}
+			if (flag == 0)
+				++j;
+		}
+		if (i != j) {
+			result.push_back(s.substr(i, j - i));
+			i = j;
+		}
+	}
+	return result;
+}
+
+/// <summary>
+/// 获取文件名列表
+/// </summary>
+/// <param name="raw">读入url | 分隔</param>
+/// <returns>返回文件名 空格分隔</returns>
+std::string getHomeworkFilename(std::string raw)
+{
+	std::vector<std::u16string> rawList = split(Tools::to_utf16(raw), u"|");
+	std::string result;
+	for (auto& iter : rawList)
+	{
+		std::filesystem::path file = iter;
+		result += (file.filename().string()+"\ \ ");
+	}
+	return result;
+}
+
+/// <summary>
+/// TimeStamp转换为日期时间
+/// </summary>
+/// <param name="timeStamp"></param>
+/// <returns>日期时间字符串</returns>
+std::string TimeConvert(std::string timeStamp)
+{
+	std::stringstream ss;
+	time_t timeTemp;
+	ss << timeStamp;
+	ss >> timeTemp;
+	char temp[50];
+	struct tm* timeSet = gmtime(&timeTemp);
+	strftime(temp, 50, "%Y-%m-%d %H:%M:%S", timeSet);
+	return temp;
+}
+std::string TimeConvert(long timeStamp)
+{
+	std::stringstream ss;
+	time_t timeTemp;
+	ss << timeStamp;
+	ss >> timeTemp;
+	char temp[50];
+	struct tm* timeSet = gmtime(&timeTemp);
+	strftime(temp, 50, "%Y-%m-%d %H:%M:%S", timeSet);
+	return temp;
+}
 
 void AnaText(std::u16string data, long long qq_id)
 {
 	typedef std::pair<long long, PeerStatus> pair;
 	std::u16string subCom, retInfo;
 
-	bool registered = false;
-
-	if (!status.count(qq_id)) status.insert(pair(qq_id, PeerStatus::IDLE));//添加当前状态
-
-	if (!getSchoolId.count(qq_id))
+	//添加当前状态
+	if (!status.count(qq_id)) status.insert(pair(qq_id, PeerStatus::IDLE));
+	//本地化学生数据
+	if ((status[qq_id] != PeerStatus::REGISTER)&&!getStuInfo.count(qq_id) && (status[qq_id] != PeerStatus::UNREG)) 
 	{
-		//TODO:Check for SId in databse
-		if (1)
+		try
 		{
-			registered = true;
-			long long sid;
-			getSchoolId.insert(std::pair<long long, long long>(qq_id, sid));
+			DataManager::Student st(std::to_string(qq_id));
+			StuInfo stuinfo;
+			stuinfo.studentId = st.getId();
+			stuinfo.studentNum = atoll(st.getSchoolNum().c_str());
+			stuinfo.classId = st.getClassId();
+			getStuInfo.insert(std::pair<long long, StuInfo>(qq_id, stuinfo));
+		}
+		catch (DataManager::DMExcetion::TARGET_NOT_FOUND)
+		{
+			status[qq_id] = PeerStatus::UNREG;
 		}
 	}
-	else registered = true;
 
-
-	if (status[qq_id] == PeerStatus::REGISTER)//注册中
+	//注册中
+	if (status[qq_id] == PeerStatus::REGISTER)
 	{
 		subCom = data;
 		Tools::delSpaceAhead(subCom);
@@ -46,7 +199,8 @@ void AnaText(std::u16string data, long long qq_id)
 		return;
 	}
 
-	if (status[qq_id] == PeerStatus::HOMEWORK)//提交作业中
+	//提交作业中
+	if (status[qq_id] == PeerStatus::HOMEWORK)
 	{
 		subCom = data;
 		Tools::delSpaceAhead(subCom);
@@ -54,9 +208,12 @@ void AnaText(std::u16string data, long long qq_id)
 		return;
 	}
 
-	if (data.substr(0, 2) == u"注册")//开始注册
+	//开始注册
+	if (data.substr(0, 2) == u"注册")
 	{
-		if (registered)
+		if (status[qq_id] == PeerStatus::UNREG)
+			status[qq_id] = PeerStatus::REGISTER;
+		if (getStuInfo.count(qq_id))
 		{
 			PrivateMessageSender sender(qq_id, u8"您已注册");
 			sender.send();
@@ -68,96 +225,170 @@ void AnaText(std::u16string data, long long qq_id)
 		return;
 	}
 
-	if (!registered)//未注册
+	//未注册
+	if (status[qq_id] == PeerStatus::UNREG)//未注册
 	{
 		PrivateMessageSender sender(qq_id, u8"未注册账号，请输入注册以开始");
 		sender.send();
 		return;
 	}
 
+	//空闲状态
 	if (status[qq_id] == PeerStatus::IDLE)
 	{
-		if (data.substr(0, 6) == u"查询个人信息")//TODO:查询个人信息 数据库 返回班级、老师、姓名、学号
+		//查询个人信息
+		if (data.substr(0, 6) == u"查询个人信息"|| u"获取个人信息")
 		{
+			DataManager::Student st((int)getStuInfo[qq_id].studentId);
+			DataManager::Class cl(st.getClassId());
+			std::string send = u8"您的个人信息如下\n\r姓名：" + st.getName() + u8"\n\r学号：" + st.getSchoolNum() + u8"\n\r班级：" + cl.getName() + u8"\n\r老师："; //TODO: teacher's name
+			PrivateMessageSender sender(qq_id, send);
+			sender.send();
 			return;
 		}
 
-		
-		if (data.substr(0, 4) == u"查询作业")//TODO:查询作业（n）：状态【0未完成 1已提交 2已批改】，分数，评语，作业内容，正文，附件表
+		//查询作业（列表）
+		if (data.substr(0, 4) == u"查询作业"|| u"获取作业")
 		{
-			std::string homewordId_str = Tools::to_utf8(Tools::delFirstCom(data, 4));
-			if (!Tools::isNum(homewordId_str))
+			std::string assignmentId_str = Tools::to_utf8(Tools::delFirstCom(data, 4));
+			if (!Tools::isNum(assignmentId_str))//未检测到数字
 			{
-				PrivateMessageSender sender(qq_id, u8"作业列表如下");//TODO: vector 遍历 未完成：
-				{
-
-				}
+				std::string message;
+					std::vector<DataManager::Homework> homeworklist = DataManager::getHomeworkListByStuId(getStuInfo[qq_id].studentId, getStuInfo[qq_id].classId);
+					if (homeworklist.size() != 0)
+					{
+						for (auto& iter : homeworklist)
+						{
+							int status = iter.getStatus();
+							DataManager::Assignment as(iter.getAssignmentId());
+							message += (u8"【作业 " + std::to_string(iter.getId()) + u8"】  " + getHomeworkStatus(status)+u8"  ");
+							if (status == 0)//未提交
+							{
+								message += (u8"截止时间：" + TimeConvert(as.getDeadline()));
+							}
+							if (status == 2)//已批改
+							{
+								message += u8"分数：" + std::to_string(iter.getScore());
+							}
+							message += "\r\n";
+						}
+					}
+					else
+						message = u8"暂无作业";
+				PrivateMessageSender sender(qq_id, u8"作业列表如下\r\n" + message);
 				sender.send();
 				return;
 			}
-#include <stdlib.h>
-			int homeworkID = atoi(homewordId_str.c_str());
-			
-			int homeworkStatus=0;
-			if (homeworkStatus == -1)//无作业
+			int assignmentId = atoi(assignmentId_str.c_str());
+			std::string message;
+			try
+			{
+				DataManager::Homework homework(getStuInfo[qq_id].studentId, assignmentId);
+				int homeworkStatus = homework.getStatus();
+				if (homeworkStatus == 0)//未提交
+				{//TODO: 未提交作业
+					DataManager::Assignment assignment(homework.getAssignmentId());
+					message += (u8"【作业 " + std::to_string(homework.getId()) + u8"】  " + getHomeworkStatus(homeworkStatus))+ u8"\r\n";
+					message += (u8"【作业内容】\r\n" + assignment.getDescription() + u8"\r\n");
+					message += (u8"【截至时间】  " + TimeConvert(assignment.getDeadline()) + u8"\r\n");
+					PrivateMessageSender sender(qq_id, message);
+					sender.send();
+					return;
+				}
+				if (homeworkStatus == 1)//已提交
+				{
+					DataManager::Assignment assignment(homework.getAssignmentId());
+					message += (u8"【作业 " + std::to_string(homework.getId()) + u8"】  " + getHomeworkStatus(homeworkStatus)) + u8"\r\n";
+					message += (u8"【作业内容】\r\n" + assignment.getDescription() + u8"\r\n");
+					message += (u8"【截至时间】  " + TimeConvert(assignment.getDeadline()) + u8"\r\n");
+					message += (u8"【作业正文列表】\r\n" + getHomeworkFilename(homework.getContentURL())+u8"\r\n");
+					message += (u8"【作业附件列表】\r\n" + getHomeworkFilename(homework.getAttachmentURL()) + u8"\r\n");
+					PrivateMessageSender sender(qq_id, message);
+					sender.send();
+					return;
+				}
+				if (homeworkStatus == 2)//已批改
+				{
+					DataManager::Assignment assignment(homework.getAssignmentId());
+					message += (u8"【作业 " + std::to_string(homework.getId()) + u8"】  " + getHomeworkStatus(homeworkStatus)) + u8"\r\n";
+					message += (u8"【作业内容】\r\n" + assignment.getDescription() + u8"\r\n");
+					message += (u8"【截至时间】  " + TimeConvert(assignment.getDeadline()) + u8"\r\n");
+					message += (u8"【分数】 " + std::to_string(homework.getScore()) + u8"\r\n");
+					message += (u8"【评语】\r\n" + homework.getComments() + u8"\r\n");
+					message += (u8"【作业正文列表】\r\n" + getHomeworkFilename(homework.getContentURL()) + u8"\r\n");
+					message += (u8"【作业附件列表】\r\n" + getHomeworkFilename(homework.getAttachmentURL()) + u8"\r\n");
+					PrivateMessageSender sender(qq_id, message);
+					sender.send();
+					return;
+				}
+			}
+			catch(DataManager::DMExcetion::TARGET_NOT_FOUND)//无作业
 			{
 				PrivateMessageSender sender(qq_id, u8"暂无该作业，请重试");
 				sender.send();
 				return;
 			}
-			if (homeworkStatus == 0)//未提交
+			catch (std::exception)
 			{
-				
-				return;
-			}
-			if (homeworkStatus == 1)//已提交
-			{
-
-				return;
-			}
-			if (homeworkStatus == 2)//已批改
-			{
-
+				PrivateMessageSender sender(qq_id, u8"未知错误，请重试");
+				sender.send();
 				return;
 			}
 			return;
 		}
 
-		if (data.substr(0, 4) == u"提交作业" || data.substr(0, 4) == u"修改作业")
+		//提交作业
+		if (data.substr(0, 4) == u"提交作业")
 		{
-			std::string homewordId_str = Tools::to_utf8(Tools::delFirstCom(data, 4));
-			if (!Tools::isNum(homewordId_str))
+			std::string assignmentId_str = Tools::to_utf8(Tools::delFirstCom(data, 4));
+			if (!Tools::isNum(assignmentId_str))
 			{
 				PrivateMessageSender sender(qq_id, u8"未知命令，请重试");
 				sender.send();
 				return;
 			}
-#include <stdlib.h>
-			int homeworkID = atoi(homewordId_str.c_str());
-
-			int homeworkStatus=0;
-			if (homeworkStatus == -1)//无作业
+			int assignmentId = atoi(assignmentId_str.c_str());
+			try
 			{
+				try
+				{
+					PrivateMessageSender sender(qq_id, u8"已新建作业");
+					sender.send();
+					DataManager::Homework hw((int)getStuInfo[qq_id].studentId, assignmentId);
+				}
+				catch (DataManager::DMExcetion::TARGET_EXISTED)
+				{
+					PrivateMessageSender sender(qq_id, u8"您的作业已存在");
+					sender.send();
+					return;
+				}
+				status[qq_id] = PeerStatus::HOMEWORK;
+				DataManager::Student st(getStuInfo[qq_id].studentId);
+				DataManager::Assignment as(assignmentId);
+				if (std::time(0) > as.getDeadline())
+				{
+					PrivateMessageSender sender(qq_id, u8"作业提交已截止");
+					sender.send();
+				}
+
+				HomeworkInfo info;
+				info.classId = st.getClassId();
+				info.homeworkId = assignmentId;
+				info.studentId = getStuInfo[qq_id].studentId;
+				info.studentNum = atoll(st.getSchoolNum().c_str());
+				getHomeworkInfo.insert(std::pair<long long, HomeworkInfo>(qq_id, info));
+				PrivateMessageSender sender(qq_id, u8"开始提交作业" + std::to_string(info.homeworkId) + u8"\r\n结束后，输入“确认提交”以提交，输入“取消提交”以取消");
+				sender.send();
+				HomCommand(data, qq_id);
+				return;
+			}
+			catch (DataManager::DMExcetion::TARGET_NOT_FOUND)
+			{
+				status[qq_id] = PeerStatus::IDLE;
 				PrivateMessageSender sender(qq_id, u8"暂无该作业，请重试");
 				sender.send();
 				return;
 			}
-			if (homeworkStatus == 0)//未提交
-			{
-
-				return;
-			}
-			if (homeworkStatus == 1)//已提交
-			{
-
-				return;
-			}
-			if (homeworkStatus == 2)//已批改
-			{
-
-				return;
-			}
-			return;
 		}
 	}
 
@@ -229,7 +460,7 @@ void RegCommand(std::u16string data, long long qq_id)
 			sender.send();
 			return;
 		}
-#include <stdlib.h>
+
 		long long schoolID = atoll(schoolID_str.c_str());
 
 		regInfo.status = RegStatus::CONFIRM;
@@ -253,18 +484,80 @@ void RegCommand(std::u16string data, long long qq_id)
 			status[qq_id] = PeerStatus::IDLE;
 			return;
 		}
-		//TODO: Send register info
-
+		
+		try
+		{
+			DataManager::Student st(std::to_string(regInfo.schoolId), std::to_string(qq_id), regInfo.name);
+		}
+		catch(DataManager::DMError& e)
+		{
+			PrivateMessageSender sender(qq_id, u8"注册失败，请重试");
+			sender.send();
+			regStatus.erase(qq_id);
+			status[qq_id] = PeerStatus::UNREG;
+		}
 		PrivateMessageSender sender(qq_id, u8"注册成功");
 		sender.send();
 		regStatus.erase(qq_id);
 		status[qq_id] = PeerStatus::IDLE;
-		getSchoolId[qq_id] = regInfo.schoolId;
 		return;
 	}
 }
 
 void HomCommand(std::u16string data, long long qq_id)
 {
+	if (data.substr(0, 2) == u"取消提交")
+	{
+		PrivateMessageSender sender(qq_id, u8"您已取消提交作业" + std::to_string(getHomeworkInfo[qq_id].homeworkId));
+		sender.send();
+		status[qq_id] = PeerStatus::IDLE;
+		getHomeworkInfo.erase(qq_id);
+		return;
+	}
+	if (data.substr(0, 2) == u"删除")
+	{
+		std::u16string tmp = Tools::delFirstCom(data, 2);
+		File file(getHomeworkInfo.at(qq_id));
+		PrivateMessageSender sender(qq_id, file.delFile(tmp));
+		sender.send();
+		return;
+	}
+	if (data.substr(0, 6) == u"获取文件列表")
+	{
+		File file(getHomeworkInfo[qq_id]);
+		PrivateMessageSender sender(qq_id, file.getFileList());
+		sender.send();
+		return;
+	}
+	if (data.substr(0, 4) == u"获取文件")
+	{
+		std::u16string tmp = Tools::delFirstCom(data, 4);
+		File file(getHomeworkInfo[qq_id]);
+		PrivateMessageSender sender(qq_id, file.getFile(tmp));
+		sender.send();
+		return;
+	}
 	
+	if (data.substr(0, 4) == u"确认提交")
+	{
+		File file(getHomeworkInfo[qq_id]);
+		DataManager::Homework hm(getStuInfo[qq_id].studentId, getHomeworkInfo[qq_id].homeworkId);
+		if (file.save(hm.getId()))//上传成功
+		{
+			status[qq_id] = PeerStatus::IDLE;
+			PrivateMessageSender sender(qq_id, u8"提交成功");
+			sender.send();
+			return;
+		}
+		else
+		{
+			DataManager::deleteAssignment()
+		}
+	}
+
+	File file(getHomeworkInfo[qq_id]);
+	std::string fileName = file.storeText(Tools::to_utf8(data));
+	PrivateMessageSender sender(qq_id, u8"文本："+fileName+u8"\ 已保存");
+	sender.send();
+	return;
 }

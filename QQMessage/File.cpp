@@ -11,13 +11,11 @@
 
 extern std::string rootPath;
 
-File::File(long long classId, long long schoolId, long long homeworkId, long long submitId) :
-	classId(classId), schoolId(schoolId), homeworkId(homeworkId), submitId(submitId),lastId(-1)
+File::File(long long classId, long long schoolId, long long homeworkId) :
+	classId(classId), schoolId(schoolId), homeworkId(homeworkId)
 {
 	workPath = rootPath;
 	workPath.append(std::to_string(classId)).append(std::to_string(schoolId)).append(std::to_string(homeworkId));
-	homePath = workPath;
-	workPath.append(std::to_string(submitId));
 	infoPath = workPath;
 	infoPath.append(".info");
 	try
@@ -28,18 +26,18 @@ File::File(long long classId, long long schoolId, long long homeworkId, long lon
 		{
 			std::ifstream in;
 			in.open(infoPath);
-			in >> autoIndex >> lastId;
+			in >> autoIndex >> submitId;
 			in.close();
 			std::ofstream out;
 			out.open(infoPath, std::ios::trunc);
-			out << autoIndex << std::endl << lastId << std::endl;
+			out << autoIndex << std::endl << submitId << std::endl;
 			out.close();
 		}
 		else
 		{
 			std::ofstream out;
 			out.open(infoPath, std::ios::trunc);
-			out << autoIndex << std::endl << lastId << std::endl;
+			out << autoIndex << std::endl << -1 << std::endl;
 			out.close();
 		}
 	}
@@ -49,42 +47,57 @@ File::File(long long classId, long long schoolId, long long homeworkId, long lon
 	}
 }
 
-File::File(long long classId, long long schoolId, long long homeworkId, long long submitId,long long lastId) :
-	classId(classId), schoolId(schoolId), homeworkId(homeworkId), submitId(submitId),lastId(lastId)
+File::File(HomeworkInfo info)
+	:
+	classId(info.classId), schoolId(info.studentNum), homeworkId(info.homeworkId), submitId(info.submitId)
 {
 	workPath = rootPath;
 	workPath.append(std::to_string(classId)).append(std::to_string(schoolId)).append(std::to_string(homeworkId));
-	homePath = workPath;
-	std::filesystem::path lastPath = homePath;
-	lastPath.append(std::to_string(lastId));
-	workPath.append(std::to_string(submitId));
 	infoPath = workPath;
 	infoPath.append(".info");
 	try
 	{
-		std::filesystem::copy(lastPath, workPath);
+		create_directories(workPath);
+
 		if (std::filesystem::exists(infoPath))
 		{
 			std::ifstream in;
 			in.open(infoPath);
-			in >> autoIndex;
+			in >> autoIndex >> submitId;
 			in.close();
 			std::ofstream out;
 			out.open(infoPath, std::ios::trunc);
-			out << autoIndex << std::endl << lastId << std::endl;
+			out << autoIndex << std::endl << submitId << std::endl;
 			out.close();
 		}
 		else
 		{
 			std::ofstream out;
 			out.open(infoPath, std::ios::trunc);
-			out << autoIndex << std::endl << lastId << std::endl;
+			out << autoIndex << std::endl << -1 << std::endl;
 			out.close();
 		}
 	}
 	catch (std::exception& e)
 	{
 		throw FileError(e.what());
+	}
+}
+
+long long File::getSubmitId()
+{
+	if (std::filesystem::exists(infoPath))
+	{
+		int tmp;
+		std::ifstream in;
+		in.open(infoPath);
+		in >> tmp >> tmp;
+		in.close();
+		return tmp;
+	}
+	else
+	{
+		return -1;
 	}
 }
 
@@ -112,7 +125,7 @@ std::string File::storeText(std::string data)
 	
 }
 
-void File::delFile(std::filesystem::path fileName)
+std::string File::delFile(std::filesystem::path fileName)
 {
 	if (!std::filesystem::exists(workPath / fileName)) throw FileNotExist((workPath / fileName).string());
 	try
@@ -121,8 +134,9 @@ void File::delFile(std::filesystem::path fileName)
 	}
 	catch (std::exception& e)
 	{
-		throw FileError("cannot store file:" + (workPath / fileName).string() + "\n" + e.what());
+		return u8"无法找到文件：" + fileName.string() + " 请重试";
 	}
+	return u8"成功删除文件：" + fileName.string();
 }
 
 LPCWSTR stringToLPCWSTR(std::string orig)
@@ -167,16 +181,16 @@ std::string File::storePic(std::string url)
 
 }
 
-bool File::save()
+bool File::save(long long submitId)
 {
+	this->submitId = submitId;
 	if (!std::filesystem::exists(infoPath))
 	{
 		return false;
 	}
-
 	std::ifstream in;
 	in.open(infoPath);
-	in >> autoIndex >> lastId;
+	in >> autoIndex;
 	in.close();
 
 	int cnt = 0;
@@ -211,7 +225,7 @@ bool File::save()
 	}
 	std::ofstream out;
 	out.open(infoPath, std::ios::trunc);
-	out << autoIndex << std::endl << lastId << std::endl;
+	out << autoIndex << std::endl << submitId << std::endl;
 	out << "__TXT__" << std::endl;
 	for (auto& iter : txtFile)
 	{
@@ -234,4 +248,86 @@ bool File::save()
 	}
 	out.close();
 	return true;
+}
+
+std::string File::getFileList()
+{
+	int cnt = 0;
+	std::vector<std::string> txtFile, picFile, codeFile, otherFile;
+	for (auto& iter : std::filesystem::directory_iterator(workPath))
+	{
+		if (iter.path().filename().string() == ".info") continue;
+		cnt++;
+		FileInfo fileInfo(iter.path());
+		switch (fileInfo.getFileFormats())
+		{
+		case(FileFormats::TXT):
+			txtFile.push_back(fileInfo.getFileName().string());
+			break;
+		case(FileFormats::PIC):
+			picFile.push_back(fileInfo.getFileName().string());
+			break;
+		case(FileFormats::CODE):
+			codeFile.push_back(fileInfo.getFileName().string());
+			break;
+		case(FileFormats::OTHER):
+			otherFile.push_back(fileInfo.getFileName().string());
+			break;
+		default:
+			break;
+		}
+	}
+	if (cnt == 0)
+	{
+		std::filesystem::remove_all(workPath);
+		return u8"暂无文件";
+	}
+	std::string returnString;
+	if (txtFile.size() != 0)
+	{
+		returnString += u8"正文：\r\n";
+		for (auto& iter : txtFile)
+		{
+			returnString += (iter + " ");
+		}
+	}
+	if (picFile.size() != 0)
+	{
+		returnString += u8"\r\n图片：\r\n";
+		for (auto& iter : picFile)
+		{
+			returnString += (iter + " ");
+		}
+	}
+	if (codeFile.size() != 0)
+	{
+		returnString += u8"\r\n代码：\r\n";
+		for (auto& iter : codeFile)
+		{
+			returnString += (iter + " ");
+		}
+	}
+	
+	if (otherFile.size() != 0)
+	{
+		returnString += u8"\r\n其他附件：\r\n";
+		for (auto& iter : otherFile)
+		{
+			returnString += (iter + " ");
+		}
+	}
+	return returnString;
+}
+
+std::string File::getFile(std::filesystem::path fileName)
+{
+	FileInfo file(workPath / fileName);
+	if (file.getFileFormats() == FileFormats::OTHER || file.getFileFormats() == FileFormats::PIC)
+	{
+		return u8"该类型文件暂不支持在线查看";
+	}
+	std::ifstream in(file.getFilePath());
+	std::ostringstream tmp;
+	tmp << in.rdbuf();
+	return tmp.str();
 }

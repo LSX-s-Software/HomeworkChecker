@@ -79,9 +79,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\packages\json;..\packages\websocketpp\include;..\packages\asio\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)\lib\</OutDir>
+    <IncludePath>..\packages\json;..\packages\websocketpp\include;..\packages\asio\include;..\DataManager\DataManager;..\packages\mysql\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\packages\mysql\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -123,6 +122,7 @@
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <DisableSpecificWarnings>5040;4819;4290</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -154,6 +154,7 @@
     <ClCompile Include="QQMessage.cpp" />
     <ClCompile Include="Tools.cpp" />
     <ClCompile Include="WebsocketClient.cpp" />
+    <ClCompile Include="WebsocketServer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Analyst.h" />
@@ -165,6 +166,12 @@
     <ClInclude Include="QQMessage.h" />
     <ClInclude Include="Tools.h" />
     <ClInclude Include="WebsocketClient.h" />
+    <ClInclude Include="WebsocketServer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataManager\DataManager.vcxproj">
+      <Project>{088fb71e-8b98-4cc6-b2cc-0abc68129e8a}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
