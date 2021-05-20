@@ -16,17 +16,13 @@ private:
 	/// </summary>
 	std::filesystem::path workPath;
 	/// <summary>
-	/// 提交id的上层目录【当前作业目录】
-	/// </summary>
-	std::filesystem::path homePath;
-	/// <summary>
 	/// 当前提交id的信息文件
 	/// </summary>
 	std::filesystem::path infoPath;
 	/// <summary>
-	/// 班级id 学号 作业id 本次提交id 上次提交id
+	/// 班级id 学号 作业id 本次提交id
 	/// </summary>
-	long long classId, schoolId, homeworkId, submitId, lastId;
+	long long classId, schoolId, homeworkId,submitId;
 	/// <summary>
 	/// 工作目录所有文件
 	/// </summary>
@@ -43,17 +39,8 @@ public:
 	/// <param name="schoolId">学号</param>
 	/// <param name="homeworkId">作业id</param>
 	/// <param name="submitId">当前提交id</param>
-	File(long long classId, long long schoolId, long long homeworkId, long long submitId);
+	File(long long classId, long long schoolId, long long homeworkId);
 	File(HomeworkInfo info);
-	/// <summary>
-	/// 文件管理
-	/// </summary>
-	/// <param name="classId">班级id</param>
-	/// <param name="schoolId">学号</param>
-	/// <param name="homeworkId">作业id</param>
-	/// <param name="submitId">当前提交id</param>
-	/// <param name="lastId">上次提交id</param>
-	File(long long classId, long long schoolId, long long homeworkId, long long submitId, long long lastId);
 	/// <summary>
 	/// 存储文字，使用自动编号
 	/// </summary>
@@ -82,7 +69,7 @@ public:
 	/// 本地保存文件
 	/// </summary>
 	/// <returns>保存结果</returns>
-	bool save();
+	bool save(long long submitId);
 	/// <summary>
 	/// 获取当前文件夹下所有文件
 	/// </summary>
@@ -94,5 +81,6 @@ public:
 	/// <param name="fileName"></param>
 	/// <returns></returns>
 	std::string getFile(std::filesystem::path fileName);
+	long long getSubmitId();
 };
 

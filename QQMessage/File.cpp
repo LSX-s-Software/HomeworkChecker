@@ -11,13 +11,11 @@
 
 extern std::string rootPath;
 
-File::File(long long classId, long long schoolId, long long homeworkId, long long submitId) :
-	classId(classId), schoolId(schoolId), homeworkId(homeworkId), submitId(submitId),lastId(-1)
+File::File(long long classId, long long schoolId, long long homeworkId) :
+	classId(classId), schoolId(schoolId), homeworkId(homeworkId)
 {
 	workPath = rootPath;
 	workPath.append(std::to_string(classId)).append(std::to_string(schoolId)).append(std::to_string(homeworkId));
-	homePath = workPath;
-	workPath.append(std::to_string(submitId));
 	infoPath = workPath;
 	infoPath.append(".info");
 	try
@@ -28,18 +26,18 @@ File::File(long long classId, long long schoolId, long long homeworkId, long lon
 		{
 			std::ifstream in;
 			in.open(infoPath);
-			in >> autoIndex >> lastId;
+			in >> autoIndex >> submitId;
 			in.close();
 			std::ofstream out;
 			out.open(infoPath, std::ios::trunc);
-			out << autoIndex << std::endl << lastId << std::endl;
+			out << autoIndex << std::endl << submitId << std::endl;
 			out.close();
 		}
 		else
 		{
 			std::ofstream out;
 			out.open(infoPath, std::ios::trunc);
-			out << autoIndex << std::endl << lastId << std::endl;
+			out << autoIndex << std::endl << -1 << std::endl;
 			out.close();
 		}
 	}
@@ -51,12 +49,10 @@ File::File(long long classId, long long schoolId, long long homeworkId, long lon
 
 File::File(HomeworkInfo info)
 	:
-	classId(info.classId), schoolId(info.studentNum), homeworkId(info.homeworkId), submitId(info.submitId), lastId(-1)
+	classId(info.classId), schoolId(info.studentNum), homeworkId(info.homeworkId), submitId(info.submitId)
 {
 	workPath = rootPath;
 	workPath.append(std::to_string(classId)).append(std::to_string(schoolId)).append(std::to_string(homeworkId));
-	homePath = workPath;
-	workPath.append(std::to_string(submitId));
 	infoPath = workPath;
 	infoPath.append(".info");
 	try
@@ -67,18 +63,18 @@ File::File(HomeworkInfo info)
 		{
 			std::ifstream in;
 			in.open(infoPath);
-			in >> autoIndex >> lastId;
+			in >> autoIndex >> submitId;
 			in.close();
 			std::ofstream out;
 			out.open(infoPath, std::ios::trunc);
-			out << autoIndex << std::endl << lastId << std::endl;
+			out << autoIndex << std::endl << submitId << std::endl;
 			out.close();
 		}
 		else
 		{
 			std::ofstream out;
 			out.open(infoPath, std::ios::trunc);
-			out << autoIndex << std::endl << lastId << std::endl;
+			out << autoIndex << std::endl << -1 << std::endl;
 			out.close();
 		}
 	}
@@ -88,43 +84,20 @@ File::File(HomeworkInfo info)
 	}
 }
 
-File::File(long long classId, long long schoolId, long long homeworkId, long long submitId,long long lastId) :
-	classId(classId), schoolId(schoolId), homeworkId(homeworkId), submitId(submitId),lastId(lastId)
+long long File::getSubmitId()
 {
-	workPath = rootPath;
-	workPath.append(std::to_string(classId)).append(std::to_string(schoolId)).append(std::to_string(homeworkId));
-	homePath = workPath;
-	std::filesystem::path lastPath = homePath;
-	lastPath.append(std::to_string(lastId));
-	workPath.append(std::to_string(submitId));
-	infoPath = workPath;
-	infoPath.append(".info");
-	try
+	if (std::filesystem::exists(infoPath))
 	{
-		std::filesystem::copy(lastPath, workPath);
-		if (std::filesystem::exists(infoPath))
-		{
-			std::ifstream in;
-			in.open(infoPath);
-			in >> autoIndex;
-			in.close();
-			std::ofstream out;
-			out.open(infoPath, std::ios::trunc);
-			out << autoIndex << std::endl << lastId << std::endl;
-			out.close();
-		}
-		else
-		{
-			std::ofstream out;
-			out.open(infoPath, std::ios::trunc);
-			out << autoIndex << std::endl << lastId << std::endl;
-			out.close();
-		}
+		int tmp;
+		std::ifstream in;
+		in.open(infoPath);
+		in >> tmp >> tmp;
+		in.close();
+		return tmp;
 	}
-	catch (std::exception& e)
+	else
 	{
-		std::cerr << e.what();
-		throw FileError(e.what());
+		return -1;
 	}
 }
 
@@ -208,16 +181,16 @@ std::string File::storePic(std::string url)
 
 }
 
-bool File::save()
+bool File::save(long long submitId)
 {
+	this->submitId = submitId;
 	if (!std::filesystem::exists(infoPath))
 	{
 		return false;
 	}
-
 	std::ifstream in;
 	in.open(infoPath);
-	in >> autoIndex >> lastId;
+	in >> autoIndex;
 	in.close();
 
 	int cnt = 0;
@@ -252,7 +225,7 @@ bool File::save()
 	}
 	std::ofstream out;
 	out.open(infoPath, std::ios::trunc);
-	out << autoIndex << std::endl << lastId << std::endl;
+	out << autoIndex << std::endl << submitId << std::endl;
 	out << "__TXT__" << std::endl;
 	for (auto& iter : txtFile)
 	{
