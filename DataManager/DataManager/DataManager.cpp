@@ -605,17 +605,23 @@ DMErrorType Homework::review(unsigned short score, std::string comments) {
         return CONNECTION_ERROR;
 }
 
-std::vector<Homework> getHomeworkListByStuId(int studentId) throw(DMError) {
-    if (studentId <= 0)
+std::vector<Homework> getHomeworkListByStuId(int studentId, long classId) throw(DMError) {
+    if (studentId <= 0 || classId <= 0)
         throw INVALID_ARGUMENT;
     std::vector<Homework> result;
     if (DBManager::connectDatabase()) {
-        if (!DBManager::select("homework", "*", "student_id=" + std::to_string(studentId))) {
+        std::string queryStr = "SELECT * FROM (SELECT id FROM assignments WHERE class_id=" + std::to_string(classId) + ") AS ass_list LEFT JOIN homework ON homework.student_id=" + std::to_string(studentId) + " AND homework.assignment_id=ass_list.id";
+        if (!DBManager::query(queryStr)) {
             if (DBManager::numRows() > 0) {
                 MYSQL_ROW row;
                 while ((row = DBManager::fetchRow())) {
-                    std::string idStr = row[0], assignmentIdStr = row[2], scoreStr = row[5];
-                    result.push_back(Homework(atol(idStr.c_str()), studentId, atol(assignmentIdStr.c_str()), row[3], (row[4]==NULL?"":row[4]), static_cast<unsigned short>(atoi(scoreStr.c_str())), row[6]));
+                    if (row[1]!=NULL) {
+                        std::string idStr = row[1], assignmentIdStr = row[3], scoreStr = row[6];
+                        result.push_back(Homework(atol(idStr.c_str()), studentId, atol(assignmentIdStr.c_str()), row[4], (row[5]==NULL?"":row[5]), static_cast<unsigned short>(atoi(scoreStr.c_str())), row[7]));
+                    } else {
+                        std::string assIdStr = row[0];
+                        result.push_back(Homework(-1, studentId, atol(assIdStr.c_str()), "", "", 0, ""));
+                    }
                 }
                 DBManager::closeConnection();
                 return result;

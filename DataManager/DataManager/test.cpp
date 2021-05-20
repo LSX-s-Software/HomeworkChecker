@@ -12,6 +12,7 @@ int main(int argc, const char * argv[]) {
     DataManager::User teacher;
     teacher.login("123456", "123456");
     std::cout << teacher.getName() << std::endl;
+//    std::vector<DataManager::Homework> list = DataManager::getHomeworkListByStuId(1, 1);
     
     return 0;
 }

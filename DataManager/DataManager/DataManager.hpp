@@ -199,6 +199,7 @@ class Homework {
 public:
     Homework() {
         id = -1;
+        score = 0;
     }
     Homework(long id, int studentId, long assignmentId, std::string contentURL, std::string attachmentURL, unsigned short score, std::string comments) {
         this->id = id;
@@ -217,6 +218,16 @@ public:
     
     bool isEmpty() {
         return id == -1;
+    }
+    
+    /// 获取作业状态（0=未提交，1=已提交未批改，2=已批改）
+    int getStatus() {
+        if (id == -1)
+            return 0;
+        else if (score > 0)
+            return 2;
+        else
+            return 1;
     }
     
     //MARK: Getters & Setters
@@ -262,9 +273,10 @@ public:
     DMErrorType review(unsigned short score, std::string comments);
 };
 
-/// 获取某个学生提交的作业列表
+/// 获取某个学生的作业列表
 /// @param studentId 学生ID
-std::vector<Homework> getHomeworkListByStuId(int studentId) throw(DMError);
+/// @param classId 学生所在班级的ID（增加这一项是为了减少一次数据库的查询）
+std::vector<Homework> getHomeworkListByStuId(int studentId, long classId) throw(DMError);
 
 /// 按布置的作业ID来获取作业列表
 /// @param assignmentId 布置的作业ID
