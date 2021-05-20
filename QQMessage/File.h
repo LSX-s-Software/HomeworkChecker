@@ -3,6 +3,8 @@
 #include <iostream>
 #include <vector>
 #include "FileInfo.h"
+#include "Analyst.h"
+
 /// <summary>
 /// 文件管理类
 /// </summary>
@@ -42,6 +44,7 @@ public:
 	/// <param name="homeworkId">作业id</param>
 	/// <param name="submitId">当前提交id</param>
 	File(long long classId, long long schoolId, long long homeworkId, long long submitId);
+	File(HomeworkInfo info);
 	/// <summary>
 	/// 文件管理
 	/// </summary>
@@ -61,7 +64,7 @@ public:
 	/// 删除文件
 	/// </summary>
 	/// <param name="fileName">文件名</param>
-	void delFile(std::filesystem::path fileName);
+	std::string delFile(std::filesystem::path fileName);
 	/// <summary>
 	/// 下载文件
 	/// </summary>
@@ -80,5 +83,16 @@ public:
 	/// </summary>
 	/// <returns>保存结果</returns>
 	bool save();
+	/// <summary>
+	/// 获取当前文件夹下所有文件
+	/// </summary>
+	/// <returns>类型+文件名</returns>
+	std::string getFileList();
+	/// <summary>
+	/// 获取某个文件
+	/// </summary>
+	/// <param name="fileName"></param>
+	/// <returns></returns>
+	std::string getFile(std::filesystem::path fileName);
 };
 

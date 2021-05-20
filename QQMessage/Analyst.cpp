@@ -7,11 +7,13 @@
 #include "PrivateMessageSender.h"
 #include "Analyst.h"
 #include <DataManager.hpp>
+#include "File.h"
 
 extern std::string connectUrl;
 extern std::map<long long, PeerStatus> status;
 extern std::map<long long, RegInfo> regStatus;
 extern std::map<long long, long long> getStudentId;
+extern std::map<long long, HomeworkInfo> getHomeworkInfo;
 
 extern WebsocketClient wsClient;
 
@@ -30,7 +32,7 @@ void AnaText(std::u16string data, long long qq_id)
 		long long sid;
 		try
 		{
-			DataManager::Student st=DataManager::getStudent(std::to_string(qq_id));
+			DataManager::Student st = DataManager::getStudent(std::to_string(qq_id));
 			sid = st.getId();
 			getStudentId.insert(std::pair<long long, long long>(qq_id, sid));
 		}
@@ -82,11 +84,11 @@ void AnaText(std::u16string data, long long qq_id)
 
 	if (status[qq_id] == PeerStatus::IDLE)
 	{
-		if (data.substr(0, 6) == u"查询个人信息")//TODO:查询个人信息 数据库 返回班级、老师、姓名、学号
+		if (data.substr(0, 6) == u"查询个人信息")
 		{
-			DataManager::Student st = DataManager::getStudent(getStudentId[qq_id]);
+			DataManager::Student st = DataManager::getStudent((int)getStudentId[qq_id]);
 			DataManager::Class cl = DataManager::getClass(st.getClassId());
-			std::string send = u8"您的个人信息如下\n\r姓名：" + st.getName() + u8"\n\r学号：" + st.getSchoolNum() + u8"\n\r班级：" + cl.getName() + u8"\n\r老师：";
+			std::string send = u8"您的个人信息如下\n\r姓名：" + st.getName() + u8"\n\r学号：" + st.getSchoolNum() + u8"\n\r班级：" + cl.getName() + u8"\n\r老师："; //TODO: teacher's name
 			PrivateMessageSender sender(qq_id, send);
 			sender.send();
 			return;
@@ -115,6 +117,7 @@ void AnaText(std::u16string data, long long qq_id)
 				sender.send();
 				return;
 			}
+
 			if (homeworkStatus == 0)//未提交
 			{
 				
@@ -154,17 +157,53 @@ void AnaText(std::u16string data, long long qq_id)
 			}
 			if (homeworkStatus == 0)//未提交
 			{
+				status[qq_id] = PeerStatus::HOMEWORK;
+				try {
+					DataManager::Homework hw((int)getStudentId[qq_id], homeworkID);
+					DataManager::Student st = DataManager::getStudent((int)getStudentId[qq_id]);
+					HomeworkInfo info;
+					info.classId = st.getClassId();
+					info.homeworkId = homeworkID;
+					info.studentId = getStudentId[qq_id];
+					info.studentNum = atoll(st.getSchoolNum().c_str());
+					info.submitId = hw.getId();
+					getHomeworkInfo[qq_id] = info;
+					HomCommand(data, qq_id);
+				}
+				catch (...)
+				{
 
+				}
 				return;
 			}
 			if (homeworkStatus == 1)//已提交
 			{
-
+				status[qq_id] = PeerStatus::HOMEWORK;
+				DataManager::Homework hw((int)getStudentId[qq_id], homeworkID);
+				DataManager::Student st = DataManager::getStudent((int)getStudentId[qq_id]);
+				HomeworkInfo info;
+				info.classId = st.getClassId();
+				info.homeworkId = homeworkID;
+				info.studentId = getStudentId[qq_id];
+				info.studentNum = atoll(st.getSchoolNum().c_str());
+				info.submitId = hw.getId();
+				getHomeworkInfo[qq_id] = info;
+				HomCommand(data, qq_id);
 				return;
 			}
 			if (homeworkStatus == 2)//已批改
 			{
-
+				status[qq_id] = PeerStatus::HOMEWORK;
+				DataManager::Homework hw((int)getStudentId[qq_id], homeworkID);
+				DataManager::Student st = DataManager::getStudent((int)getStudentId[qq_id]);
+				HomeworkInfo info;
+				info.classId = st.getClassId();
+				info.homeworkId = homeworkID;
+				info.studentId = getStudentId[qq_id];
+				info.studentNum = atoll(st.getSchoolNum().c_str());
+				info.submitId = hw.getId();
+				getHomeworkInfo[qq_id] = info;
+				HomCommand(data, qq_id);
 				return;
 			}
 			return;
@@ -266,8 +305,7 @@ void RegCommand(std::u16string data, long long qq_id)
 		
 		try
 		{
-			DataManager::Student st;
-			st.reg(std::to_string(regInfo.schoolId), std::to_string(qq_id), regInfo.name);
+			DataManager::Student st(std::to_string(regInfo.schoolId), std::to_string(qq_id), regInfo.name);
 		}
 		catch(DataManager::DMError& e)
 		{
@@ -287,5 +325,39 @@ void RegCommand(std::u16string data, long long qq_id)
 
 void HomCommand(std::u16string data, long long qq_id)
 {
+	if (data.substr(0, 2) == u"取消")
+	{
+		status[qq_id] = PeerStatus::IDLE;
+		getHomeworkInfo.erase(qq_id);
+		return;
+	}
+	if (data.substr(0, 2) == u"删除")
+	{
+		std::u16string tmp = Tools::delFirstCom(data, 2);
+		File file(getHomeworkInfo.at(qq_id));
+		PrivateMessageSender sender(qq_id, file.delFile(tmp));
+		sender.send();
+		return;
+	}
+	if (data.substr(0, 6) == u"获取文件列表")
+	{
+		File file(getHomeworkInfo[qq_id]);
+		PrivateMessageSender sender(qq_id, file.getFileList());
+		sender.send();
+		return;
+	}
+	if (data.substr(0, 4) == u"获取文件")
+	{
+		std::u16string tmp = Tools::delFirstCom(data, 4);
+		File file(getHomeworkInfo[qq_id]);
+		PrivateMessageSender sender(qq_id, file.getFile(tmp));
+		sender.send();
+		return;
+	}
 	
+	File file(getHomeworkInfo[qq_id]);
+	std::string fileName = file.storeText(Tools::to_utf8(data));
+	PrivateMessageSender sender(qq_id, u8"文本："+fileName+" 已保存");
+	sender.send();
+	return;
 }

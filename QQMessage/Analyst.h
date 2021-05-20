@@ -81,6 +81,33 @@ struct RegInfo
 	long long schoolId;
 };
 /// <summary>
+/// 作业提交详情
+/// </summary>
+struct HomeworkInfo
+{
+	/// <summary>
+	/// 学生id
+	/// </summary>
+	long long studentId;
+	/// <summary>
+	/// 学号
+	/// </summary>
+	long long studentNum;
+	/// <summary>
+	/// 班级id
+	/// </summary>
+	long long classId;
+
+	/// <summary>
+	/// 作业id
+	/// </summary>
+	long long homeworkId;
+	/// <summary>
+	/// 提交id
+	/// </summary>
+	long long submitId;
+};
+/// <summary>
 /// 私聊消息发送
 /// </summary>
 class PrivateMessageSender;

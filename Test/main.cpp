@@ -2,8 +2,9 @@
 #include <string>
 std::string rootPath = R"(D:\Work\HomeworkChecker\x64\Debug\tmp\)";
 #include "QQMessage.h"
+#include "File.h"
 
-int main() {
+int main2() {
     
     WebsocketServer wsr;
     wsr.start(7999);
@@ -12,12 +13,15 @@ int main() {
     {
         std::cout << x;
     }
+    return 0;
 }
 
 
 
-int main2()
+int main()
 {
+    system("CHCP 65001");
+    
     using namespace std;
     try
     {
