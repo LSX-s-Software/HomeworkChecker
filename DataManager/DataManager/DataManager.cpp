@@ -88,6 +88,57 @@ DMErrorType User::setName(std::string name) {
 
 //MARK: - Student类实现
 
+Student::Student(int id) throw(DMError) {
+    if (DBManager::connectDatabase()) {
+        if (!DBManager::select("students", "*", "id=" + std::to_string(id))) {
+            if (DBManager::numRows() > 0) {
+                MYSQL_ROW row = DBManager::fetchRow();
+                std::string classIdStr = (row[3] == NULL ? "0" : row[3]), timeStr = row[5];
+                this->id = id;
+                this->schoolNum = row[1];
+                this->qq = row[2];
+                this->classId = atol(classIdStr.c_str());
+                this->name = row[4];
+                this->registerTime = atol(timeStr.c_str());
+                DBManager::closeConnection();
+            } else {
+                DBManager::closeConnection();
+                throw DMError(TARGET_NOT_FOUND);
+            }
+        } else {
+            DBManager::closeConnection();
+            throw DMError(DATABASE_OPERATION_ERROR);
+        }
+    } else {
+        throw DMError(CONNECTION_ERROR);
+    }
+}
+
+Student::Student(std::string qq) throw(DMError) {
+    if (DBManager::connectDatabase()) {
+        if (!DBManager::select("students", "*", "qq=" + qq)) {
+            if (DBManager::numRows() > 0) {
+                MYSQL_ROW row = DBManager::fetchRow();
+                std::string idStr = row[0], classIdStr = (row[3] == NULL ? "0" : row[3]), timeStr = row[5];
+                this->id = atoi(idStr.c_str());
+                this->schoolNum = row[1];
+                this->qq = qq;
+                this->classId = atol(classIdStr.c_str());
+                this->name = row[4];
+                this->registerTime = atol(timeStr.c_str());
+                DBManager::closeConnection();
+            } else {
+                DBManager::closeConnection();
+                throw DMError(TARGET_NOT_FOUND);
+            }
+        } else {
+            DBManager::closeConnection();
+            throw DMError(DATABASE_OPERATION_ERROR);
+        }
+    } else
+        throw DMError(CONNECTION_ERROR);
+}
+
 DMErrorType Student::setSchoolNum(std::string newNum) {
     if (id == -1)
         return OBJECT_NOT_INITED;
@@ -144,7 +195,7 @@ Student::Student(std::string schoolNum, std::string qq, std::string name) throw(
         if (!code) {
             if (DBManager::numRows() > 0) {
                 DBManager::closeConnection();
-                throw TARGET_EXISTED;
+                throw DMError(TARGET_EXISTED);
             }
             code = DBManager::insert("students", "school_num,qq,name,register_time", "'" + schoolNum + "','" + qq + "','" + name + "',NOW()");
             if (!code && DBManager::affectedRowCount() > 0) {
@@ -155,7 +206,7 @@ Student::Student(std::string schoolNum, std::string qq, std::string name) throw(
                     this->schoolNum = schoolNum;
                     this->qq = qq;
                     this->name = name;
-                    register_time = atol(timeStr.c_str());
+                    registerTime = atol(timeStr.c_str());
                 } else {
                     DBManager::closeConnection();
                     throw DMError(DATABASE_OPERATION_ERROR);
@@ -196,39 +247,27 @@ std::vector<Student> getStudentList(long classId) throw(DMError) {
         throw DMError(CONNECTION_ERROR);
 }
 
-Student getStudent(int id) throw(DMError) {
-    if (DBManager::connectDatabase()) {
-        if (!DBManager::select("students", "*", "id=" + std::to_string(id))) {
-            if (DBManager::numRows() > 0) {
-                MYSQL_ROW row = DBManager::fetchRow();
-                std::string classIdStr = (row[3] == NULL ? "0" : row[3]), timeStr = row[5];
-                DBManager::closeConnection();
-                return Student(id, row[1], row[2], atoi(classIdStr.c_str()), row[4], atol(timeStr.c_str()));
-            } else {
-                DBManager::closeConnection();
-                throw TARGET_NOT_FOUND;
-            }
-        } else {
-            DBManager::closeConnection();
-            throw DMError(DATABASE_OPERATION_ERROR);
-        }
-    } else {
-        throw DMError(CONNECTION_ERROR);
-    }
-    return Student();
-}
+//MARK: - Class类实现
 
-Student getStudent(std::string qq) throw(DMError) {
+Class::Class(long id) throw(DMError) {
+    if (id <= 0)
+        throw DMError(INVALID_ARGUMENT);
     if (DBManager::connectDatabase()) {
-        if (!DBManager::select("students", "*", "qq=" + qq)) {
+        if (!DBManager::select("classes", "*", "id=" + std::to_string(id))) {
             if (DBManager::numRows() > 0) {
                 MYSQL_ROW row = DBManager::fetchRow();
-                std::string idStr = row[0], classIdStr = (row[3] == NULL ? "0" : row[3]), timeStr = row[5];
+                std::string teacherIdStr = row[1], statusStr = row[6];
+                this->id = id;
+                this->teacherId = atoi(teacherIdStr.c_str());
+                this->name = row[2];
+                this->location = row[3] == NULL ? "" : row[3];
+                this->time = row[4] == NULL ? "" : row[4];
+                this->inviteCode = row[5];
+                this->status = atoi(statusStr.c_str()) ? CLASS_ENDED : CLASS_RUNNING;
                 DBManager::closeConnection();
-                return Student(atoi(idStr.c_str()), row[1], qq, atoi(classIdStr.c_str()), row[4], atol(timeStr.c_str()));
             } else {
                 DBManager::closeConnection();
-                throw TARGET_NOT_FOUND;
+                throw DMError(TARGET_NOT_FOUND);
             }
         } else {
             DBManager::closeConnection();
@@ -236,10 +275,35 @@ Student getStudent(std::string qq) throw(DMError) {
         }
     } else
         throw DMError(CONNECTION_ERROR);
-    return Student();
 }
 
-//MARK: - Class类实现
+Class::Class(std::string inviteCode) throw(DMError) {
+    if (inviteCode.length() != 4)
+        throw DMError(INVALID_ARGUMENT);
+    if (DBManager::connectDatabase()) {
+        if (!DBManager::select("classes", "*", "code=" + inviteCode)) {
+            if (DBManager::numRows() > 0) {
+                MYSQL_ROW row = DBManager::fetchRow();
+                std::string idStr = row[0], teacherIdStr = row[1], statusStr = row[6];
+                this->id = atol(idStr.c_str());
+                this->teacherId = atoi(teacherIdStr.c_str());
+                this->name = row[2];
+                this->location = row[3] == NULL ? "" : row[3];
+                this->time = row[4] == NULL ? "" : row[4];
+                this->inviteCode = inviteCode;
+                this->status = atoi(statusStr.c_str()) ? CLASS_ENDED : CLASS_RUNNING;
+                DBManager::closeConnection();
+            } else {
+                DBManager::closeConnection();
+                throw DMError(TARGET_NOT_FOUND);
+            }
+        } else {
+            DBManager::closeConnection();
+            throw DMError(DATABASE_OPERATION_ERROR);
+        }
+    } else
+        throw DMError(CONNECTION_ERROR);
+}
 
 DMErrorType Class::setName(std::string newName) {
     if (id == -1)
@@ -394,50 +458,6 @@ std::vector<Class> getClassList(int teacherId) throw(DMError) {
         throw DMError(CONNECTION_ERROR);
 }
 
-Class getClass(long id) throw(DMError) {
-    if (id <= 0)
-        throw INVALID_ARGUMENT;
-    if (DBManager::connectDatabase()) {
-        if (!DBManager::select("classes", "*", "id=" + std::to_string(id))) {
-            if (DBManager::numRows() > 0) {
-                MYSQL_ROW row = DBManager::fetchRow();
-                std::string teacherIdStr = row[1], statusStr = row[6];
-                DBManager::closeConnection();
-                return Class(id, atoi(teacherIdStr.c_str()), row[2], (row[3]==NULL?"":row[3]), (row[4]==NULL?"":row[4]), row[5], (atoi(statusStr.c_str()) ? CLASS_ENDED : CLASS_RUNNING));
-            } else {
-                DBManager::closeConnection();
-                throw TARGET_NOT_FOUND;
-            }
-        } else {
-            DBManager::closeConnection();
-            throw DMError(DATABASE_OPERATION_ERROR);
-        }
-    } else
-        throw DMError(CONNECTION_ERROR);
-}
-
-Class getClass(std::string inviteCode) throw(DMError) {
-    if (inviteCode.length() != 4)
-        throw DMError(INVALID_ARGUMENT);
-    if (DBManager::connectDatabase()) {
-        if (!DBManager::select("classes", "*", "code=" + inviteCode)) {
-            if (DBManager::numRows() > 0) {
-                MYSQL_ROW row = DBManager::fetchRow();
-                std::string idStr = row[0], teacherIdStr = row[1], statusStr = row[6];
-                DBManager::closeConnection();
-                return Class(atol(idStr.c_str()), atoi(teacherIdStr.c_str()), row[2], (row[3]==NULL?"":row[3]), (row[4]==NULL?"":row[4]), inviteCode, (atoi(statusStr.c_str()) ? CLASS_ENDED : CLASS_RUNNING));
-            } else {
-                DBManager::closeConnection();
-                throw TARGET_NOT_FOUND;
-            }
-        } else {
-            DBManager::closeConnection();
-            throw DMError(DATABASE_OPERATION_ERROR);
-        }
-    } else
-        throw DMError(CONNECTION_ERROR);
-}
-
 DMErrorType deleteClass(long id) {
     DMErrorType error = SUCCESS;
     if (DBManager::connectDatabase()) {
@@ -461,6 +481,34 @@ DMErrorType deleteClass(long id) {
 }
 
 //MARK: - Homework类实现
+
+Homework::Homework(long id) throw(DMError) {
+    if (id <= 0)
+        throw DMError(INVALID_ARGUMENT);
+    if (DBManager::connectDatabase()) {
+        if (!DBManager::select("homework", "*", "id=" + std::to_string(id))) {
+            if (DBManager::numRows() > 0) {
+                MYSQL_ROW row = DBManager::fetchRow();
+                std::string studentIdStr = row[1], assignmentIdStr = row[2], scoreStr = row[5];
+                this->id = id;
+                this->studentId = atoi(studentIdStr.c_str());
+                this->assignmentId = atol(assignmentIdStr.c_str());
+                this->contentURL = row[3];
+                this->attachmentURL = row[4] == NULL ? "" : row[4];
+                this->score = static_cast<unsigned short>(atoi(scoreStr.c_str()));
+                this->comments = row[6];
+                DBManager::closeConnection();
+            } else {
+                DBManager::closeConnection();
+                throw DMError(TARGET_NOT_FOUND);
+            }
+        } else {
+            DBManager::closeConnection();
+            throw DMError(DATABASE_OPERATION_ERROR);
+        }
+    } else
+        throw DMError(CONNECTION_ERROR);
+}
 
 Homework::Homework(int studentId, long assignmentId) throw(DMError) {
     DMErrorType error = SUCCESS;
@@ -607,7 +655,7 @@ DMErrorType Homework::review(unsigned short score, std::string comments) {
 
 std::vector<Homework> getHomeworkListByStuId(int studentId, long classId) throw(DMError) {
     if (studentId <= 0 || classId <= 0)
-        throw INVALID_ARGUMENT;
+        throw DMError(INVALID_ARGUMENT);
     std::vector<Homework> result;
     if (DBManager::connectDatabase()) {
         std::string queryStr = "SELECT * FROM (SELECT id FROM assignments WHERE class_id=" + std::to_string(classId) + ") AS ass_list LEFT JOIN homework ON homework.student_id=" + std::to_string(studentId) + " AND homework.assignment_id=ass_list.id";
@@ -627,7 +675,7 @@ std::vector<Homework> getHomeworkListByStuId(int studentId, long classId) throw(
                 return result;
             } else {
                 DBManager::closeConnection();
-                throw TARGET_NOT_FOUND;
+                throw DMError(TARGET_NOT_FOUND);
             }
         } else {
             DBManager::closeConnection();
@@ -639,7 +687,7 @@ std::vector<Homework> getHomeworkListByStuId(int studentId, long classId) throw(
 
 std::vector<Homework> getHomeworkListByAsmId(long assignmentId) throw(DMError) {
     if (assignmentId <= 0)
-        throw INVALID_ARGUMENT;
+        throw DMError(INVALID_ARGUMENT);
     std::vector<Homework> result;
     if (DBManager::connectDatabase()) {
         if (!DBManager::select("homework", "*", "assignment_id=" + std::to_string(assignmentId))) {
@@ -655,28 +703,6 @@ std::vector<Homework> getHomeworkListByAsmId(long assignmentId) throw(DMError) {
         } else {
             DBManager::closeConnection();
             return result;
-        }
-    } else
-        throw DMError(CONNECTION_ERROR);
-}
-
-Homework getHomework(long id) throw(DMError) {
-    if (id <= 0)
-        throw INVALID_ARGUMENT;
-    if (DBManager::connectDatabase()) {
-        if (!DBManager::select("homework", "*", "id=" + std::to_string(id))) {
-            if (DBManager::numRows() > 0) {
-                MYSQL_ROW row = DBManager::fetchRow();
-                std::string studentIdStr = row[1], assignmentIdStr = row[2], scoreStr = row[5];
-                DBManager::closeConnection();
-                return Homework(id, atoi(studentIdStr.c_str()), atol(assignmentIdStr.c_str()), row[3], (row[4]==NULL?"":row[4]), static_cast<unsigned short>(atoi(scoreStr.c_str())), row[6]);
-            } else {
-                DBManager::closeConnection();
-                throw TARGET_NOT_FOUND;
-            }
-        } else {
-            DBManager::closeConnection();
-            throw DMError(DATABASE_OPERATION_ERROR);
         }
     } else
         throw DMError(CONNECTION_ERROR);
@@ -699,10 +725,38 @@ Assignment::Assignment(unsigned int teacherId, std::string title, std::string de
             error = DATABASE_OPERATION_ERROR;
         DBManager::closeConnection();
         if (error != SUCCESS)
-            throw error;
+            throw DMError(error);
     } else {
         throw DMError(CONNECTION_ERROR);
     }
+}
+
+Assignment::Assignment(unsigned long id) throw(DMError) {
+    if (id <= 0)
+        throw DMError(INVALID_ARGUMENT);
+    if (DBManager::connectDatabase()) {
+        if (!DBManager::select("assignments", "*", "id=" + std::to_string(id))) {
+            if (DBManager::numRows() > 0) {
+                MYSQL_ROW row = DBManager::fetchRow();
+                std::string teacherIdStr = row[1], startTimeStr = row[4], ddlStr = row[5], classIdStr = row[6];
+                this->id = id;
+                this->teacherId = atoi(teacherIdStr.c_str());
+                this->title = row[2];
+                this->description = row[3];
+                this->startTime = atol(startTimeStr.c_str());
+                this->deadline = atol(ddlStr.c_str());
+                this->classId = atol(classIdStr.c_str());
+                DBManager::closeConnection();
+            } else {
+                DBManager::closeConnection();
+                throw DMError(TARGET_NOT_FOUND);
+            }
+        } else {
+            DBManager::closeConnection();
+            throw DMError(DATABASE_OPERATION_ERROR);
+        }
+    } else
+        throw DMError(CONNECTION_ERROR);
 }
 
 DMErrorType Assignment::setTitle(std::string title) {
