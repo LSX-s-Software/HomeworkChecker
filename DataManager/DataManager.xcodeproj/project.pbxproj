@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F50A4CD0264FDA9700A1D942 /* DataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F50A4CCE264FDA9700A1D942 /* DataManager.cpp */; };
+		F50A4CD3265555C500A1D942 /* DMError.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F50A4CD1265555C500A1D942 /* DMError.cpp */; };
 		F578291F264CFD6B00C25AAE /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F578291E264CFD6B00C25AAE /* test.cpp */; };
 		F5782927264CFDBD00C25AAE /* DBManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5782925264CFDBD00C25AAE /* DBManager.cpp */; };
 		F5782930264D6F1A00C25AAE /* libcrypto.1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F578292F264D6F1A00C25AAE /* libcrypto.1.1.dylib */; };
@@ -43,6 +44,8 @@
 /* Begin PBXFileReference section */
 		F50A4CCE264FDA9700A1D942 /* DataManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DataManager.cpp; sourceTree = "<group>"; };
 		F50A4CCF264FDA9700A1D942 /* DataManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DataManager.hpp; sourceTree = "<group>"; };
+		F50A4CD1265555C500A1D942 /* DMError.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DMError.cpp; sourceTree = "<group>"; };
+		F50A4CD2265555C500A1D942 /* DMError.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DMError.hpp; sourceTree = "<group>"; };
 		F578291B264CFD6B00C25AAE /* DataManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DataManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		F578291E264CFD6B00C25AAE /* test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
 		F5782925264CFDBD00C25AAE /* DBManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DBManager.cpp; sourceTree = "<group>"; };
@@ -89,6 +92,8 @@
 				F5782926264CFDBD00C25AAE /* DBManager.hpp */,
 				F50A4CCE264FDA9700A1D942 /* DataManager.cpp */,
 				F50A4CCF264FDA9700A1D942 /* DataManager.hpp */,
+				F50A4CD1265555C500A1D942 /* DMError.cpp */,
+				F50A4CD2265555C500A1D942 /* DMError.hpp */,
 			);
 			path = DataManager;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 				F578291F264CFD6B00C25AAE /* test.cpp in Sources */,
 				F50A4CD0264FDA9700A1D942 /* DataManager.cpp in Sources */,
 				F5782927264CFDBD00C25AAE /* DBManager.cpp in Sources */,
+				F50A4CD3265555C500A1D942 /* DMError.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

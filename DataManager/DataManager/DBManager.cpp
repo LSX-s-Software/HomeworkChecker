@@ -11,6 +11,9 @@
 
 #ifndef DEBUG
 #define DEBUG
+    #ifndef VERBOSE
+    #define VERBOSE
+    #endif
 #endif
 
 namespace DBManager {
@@ -23,7 +26,7 @@ bool connectDatabase(DBAccount account) {
     mysql = mysql_init(NULL); //初始化连接
     mysql = mysql_real_connect(mysql, account.host.c_str(), account.username.c_str(), account.password.c_str(), "homework_checker", account.port, NULL, 0);
     if (mysql) {
-#ifdef DEBUG
+#ifdef VERBOSE
         std::cout << "[INFO] [DBManager] MySQL connected." << std::endl;
 #endif
         errMsg = "";
@@ -50,7 +53,7 @@ void closeConnection() {
         mysql_free_result(queryResult);  //释放一个结果集合使用的内存
     queryResult = NULL;
     mysql_close(mysql);
-#ifdef DEBUG
+#ifdef VERBOSE
     std::cout << "[INFO] [DBManager] MySQL disconnected." << std::endl;
 #endif
 }
