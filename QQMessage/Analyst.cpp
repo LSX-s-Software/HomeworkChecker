@@ -315,9 +315,9 @@ void AnaText(std::u16string data, long long qq_id)
 				}
 				if (homeworkStatus == 1)//已提交
 				{
-					message += (u8"【作业 " + std::to_string(ch.assignment.getId()) + u8"】  " + getHomeworkStatus(homeworkStatus)) + u8"\r\n";
+					message += (u8"【作业 " + std::to_string(ch.assignment.getId()) + u8"】  " + getHomeworkStatus(homeworkStatus)) + u8"\n\n";
 					message += (u8"【作业内容】\r\n" + ch.assignment.getDescription() + u8"\r\n");
-					message += (u8"【截至时间】  " + TimeConvert(ch.assignment.getDeadline()) + u8"\r\n");
+					message += (u8"【截至时间】  " + TimeConvert(ch.assignment.getDeadline()) + u8"\n\n");
 					message += (u8"【作业正文列表】\r\n" + getHomeworkFilename(ch.homework.getContentURL())+u8"\r\n");
 					message += (u8"【作业附件列表】\r\n" + getHomeworkFilename(ch.homework.getAttachmentURL()) + u8"\r\n");
 					PrivateMessageSender sender(qq_id, message);
@@ -326,11 +326,11 @@ void AnaText(std::u16string data, long long qq_id)
 				}
 				if (homeworkStatus == 2)//已批改
 				{
-					message += (u8"【作业 " + std::to_string(ch.assignment.getId()) + u8"】  " + getHomeworkStatus(homeworkStatus)) + u8"\r\n";
+					message += (u8"【作业 " + std::to_string(ch.assignment.getId()) + u8"】  " + getHomeworkStatus(homeworkStatus)) + u8"\n\n";
 					message += (u8"【作业内容】\r\n" + ch.assignment.getDescription() + u8"\r\n");
-					message += (u8"【截至时间】  " + TimeConvert(ch.assignment.getDeadline()) + u8"\r\n");
+					message += (u8"【截至时间】  " + TimeConvert(ch.assignment.getDeadline()) + u8"\n\n");
 					message += (u8"【分数】 " + std::to_string(ch.homework.getScore()) + u8"\r\n");
-					message += (u8"【评语】\r\n" + ch.homework.getComments() + u8"\r\n");
+					message += (u8"【评语】\r\n" + ch.homework.getComments() + u8"\n\n");
 					message += (u8"【作业正文列表】\r\n" + getHomeworkFilename(ch.homework.getContentURL()) + u8"\r\n");
 					message += (u8"【作业附件列表】\r\n" + getHomeworkFilename(ch.homework.getAttachmentURL()) + u8"\r\n");
 					PrivateMessageSender sender(qq_id, message);
@@ -417,9 +417,11 @@ void AnaText(std::u16string data, long long qq_id)
 				return;
 			}
 		}
+
+		//TODO: 修改作业
 	}
 
-
+	//TODO: 帮助
 	PrivateMessageSender sender(qq_id, u8"未知命令，请重试");
 	sender.send();
 	return;
@@ -444,7 +446,7 @@ void RegCommand(std::u16string data, long long qq_id)
 		status[qq_id] = PeerStatus::IDLE;
 		return;
 	}
-
+	//TODO: 帮助
 	if (regInfo.status == RegStatus::START)
 	{
 		PrivateMessageSender sender1(qq_id, u8"开始注册，输入“取消注册”即可退出注册\n\n请输入课程邀请码");
@@ -547,6 +549,7 @@ void RegCommand(std::u16string data, long long qq_id)
 
 void HomCommand(std::u16string data, long long qq_id)
 {
+	//TODO: 帮助
 	if (data == u"取消"|| data == u"取消提交")
 	{
 		PrivateMessageSender sender(qq_id, u8"您已取消提交作业" + std::to_string(getHomeworkInfo[qq_id].homeworkId)+u8"\n当前草稿已保存");
