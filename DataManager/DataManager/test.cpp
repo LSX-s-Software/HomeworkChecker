@@ -9,10 +9,11 @@
 #include "DataManager.hpp"
 
 int main(int argc, const char * argv[]) {
-    DataManager::User teacher;
-    teacher.login("123456", "123456");
-    std::cout << teacher.getName() << std::endl;
+//    DataManager::User teacher;
+//    teacher.login("123456", "123456");
+//    std::cout << teacher.getName() << std::endl;
 //    std::vector<DataManager::Homework> list = DataManager::getHomeworkListByStuId(1, 1);
+    std::cout << DataManager::Assignment(1).getDeadline() << std::endl;
     
     return 0;
 }

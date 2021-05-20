@@ -459,6 +459,8 @@ std::vector<Class> getClassList(int teacherId) throw(DMError) {
 }
 
 DMErrorType deleteClass(long id) {
+    if (id <= 0)
+        return INVALID_ARGUMENT;
     DMErrorType error = SUCCESS;
     if (DBManager::connectDatabase()) {
         int code = DBManager::remove("classes", "id=" + std::to_string(id));
@@ -653,38 +655,6 @@ DMErrorType Homework::review(unsigned short score, std::string comments) {
         return CONNECTION_ERROR;
 }
 
-std::vector<Homework> getHomeworkListByStuId(int studentId, long classId) throw(DMError) {
-    if (studentId <= 0 || classId <= 0)
-        throw DMError(INVALID_ARGUMENT);
-    std::vector<Homework> result;
-    if (DBManager::connectDatabase()) {
-        std::string queryStr = "SELECT * FROM (SELECT id FROM assignments WHERE class_id=" + std::to_string(classId) + ") AS ass_list LEFT JOIN homework ON homework.student_id=" + std::to_string(studentId) + " AND homework.assignment_id=ass_list.id";
-        if (!DBManager::query(queryStr)) {
-            if (DBManager::numRows() > 0) {
-                MYSQL_ROW row;
-                while ((row = DBManager::fetchRow())) {
-                    if (row[1]!=NULL) {
-                        std::string idStr = row[1], assignmentIdStr = row[3], scoreStr = row[6];
-                        result.push_back(Homework(atol(idStr.c_str()), studentId, atol(assignmentIdStr.c_str()), row[4], (row[5]==NULL?"":row[5]), static_cast<unsigned short>(atoi(scoreStr.c_str())), row[7]));
-                    } else {
-                        std::string assIdStr = row[0];
-                        result.push_back(Homework(-1, studentId, atol(assIdStr.c_str()), "", "", 0, ""));
-                    }
-                }
-                DBManager::closeConnection();
-                return result;
-            } else {
-                DBManager::closeConnection();
-                throw DMError(TARGET_NOT_FOUND);
-            }
-        } else {
-            DBManager::closeConnection();
-            throw DMError(DATABASE_OPERATION_ERROR);
-        }
-    } else
-        throw DMError(CONNECTION_ERROR);
-}
-
 std::vector<Homework> getHomeworkListByAsmId(long assignmentId) throw(DMError) {
     if (assignmentId <= 0)
         throw DMError(INVALID_ARGUMENT);
@@ -706,6 +676,25 @@ std::vector<Homework> getHomeworkListByAsmId(long assignmentId) throw(DMError) {
         }
     } else
         throw DMError(CONNECTION_ERROR);
+}
+
+DMErrorType deleteHomework(long id) {
+    if (id <= 0)
+        return INVALID_ARGUMENT;
+    DMErrorType error = SUCCESS;
+    if (DBManager::connectDatabase()) {
+        int code = DBManager::remove("homework", "id=" + std::to_string(id));
+        if (code)
+            error = DATABASE_OPERATION_ERROR;
+        else {
+            if (DBManager::affectedRowCount() == 0)
+                error = TARGET_NOT_FOUND;
+        }
+        DBManager::closeConnection();
+        return error;
+    } else {
+        return CONNECTION_ERROR;
+    }
 }
 
 //MARK: - Assignment类实现
@@ -735,7 +724,7 @@ Assignment::Assignment(unsigned long id) throw(DMError) {
     if (id <= 0)
         throw DMError(INVALID_ARGUMENT);
     if (DBManager::connectDatabase()) {
-        if (!DBManager::select("assignments", "*", "id=" + std::to_string(id))) {
+        if (!DBManager::select("assignments", "id,teacher_id,title,description,unix_timestamp(start_date),unix_timestamp(deadline),class_id", "id=" + std::to_string(id))) {
             if (DBManager::numRows() > 0) {
                 MYSQL_ROW row = DBManager::fetchRow();
                 std::string teacherIdStr = row[1], startTimeStr = row[4], ddlStr = row[5], classIdStr = row[6];
@@ -859,6 +848,42 @@ DMErrorType deleteAssignment(unsigned long id, bool (* handler)(std::vector<Home
     } else {
         return CONNECTION_ERROR;
     }
+}
+
+std::vector<CompleteHomeworkList> getHomeworkListByStuId(int studentId, long classId) throw(DMError) {
+    if (studentId <= 0 || classId <= 0)
+        throw DMError(INVALID_ARGUMENT);
+    std::vector<CompleteHomeworkList> result;
+    if (DBManager::connectDatabase()) {
+        std::string queryStr = "SELECT * FROM (SELECT id,teacher_id,title,description,unix_timestamp(start_date),unix_timestamp(deadline),class_id FROM assignments WHERE class_id=" + std::to_string(classId) + ") AS ass_list LEFT JOIN homework ON homework.student_id=" + std::to_string(studentId) + " AND homework.assignment_id=ass_list.id";
+        if (!DBManager::query(queryStr)) {
+            if (DBManager::numRows() > 0) {
+                MYSQL_ROW row;
+                while ((row = DBManager::fetchRow())) {
+                    CompleteHomeworkList item;
+                    std::string idStr = row[0], teacherIdStr = row[1], startTimeStr = row[4], ddlStr = row[5], classIdStr = row[6];
+                    item.assignment = Assignment(atol(idStr.c_str()), atoi(teacherIdStr.c_str()), row[2], row[3], atol(startTimeStr.c_str()), atol(ddlStr.c_str()), atol(classIdStr.c_str()));
+                    if (row[7] != NULL) {
+                        std::string idStr = row[7], assignmentIdStr = row[9], scoreStr = row[12];
+                        item.homework = Homework(atol(idStr.c_str()), studentId, atol(assignmentIdStr.c_str()), row[10], (row[11]==NULL?"":row[11]), static_cast<unsigned short>(atoi(scoreStr.c_str())), row[13]);
+                    } else {
+                        std::string assIdStr = row[0];
+                        item.homework = Homework(-1, studentId, atol(assIdStr.c_str()), "", "", 0, "");
+                    }
+                    result.push_back(item);
+                }
+                DBManager::closeConnection();
+                return result;
+            } else {
+                DBManager::closeConnection();
+                throw DMError(TARGET_NOT_FOUND);
+            }
+        } else {
+            DBManager::closeConnection();
+            throw DMError(DATABASE_OPERATION_ERROR);
+        }
+    } else
+        throw DMError(CONNECTION_ERROR);
 }
     
 }

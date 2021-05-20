@@ -280,14 +280,13 @@ public:
     DMErrorType review(unsigned short score, std::string comments);
 };
 
-/// 获取某个学生的作业列表
-/// @param studentId 学生ID
-/// @param classId 学生所在班级的ID（增加这一项是为了减少一次数据库的查询）
-std::vector<Homework> getHomeworkListByStuId(int studentId, long classId) throw(DMError);
-
 /// 按布置的作业ID来获取作业列表
 /// @param assignmentId 布置的作业ID
 std::vector<Homework> getHomeworkListByAsmId(long assignmentId) throw(DMError);
+
+/// 删除提交记录
+/// @param id 提交的作业ID
+DMErrorType deleteHomework(long id);
 
 //MARK: - Assignment类定义
 
@@ -358,9 +357,20 @@ public:
     DMErrorType setDeadline(long time);
 };
 
-/// 获取作业列表
+/// 获取布置的作业列表
 /// @param teacherId 教师ID
 std::vector<Assignment> getAssignmentList(unsigned int teacherId) throw(DMError);
+
+//别问我为什么把这个函数放这里，问就是C++必须先定义再使用
+typedef struct {
+    Assignment assignment;
+    Homework homework;
+} CompleteHomeworkList;
+
+/// 获取某个学生的作业列表
+/// @param studentId 学生ID
+/// @param classId 学生所在班级的ID（增加这一项是为了减少一次数据库的查询）
+std::vector<CompleteHomeworkList> getHomeworkListByStuId(int studentId, long classId) throw(DMError);
 
 /// 删除布置的作业，同时从数据库移除提交到该任务的所有作业记录
 /// @param id 布置的作业ID
