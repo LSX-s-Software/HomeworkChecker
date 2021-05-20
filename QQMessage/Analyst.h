@@ -80,6 +80,26 @@ struct RegInfo
 	/// </summary>
 	long long schoolId;
 };
+
+/// <summary>
+/// 作业提交详情
+/// </summary>
+struct StuInfo
+{
+	/// <summary>
+	/// 学生id
+	/// </summary>
+	long long studentId;
+	/// <summary>
+	/// 学号
+	/// </summary>
+	long long studentNum;
+	/// <summary>
+	/// 班级id
+	/// </summary>
+	long long classId;
+};
+
 /// <summary>
 /// 作业提交详情
 /// </summary>

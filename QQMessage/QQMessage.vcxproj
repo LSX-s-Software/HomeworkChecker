@@ -122,7 +122,7 @@
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <DisableSpecificWarnings>5040;4819</DisableSpecificWarnings>
+      <DisableSpecificWarnings>5040;4819;4290</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
