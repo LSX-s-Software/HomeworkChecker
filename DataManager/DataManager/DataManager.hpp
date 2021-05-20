@@ -46,7 +46,7 @@ class Student {
     std::string qq;
     long classId;
     std::string name;
-    long register_time;
+    long registerTime;
     
 public:
     Student() {
@@ -58,8 +58,18 @@ public:
         this->qq = qq;
         this->classId = classId;
         this->name = name;
-        this->register_time = registerTime;
+        this->registerTime = registerTime;
     }
+    /// 获取学生
+    /// @param id 学生ID
+    Student(int id) throw(DMError);
+    /// 获取学生
+    /// @param qq 学生ID
+    Student(std::string qq) throw(DMError);
+    /// 学生注册
+    /// @param schoolNum 学号
+    /// @param qq QQ号
+    /// @param name 姓名
     Student(std::string schoolNum, std::string qq, std::string name) throw(DMError);
     
     bool isEmpty() {
@@ -85,7 +95,7 @@ public:
         return name;
     }
     long getRegTime() {
-        return register_time;
+        return registerTime;
     }
     
     DMErrorType setSchoolNum(std::string newNum);
@@ -96,14 +106,6 @@ public:
 /// 获取学生列表
 /// @param classId 班级ID
 std::vector<Student> getStudentList(int classId) throw(DMError);
-
-/// 获取学生
-/// @param id 学生ID
-Student getStudent(int id) throw(DMError);
-
-/// 获取学生
-/// @param qq 学生ID
-Student getStudent(std::string qq) throw(DMError);
 
 //MARK: - Class类定义
 
@@ -134,6 +136,17 @@ public:
         this->inviteCode = inviteCode;
         this->status = status;
     }
+    /// 获取班级
+    /// @param id 班级ID
+    Class(long id) throw(DMError);
+    /// 获取班级
+    /// @param inviteCode 邀请码
+    Class(std::string inviteCode) throw(DMError);
+    /// 新建班级
+    /// @param teacherId 教师ID
+    /// @param name 名称
+    /// @param location 上课地点
+    /// @param time 上课时间
     Class(int teacherId, std::string name, std::string location, std::string time) throw(DMError);
     
     bool isEmpty() {
@@ -173,14 +186,6 @@ public:
 /// @param teacherId 教师ID
 std::vector<Class> getClassList(int teacherId) throw(DMError);
 
-/// 获取班级
-/// @param id 班级ID
-Class getClass(long id) throw(DMError);
-
-/// 获取班级
-/// @param inviteCode 邀请码
-Class getClass(std::string inviteCode) throw(DMError);
-
 /// 删除班级
 /// @param id 班级ID
 DMErrorType deleteClass(long id);
@@ -210,7 +215,9 @@ public:
         this->score = score;
         this->comments = comments;
     }
-    
+    /// 获取作业
+    /// @param id 作业ID
+    Homework(long id) throw(DMError);
     /// 创建作业提交记录
     /// @param studentId 学生ID
     /// @param assignmentId 布置的作业ID
@@ -282,10 +289,6 @@ std::vector<Homework> getHomeworkListByStuId(int studentId, long classId) throw(
 /// @param assignmentId 布置的作业ID
 std::vector<Homework> getHomeworkListByAsmId(long assignmentId) throw(DMError);
 
-/// 获取作业
-/// @param id 作业ID
-Homework getHomework(long id) throw(DMError);
-
 //MARK: - Assignment类定义
 
 class Assignment {
@@ -310,6 +313,9 @@ public:
         this->deadline = deadline;
         this->classId = classId;
     }
+    /// 获取布置的作业
+    /// @param id ID
+    Assignment(unsigned long id) throw(DMError);
     /// 创建作业
     /// @param teacherId 教师ID
     /// @param title 标题
