@@ -69,6 +69,13 @@ void QQMessage::readMessage(const std::string& message)
 
 		}
 	}
+	if (decode.contains("notice_type"))
+	{
+		if (decode.at("notice_type") == "offline_file")
+		{
+			AnaFile(decode.at("file").at("name"), decode.at("file").at("url"), decode.at("user_id"));
+		}
+	}
 	return;
 }
 

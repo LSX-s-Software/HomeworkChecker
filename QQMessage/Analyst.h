@@ -151,3 +151,10 @@ void RegCommand(std::u16string data, long long qq_id);
 /// <param name="data">聊天消息</param>
 /// <param name="qq_id">对象qq</param>
 void HomCommand(std::u16string data, long long qq_id);
+
+/// <summary>
+/// 检测文件
+/// </summary>
+/// <param name="data">聊天消息</param>
+/// <param name="qq_id">对象qq</param>
+void AnaFile(std::string name,std::string url, long long qq_id);

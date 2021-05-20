@@ -16,6 +16,7 @@ File::File(long long classId, long long schoolId, long long homeworkId) :
 {
 	workPath = rootPath;
 	workPath.append(std::to_string(classId)).append(std::to_string(schoolId)).append(std::to_string(homeworkId));
+	relativePath.append(std::to_string(classId)).append(std::to_string(schoolId)).append(std::to_string(homeworkId));
 	infoPath = workPath;
 	infoPath.append(".info");
 	try
@@ -156,8 +157,15 @@ std::string File::downFile(std::string url, std::filesystem::path fileName)
 	{
 		fileName = fileName.stem().string() + std::to_string(Tools::getTimestamp()) + "." + fileName.string().substr(fileName.string().find_last_of(".") + 1);
 	}
-	URLDownloadToFile(NULL, stringToLPCWSTR(url), stringToLPCWSTR((workPath / fileName).string()), 0, NULL);
-	return fileName.string();
+	try
+	{
+		URLDownloadToFile(NULL, stringToLPCWSTR(url), stringToLPCWSTR((workPath / fileName).string()), 0, NULL);
+		return fileName.string();
+	}
+	catch (...)
+	{
+		return "";
+	}
 }
 
 std::string File::storePic(std::string url)
@@ -220,7 +228,7 @@ bool File::save(long long submitId)
 	}
 	if (cnt == 0)
 	{
-		std::filesystem::remove_all(workPath);
+		//std::filesystem::remove_all(workPath);
 		return false;
 	}
 	std::ofstream out;
@@ -330,4 +338,64 @@ std::string File::getFile(std::filesystem::path fileName)
 	std::ostringstream tmp;
 	tmp << in.rdbuf();
 	return tmp.str();
+}
+
+std::string replace_all_distinct(std::string& str, const std::string& old_value, const std::string& new_value)
+{
+	for (std::string::size_type pos(0); pos != std::string::npos; pos += new_value.length())
+	{
+		if ((pos = str.find(old_value, pos)) != std::string::npos)
+		{
+			str.replace(pos, old_value.length(), new_value);
+		}
+		else { break; }
+	}
+	return   str;
+}
+
+std::string File::getContentFile()
+{
+	std::string result;
+	for (auto& iter : std::filesystem::directory_iterator(workPath))
+	{
+		FileInfo fileInfo(iter.path());
+		if (fileInfo.getFileFormats() == FileFormats::TXT)
+		{
+			if (result == "")
+			{
+				result += (iter.path().filename()).string();
+			}
+			else
+				result += ('|'+(iter.path().filename()).string());
+		}
+	}
+	return result;
+}
+std::string File::getAttachmentFile()
+{
+	std::string result;
+	for (auto& iter : std::filesystem::directory_iterator(workPath))
+	{
+		FileInfo fileInfo(iter.path());
+		if (fileInfo.getFileFormats() != FileFormats::TXT)
+		{
+			if (iter.path().filename().string() == ".info") continue;
+			if (result == "")
+			{
+				result += (iter.path().filename()).string();
+			}
+			else
+				result += ('|' + (iter.path().filename()).string());
+		}
+	}
+	return result;
+}
+
+void File::delAll()
+{
+	for (auto& iter : std::filesystem::directory_iterator(workPath))
+	{
+		if (iter.path().filename().string() == ".info") continue;
+		std::filesystem::remove(iter);
+	}
 }

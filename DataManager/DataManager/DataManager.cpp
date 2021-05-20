@@ -281,7 +281,7 @@ Class::Class(std::string inviteCode) throw(DMError) {
     if (inviteCode.length() != 4)
         throw DMError(INVALID_ARGUMENT);
     if (DBManager::connectDatabase()) {
-        if (!DBManager::select("classes", "*", "code=" + inviteCode)) {
+        if (!DBManager::select("classes", "*", "code='" + inviteCode+"'")) {
             if (DBManager::numRows() > 0) {
                 MYSQL_ROW row = DBManager::fetchRow();
                 std::string idStr = row[0], teacherIdStr = row[1], statusStr = row[6];

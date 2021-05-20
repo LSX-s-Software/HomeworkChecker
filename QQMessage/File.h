@@ -16,6 +16,10 @@ private:
 	/// </summary>
 	std::filesystem::path workPath;
 	/// <summary>
+	/// 当前提交id的相对路径
+	/// </summary>
+	std::filesystem::path relativePath;
+	/// <summary>
 	/// 当前提交id的信息文件
 	/// </summary>
 	std::filesystem::path infoPath;
@@ -81,6 +85,24 @@ public:
 	/// <param name="fileName"></param>
 	/// <returns></returns>
 	std::string getFile(std::filesystem::path fileName);
+	/// <summary>
+	/// 获取本地存储的SubmitId
+	/// </summary>
+	/// <returns></returns>
 	long long getSubmitId();
+	/// <summary>
+	/// 获取正文文件名 | 分隔
+	/// </summary>
+	/// <returns></returns>
+	std::string getContentFile();
+	/// <summary>
+	/// 获取附件文件名 | 分隔
+	/// </summary>
+	/// <returns></returns>
+	std::string getAttachmentFile();
+	/// <summary>
+	/// 清空文件
+	/// </summary>
+	void delAll();
 };
 
