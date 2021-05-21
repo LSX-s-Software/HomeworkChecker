@@ -361,7 +361,6 @@ public:
 /// @param teacherId 教师ID
 std::vector<Assignment> getAssignmentList(unsigned int teacherId) throw(DMError);
 
-//别问我为什么把这个函数放这里，问就是C++必须先定义再使用
 typedef struct {
     Assignment assignment;
     Homework homework;

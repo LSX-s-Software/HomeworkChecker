@@ -42,10 +42,12 @@ bool connectDatabase(DBAccount account) {
 }
 
 bool connectDatabase() {
-    DBManager::DBAccount account;
-    account.username = "root";
-    account.password = "Whu2020";
-    return connectDatabase(account);
+    DBManager::DBAccount remote;
+    remote.host = "coyangjr.cn";
+    remote.username = "root";
+    remote.password = "Whu2020";
+    
+    return connectDatabase(remote);
 }
 
 void closeConnection() {

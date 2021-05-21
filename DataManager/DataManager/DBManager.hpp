@@ -15,7 +15,7 @@
 namespace DBManager {
 
 typedef struct DBAccount {
-    std::string host = "coyangjr.cn";
+    std::string host = "localhost";
     int port = 3306;
     std::string username;
     std::string password;

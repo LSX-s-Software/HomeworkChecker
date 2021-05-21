@@ -13,7 +13,8 @@ int main(int argc, const char * argv[]) {
 //    teacher.login("123456", "123456");
 //    std::cout << teacher.getName() << std::endl;
 //    std::vector<DataManager::Homework> list = DataManager::getHomeworkListByStuId(1, 1);
-    std::cout << DataManager::Assignment(1).getDeadline() << std::endl;
+//    std::cout << DataManager::Assignment(1).getDeadline() << std::endl;
+    std::cout << DataManager::Class(1).getName() << std::endl;
     
     return 0;
 }
