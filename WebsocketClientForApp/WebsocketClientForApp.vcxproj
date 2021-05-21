@@ -78,8 +78,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\Work\HomeworkChecker\packages\asio\include;D:\Work\HomeworkChecker\packages\json;D:\Work\HomeworkChecker\packages\mysql\include;D:\Work\HomeworkChecker\packages\websocketpp\include;D:\Work\HomeworkChecker\DataManager\DataManager;D:\Work\HomeworkChecker\QQMessage;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\Work\HomeworkChecker\packages\mysql\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\packages\asio\include;..\packages\json;..\packages\websocketpp\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -141,14 +141,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DataManager\DataManager.vcxproj">
-      <Project>{088fb71e-8b98-4cc6-b2cc-0abc68129e8a}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\QQMessage\QQMessage.vcxproj">
-      <Project>{b60a2ddc-110e-43b2-bd74-1ea63c67fe01}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WebsocketClientForApp.h" />
   </ItemGroup>

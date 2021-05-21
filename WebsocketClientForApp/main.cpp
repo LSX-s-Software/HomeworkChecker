@@ -8,31 +8,18 @@ bool completeFileTransfer=false;//捕获是否下载完成
 int main()
 {
 	system("CHCP 65001");
-	WebsocketClientForApp ws;//创建对象
+	WebsocketClientForApp ws;//创建ws客户端对象
 	ws.rootPath = R"(E:/tmp)";//指定本地根路径
 	ws.Connect("ws://127.0.0.1:6701");//连接ws
-	Sleep(2000);
-	//ws.sendReview(19);
-	ws.getFile(19, "1.zip");
+	ws.sendReview(19);//发送评语+分数
+	ws.getFile(19, "1.zip");//获取文件
 	while (true)
 	{
 		if (completeFileTransfer)
 		{
 			cout << "file ok" << endl;
 			break;
-			//ws.Close();
-			//return 0;
 		}	
 	}
-	ws.getFile(19, "1.png");
-	while (true)
-	{
-		if (completeFileTransfer)
-		{
-			cout << "file ok" << endl;
-			break;
-			//ws.Close();
-			//return 0;
-		}
-	}
+	ws.Close();//程序结束前关闭ws连接
 }

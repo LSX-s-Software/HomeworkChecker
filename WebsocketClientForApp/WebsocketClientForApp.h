@@ -144,9 +144,16 @@ public:
 	void SetOnFailFunc(OnFailFunc func);
 	void SetOnCloseFunc(OnCloseFunc func);
 	void SetMessageFunc(OnMessageFunc func);
-
+	/// <summary>
+	/// 向学生发送批改结果
+	/// </summary>
+	/// <param name="homeworkId">作业提交ID</param>
 	void sendReview(long homeworkId);
-
+	/// <summary>
+	/// 获取文件
+	/// </summary>
+	/// <param name="homeworkId">作业提交ID</param>
+	/// <param name="fileName">文件名(请确保有效)</param>
 	void getFile(long homeworkId,std::filesystem::path fileName);
 
 private:

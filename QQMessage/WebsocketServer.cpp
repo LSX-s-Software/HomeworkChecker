@@ -70,7 +70,6 @@ void WebsocketServer::OnMessage(server* s, WebsocketServer* pWebSocket, websocke
     try
     {
         //s->send(hdl, msg->get_payload(), msg->get_opcode());//接收到的数据原路返回
-        //TODO: 回应消息
         std::string message=msg->get_payload();
         
         auto decode = nlohmann::json::parse(message);//解析json
@@ -94,7 +93,7 @@ void WebsocketServer::OnMessage(server* s, WebsocketServer* pWebSocket, websocke
                     return;
                 }
             }
-            if (decode.at("action") == "get_file") //TODO:提供文件
+            if (decode.at("action") == "get_file")
             {
                 //Init
                 std::string hid = decode.at("homework_id");
@@ -170,7 +169,7 @@ void WebsocketServer::start(int port)
         // Start the ASIO io_service run loop
         //echo_server.run();
         m_thread = websocketpp::lib::make_shared<websocketpp::lib::thread>(&server::run, &echo_server);
-
+        //TODO: 多线程 发送心跳包
     }
     catch (websocketpp::exception const& e)
     {
