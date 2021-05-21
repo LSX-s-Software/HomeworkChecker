@@ -1,5 +1,12 @@
-#include "WebsocketClient.h"
-WebsocketClient::WebsocketClient()
+#include "WebsocketClientForApp.h"
+
+#include "DataManager.hpp"
+#include <fstream>
+#include <json.hpp>
+
+extern bool completeFileTransfer;
+
+WebsocketClientForApp::WebsocketClientForApp()
 {
 	m_WebsocketClient.clear_access_channels(websocketpp::log::alevel::all);  // 开启全部接入日志级别
 	m_WebsocketClient.clear_error_channels(websocketpp::log::elevel::all);   // 开启全部错误日志级别
@@ -16,7 +23,7 @@ WebsocketClient::WebsocketClient()
 	m_MessageFunc = nullptr;
 }
 
-WebsocketClient::~WebsocketClient()
+WebsocketClientForApp::~WebsocketClientForApp()
 {
 	m_WebsocketClient.stop_perpetual();
 
@@ -33,7 +40,7 @@ WebsocketClient::~WebsocketClient()
 	m_Thread->join();
 }
 
-bool WebsocketClient::Connect(std::string const& url)
+bool WebsocketClientForApp::Connect(std::string const& url)
 {
 	websocketpp::lib::error_code ec;
 
@@ -46,18 +53,18 @@ bool WebsocketClient::Connect(std::string const& url)
 	}
 
 	// 创建连接的metadata信息，并保存
-	connection_metadata::ptr metadata_ptr = websocketpp::lib::make_shared<connection_metadata>(con->get_handle(), url);
+	connection_metadata_app::ptr metadata_ptr = websocketpp::lib::make_shared<connection_metadata_app>(con->get_handle(), url);
 	m_ConnectionMetadataPtr = metadata_ptr;
 
 	// 注册连接打开的Handler
 	//con->set_open_handler(websocketpp::lib::bind(
-	//	&connection_metadata::on_open,
+	//	&connection_metadata_app::on_open,
 	//	metadata_ptr,
 	//	&m_WebsocketClient,
 	//	websocketpp::lib::placeholders::_1
 	//));
 	con->set_open_handler(websocketpp::lib::bind(
-		&WebsocketClient::OnOpen,
+		&WebsocketClientForApp::OnOpen,
 		this,
 		&m_WebsocketClient,
 		websocketpp::lib::placeholders::_1
@@ -65,13 +72,13 @@ bool WebsocketClient::Connect(std::string const& url)
 
 	// 注册连接失败的Handler
 	//con->set_fail_handler(websocketpp::lib::bind(
-	//	&connection_metadata::on_fail,
+	//	&connection_metadata_app::on_fail,
 	//	metadata_ptr,
 	//	&m_WebsocketClient,
 	//	websocketpp::lib::placeholders::_1
 	//));
 	con->set_fail_handler(websocketpp::lib::bind(
-		&WebsocketClient::OnFail,
+		&WebsocketClientForApp::OnFail,
 		this,
 		&m_WebsocketClient,
 		websocketpp::lib::placeholders::_1
@@ -79,13 +86,13 @@ bool WebsocketClient::Connect(std::string const& url)
 
 	// 注册连接关闭的Handler
 	//con->set_close_handler(websocketpp::lib::bind(
-	//	&connection_metadata::on_close,
+	//	&connection_metadata_app::on_close,
 	//	metadata_ptr,
 	//	&m_WebsocketClient,
 	//	websocketpp::lib::placeholders::_1
 	//));
 	con->set_close_handler(websocketpp::lib::bind(
-		&WebsocketClient::OnClose,
+		&WebsocketClientForApp::OnClose,
 		this,
 		&m_WebsocketClient,
 		websocketpp::lib::placeholders::_1
@@ -93,13 +100,13 @@ bool WebsocketClient::Connect(std::string const& url)
 
 	// 注册连接接收消息的Handler
 	//con->set_message_handler(websocketpp::lib::bind(
-	//	&connection_metadata::on_message,
+	//	&connection_metadata_app::on_message,
 	//	metadata_ptr,
 	//	websocketpp::lib::placeholders::_1,
 	//	websocketpp::lib::placeholders::_2
 	//));
 	con->set_message_handler(websocketpp::lib::bind(
-		&WebsocketClient::OnMessage,
+		&WebsocketClientForApp::OnMessage,
 		this,
 		websocketpp::lib::placeholders::_1,
 		websocketpp::lib::placeholders::_2
@@ -117,7 +124,7 @@ bool WebsocketClient::Connect(std::string const& url)
 	return true;
 }
 
-bool WebsocketClient::Close(std::string reason)
+bool WebsocketClientForApp::Close(std::string reason)
 {
 	websocketpp::lib::error_code ec;
 
@@ -136,7 +143,7 @@ bool WebsocketClient::Close(std::string reason)
 	return true;
 }
 
-bool WebsocketClient::Send(std::string message)
+bool WebsocketClientForApp::Send(std::string message)
 {
 	websocketpp::lib::error_code ec;
 
@@ -156,12 +163,12 @@ bool WebsocketClient::Send(std::string message)
 	return true;
 }
 
-connection_metadata::ptr WebsocketClient::GetConnectionMetadataPtr()
+connection_metadata_app::ptr WebsocketClientForApp::GetConnectionMetadataPtr()
 {
 	return m_ConnectionMetadataPtr;
 }
 
-void WebsocketClient::OnOpen(client* c, websocketpp::connection_hdl hdl)
+void WebsocketClientForApp::OnOpen(client* c, websocketpp::connection_hdl hdl)
 {
 	if (m_OnOpenFunc != nullptr)
 	{
@@ -169,7 +176,7 @@ void WebsocketClient::OnOpen(client* c, websocketpp::connection_hdl hdl)
 	}
 }
 
-void WebsocketClient::OnFail(client* c, websocketpp::connection_hdl hdl)
+void WebsocketClientForApp::OnFail(client* c, websocketpp::connection_hdl hdl)
 {
 	if (m_OnFailFunc != nullptr)
 	{
@@ -177,25 +184,62 @@ void WebsocketClient::OnFail(client* c, websocketpp::connection_hdl hdl)
 	}
 }
 
-void WebsocketClient::OnClose(client* c, websocketpp::connection_hdl hdl)
+void WebsocketClientForApp::OnClose(client* c, websocketpp::connection_hdl hdl)
 {
 	if (m_OnCloseFunc != nullptr)
 	{
 		m_OnCloseFunc();
 	}
 }
-
-void WebsocketClient::OnMessage(websocketpp::connection_hdl, client::message_ptr msg)
+namespace _WSCFA_
+{
+	long long transferId, homeworkId, totol_part, part_size, size, offset;
+	std::string name;
+	std::filesystem::path filePath, workPath;
+	std::ofstream ofs;
+}
+void WebsocketClientForApp::OnMessage(websocketpp::connection_hdl, client::message_ptr msg)
 {
 	if (msg->get_opcode() == websocketpp::frame::opcode::text)
 	{
 		std::string message = msg->get_payload();
-		//std::cout << "收到来自服务器的消息：" << message << std::endl;
+		auto decode = nlohmann::json::parse(message);
 
-		if (m_MessageFunc != nullptr)
+		if (decode.count("action"))
 		{
-			m_MessageFunc(message);
+			if (decode.at("action") == "send_file")
+			{
+				if (decode.at("status") == "start")
+				{
+					completeFileTransfer = false;
+					_WSCFA_::offset = 0;
+					_WSCFA_::transferId = std::atoll(std::string(decode.at("transfer_id")).c_str());
+					_WSCFA_::homeworkId = std::atoll(std::string(decode.at("homework_id")).c_str());
+					_WSCFA_::totol_part = std::atoll(std::string(decode.at("totol_part")).c_str());
+					_WSCFA_::part_size = std::atoll(std::string(decode.at("part_size")).c_str());
+					_WSCFA_::size = std::atoll(std::string(decode.at("size")).c_str());
+					_WSCFA_::name = decode.at("name");
+					
+					_WSCFA_::filePath = rootPath;
+					_WSCFA_::filePath.append(std::string(decode.at("class_id"))).append(std::string(decode.at("student_id"))).append(std::string(decode.at("homework_id")));
+					_WSCFA_::workPath = _WSCFA_::filePath;
+					_WSCFA_::filePath.append(_WSCFA_::name);
+					create_directories(_WSCFA_::workPath);
+					_WSCFA_::ofs = std::ofstream(_WSCFA_::filePath, std::ios::binary);
+					return;
+				}
+				if (decode.at("status") == "finish")
+				{
+					_WSCFA_::ofs.close();
+					completeFileTransfer = true;
+				}
+			}
 		}
+	}
+	if (msg->get_opcode() == websocketpp::frame::opcode::binary)
+	{
+		std::string message = msg->get_payload();
+		getFilePart(message);
 	}
 	else
 	{
@@ -203,23 +247,43 @@ void WebsocketClient::OnMessage(websocketpp::connection_hdl, client::message_ptr
 	}
 }
 
-void WebsocketClient::SetOnOpenFunc(OnOpenFunc func)
+void WebsocketClientForApp::SetOnOpenFunc(OnOpenFunc func)
 {
 	m_OnOpenFunc = func;
 }
 
-void WebsocketClient::SetOnFailFunc(OnFailFunc func)
+void WebsocketClientForApp::SetOnFailFunc(OnFailFunc func)
 {
 	m_OnFailFunc = func;
 }
 
-void WebsocketClient::SetOnCloseFunc(OnCloseFunc func)
+void WebsocketClientForApp::SetOnCloseFunc(OnCloseFunc func)
 {
 	m_OnCloseFunc = func;
 }
 
-void WebsocketClient::SetMessageFunc(OnMessageFunc func)
+void WebsocketClientForApp::SetMessageFunc(OnMessageFunc func)
 {
 	m_MessageFunc = func;
 }
 
+void WebsocketClientForApp::getFilePart(std::string msg)
+{
+
+	long long writeSize = std::min(_WSCFA_::part_size, _WSCFA_::size - _WSCFA_::offset);
+	_WSCFA_::ofs.write(msg.c_str(), writeSize);
+	_WSCFA_::offset += writeSize;
+	writeSize = std::min(_WSCFA_::part_size, _WSCFA_::size - _WSCFA_::offset);
+}
+
+void WebsocketClientForApp::sendReview(long homeworkId)
+{
+	std::string msg = "{\"action\":\"send_review\",\"homework_id\":\"" + std::to_string(homeworkId) + "\"}";
+	Send(msg);
+}
+
+void WebsocketClientForApp::getFile(long homeworkId, std::filesystem::path fileName)
+{
+	std::string msg = "{\"action\":\"get_file\",\"homework_id\":\"" + std::to_string(homeworkId) + "\",\"file_name\":\"" + fileName.string() + "\"}";
+	Send(msg);
+}

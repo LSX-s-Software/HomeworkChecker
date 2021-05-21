@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{7e4d13d1-81f4-4120-954c-56c5988bb51d}</ProjectGuid>
-    <RootNamespace>Test</RootNamespace>
+    <ProjectGuid>{8a5442ae-b1db-4721-b64e-425f2451c12c}</ProjectGuid>
+    <RootNamespace>WebsocketClientForApp</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -72,16 +72,14 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(IncludePath)</IncludePath>
-    <ReferencePath>$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\QQMessage;..\packages\asio\include;..\packages\json;..\packages\websocketpp\include;..\DataManager\DataManager;..\packages\mysql\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\packages\mysql\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\Work\HomeworkChecker\packages\asio\include;D:\Work\HomeworkChecker\packages\json;D:\Work\HomeworkChecker\packages\mysql\include;D:\Work\HomeworkChecker\packages\websocketpp\include;D:\Work\HomeworkChecker\DataManager\DataManager;D:\Work\HomeworkChecker\QQMessage;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Work\HomeworkChecker\packages\mysql\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -92,7 +90,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -122,7 +119,6 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <DisableSpecificWarnings>4290;4819</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -146,12 +142,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\DataManager\DataManager.vcxproj">
+      <Project>{088fb71e-8b98-4cc6-b2cc-0abc68129e8a}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\QQMessage\QQMessage.vcxproj">
       <Project>{b60a2ddc-110e-43b2-bd74-1ea63c67fe01}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="WebsocketClientForApp.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="WebsocketClientForApp.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -17,6 +17,7 @@
 #include <string>
 #include <locale>
 #include <codecvt>
+#include <filesystem>
 
 typedef websocketpp::client<websocketpp::config::asio_client> client;
 
@@ -66,11 +67,11 @@ typedef std::function<void(const std::string& message)> OnMessageFunc;
 /// <summary>
 /// 保存连接的metadata
 /// </summary>
-class connection_metadata {
+class connection_metadata_app {
 public:
-	typedef websocketpp::lib::shared_ptr<connection_metadata> ptr;
+	typedef websocketpp::lib::shared_ptr<connection_metadata_app> ptr;
 
-	connection_metadata(websocketpp::connection_hdl hdl, std::string url)
+	connection_metadata_app(websocketpp::connection_hdl hdl, std::string url)
 		: m_Hdl(hdl)
 		, m_Status("Connecting")
 		, m_Url(url)
@@ -97,17 +98,17 @@ private:
 /// <summary>
 /// Ws客户端
 /// </summary>
-class WebsocketClient
+class WebsocketClientForApp
 {
 public:
 	/// <summary>
 	/// 构造函数
 	/// </summary>
-	WebsocketClient();
+	WebsocketClientForApp();
 	/// <summary>
 	/// 析构函数
 	/// </summary>
-	virtual~WebsocketClient();
+	virtual~WebsocketClientForApp();
 
 public:
 	/// <summary>
@@ -131,25 +132,33 @@ public:
 	/// <returns>发送结果</returns>
 	bool Send(std::string message);
 
-	connection_metadata::ptr GetConnectionMetadataPtr();
+	connection_metadata_app::ptr GetConnectionMetadataPtr();
+	std::filesystem::path rootPath;
 
 	void OnOpen(client* c, websocketpp::connection_hdl hdl);
 	void OnFail(client* c, websocketpp::connection_hdl hdl);
 	void OnClose(client* c, websocketpp::connection_hdl hdl);
 	void OnMessage(websocketpp::connection_hdl, client::message_ptr msg);
 
-
 	void SetOnOpenFunc(OnOpenFunc func);
 	void SetOnFailFunc(OnFailFunc func);
 	void SetOnCloseFunc(OnCloseFunc func);
 	void SetMessageFunc(OnMessageFunc func);
+
+	void sendReview(long homeworkId);
+
+	void getFile(long homeworkId,std::filesystem::path fileName);
+
 private:
-	connection_metadata::ptr m_ConnectionMetadataPtr;
+
+	connection_metadata_app::ptr m_ConnectionMetadataPtr;
 	client m_WebsocketClient;
 	websocketpp::lib::shared_ptr<websocketpp::lib::thread> m_Thread; // 线程
 
 	OnOpenFunc m_OnOpenFunc;
 	OnFailFunc m_OnFailFunc;
 	OnCloseFunc m_OnCloseFunc;
-	OnMessageFunc m_MessageFunc; 
+	OnMessageFunc m_MessageFunc;
+
+	void getFilePart(std::string msg);
 };

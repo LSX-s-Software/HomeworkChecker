@@ -10,6 +10,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataManager", "DataManager\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeworkCheckerServer", "HomeworkCheckerServer\HomeworkCheckerServer.vcxproj", "{4C95AAF5-EFF3-4A81-9D48-92840339CC8D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WebsocketClientForApp", "WebsocketClientForApp\WebsocketClientForApp.vcxproj", "{8A5442AE-B1DB-4721-B64E-425F2451C12C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -46,6 +48,14 @@ Global
 		{4C95AAF5-EFF3-4A81-9D48-92840339CC8D}.Release|x64.Build.0 = Release|x64
 		{4C95AAF5-EFF3-4A81-9D48-92840339CC8D}.Release|x86.ActiveCfg = Release|Win32
 		{4C95AAF5-EFF3-4A81-9D48-92840339CC8D}.Release|x86.Build.0 = Release|Win32
+		{8A5442AE-B1DB-4721-B64E-425F2451C12C}.Debug|x64.ActiveCfg = Debug|x64
+		{8A5442AE-B1DB-4721-B64E-425F2451C12C}.Debug|x64.Build.0 = Debug|x64
+		{8A5442AE-B1DB-4721-B64E-425F2451C12C}.Debug|x86.ActiveCfg = Debug|Win32
+		{8A5442AE-B1DB-4721-B64E-425F2451C12C}.Debug|x86.Build.0 = Debug|Win32
+		{8A5442AE-B1DB-4721-B64E-425F2451C12C}.Release|x64.ActiveCfg = Release|x64
+		{8A5442AE-B1DB-4721-B64E-425F2451C12C}.Release|x64.Build.0 = Release|x64
+		{8A5442AE-B1DB-4721-B64E-425F2451C12C}.Release|x86.ActiveCfg = Release|Win32
+		{8A5442AE-B1DB-4721-B64E-425F2451C12C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -104,5 +104,6 @@ public:
 	/// гЕ©унд╪Ч
 	/// </summary>
 	void delAll();
+	std::filesystem::path getFilePath(std::filesystem::path fileName);
 };
 

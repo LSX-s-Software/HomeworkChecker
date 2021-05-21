@@ -29,7 +29,8 @@ public:
 	/// 初始化连接
 	/// </summary>
 	/// <param name="url">连接ip:端口</param>
-	static void _Init(std::string url = "127.0.0.1:6700");
+	static void _InitClient(std::string url = "127.0.0.1:6700");
+	static void _InitServer(int port);
 	/// <summary>
 	/// 关闭连接
 	/// </summary>

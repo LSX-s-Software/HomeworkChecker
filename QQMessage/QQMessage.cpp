@@ -36,20 +36,21 @@ std::map<long long, long long>getSubmitId;
 /// ws客户端
 /// </summary>
 WebsocketClient wsClient;
+WebsocketServer wsServer;
 
 void QQMessage::onOpen()
 {
-	std::cerr << "Connected." << std::endl;
+	std::cerr << "Client Connected." << std::endl;
 	return;
 }
 void QQMessage::onClose()
 {
-	std::cerr << "Closed." << std::endl;
+	std::cerr << "Client Closed." << std::endl;
 	return;
 }
 void QQMessage::onFail()
 {
-	std::cerr << "Failed." << std::endl;
+	std::cerr << "Client Connect Failed." << std::endl;
 	return;
 }
 
@@ -79,7 +80,7 @@ void QQMessage::readMessage(const std::string& message)
 	return;
 }
 
-void QQMessage::_Init(std::string url)
+void QQMessage::_InitClient(std::string url)
 {
 	connectUrl = "ws://" + url;
 	//设置回调函数
@@ -90,6 +91,11 @@ void QQMessage::_Init(std::string url)
 
 	if (wsClient.Connect(connectUrl) == false) throw WsConnectError("Connect to " + connectUrl + " failed.");
 
+}
+
+void QQMessage::_InitServer(int port)
+{
+	wsServer.start(port);
 }
 
 void QQMessage::_Stop()

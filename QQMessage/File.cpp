@@ -399,3 +399,8 @@ void File::delAll()
 		std::filesystem::remove(iter);
 	}
 }
+
+std::filesystem::path File::getFilePath(std::filesystem::path fileName)
+{
+	return workPath / fileName;
+}

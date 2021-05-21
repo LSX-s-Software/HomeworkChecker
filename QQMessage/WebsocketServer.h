@@ -51,15 +51,16 @@ public:
     /// <summary>
     /// 连接
     /// </summary>
-    static void on_open(server* s, WebsocketServer* pWebSocket, websocketpp::connection_hdl hdl);
+    static void OnOpen(server* s, WebsocketServer* pWebSocket, websocketpp::connection_hdl hdl);
     /// <summary>
     /// 断开
     /// </summary>
-    static void on_close(server* s, WebsocketServer* pWebSocket, websocketpp::connection_hdl hdl);
+    static void OnClose(server* s, WebsocketServer* pWebSocket, websocketpp::connection_hdl hdl);
     /// <summary>
     /// 通信
     /// </summary>
-    static void on_message(server* s, WebsocketServer* pWebSocket, websocketpp::connection_hdl hdl, message_ptr msg);
+    static void OnMessage(server* s, WebsocketServer* pWebSocket, websocketpp::connection_hdl hdl, message_ptr msg);
+
 
     void start(int port);
 private:

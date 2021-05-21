@@ -158,3 +158,9 @@ void HomCommand(std::u16string data, long long qq_id);
 /// <param name="data">聊天消息</param>
 /// <param name="qq_id">对象qq</param>
 void AnaFile(std::string name,std::string url, long long qq_id);
+/// <summary>
+/// 发送评价
+/// </summary>
+/// <param name="homeworkId">提交ID</param>
+/// <return>通知成功状态</return>
+bool sendReview(long homeworkId);
