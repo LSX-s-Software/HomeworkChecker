@@ -1,5 +1,15 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>ClassPage.qml</file>
+        <file>MarkPage.qml</file>
+        <file>NewAClass.qml</file>
+        <file>SettingPage.qml</file>
+        <file>TaskPage.qml</file>
+        <file>images/add@2x.png</file>
+        <file>images/homework@2x.png</file>
+        <file>images/progress@2x.png</file>
+        <file>GeneralPage.qml</file>
+        <file>images/person.png</file>
     </qresource>
 </RCC>
