@@ -301,13 +301,13 @@ Window {
 
         GeneralPage {
             id: generalPage
-            visible: true
+            visible: false
             x: 320
         }
 
         ClassPage {
             id: classPage
-            visible: false
+            visible: true
             x: 320
             anchors.right: parent.right
             anchors.rightMargin: 0
@@ -316,7 +316,7 @@ Window {
         TaskPage {
             id: taskPage
             height: 768
-            visible: false
+            visible: true
             x: 320
             anchors.right: parent.right
             anchors.rightMargin: 0

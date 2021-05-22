@@ -11,5 +11,10 @@
         <file>images/progress@2x.png</file>
         <file>GeneralPage.qml</file>
         <file>images/person.png</file>
+        <file>images/close.png</file>
+        <file>infoOfClass.qml</file>
+        <file>images/student.png</file>
+        <file>infoOfTask.qml</file>
+        <file>correctHomework.qml</file>
     </qresource>
 </RCC>

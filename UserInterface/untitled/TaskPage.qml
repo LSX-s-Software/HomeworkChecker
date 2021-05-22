@@ -1,5 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
+import Qt.labs.folderlistmodel 2.12
+import Qt.labs.location 1.0
 
 Rectangle {
     id: taskPage
