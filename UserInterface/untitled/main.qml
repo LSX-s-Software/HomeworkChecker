@@ -30,7 +30,7 @@ Window {
             Text {
                 id: naviTitle
                 text: "导航"
-                font.bold: true
+                font.family: "Source Han Sans CN"
                 font.weight: Font.Medium
                 font.pointSize: 40
                 textFormat: Text.PlainText
@@ -49,14 +49,14 @@ Window {
                     id: naviTxt0
                     text: qsTr("总览")
                     fontSizeMode: Text.Fit
-                    elide: Text.ElideLeft
-                    textFormat: Text.RichText
+                    textFormat: Text.PlainText
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.left: parent.left
                     anchors.leftMargin: 16
                     verticalAlignment: Text.AlignVCenter
+                    font.weight: Font.Medium
+                    font.family: "Source Han Sans CN"
                     font.pointSize: 24
-                    color: "black"
                 }
 
                 MouseArea {
@@ -103,6 +103,9 @@ Window {
                     anchors.left: parent.left
                     anchors.leftMargin: 16
                     verticalAlignment: Text.AlignVCenter
+                    font.weight: Font.Medium
+                    textFormat: Text.PlainText
+                    font.family: "Source Han Sans CN"
                     font.pointSize: 24
                     color: "black"
                 }
@@ -152,6 +155,9 @@ Window {
                     anchors.left: parent.left
                     anchors.leftMargin: 16
                     verticalAlignment: Text.AlignVCenter
+                    font.weight: Font.Medium
+                    textFormat: Text.PlainText
+                    font.family: "Source Han Sans CN"
                     font.pointSize: 24
                     color: "black"
                 }
@@ -202,6 +208,9 @@ Window {
                     anchors.left: parent.left
                     anchors.leftMargin: 16
                     verticalAlignment: Text.AlignVCenter
+                    font.weight: Font.Medium
+                    textFormat: Text.PlainText
+                    font.family: "Source Han Sans CN"
                     font.pointSize: 24
                     color: "black"
                 }
@@ -251,6 +260,9 @@ Window {
                     anchors.left: parent.left
                     anchors.leftMargin: 16
                     verticalAlignment: Text.AlignVCenter
+                    font.weight: Font.Medium
+                    textFormat: Text.PlainText
+                    font.family: "Source Han Sans CN"
                     font.pointSize: 24
                     color: "black"
                 }
@@ -293,13 +305,14 @@ Window {
             width: 1046
             height: 768
             clip: false
-            visible: false
+            visible: true
 
             Rectangle {
                 width: 202
                 height: 200
                 radius: 100
                 visible: false
+                color: "#f5f5f5"
                 border.width: 0
                 anchors.top: parent.top
                 anchors.topMargin: 120
@@ -321,7 +334,8 @@ Window {
                 y: 533
                 width: 300
                 height: 185
-                color: "#ffffff"
+                color: "#F5F5F5"
+                radius: 10
 
                 MouseArea {
                     id: mouseArea
@@ -336,32 +350,41 @@ Window {
                     height: 43
                     text: qsTr("作业")
                     verticalAlignment: Text.AlignVCenter
+                    font.family: "Source Han Sans CN"
                     horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 32
+                    font.pointSize: 32
                 }
 
                 Text {
                     id: element8
-                    x: 20
-                    y: 139
                     width: 108
                     height: 27
+                    color: "#8f8f8f"
                     text: qsTr("已批改/总数")
+                    anchors.left: parent.left
+                    anchors.bottom: parent.bottom
                     verticalAlignment: Text.AlignVCenter
+                    anchors.leftMargin: 20
+                    anchors.bottomMargin: 20
+                    font.family: "Source Han Sans CN"
                     horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 20
+                    font.pointSize: 20
                 }
 
                 Text {
                     id: element9
-                    x: 172
-                    y: 143
                     width: 108
                     height: 27
+                    color: "#8f8f8f"
                     text: qsTr("已提交/总数")
+                    anchors.right: parent.right
+                    anchors.bottom: parent.bottom
                     horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 20
                     verticalAlignment: Text.AlignVCenter
+                    anchors.rightMargin: 20
+                    anchors.bottomMargin: 20
+                    font.family: "Source Han Sans CN"
+                    font.pointSize: 20
                 }
             }
 
@@ -371,7 +394,8 @@ Window {
                 y: 533
                 width: 300
                 height: 185
-                color: "#ffffff"
+                color: "#F5F5F5"
+                radius: 10
 
                 MouseArea {
                     id: mouseArea1
@@ -386,20 +410,24 @@ Window {
                     height: 43
                     text: qsTr("批改进度")
                     horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 32
+                    font.pointSize: 32
                     verticalAlignment: Text.AlignVCenter
+                    font.family: "Source Han Sans CN"
                 }
 
                 Text {
                     id: element11
-                    x: 96
-                    y: 139
                     width: 108
                     height: 27
+                    color: "#8f8f8f"
                     text: qsTr("已批改/总数")
+                    anchors.bottom: parent.bottom
                     horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 20
+                    font.pointSize: 20
                     verticalAlignment: Text.AlignVCenter
+                    anchors.bottomMargin: 20
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    font.family: "Source Han Sans CN"
                 }
             }
 
@@ -411,8 +439,10 @@ Window {
                 height: 48
                 text: "早上好！张三老师"
                 verticalAlignment: Text.AlignVCenter
+                font.weight: Font.Medium
+                font.family: "Source Han Sans CN"
                 horizontalAlignment: Text.AlignHCenter
-                font.pixelSize: 36
+                font.pointSize: 36
             }
         }
 
@@ -431,11 +461,9 @@ Window {
                 height: 53
                 text: qsTr("已创建的班级")
                 anchors.horizontalCenter: parent.horizontalCenter
-                font.weight: Font.ExtraLight
-                font.capitalization: Font.SmallCaps
-                font.pixelSize: 40
+                font.pointSize: 40
                 verticalAlignment: Text.AlignVCenter
-                elide: Text.ElideMiddle
+                font.family: "Source Han Sans CN"
                 horizontalAlignment: Text.AlignHCenter
             }
 
@@ -445,17 +473,16 @@ Window {
                 y: 113
                 width: 54
                 height: 43
-                color: "#ffffff"
 
                 Text {
                     id: element1
                     text: "当前"
                     topPadding: -3
-                    font.family: "SimSun"
+                    font.family: "Source Han Sans CN"
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
                     anchors.fill: parent
-                    font.pixelSize: 32
+                    font.pointSize: 32
                 }
 
                 MouseArea {
@@ -470,15 +497,15 @@ Window {
                 y: 113
                 width: 54
                 height: 43
-                color: "#ffffff"
                 Text {
                     id: element2
                     text: "过去"
-                    font.pixelSize: 32
+                    font.pointSize: 32
                     anchors.fill: parent
                     horizontalAlignment: Text.AlignHCenter
                     topPadding: -3
                     verticalAlignment: Text.AlignVCenter
+                    font.family: "Source Han Sans CN"
                 }
 
                 MouseArea {
@@ -494,29 +521,30 @@ Window {
                 width: 982
                 height: 80
                 color: "#f5f5f5"
+                radius: 10
 
                 Text {
                     id: element12
                     x: 16
                     y: 9
-                    width: 144
                     height: 37
                     text: qsTr("2020级计卓")
                     verticalAlignment: Text.AlignVCenter
+                    font.family: "Source Han Sans CN"
                     horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 28
+                    font.pointSize: 28
                 }
 
                 Text {
                     id: element13
                     x: 16
                     y: 44
-                    width: 234
                     height: 27
                     text: qsTr("周五下午·3区1-507·30人")
                     verticalAlignment: Text.AlignVCenter
+                    font.family: "Source Han Sans CN"
                     horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 20
+                    font.pointSize: 20
                 }
 
                 MouseArea {
@@ -548,6 +576,7 @@ Window {
                 width: 720
                 height: 461
                 color: "#ffffff"
+                radius: 20
                 visible: false
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
@@ -559,9 +588,10 @@ Window {
                     height: 43
                     text: qsTr("创建班级")
                     verticalAlignment: Text.AlignVCenter
+                    font.family: "Source Han Sans CN"
                     horizontalAlignment: Text.AlignHCenter
                     anchors.horizontalCenter: parent.horizontalCenter
-                    font.pixelSize: 32
+                    font.pointSize: 32
                 }
 
                 Rectangle {
@@ -580,20 +610,21 @@ Window {
                         anchors.left: parent.horizontalCenter
                         anchors.leftMargin: -129
                         verticalAlignment: Text.AlignVCenter
+                        font.family: "Source Han Sans CN"
                         horizontalAlignment: Text.AlignHCenter
-                        font.pixelSize: 24
+                        font.pointSize: 24
                     }
 
                     Text {
                         id: element30
                         x: 129
-                        width: 124
                         height: 32
                         text: qsTr("2020级计卓")
                         anchors.top: parent.top
                         verticalAlignment: Text.AlignVCenter
+                        font.family: "Source Han Sans CN"
                         horizontalAlignment: Text.AlignHCenter
-                        font.pixelSize: 24
+                        font.pointSize: 24
                     }
                 }
 
@@ -613,20 +644,21 @@ Window {
                         anchors.leftMargin: -129
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
-                        font.pixelSize: 24
+                        font.family: "Source Han Sans CN"
+                        font.pointSize: 24
                     }
 
                     Text {
                         id: element32
                         x: 129
-                        width: 96
                         height: 32
                         text: qsTr("周五下午")
                         anchors.right: parent.right
                         anchors.top: parent.top
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
-                        font.pixelSize: 24
+                        font.family: "Source Han Sans CN"
+                        font.pointSize: 24
                     }
                 }
 
@@ -639,27 +671,27 @@ Window {
                     color: "#f5f5f5"
                     Text {
                         id: element33
-                        width: 96
                         height: 32
                         text: qsTr("上课地点")
                         anchors.left: parent.horizontalCenter
                         anchors.leftMargin: -129
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
-                        font.pixelSize: 24
+                        font.family: "Source Han Sans CN"
+                        font.pointSize: 24
                     }
 
                     Text {
                         id: element34
                         x: 129
-                        width: 98
                         height: 32
                         text: qsTr("3区1-507")
                         anchors.right: parent.right
                         anchors.top: parent.top
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
-                        font.pixelSize: 24
+                        font.family: "Source Han Sans CN"
+                        font.pointSize: 24
                     }
                 }
 
@@ -673,27 +705,27 @@ Window {
 
                     Text {
                         id: element35
-                        width: 84
                         height: 37
                         text: qsTr("邀请码")
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.left: parent.left
                         anchors.leftMargin: 0
                         verticalAlignment: Text.AlignVCenter
+                        font.family: "Source Han Sans CN"
                         horizontalAlignment: Text.AlignHCenter
-                        font.pixelSize: 28
+                        font.pointSize: 28
                     }
 
                     Text {
                         id: element36
                         x: 311
                         y: 22
-                        width: 94
                         height: 53
                         text: qsTr("CDE2")
                         verticalAlignment: Text.AlignVCenter
+                        font.family: "Source Han Sans CN"
                         horizontalAlignment: Text.AlignHCenter
-                        font.pixelSize: 40
+                        font.pointSize: 40
                     }
                 }
 
@@ -715,8 +747,9 @@ Window {
                         text: qsTr("创建")
                         anchors.horizontalCenter: parent.horizontalCenter
                         verticalAlignment: Text.AlignVCenter
+                        font.family: "Source Han Sans CN"
                         horizontalAlignment: Text.AlignHCenter
-                        font.pixelSize: 24
+                        font.pointSize: 24
                     }
 
                     MouseArea {
@@ -763,8 +796,9 @@ Window {
                 text: qsTr("已布置的作业")
                 anchors.horizontalCenter: parent.horizontalCenter
                 verticalAlignment: Text.AlignVCenter
+                font.family: "Source Han Sans CN"
                 horizontalAlignment: Text.AlignHCenter
-                font.pixelSize: 40
+                font.pointSize: 40
             }
 
             Rectangle {
@@ -779,9 +813,10 @@ Window {
                     id: element4
                     text: qsTr("待批改")
                     verticalAlignment: Text.AlignVCenter
+                    font.family: "Source Han Sans CN"
                     horizontalAlignment: Text.AlignHCenter
                     anchors.fill: parent
-                    font.pixelSize: 32
+                    font.pointSize: 32
                 }
 
                 MouseArea {
@@ -802,9 +837,10 @@ Window {
                     id: element5
                     text: qsTr("已完成批改")
                     verticalAlignment: Text.AlignVCenter
+                    font.family: "Source Han Sans CN"
                     horizontalAlignment: Text.AlignHCenter
                     anchors.fill: parent
-                    font.pixelSize: 32
+                    font.pointSize: 32
                 }
 
                 MouseArea {
@@ -820,28 +856,29 @@ Window {
                 width: 982
                 height: 80
                 color: "#f5f5f5"
+                radius: 10
                 Text {
                     id: element14
                     x: 16
                     y: 9
-                    width: 127
                     height: 37
                     text: qsTr("第六章作业")
                     horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 28
+                    font.pointSize: 28
                     verticalAlignment: Text.AlignVCenter
+                    font.family: "Source Han Sans CN"
                 }
 
                 Text {
                     id: element15
                     x: 16
                     y: 45
-                    width: 389
                     height: 27
                     text: qsTr("截止于2021年5月15日·已提交 25·未提交 5")
                     horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 20
+                    font.pointSize: 20
                     verticalAlignment: Text.AlignVCenter
+                    font.family: "Source Han Sans CN"
                 }
 
                 MouseArea {
@@ -866,8 +903,9 @@ Window {
                 height: 53
                 text: qsTr("选择班级")
                 horizontalAlignment: Text.AlignHCenter
-                font.pixelSize: 40
+                font.pointSize: 40
                 verticalAlignment: Text.AlignVCenter
+                font.family: "Source Han Sans CN"
             }
 
             Rectangle {
@@ -881,10 +919,10 @@ Window {
                     id: element17
                     text: "当前"
                     topPadding: -3
-                    font.family: "SimSun"
+                    font.family: "Source Han Sans CN"
                     anchors.fill: parent
                     horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 32
+                    font.pointSize: 32
                     verticalAlignment: Text.AlignVCenter
                 }
 
@@ -907,8 +945,9 @@ Window {
                     topPadding: -3
                     anchors.fill: parent
                     horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 32
+                    font.pointSize: 32
                     verticalAlignment: Text.AlignVCenter
+                    font.family: "Source Han Sans CN"
                 }
 
                 MouseArea {
@@ -924,28 +963,29 @@ Window {
                 width: 982
                 height: 80
                 color: "#f5f5f5"
+                radius: 10
                 Text {
                     id: element19
                     x: 16
                     y: 9
-                    width: 144
                     height: 37
                     text: qsTr("2020级计卓")
                     horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 28
+                    font.pointSize: 28
                     verticalAlignment: Text.AlignVCenter
+                    font.family: "Source Han Sans CN"
                 }
 
                 Text {
                     id: element20
                     x: 16
                     y: 44
-                    width: 234
                     height: 27
                     text: qsTr("周五下午·3区1-507·30人")
                     horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 20
+                    font.pointSize: 20
                     verticalAlignment: Text.AlignVCenter
+                    font.family: "Source Han Sans CN"
                 }
 
                 MouseArea {
@@ -970,7 +1010,7 @@ Window {
                 height: 53
                 text: qsTr("设置")
                 horizontalAlignment: Text.AlignHCenter
-                font.pixelSize: 40
+                font.pointSize: 40
                 verticalAlignment: Text.AlignVCenter
             }
 
@@ -981,42 +1021,20 @@ Window {
                 width: 160
                 height: 43
                 color: "#ffffff"
+                radius: 10
                 Text {
                     id: element24
                     text: "下载文件夹"
                     topPadding: -3
-                    font.family: "SimSun"
+                    font.family: "Source Han Sans CN"
                     anchors.fill: parent
                     horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 32
+                    font.pointSize: 32
                     verticalAlignment: Text.AlignVCenter
                 }
 
                 MouseArea {
                     id: mouseArea11
-                    anchors.fill: parent
-                }
-            }
-
-            Rectangle {
-                id: rectangle12
-                x: 224
-                y: 113
-                width: 128
-                height: 43
-                color: "#ffffff"
-                Text {
-                    id: element25
-                    text: "邮箱配置"
-                    topPadding: -3
-                    anchors.fill: parent
-                    horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 32
-                    verticalAlignment: Text.AlignVCenter
-                }
-
-                MouseArea {
-                    id: mouseArea12
                     anchors.fill: parent
                 }
             }
@@ -1028,6 +1046,7 @@ Window {
                 width: 982
                 height: 80
                 color: "#f5f5f5"
+                radius: 10
                 Text {
                     id: element22
                     x: 16
@@ -1036,8 +1055,9 @@ Window {
                     height: 37
                     text: qsTr("附件下载目录")
                     horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 28
+                    font.pointSize: 28
                     verticalAlignment: Text.AlignVCenter
+                    font.family: "Source Han Sans CN"
                 }
 
                 Text {
@@ -1048,8 +1068,9 @@ Window {
                     height: 27
                     text: qsTr("D:\\Download\\CPP")
                     horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 20
+                    font.pointSize: 20
                     verticalAlignment: Text.AlignVCenter
+                    font.family: "Source Han Sans CN"
                 }
 
                 MouseArea {
@@ -1065,14 +1086,18 @@ Window {
                 width: 218
                 height: 56
                 color: "#f5f5f5"
+                radius: 10
 
                 Text {
                     id: element26
+                    color: "#0098f7"
                     text: qsTr("修改")
                     verticalAlignment: Text.AlignVCenter
+                    font.weight: Font.Medium
+                    font.family: "Source Han Sans CN"
                     horizontalAlignment: Text.AlignHCenter
                     anchors.fill: parent
-                    font.pixelSize: 24
+                    font.pointSize: 24
                 }
 
                 MouseArea {
@@ -1088,13 +1113,17 @@ Window {
                 width: 218
                 height: 56
                 color: "#f5f5f5"
+                radius: 10
                 Text {
                     id: element27
+                    color: "#fa5151"
                     text: qsTr("清空")
                     anchors.fill: parent
                     horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 24
+                    font.pointSize: 24
                     verticalAlignment: Text.AlignVCenter
+                    font.weight: Font.Medium
+                    font.family: "Source Han Sans CN"
                 }
 
                 MouseArea {
@@ -1190,12 +1219,8 @@ Window {
 
 
 
-/*##^## Designer {
-    D{i:43;anchors_height:100;anchors_width:100}D{i:45;anchors_height:100;anchors_width:100}
-D{i:50;anchors_height:32;anchors_width:124;anchors_x:129;anchors_y:5}D{i:53;anchors_height:32;anchors_width:124;anchors_x:129;anchors_y:5}
-D{i:56;anchors_height:32;anchors_width:124;anchors_x:129;anchors_y:5}D{i:62;anchors_height:100;anchors_width:100}
-D{i:64;anchors_height:100;anchors_width:100}D{i:76;anchors_height:100;anchors_width:100}
-D{i:88;anchors_height:100;anchors_width:100}D{i:100;anchors_height:100;anchors_width:100}
-D{i:103;anchors_height:100;anchors_width:100}D{i:106;anchors_height:100;anchors_width:100}
+/*##^##
+Designer {
+    D{i:0;formeditorZoom:0.66}
 }
- ##^##*/
+##^##*/
