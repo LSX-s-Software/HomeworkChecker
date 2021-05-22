@@ -128,12 +128,12 @@ std::string File::storeText(std::string data)
 
 std::string File::delFile(std::filesystem::path fileName)
 {
-	if (!std::filesystem::exists(workPath / fileName)) throw FileNotExist((workPath / fileName).string());
+	if (!std::filesystem::exists(workPath / fileName)) return u8"无法找到文件：" + fileName.string();
 	try
 	{
 		std::filesystem::remove(workPath / fileName);
 	}
-	catch (std::exception& e)
+	catch (std::exception)
 	{
 		return u8"无法找到文件：" + fileName.string() + " 请重试";
 	}

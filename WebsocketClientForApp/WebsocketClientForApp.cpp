@@ -2,7 +2,7 @@
 #include <fstream>
 #include <json.hpp>
 
-extern bool completeFileTransfer;
+bool completeFileTransfer = false;//捕获是否下载完成
 
 WebsocketClientForApp::WebsocketClientForApp()
 {
@@ -282,6 +282,16 @@ void WebsocketClientForApp::sendReview(long homeworkId)
 
 void WebsocketClientForApp::getFile(long homeworkId, std::filesystem::path fileName)
 {
+	completeFileTransfer = false;
 	std::string msg = "{\"action\":\"get_file\",\"homework_id\":\"" + std::to_string(homeworkId) + "\",\"file_name\":\"" + fileName.string() + "\"}";
 	Send(msg);
+	while (true)
+	{
+		Sleep(1);
+		if (completeFileTransfer)
+		{
+			std::cout << "file ok" << std::endl;
+			break;
+		}
+	}
 }

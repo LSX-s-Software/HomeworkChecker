@@ -120,7 +120,7 @@ void WebsocketServer::OnMessage(server* s, WebsocketServer* pWebSocket, websocke
                 }
                 ifs.close();
                 //send Init Message
-                srand(time(0));
+                srand((unsigned)time(0));
                 std::string transferId = std::to_string(rand() % 1000000);
 
                 std::string msgInit = "{\"action\":\"send_file\",\"transfer_id\":\"" + transferId + "\",\"homework_id\":\"" + std::to_string(hm.getId()) + "\",\"name\":\"" + fileName + "\",\"totol_part\":\"" + std::to_string(fileContent.size()) + "\",\"part_size\":\"" + std::to_string(BUFFER_SIZE) + "\",\"" + "size" + "\":\"" + std::to_string(length) + "\",\"class_id\":\"" + std::to_string(st.getClassId()) + "\",\"student_id\":\"" + std::to_string(st.getId()) + "\",\"homework_id\":\"" + std::to_string(as.getId()) + "\",\"status\":\"start\"}";

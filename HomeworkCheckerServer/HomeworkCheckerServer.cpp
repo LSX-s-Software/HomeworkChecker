@@ -8,8 +8,8 @@ int main()
 {
     system("CHCP 65001");
     
-    ::ShellExecute(NULL, L"open", L"D:\\Work\\HomeworkChecker\\go-cqhttp\\start.lnk", L"", NULL, SW_SHOWNORMAL);
-    Sleep(10000);
+    //::ShellExecute(NULL, L"open", L"D:\\Work\\HomeworkChecker\\go-cqhttp\\start.lnk", L"", NULL, SW_SHOWNORMAL);
+    //Sleep(10000);
     try
     {
         QQMessage::_InitClient("127.0.0.1:6700");
@@ -19,7 +19,11 @@ int main()
     {
         std::cout << e.what() << std::endl;
     }
-    while (true);
+    int x;
+    while (std::cin >> x)
+    {
+        std::cout << x << std::endl;
+    }
     QQMessage::_Stop();
     return 0;
 }
