@@ -15,6 +15,7 @@ Rectangle {
         height: 40
         text: qsTr("登录")
         verticalAlignment: Text.AlignVCenter
+        font.family: "Source Han Sans CN"
         horizontalAlignment: Text.AlignHCenter
         anchors.top: parent.top
         anchors.topMargin: 40
@@ -24,13 +25,15 @@ Rectangle {
 
     Rectangle {
         id: emailEdit
-        x: 21
-        y: 120
-        width: 336
         height: 50
         color: "#f5f5f5"
         radius: 10
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: title.bottom
+        anchors.topMargin: 40
+        anchors.rightMargin: 32
+        anchors.leftMargin: 32
 
         Image {
             id: image
@@ -41,30 +44,38 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
             fillMode: Image.PreserveAspectFit
-            source: "images/at.png"
+            source: "images/email.png"
         }
 
-        TextInput {
-            id: textInput1
+        TextField {
+            id: emailField
             x: 46
             width: 290
-            height: 20
-            text: qsTr("邮箱")
+            height: 24
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             font.pixelSize: 20
+            font.family: "Source Han Sans CN"
+            placeholderText: qsTr("邮箱")
+            background: Rectangle {
+                anchors.fill: parent
+                border.width: 0
+                color: "#f5f5f5"
+            }
         }
     }
 
     Rectangle {
         id: passwordEdit
-        x: 16
-        y: 182
-        width: 336
         height: 50
         color: "#f5f5f5"
         radius: 10
-        anchors.horizontalCenterOffset: 0
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: emailEdit.bottom
+        anchors.topMargin: 12
+        anchors.rightMargin: 32
+        anchors.leftMargin: 32
         Image {
             id: image1
             y: 0
@@ -73,29 +84,35 @@ Rectangle {
             anchors.leftMargin: 10
             fillMode: Image.PreserveAspectFit
             anchors.verticalCenter: parent.verticalCenter
-            source: "images/email-1.png"
+            source: "images/password.png"
             anchors.left: parent.left
         }
-
-        TextInput {
-            id: textInput2
+        TextField {
+            id: passwordField
             x: 46
             width: 290
-            height: 20
-            text: qsTr("密码")
+            height: 24
+            anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             font.pixelSize: 20
-            anchors.verticalCenter: parent.verticalCenter
+            echoMode: 1
+            font.family: "Source Han Sans CN"
+            placeholderText: qsTr("密码")
+            background: Rectangle {
+                anchors.fill: parent
+                border.width: 0
+                color: "#f5f5f5"
+            }
         }
-        anchors.horizontalCenter: parent.horizontalCenter
     }
 
     Rectangle {
         id: signAccountBtn
-        y: 244
         width: 144
         height: 18
         color: "#ffffff"
+        anchors.top: passwordEdit.bottom
+        anchors.topMargin: 12
         anchors.horizontalCenter: parent.horizontalCenter
 
         Text {
@@ -104,6 +121,7 @@ Rectangle {
             text: qsTr("还没有账号？注册")
             anchors.fill: parent
             verticalAlignment: Text.AlignVCenter
+            font.family: "Source Han Sans CN"
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: 18
         }
@@ -121,6 +139,7 @@ Rectangle {
         width: 336
         height: 60
         color: "#0098f7"
+        radius: 10
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 32
         anchors.horizontalCenter: parent.horizontalCenter
@@ -130,6 +149,7 @@ Rectangle {
             color: "#ffffff"
             text: qsTr("登录")
             verticalAlignment: Text.AlignVCenter
+            font.family: "Source Han Sans CN"
             horizontalAlignment: Text.AlignHCenter
             anchors.fill: parent
             font.pixelSize: 28
@@ -147,7 +167,4 @@ Rectangle {
 
 
 
-/*##^## Designer {
-    D{i:13;anchors_height:100;anchors_width:100}
-}
- ##^##*/
+

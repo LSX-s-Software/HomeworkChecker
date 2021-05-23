@@ -1,10 +1,13 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
+import QtQuick.Layouts 1.15
+import QtQuick.Controls 2.12
 
 Window {
     id: window
     width: 1366
     height: 768
+    minimumWidth: 960
     visible: true
     title: qsTr("Homework Checker")
 
@@ -14,9 +17,8 @@ Window {
         anchors.fill: parent
         Column {
             id: naviList
-            width: 320
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
+            Layout.preferredWidth: 320
+            height: splitView.height
             rightPadding: 18
             leftPadding: 18
             bottomPadding: 18
@@ -301,41 +303,37 @@ Window {
 
         GeneralPage {
             id: generalPage
-            visible: false
-            x: 320
+            visible: true
+            width: window.width - naviList.width
+            height: window.height
         }
 
         ClassPage {
             id: classPage
-            visible: true
-            x: 320
-            anchors.right: parent.right
-            anchors.rightMargin: 0
+            visible: false
+            width: window.width - naviList.width
+            height: window.height
         }
 
         TaskPage {
             id: taskPage
-            height: 768
-            visible: true
-            x: 320
-            anchors.right: parent.right
-            anchors.rightMargin: 0
+            visible: false
+            width: window.width - naviList.width
+            height: window.height
         }
 
         MarkPage {
             id: markPage
             visible: false
-            x: 320
-            anchors.right: parent.right
-            anchors.rightMargin: 0
+            width: window.width - naviList.width
+            height: window.height
         }
 
         SettingPage {
             id: settingPage
             visible: false
-            x: 320
-            anchors.right: parent.right
-            anchors.rightMargin: 0
+            width: window.width - naviList.width
+            height: window.height
         }
 
     }
@@ -426,6 +424,6 @@ Window {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.66}D{i:33}
+    D{i:0;formeditorZoom:0.66}
 }
 ##^##*/

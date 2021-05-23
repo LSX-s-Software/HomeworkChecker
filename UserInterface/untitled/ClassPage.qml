@@ -12,19 +12,15 @@ Rectangle {
         id: addBtn
         width: 60
         height: 60
-        visible: true
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         source: "images/add@2x.png"
         anchors.bottomMargin: 28
         anchors.rightMargin: 32
-
         MouseArea {
-            id: mouseArea16
             hoverEnabled: true
             anchors.fill: parent
             cursorShape: Qt.PointingHandCursor
-            hoverEnabled: true
             onClicked: {
                 newClass.open()
             }
@@ -39,10 +35,30 @@ Rectangle {
         height: 461
         focus: true
         clip: true
-        NewAClass {
+        anchors.centerIn: classPage
+        background: Rectangle {
+            radius: 20
+        }
+        contentItem: NewAClass {
             id: newAClass
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.verticalCenter: parent.verticalCenter
+            anchors.fill: parent
+        }
+    }
+
+    Popup {
+        id: info
+        modal: true
+        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
+        focus: true
+        width: 720
+        height: 461
+        clip: true
+        anchors.centerIn: classPage
+        background: Rectangle {
+            radius: 20
+        }
+        contentItem: InfoOfClass {
+            id: infoOfClass
             anchors.fill: parent
         }
     }
@@ -120,7 +136,7 @@ Rectangle {
         id: classListItem
         Rectangle {
             id: rectangle
-            width: 982
+            width: listView.width
             height: 80
             color: "#f5f5f5"
             radius: 10
@@ -153,6 +169,10 @@ Rectangle {
             MouseArea {
                 id: mouseArea6
                 anchors.fill: parent
+                hoverEnabled: true
+                onClicked: {
+                    info.open()
+                }
             }
         }
     }
@@ -191,8 +211,6 @@ Rectangle {
             }
         }
     }
-
-
 }
 
 /*##^##

@@ -12,9 +12,7 @@
         <file>GeneralPage.qml</file>
         <file>images/person.png</file>
         <file>images/close.png</file>
-        <file>infoOfClass.qml</file>
         <file>images/student.png</file>
-        <file>infoOfTask.qml</file>
         <file>correctHomework.qml</file>
         <file>images/backBtn.png</file>
         <file>markHomework.qml</file>
@@ -24,8 +22,10 @@
         <file>scoreWithClass.qml</file>
         <file>scoreWithStudent.qml</file>
         <file>logInPage.qml</file>
-        <file>images/at.png</file>
-        <file>images/email-1.png</file>
         <file>registerPage.qml</file>
+        <file>InfoOfClass.qml</file>
+        <file>images/email.png</file>
+        <file>images/password.png</file>
+        <file>InfoOfTask.qml</file>
     </qresource>
 </RCC>
