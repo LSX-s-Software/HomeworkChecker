@@ -26,12 +26,11 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: 40
         anchors.verticalCenter: parent.verticalCenter
-
-        Text {
-            id: element
-            text: qsTr("homework")
+        
+        TextArea {
+            id: textArea
+            text: qsTr("Text Area")
             anchors.fill: parent
-            font.pixelSize: 20
         }
     }
 

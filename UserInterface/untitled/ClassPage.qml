@@ -20,6 +20,7 @@ Rectangle {
 
         MouseArea {
             id: mouseArea16
+            hoverEnabled: true
             anchors.fill: parent
             onClicked: {
                 newAClass.visible=true;

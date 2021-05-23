@@ -1,5 +1,8 @@
-import QtQuick 2.0
 
+import QtQuick 2.0
+import QtQuick 2.12
+import QtQuick.Window 2.12
+import QtQuick.Controls 2.12
 
 Rectangle {
     id: detailsOfAddition
@@ -27,12 +30,19 @@ Rectangle {
         width: 966
         height: 500
         color: "#ffffff"
+        border.width: 1
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 120
         anchors.horizontalCenter: parent.horizontalCenter
-
+        
         MouseArea {
             id: mouseArea3
+            anchors.fill: parent
+        }
+        
+        TextArea {
+            id: textArea
+            text: qsTr("Text Area")
             anchors.fill: parent
         }
     }

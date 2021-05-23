@@ -1,4 +1,7 @@
 import QtQuick 2.0
+import QtQuick 2.12
+import QtQuick.Window 2.12
+import QtQuick.Controls 2.12
 
 
 Rectangle {
@@ -119,7 +122,7 @@ Rectangle {
             font.family: "Source Han Sans CN"
             font.bold: true
         }
-
+        
         TextInput {
             id: textInput
             width: 252
@@ -159,12 +162,10 @@ Rectangle {
             height: 329
             color: "#ffffff"
 
-            TextEdit {
-                id: textEdit
-                text: qsTr("Text Edit")
+            TextArea {
+                id: textArea
+                text: qsTr("Text Area")
                 anchors.fill: parent
-                selectionColor: "#020080"
-                font.pixelSize: 24
             }
         }
     }

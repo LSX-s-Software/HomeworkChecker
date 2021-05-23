@@ -20,5 +20,8 @@
         <file>markHomework.qml</file>
         <file>detailsOfAddition.qml</file>
         <file>arrangement.qml</file>
+        <file>images/more.png</file>
+        <file>scoreWithClass.qml</file>
+        <file>scoreWithStudent.qml</file>
     </qresource>
 </RCC>
