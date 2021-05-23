@@ -5,7 +5,7 @@ import QtQuick.Controls 2.12
 
 
 Rectangle {
-    id: rectangle
+    id: correctHomework
     x: 0
     y: 0
     width: 1046
@@ -16,7 +16,7 @@ Rectangle {
     border.color: "#00000000"
 
     Rectangle {
-        id: rectangle1
+        id: homeworkOfStudents
         y: 203
         width: 748
         height: 540
@@ -49,7 +49,7 @@ Rectangle {
     }
 
     Rectangle {
-        id: rectangle2
+        id: backBtn
         width: 76
         height: 28
         color: "#ffffff"
@@ -63,15 +63,23 @@ Rectangle {
             color: "#0098f7"
             text: qsTr("返回")
             verticalAlignment: Text.AlignVCenter
-            horizontalAlignment: Text.AlignHCenter
+            horizontalAlignment: Text.AlignRight
             anchors.fill: parent
             font.pixelSize: 28
         }
 
         MouseArea {
             id: mouseArea
-            width: 100
-            height: 100
+            anchors.fill: parent
+        }
+
+        Image {
+            id: image
+            width: 25
+            height: 22
+            anchors.verticalCenter: parent.verticalCenter
+            source: "images/backBtn.png"
+            fillMode: Image.PreserveAspectFit
         }
     }
 
@@ -82,18 +90,20 @@ Rectangle {
         width: 56
         height: 28
         text: qsTr("附件")
+        font.weight: Font.Bold
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: 28
     }
 
     Rectangle {
-        id: rectangle3
+        id: addition
         x: 808
         y: 163
         width: 198
         height: 70
         color: "#f5f5f5"
+        radius: 10
 
         Text {
             id: element4
@@ -109,6 +119,82 @@ Rectangle {
             anchors.fill: parent
         }
     }
+
+    Rectangle {
+        id: lastStudent
+        x: 40
+        y: 676
+        width: 218
+        height: 56
+        color: "#f5f5f5"
+        radius: 10
+
+        Text {
+            id: element5
+            color: "#0098f7"
+            text: qsTr("上一个")
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+            anchors.fill: parent
+            font.pixelSize: 24
+        }
+
+        MouseArea {
+            id: mouseArea2
+            anchors.fill: parent
+        }
+    }
+
+    Rectangle {
+        id: nextStudent
+        x: 270
+        y: 676
+        width: 218
+        height: 56
+        color: "#f5f5f5"
+        radius: 10
+        clip: true
+        Text {
+            id: element6
+            color: "#0098f7"
+            text: qsTr("下一个")
+            verticalAlignment: Text.AlignVCenter
+            anchors.fill: parent
+            horizontalAlignment: Text.AlignHCenter
+            font.pixelSize: 24
+        }
+
+        MouseArea {
+            id: mouseArea3
+            anchors.fill: parent
+        }
+    }
+
+    Rectangle {
+        id: markBtn
+        x: 788
+        y: 676
+        width: 218
+        height: 56
+        color: "#0098f7"
+        radius: 10
+
+        Text {
+            id: element7
+            color: "#ffffff"
+            text: qsTr("打分")
+            font.weight: Font.Bold
+            anchors.fill: parent
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+            font.pixelSize: 24
+        }
+
+        MouseArea {
+            id: mouseArea4
+            anchors.fill: parent
+        }
+    }
 }
 
 
@@ -117,7 +203,12 @@ Rectangle {
 
 
 
+
+
+
+
 /*##^## Designer {
-    D{i:1;anchors_x:134}D{i:4;anchors_x:76;anchors_y:46}D{i:10;anchors_height:100;anchors_width:100}
+    D{i:1;anchors_x:134}D{i:6;anchors_height:100;anchors_width:100}D{i:4;anchors_x:76;anchors_y:46}
+D{i:11;anchors_height:100;anchors_width:100}D{i:12;anchors_height:200}D{i:15;anchors_height:200}
 }
  ##^##*/

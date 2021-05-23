@@ -16,5 +16,9 @@
         <file>images/student.png</file>
         <file>infoOfTask.qml</file>
         <file>correctHomework.qml</file>
+        <file>images/backBtn.png</file>
+        <file>markHomework.qml</file>
+        <file>detailsOfAddition.qml</file>
+        <file>arrangement.qml</file>
     </qresource>
 </RCC>
