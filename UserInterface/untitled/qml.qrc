@@ -23,5 +23,9 @@
         <file>images/more.png</file>
         <file>scoreWithClass.qml</file>
         <file>scoreWithStudent.qml</file>
+        <file>logInPage.qml</file>
+        <file>images/at.png</file>
+        <file>images/email-1.png</file>
+        <file>registerPage.qml</file>
     </qresource>
 </RCC>
