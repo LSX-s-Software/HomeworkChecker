@@ -199,17 +199,20 @@ Rectangle {
 
     Image {
         id: image1
-        x: 655
-        y: 20
-        width: 45
-        height: 45
-        source: "Images/close.png"
+        width: 32
+        height: 32
+        anchors.right: parent.right
+        anchors.top: parent.top
+        source: "images/close.png"
+        anchors.topMargin: 20
+        anchors.rightMargin: 20
+        fillMode: Image.PreserveAspectFit
 
         MouseArea {
             id: mouseArea17
             anchors.fill: parent
             onClicked: {
-                newAClass.visible=false;
+                newClass.close()
             }
         }
     }
