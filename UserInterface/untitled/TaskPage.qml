@@ -1,7 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
 import Qt.labs.folderlistmodel 2.12
-import Qt.labs.location 1.0
+//import Qt.labs.location 1.0
 
 Rectangle {
     id: taskPage
@@ -176,6 +176,6 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.75}
+    D{i:0;autoSize:true;height:480;width:640}
 }
 ##^##*/

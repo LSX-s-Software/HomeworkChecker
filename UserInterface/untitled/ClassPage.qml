@@ -1,5 +1,6 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
+import QtQuick.Controls 2.12
 
 Rectangle {
     id: classPage
@@ -22,19 +23,28 @@ Rectangle {
             id: mouseArea16
             hoverEnabled: true
             anchors.fill: parent
+            cursorShape: Qt.PointingHandCursor
+            hoverEnabled: true
             onClicked: {
-                newAClass.visible=true;
+                newClass.open()
             }
         }
     }
 
-    NewAClass {
-        id: newAClass
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: parent.verticalCenter
-        height: 461
-        visible: false
+    Popup {
+        id: newClass
+        modal: true
+        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
         width: 720
+        height: 461
+        focus: true
+        clip: true
+        NewAClass {
+            id: newAClass
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.fill: parent
+        }
     }
 
     Text {
