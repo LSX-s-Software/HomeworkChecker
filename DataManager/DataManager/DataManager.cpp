@@ -14,6 +14,7 @@ std::hash<std::string> hashStr;
 //MARK: - User类实现
 
 DMErrorType User::login(std::string email, std::string password) {
+    email = DBManager::sqlInjectionCheck(email);
     DMErrorType error = SUCCESS;
     if (DBManager::connectDatabase()) {
         if (!DBManager::select("users", "id,password,name", "username='" + email + "'")) {
@@ -44,6 +45,7 @@ DMErrorType User::login(std::string email, std::string password) {
 }
 
 DMErrorType User::reg(std::string email, std::string password) {
+    email = DBManager::sqlInjectionCheck(email);
     DMErrorType error = SUCCESS;
     if (DBManager::connectDatabase()) {
         if (!DBManager::select("users", "id", "username='" + email + "'")) {
@@ -71,6 +73,7 @@ DMErrorType User::reg(std::string email, std::string password) {
 }
 
 DMErrorType User::setName(std::string name) {
+    name = DBManager::sqlInjectionCheck(name);
     if (id == -1)
         return OBJECT_NOT_INITED;
     if (DBManager::connectDatabase()) {
@@ -116,7 +119,7 @@ Student::Student(int id) throw(DMError) {
 
 Student::Student(std::string qq) throw(DMError) {
     if (DBManager::connectDatabase()) {
-        if (!DBManager::select("students", "*", "qq=" + qq)) {
+        if (!DBManager::select("students", "*", "qq='" + qq + "'")) {
             if (DBManager::numRows() > 0) {
                 MYSQL_ROW row = DBManager::fetchRow();
                 std::string idStr = row[0], classIdStr = (row[3] == NULL ? "0" : row[3]), timeStr = row[5];
@@ -172,6 +175,7 @@ DMErrorType Student::setClassId(long newClassId) {
 }
 
 DMErrorType Student::setName(std::string newName) {
+    newName = DBManager::sqlInjectionCheck(newName);
     if (id == -1)
         return OBJECT_NOT_INITED;
     if (DBManager::connectDatabase()) {
@@ -190,6 +194,7 @@ DMErrorType Student::setName(std::string newName) {
 }
 
 Student::Student(std::string schoolNum, std::string qq, std::string name) throw(DMError) {
+    name = DBManager::sqlInjectionCheck(name);
     if (DBManager::connectDatabase()) {
         int code = DBManager::select("students", "id", "school_num=" + schoolNum);
         if (!code) {
@@ -306,6 +311,7 @@ Class::Class(std::string inviteCode) throw(DMError) {
 }
 
 DMErrorType Class::setName(std::string newName) {
+    newName = DBManager::sqlInjectionCheck(newName);
     if (id == -1)
         return OBJECT_NOT_INITED;
     DMErrorType error = SUCCESS;
@@ -323,6 +329,7 @@ DMErrorType Class::setName(std::string newName) {
 }
 
 DMErrorType Class::setLocation(std::string newLocation) {
+    newLocation = DBManager::sqlInjectionCheck(newLocation);
     if (id == -1)
         return OBJECT_NOT_INITED;
     DMErrorType error = SUCCESS;
@@ -339,6 +346,7 @@ DMErrorType Class::setLocation(std::string newLocation) {
     }
 }
 DMErrorType Class::setTime(std::string newTime) {
+    newTime = DBManager::sqlInjectionCheck(newTime);
     if (id == -1)
         return OBJECT_NOT_INITED;
     DMErrorType error = SUCCESS;
@@ -401,6 +409,9 @@ DMErrorType Class::endClass() {
 }
 
 Class::Class(int teacherId, std::string name, std::string location, std::string time) throw(DMError) {
+    name = DBManager::sqlInjectionCheck(name);
+    location = DBManager::sqlInjectionCheck(location);
+    time = DBManager::sqlInjectionCheck(time);
     DMErrorType error = SUCCESS;
     if (teacherId <= 0 || name.length() == 0)
         throw DMError(INVALID_ARGUMENT);
@@ -594,6 +605,7 @@ DMErrorType Homework::setScore(unsigned short newScore) {
 }
 
 DMErrorType Homework::setComments(std::string newComments) {
+    newComments = DBManager::sqlInjectionCheck(newComments);
     if (id == -1)
         return OBJECT_NOT_INITED;
     DMErrorType error = SUCCESS;
@@ -631,6 +643,7 @@ DMErrorType Homework::submit(std::string contentURL, std::string attachmentURL) 
 }
 
 DMErrorType Homework::review(unsigned short score, std::string comments) {
+    comments = DBManager::sqlInjectionCheck(comments);
     if (id == -1)
         return OBJECT_NOT_INITED;
     DMErrorType error = SUCCESS;
@@ -700,6 +713,8 @@ DMErrorType deleteHomework(long id) {
 //MARK: - Assignment类实现
 
 Assignment::Assignment(unsigned int teacherId, std::string title, std::string description, long deadline, unsigned long classId) throw(DMError) {
+    title = DBManager::sqlInjectionCheck(title);
+    description = DBManager::sqlInjectionCheck(description);
     DMErrorType error = SUCCESS;
     if (DBManager::connectDatabase()) {
         int code = DBManager::insert("assignments", "teacher_id,title,description,start_time,deadline,class_id", std::to_string(teacherId) + ",'" + title + "','" + description + "',NOW()," + std::to_string(deadline) + "," + std::to_string(classId));
@@ -749,6 +764,7 @@ Assignment::Assignment(unsigned long id) throw(DMError) {
 }
 
 DMErrorType Assignment::setTitle(std::string title) {
+    title = DBManager::sqlInjectionCheck(title);
     if (id == 0)
         return OBJECT_NOT_INITED;
     if (title.length() > 80)
@@ -767,6 +783,7 @@ DMErrorType Assignment::setTitle(std::string title) {
     }
 }
 DMErrorType Assignment::setDescription(std::string description) {
+    description = DBManager::sqlInjectionCheck(description);
     if (id == 0)
         return OBJECT_NOT_INITED;
     DMErrorType error = SUCCESS;

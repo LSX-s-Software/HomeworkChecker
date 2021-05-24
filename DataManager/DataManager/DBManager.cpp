@@ -7,6 +7,7 @@
 
 #include "DBManager.hpp"
 #include <iostream>
+#include <string>
 #pragma comment(lib, "libmysql.lib")
 
 #ifndef DEBUG
@@ -184,6 +185,24 @@ int remove(std::string table, std::string conditions) {
 
 unsigned long affectedRowCount() {
     return mysql_affected_rows(mysql);
+}
+
+std::string sqlInjectionCheck(std::string str) {
+    if (str.length() == 0)
+        return str;
+    std::string res = "";
+    bool flag = false;
+    for (int i = 0; i < str.length(); i++) {
+        if (str[i] != '\'')
+            res += str[i];
+        else {
+            res += "\\'";
+            flag = true;
+        }
+    }
+    if (flag)
+        std::cout << "[WARNING] [DBManager] SQL Injection Detected. Solved:\n\t\t\t\"" << str << "\" -> \"" << res << "\"" << std::endl;
+    return res;
 }
 
 }

@@ -14,7 +14,9 @@ int main(int argc, const char * argv[]) {
 //    std::cout << teacher.getName() << std::endl;
 //    std::vector<DataManager::Homework> list = DataManager::getHomeworkListByStuId(1, 1);
 //    std::cout << DataManager::Assignment(1).getDeadline() << std::endl;
-    std::cout << DataManager::Class(1).getName() << std::endl;
+//    std::cout << DataManager::Class(1).getName() << std::endl;
+    DataManager::User me;
+    me.reg("1'+'1", "';-- ");
     
     return 0;
 }
