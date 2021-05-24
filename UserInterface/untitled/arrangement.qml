@@ -122,7 +122,7 @@ Rectangle {
             font.family: "Source Han Sans CN"
             font.bold: true
         }
-        
+
         TextInput {
             id: textInput
             width: 252
@@ -196,7 +196,30 @@ Rectangle {
             anchors.fill: parent
         }
     }
+
+    Image {
+        id: close
+        x: 6
+        y: 5
+        width: 45
+        height: 45
+        anchors.rightMargin: 20
+        anchors.topMargin: 20
+        anchors.right: parent.right
+        MouseArea {
+            id: mouseArea17
+            hoverEnabled: true
+            anchors.fill: parent
+            onClicked: taskPage.pop()
+        }
+        source: "images/close.png"
+        anchors.top: parent.top
+    }
 }
+
+
+
+
 
 
 

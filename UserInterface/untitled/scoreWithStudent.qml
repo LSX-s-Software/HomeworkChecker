@@ -88,6 +88,8 @@ Rectangle {
         MouseArea {
             id: mouseArea1
             anchors.fill: parent
+            onClicked:
+                markPage.pop()
         }
 
         Image {

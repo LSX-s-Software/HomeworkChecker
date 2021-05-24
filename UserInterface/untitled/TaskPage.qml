@@ -24,7 +24,10 @@ StackView {
 
             MouseArea {
                 id: mouseArea16
+                hoverEnabled: true
                 anchors.fill: parent
+                onClicked:
+                    taskPage.push(arrange)
             }
         }
 
@@ -181,6 +184,10 @@ StackView {
         Component {
             id: info
             InfoOfTask {}
+        }
+        Component{
+            id:arrange
+            Arrangement{}
         }
 
     }

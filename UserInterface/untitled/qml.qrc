@@ -15,12 +15,12 @@
         <file>images/student.png</file>
         <file>CorrectHomework.qml</file>
         <file>images/backBtn.png</file>
-        <file>markHomework.qml</file>
-        <file>detailsOfAddition.qml</file>
-        <file>arrangement.qml</file>
+        <file>MarkHomework.qml</file>
+        <file>DetailsOfAddition.qml</file>
+        <file>Arrangement.qml</file>
         <file>images/more.png</file>
-        <file>scoreWithClass.qml</file>
-        <file>scoreWithStudent.qml</file>
+        <file>ScoreWithClass.qml</file>
+        <file>ScoreWithStudent.qml</file>
         <file>logInPage.qml</file>
         <file>registerPage.qml</file>
         <file>InfoOfClass.qml</file>

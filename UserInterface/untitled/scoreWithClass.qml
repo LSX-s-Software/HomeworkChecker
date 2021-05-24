@@ -33,6 +33,9 @@ Rectangle {
             MouseArea {
                 id: mouseArea
                 anchors.fill: parent
+                onClicked:
+                    markPage.push(scoreOfEach)
+
             }
 
             Text {
@@ -89,6 +92,7 @@ Rectangle {
         MouseArea {
             id: mouseArea1
             anchors.fill: parent
+            onClicked: markPage.pop()
         }
 
         Image {
@@ -286,6 +290,10 @@ Rectangle {
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
         }
+    }
+    Component{
+        id:scoreOfEach
+        ScoreWithStudent{}
     }
 
 }

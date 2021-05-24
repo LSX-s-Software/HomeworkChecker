@@ -34,12 +34,12 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 120
         anchors.horizontalCenter: parent.horizontalCenter
-        
+
         MouseArea {
             id: mouseArea3
             anchors.fill: parent
         }
-        
+
         TextArea {
             id: textArea
             text: qsTr("Text Area")
@@ -81,6 +81,8 @@ Rectangle {
         MouseArea {
             id: mouseArea2
             anchors.fill: parent
+            onClicked:
+                taskPage.pop()
         }
     }
 
@@ -128,17 +130,35 @@ Rectangle {
 
         MouseArea {
             id: mouseArea
-            x: -374
-            y: 4
             anchors.fill: parent
+            onClicked:
+                taskPage.push(mark)
         }
     }
+
+    Component{
+        id:mark
+        MarkHomework{}
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 /*##^## Designer {
     D{i:1;anchors_y:60}D{i:3;anchors_height:100;anchors_width:100}D{i:7;anchors_height:100;anchors_width:100}
 D{i:10;anchors_height:100;anchors_width:100}D{i:13;anchors_height:100;anchors_width:100}
+D{i:14;anchors_x:"-374";anchors_y:4}
 }
  ##^##*/
