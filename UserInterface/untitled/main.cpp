@@ -1,6 +1,8 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
+//自定义CPP模块头文件
+#include "generalviewcontroller.h"
 
 int main(int argc, char *argv[])
 {
@@ -9,6 +11,9 @@ int main(int argc, char *argv[])
 #endif
 
     QGuiApplication app(argc, argv);
+
+    //自定义CPP模块
+    qmlRegisterType<GeneralViewController>("GeneralVC",1,0,"GeneralVC");
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));

@@ -12,11 +12,8 @@ Rectangle {
     Component{
         id: studentListItem
         Rectangle {
-            id: rectangle1
-            x: 32
-            y: 248
-            width: 983
-            height: 61
+            width: listView.width
+            height: 62
             color: "#f5f5f5"
 
             Text {
@@ -24,8 +21,7 @@ Rectangle {
                 text: name+"("+number+")"
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.left: parent.left
-                anchors.leftMargin: 0
-                font.bold: true
+                anchors.leftMargin: 16
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: 28
             }
@@ -35,32 +31,27 @@ Rectangle {
                 anchors.fill: parent
                 onClicked:
                     markPage.push(scoreOfEach)
-
             }
 
             Text {
                 id: scoreOfStudent
-                x: 938
-                y: 17
                 width: 45
                 text: score
                 anchors.right: parent.right
                 anchors.rightMargin: 45
                 horizontalAlignment: Text.AlignLeft
-
                 anchors.verticalCenter: parent.verticalCenter
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: 28
+                color: "#707070"
             }
 
             Image {
-                id: image
-                x: 974
-                y: 17
                 width: 9
                 height: 28
                 anchors.rightMargin: 20
                 anchors.right: parent.right
+                anchors.verticalCenter: parent.verticalCenter
                 fillMode: Image.PreserveAspectFit
                 source: "images/more.png"
             }
@@ -85,6 +76,7 @@ Rectangle {
             text: qsTr("返回")
             font.pixelSize: 28
             verticalAlignment: Text.AlignVCenter
+            font.family: "Source Han Sans CN"
             anchors.fill: parent
             horizontalAlignment: Text.AlignRight
         }
@@ -111,6 +103,8 @@ Rectangle {
         height: 40
         text: qsTr("2019级计卓")
         verticalAlignment: Text.AlignVCenter
+        font.family: "Source Han Sans CN"
+        font.weight: Font.Medium
         horizontalAlignment: Text.AlignHCenter
         anchors.top: parent.top
         anchors.topMargin: 40
@@ -133,6 +127,7 @@ Rectangle {
             text: qsTr("导出成绩")
             font.bold: true
             verticalAlignment: Text.AlignVCenter
+            font.family: "Source Han Sans CN"
             horizontalAlignment: Text.AlignHCenter
             anchors.fill: parent
             font.pixelSize: 20
@@ -146,11 +141,13 @@ Rectangle {
 
     Rectangle {
         id: averageScore
-        x: 89
-        y: 112
         width: 60
         height: 72
         color: "#ffffff"
+        anchors.left: parent.left
+        anchors.top: title.bottom
+        anchors.leftMargin: 100
+        anchors.topMargin: 24
 
         Text {
             id: average
@@ -158,6 +155,7 @@ Rectangle {
             text: qsTr("89")
             anchors.horizontalCenter: parent.horizontalCenter
             verticalAlignment: Text.AlignVCenter
+            font.family: "Source Han Sans CN"
             horizontalAlignment: Text.AlignHCenter
             anchors.top: parent.top
             anchors.topMargin: 0
@@ -171,6 +169,7 @@ Rectangle {
             text: qsTr("平均分")
             anchors.bottom: parent.bottom
             verticalAlignment: Text.AlignVCenter
+            font.family: "Source Han Sans CN"
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: 20
         }
@@ -178,11 +177,12 @@ Rectangle {
 
     Rectangle {
         id: highestScore
-        x: 489
-        y: 106
         width: 60
         height: 72
         color: "#ffffff"
+        anchors.top: title.bottom
+        anchors.topMargin: 24
+        anchors.horizontalCenter: parent.horizontalCenter
         Text {
             id: highest
             height: 40
@@ -191,6 +191,7 @@ Rectangle {
             font.pixelSize: 40
             anchors.horizontalCenter: parent.horizontalCenter
             verticalAlignment: Text.AlignVCenter
+            font.family: "Source Han Sans CN"
             horizontalAlignment: Text.AlignHCenter
             anchors.top: parent.top
         }
@@ -203,6 +204,7 @@ Rectangle {
             font.pixelSize: 20
             anchors.bottom: parent.bottom
             verticalAlignment: Text.AlignVCenter
+            font.family: "Source Han Sans CN"
             horizontalAlignment: Text.AlignHCenter
         }
     }
@@ -264,10 +266,13 @@ Rectangle {
     Rectangle {
         id: lowestScore
         x: 889
-        y: 109
         width: 60
         height: 72
         color: "#ffffff"
+        anchors.right: parent.right
+        anchors.top: title.bottom
+        anchors.rightMargin: 100
+        anchors.topMargin: 24
         Text {
             id: lowest
             height: 40
@@ -276,6 +281,7 @@ Rectangle {
             font.pixelSize: 40
             anchors.horizontalCenter: parent.horizontalCenter
             verticalAlignment: Text.AlignVCenter
+            font.family: "Source Han Sans CN"
             horizontalAlignment: Text.AlignHCenter
             anchors.top: parent.top
         }
@@ -288,6 +294,7 @@ Rectangle {
             font.pixelSize: 20
             anchors.bottom: parent.bottom
             verticalAlignment: Text.AlignVCenter
+            font.family: "Source Han Sans CN"
             horizontalAlignment: Text.AlignHCenter
         }
     }
@@ -299,3 +306,9 @@ Rectangle {
 }
 
 
+
+/*##^##
+Designer {
+    D{i:0;formeditorZoom:0.66}D{i:15}D{i:18}D{i:30}
+}
+##^##*/

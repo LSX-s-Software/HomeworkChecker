@@ -6,167 +6,168 @@ StackView {
     height: 768
     clip: true
     id: markPage
-    initialItem:Rectangle {
-
-     y: -1
-    width: markPage.width
-    height: markPage.height
-    color: "#ffffff"
-    Text {
-        id: element16
-        x: 443
-        y: 32
-        width: 160
-        height: 53
-        text: qsTr("选择班级")
-        horizontalAlignment: Text.AlignHCenter
-        font.pointSize: 40
-        verticalAlignment: Text.AlignVCenter
-        font.family: "Source Han Sans CN"
-    }
-
-    Rectangle {
-        id: rectangle6
-        x: 32
-        y: 113
-        width: 54
-        height: 43
+    initialItem: Rectangle {
+        width: markPage.width
+        height: markPage.height
         color: "#ffffff"
-        Text {
-            id: element17
-            text: "当前"
-            topPadding: -3
-            font.family: "Source Han Sans CN"
-            anchors.fill: parent
-            horizontalAlignment: Text.AlignHCenter
-            font.pointSize: 32
-            verticalAlignment: Text.AlignVCenter
-        }
-
-        MouseArea {
-            id: mouseArea8
-            anchors.fill: parent
-        }
-    }
-
-    Rectangle {
-        id: rectangle9
-        x: 128
-        y: 113
-        width: 54
-        height: 43
-        color: "#ffffff"
-        Text {
-            id: element18
-            text: "过去"
-            topPadding: -3
-            anchors.fill: parent
-            horizontalAlignment: Text.AlignHCenter
-            font.pointSize: 32
-            verticalAlignment: Text.AlignVCenter
-            font.family: "Source Han Sans CN"
-        }
-
-        MouseArea {
-            id: mouseArea9
-            anchors.fill: parent
-        }
-    }
-
-ListView {
-    id: listView
-    spacing: 12
-    anchors.right: parent.right
-    anchors.rightMargin: 32
-    anchors.left: parent.left
-    anchors.leftMargin: 32
-    anchors.bottom: parent.bottom
-    anchors.top: rectangle6.bottom
-    anchors.topMargin: 24
-    delegate: classListItem
-
-    model: ListModel {
-        ListElement {
-            name: "2020级计卓"
-            time:"周五下午"
-            address:"3区1-507"
-            number:"30"
-        }
-
-        ListElement {
-            name: "2020级计卓"
-            time:"周五下午"
-            address:"3区1-507"
-            number:"30"
-        }
-
-        ListElement {
-            name: "2020级计卓"
-            time:"周五下午"
-            address:"3区1-507"
-            number:"30"
-        }
-        ListElement {
-            name: "2020级计卓"
-            time:"周五下午"
-            address:"3区1-507"
-            number:"30"
-        }
-    }
-}
-
-Component{
-    id: classListItem
-
-    Rectangle {
-        x: 32
-        y: 176
-        width: 982
-        height: 80
-        color: "#f5f5f5"
-        radius: 10
-        Text {
-            id: nameOfClass
-            x: 16
-            y: 9
-            height: 37
-            text: name
-            horizontalAlignment: Text.AlignHCenter
-            font.pointSize: 28
-            verticalAlignment: Text.AlignVCenter
-            font.family: "Source Han Sans CN"
-        }
 
         Text {
-            id: detail
-            x: 16
-            y: 44
-            height: 27
-            color: "#8f8f8f"
-            text: time+"·"+address+"·"+number+"人"
+            id: title
+            width: 240
+            height: 53
+            text: qsTr("选择班级")
+            anchors.top: parent.top
             horizontalAlignment: Text.AlignHCenter
-            font.pointSize: 20
             verticalAlignment: Text.AlignVCenter
+            anchors.topMargin: 32
             font.family: "Source Han Sans CN"
+            font.pointSize: 40
+            font.weight: Font.Medium
+            anchors.horizontalCenter: parent.horizontalCenter
         }
 
-        MouseArea {
-            id: mouseArea10
-            anchors.fill: parent
-            onClicked: markPage.push(scoreOfClass)
-        }
-    }
-}
+        Rectangle {
+            id: rectangle7
+            width: 64
+            height: 43
+            color: "#ffffff"
+            anchors.left: parent.left
+            anchors.top: title.bottom
+            anchors.topMargin: 28
+            anchors.leftMargin: 32
+            Text {
+                id: element4
+                color: "#0098f7"
+                text: qsTr("当前")
+                anchors.fill: parent
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                font.family: "Source Han Sans CN"
+                font.pointSize: 32
+                font.weight: Font.Medium
+            }
 
+            MouseArea {
+                id: mouseArea4
+                anchors.fill: parent
+            }
+        }
+
+        Rectangle {
+            id: rectangle8
+            width: 64
+            height: 43
+            color: "#ffffff"
+            anchors.left: rectangle7.right
+            anchors.top: title.bottom
+            anchors.topMargin: 28
+            anchors.leftMargin: 32
+            Text {
+                id: element5
+                color: "#707070"
+                text: qsTr("过去")
+                anchors.fill: parent
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                font.family: "Source Han Sans CN"
+                font.pointSize: 32
+                font.weight: Font.Medium
+            }
+
+            MouseArea {
+                id: mouseArea5
+                anchors.fill: parent
+            }
+        }
+
+        Component {
+            id: classListItem
+            Rectangle {
+                id: rectangle
+                width: listView.width
+                height: 80
+                color: "#f5f5f5"
+                radius: 10
+
+                Text {
+                    id: element12
+                    x: 16
+                    y: 9
+                    height: 37
+                    text: name
+                    verticalAlignment: Text.AlignVCenter
+                    font.family: "Source Han Sans CN"
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pointSize: 28
+                }
+
+                Text {
+                    id: element13
+                    x: 16
+                    y: 44
+                    height: 27
+                    color: "#8f8f8f"
+                    text: time + "·" + location + "·" + count +"人"
+                    verticalAlignment: Text.AlignVCenter
+                    font.family: "Source Han Sans CN"
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pointSize: 20
+                }
+
+                MouseArea {
+                    id: mouseArea6
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    onClicked: {
+                        markPage.push(scoreOfClass)
+                    }
+                }
+            }
+        }
+
+        ListView {
+            id: listView
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.top: rectangle7.bottom
+            anchors.bottom: parent.bottom
+            anchors.topMargin: 24
+            spacing: 12
+            anchors.bottomMargin: 0
+            anchors.leftMargin: 32
+            anchors.rightMargin: 32
+            clip: true
+            delegate: classListItem
+            model: ListModel {
+                ListElement {
+                    name: "2020级计卓"
+                    time: "周五下午"
+                    location: "3区1-507"
+                    count: 30
+                }
+                ListElement {
+                    name: "2020级计卓"
+                    time: "周五下午"
+                    location: "3区1-507"
+                    count: 30
+                }
+                ListElement {
+                    name: "2020级计卓"
+                    time: "周五下午"
+                    location: "3区1-507"
+                    count: 30
+                }
+            }
+        }
     }
     Component{
         id:scoreOfClass
-        ScoreWithClass{}
+        ScoreWithClass {}
     }
 
 }
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.75}
+    D{i:0;formeditorZoom:0.75;height:768;width:1046}
 }
 ##^##*/

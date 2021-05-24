@@ -1,11 +1,21 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
+import GeneralVC 1.0
 
 Rectangle {
     id: generalPage
     width: 1046
     height: 768
     clip: false
+
+    GeneralVC {
+        id: vc
+
+//        property string correctedCount: "Loading"
+//        property string submittedCount: "Loading"
+//        property string correctedProg: "Loading"
+    }
+
     Rectangle {
         id: avatarMask
         width: 200
@@ -50,11 +60,33 @@ Rectangle {
             fillMode: Image.PreserveAspectFit
         }
 
+        Text {
+            id: correctNum
+            x: 36
+            y: 92
+            text: vc.correctedCount
+            anchors.bottom: element8.top
+            font.pixelSize: 40
+            anchors.horizontalCenter: element8.horizontalCenter
+            anchors.bottomMargin: 8
+            font.family: "Source Han Sans CN"
+        }
+
+        Text {
+            id: submitNum
+            x: 112
+            y: 91
+            text: vc.submittedCount
+            anchors.bottom: element9.top
+            font.pixelSize: 40
+            font.family: "Source Han Sans CN"
+            anchors.bottomMargin: 8
+            anchors.horizontalCenter: element9.horizontalCenter
+        }
+
         MouseArea {
             id: mouseArea
             anchors.fill: parent
-
-
         }
 
         Text {
@@ -105,7 +137,6 @@ Rectangle {
             font.family: "Source Han Sans CN"
             font.pointSize: 20
         }
-
     }
 
     Rectangle {
@@ -167,12 +198,24 @@ Rectangle {
             anchors.topMargin: 20
             anchors.leftMargin: 20
         }
+
+        Text {
+            id: correctNum2
+            x: 36
+            y: 92
+            text: vc.correctedProg
+            anchors.bottom: element11.top
+            font.pixelSize: 40
+            font.family: "Source Han Sans CN"
+            anchors.bottomMargin: 8
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
     }
 
     Text {
-        id: element6
+        id: greetings
         height: 48
-        text: "早上好！张三老师"
+        text: "早上好！" + vc.userName + "老师"
         anchors.top: avatarMask.bottom
         verticalAlignment: Text.AlignVCenter
         anchors.topMargin: 32
@@ -188,6 +231,6 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.75}
+    D{i:0;formeditorZoom:0.75}D{i:6}D{i:16}
 }
 ##^##*/

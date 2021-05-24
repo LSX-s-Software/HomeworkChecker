@@ -13,8 +13,6 @@ Rectangle {
         id: homeworkListItem
         Rectangle {
             id: rectangle1
-            x: 32
-            y: 248
             width: 983
             height: 61
             color: "#f5f5f5"
@@ -24,8 +22,7 @@ Rectangle {
                 text: "第"+number+"章作业"
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.left: parent.left
-                anchors.leftMargin: 0
-                font.bold: true
+                anchors.leftMargin: 16
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: 28
             }
@@ -37,14 +34,11 @@ Rectangle {
 
             Text {
                 id: scoreOfStudent
-                x: 938
-                y: 17
                 width: 45
                 text: score
                 anchors.right: parent.right
                 anchors.rightMargin: 45
                 horizontalAlignment: Text.AlignLeft
-
                 anchors.verticalCenter: parent.verticalCenter
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: 28
@@ -52,12 +46,11 @@ Rectangle {
 
             Image {
                 id: image
-                x: 974
-                y: 17
                 width: 9
                 height: 28
                 anchors.rightMargin: 20
                 anchors.right: parent.right
+                anchors.verticalCenter: parent.verticalCenter
                 fillMode: Image.PreserveAspectFit
                 source: "images/more.png"
             }
@@ -107,8 +100,10 @@ Rectangle {
         id: element
         height: 40
         text: qsTr("李四的各次成绩")
-        font.bold: true
         verticalAlignment: Text.AlignVCenter
+        font.family: "Source Han Sans CN"
+        font.weight: Font.Medium
+        font.bold: false
         horizontalAlignment: Text.AlignHCenter
         anchors.top: parent.top
         anchors.topMargin: 40
@@ -118,13 +113,15 @@ Rectangle {
 
     ListView {
         id: listView
-        x: 0
-        width: 982
-        height: 487
-        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: element.bottom
+        anchors.bottom: parent.bottom
+        anchors.rightMargin: 32
+        anchors.leftMargin: 32
+        anchors.bottomMargin: 0
         clip: true
-        anchors.topMargin: 120
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.topMargin: 40
         delegate: homeworkListItem
         model: ListModel {
             ListElement {
@@ -152,3 +149,9 @@ Rectangle {
 }
 
 
+
+/*##^##
+Designer {
+    D{i:0;formeditorZoom:0.66}D{i:12}
+}
+##^##*/

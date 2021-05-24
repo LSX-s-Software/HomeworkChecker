@@ -105,7 +105,7 @@ StackView {
             id: homeworkListItem
 
             Rectangle {
-                width: 982
+                width: listView.width
                 height: 80
                 color: "#f5f5f5"
                 radius: 10
