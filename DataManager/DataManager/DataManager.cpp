@@ -91,7 +91,7 @@ DMErrorType User::setName(std::string name) {
 
 //MARK: - Student类实现
 
-Student::Student(int id) throw(DMError) {
+Student::Student(int id) noexcept(false) {
     if (DBManager::connectDatabase()) {
         if (!DBManager::select("students", "*", "id=" + std::to_string(id))) {
             if (DBManager::numRows() > 0) {
@@ -117,7 +117,7 @@ Student::Student(int id) throw(DMError) {
     }
 }
 
-Student::Student(std::string qq) throw(DMError) {
+Student::Student(std::string qq) noexcept(false) {
     if (DBManager::connectDatabase()) {
         if (!DBManager::select("students", "*", "qq='" + qq + "'")) {
             if (DBManager::numRows() > 0) {
@@ -193,7 +193,7 @@ DMErrorType Student::setName(std::string newName) {
     }
 }
 
-Student::Student(std::string schoolNum, std::string qq, std::string name) throw(DMError) {
+Student::Student(std::string schoolNum, std::string qq, std::string name) noexcept(false) {
     name = DBManager::sqlInjectionCheck(name);
     if (DBManager::connectDatabase()) {
         int code = DBManager::select("students", "id", "school_num=" + schoolNum);
@@ -231,7 +231,7 @@ Student::Student(std::string schoolNum, std::string qq, std::string name) throw(
         throw DMError(CONNECTION_ERROR);
 }
 
-std::vector<Student> getStudentList(long classId) throw(DMError) {
+std::vector<Student> getStudentList(long classId) noexcept(false) {
     std::vector<Student> result;
     if (DBManager::connectDatabase()) {
         if (!DBManager::select("students", "*", "class_id=" + std::to_string(classId) + "")) {
@@ -254,7 +254,7 @@ std::vector<Student> getStudentList(long classId) throw(DMError) {
 
 //MARK: - Class类实现
 
-Class::Class(long id) throw(DMError) {
+Class::Class(long id) noexcept(false) {
     if (id <= 0)
         throw DMError(INVALID_ARGUMENT);
     if (DBManager::connectDatabase()) {
@@ -282,7 +282,7 @@ Class::Class(long id) throw(DMError) {
         throw DMError(CONNECTION_ERROR);
 }
 
-Class::Class(std::string inviteCode) throw(DMError) {
+Class::Class(std::string inviteCode) noexcept(false) {
     if (inviteCode.length() != 4)
         throw DMError(INVALID_ARGUMENT);
     if (DBManager::connectDatabase()) {
@@ -408,7 +408,7 @@ DMErrorType Class::endClass() {
     }
 }
 
-Class::Class(int teacherId, std::string name, std::string location, std::string time) throw(DMError) {
+Class::Class(int teacherId, std::string name, std::string location, std::string time) noexcept(false) {
     name = DBManager::sqlInjectionCheck(name);
     location = DBManager::sqlInjectionCheck(location);
     time = DBManager::sqlInjectionCheck(time);
@@ -446,7 +446,7 @@ Class::Class(int teacherId, std::string name, std::string location, std::string 
         throw DMError(CONNECTION_ERROR);
 }
 
-std::vector<Class> getClassList(int teacherId) throw(DMError) {
+std::vector<Class> getClassList(int teacherId) noexcept(false) {
     if (teacherId <= 0)
         throw DMError(INVALID_ARGUMENT);
     std::vector<Class> result;
@@ -495,7 +495,7 @@ DMErrorType deleteClass(long id) {
 
 //MARK: - Homework类实现
 
-Homework::Homework(long id) throw(DMError) {
+Homework::Homework(long id) noexcept(false) {
     if (id <= 0)
         throw DMError(INVALID_ARGUMENT);
     if (DBManager::connectDatabase()) {
@@ -523,7 +523,7 @@ Homework::Homework(long id) throw(DMError) {
         throw DMError(CONNECTION_ERROR);
 }
 
-Homework::Homework(int studentId, long assignmentId) throw(DMError) {
+Homework::Homework(int studentId, long assignmentId) noexcept(false) {
     DMErrorType error = SUCCESS;
     if (DBManager::connectDatabase()) {
         int code = DBManager::select("homework", "id", "student_id=" + std::to_string(studentId) + " AND assignment_id=" + std::to_string(assignmentId));
@@ -668,7 +668,7 @@ DMErrorType Homework::review(unsigned short score, std::string comments) {
         return CONNECTION_ERROR;
 }
 
-std::vector<Homework> getHomeworkListByAsmId(long assignmentId) throw(DMError) {
+std::vector<Homework> getHomeworkListByAsmId(long assignmentId) noexcept(false) {
     if (assignmentId <= 0)
         throw DMError(INVALID_ARGUMENT);
     std::vector<Homework> result;
@@ -712,7 +712,7 @@ DMErrorType deleteHomework(long id) {
 
 //MARK: - Assignment类实现
 
-Assignment::Assignment(unsigned int teacherId, std::string title, std::string description, long deadline, unsigned long classId) throw(DMError) {
+Assignment::Assignment(unsigned int teacherId, std::string title, std::string description, long deadline, unsigned long classId) noexcept(false) {
     title = DBManager::sqlInjectionCheck(title);
     description = DBManager::sqlInjectionCheck(description);
     DMErrorType error = SUCCESS;
@@ -735,7 +735,7 @@ Assignment::Assignment(unsigned int teacherId, std::string title, std::string de
     }
 }
 
-Assignment::Assignment(unsigned long id) throw(DMError) {
+Assignment::Assignment(unsigned long id) noexcept(false) {
     if (id <= 0)
         throw DMError(INVALID_ARGUMENT);
     if (DBManager::connectDatabase()) {
@@ -867,7 +867,7 @@ DMErrorType deleteAssignment(unsigned long id, bool (* handler)(std::vector<Home
     }
 }
 
-std::vector<CompleteHomeworkList> getHomeworkListByStuId(int studentId, long classId) throw(DMError) {
+std::vector<CompleteHomeworkList> getHomeworkListByStuId(int studentId, long classId) noexcept(false) {
     if (studentId <= 0 || classId <= 0)
         throw DMError(INVALID_ARGUMENT);
     std::vector<CompleteHomeworkList> result;

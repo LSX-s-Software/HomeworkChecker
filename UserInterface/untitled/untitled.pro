@@ -23,5 +23,10 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+INCLUDEPATH += "../../DataManager/DataManager"
+INCLUDEPATH += "../../packages/mysql/include"
+
+LIBS += "../../packages/mysql/lib"
+
 HEADERS += \
     generalviewcontroller.h

@@ -62,15 +62,15 @@ public:
     }
     /// 获取学生
     /// @param id 学生ID
-    Student(int id) throw(DMError);
+    Student(int id) noexcept(false);
     /// 获取学生
     /// @param qq 学生ID
-    Student(std::string qq) throw(DMError);
+    Student(std::string qq) noexcept(false);
     /// 学生注册
     /// @param schoolNum 学号
     /// @param qq QQ号
     /// @param name 姓名
-    Student(std::string schoolNum, std::string qq, std::string name) throw(DMError);
+    Student(std::string schoolNum, std::string qq, std::string name) noexcept(false);
     
     bool isEmpty() {
         return id == -1;
@@ -105,7 +105,7 @@ public:
 
 /// 获取学生列表
 /// @param classId 班级ID
-std::vector<Student> getStudentList(long classId) throw(DMError);
+std::vector<Student> getStudentList(long classId) noexcept(false);
 
 //MARK: - Class类定义
 
@@ -138,16 +138,16 @@ public:
     }
     /// 获取班级
     /// @param id 班级ID
-    Class(long id) throw(DMError);
+    Class(long id) noexcept(false);
     /// 获取班级
     /// @param inviteCode 邀请码
-    Class(std::string inviteCode) throw(DMError);
+    Class(std::string inviteCode) noexcept(false);
     /// 新建班级
     /// @param teacherId 教师ID
     /// @param name 名称
     /// @param location 上课地点
     /// @param time 上课时间
-    Class(int teacherId, std::string name, std::string location, std::string time) throw(DMError);
+    Class(int teacherId, std::string name, std::string location, std::string time) noexcept(false);
     
     bool isEmpty() {
         return id == -1;
@@ -184,7 +184,7 @@ public:
 
 /// 获取班级列表
 /// @param teacherId 教师ID
-std::vector<Class> getClassList(int teacherId) throw(DMError);
+std::vector<Class> getClassList(int teacherId) noexcept(false);
 
 /// 删除班级
 /// @param id 班级ID
@@ -217,11 +217,11 @@ public:
     }
     /// 获取作业
     /// @param id 作业ID
-    Homework(long id) throw(DMError);
+    Homework(long id) noexcept(false);
     /// 创建作业提交记录
     /// @param studentId 学生ID
     /// @param assignmentId 布置的作业ID
-    Homework(int studentId, long assignmentId) throw(DMError);
+    Homework(int studentId, long assignmentId) noexcept(false);
     
     bool isEmpty() {
         return id == -1;
@@ -282,7 +282,7 @@ public:
 
 /// 按布置的作业ID来获取作业列表
 /// @param assignmentId 布置的作业ID
-std::vector<Homework> getHomeworkListByAsmId(long assignmentId) throw(DMError);
+std::vector<Homework> getHomeworkListByAsmId(long assignmentId) noexcept(false);
 
 /// 删除提交记录
 /// @param id 提交的作业ID
@@ -314,14 +314,14 @@ public:
     }
     /// 获取布置的作业
     /// @param id ID
-    Assignment(unsigned long id) throw(DMError);
+    Assignment(unsigned long id) noexcept(false);
     /// 创建作业
     /// @param teacherId 教师ID
     /// @param title 标题
     /// @param description 描述
     /// @param deadline 截止时间
     /// @param classId 班级ID
-    Assignment(unsigned int teacherId, std::string title, std::string description, long deadline, unsigned long classId) throw(DMError);
+    Assignment(unsigned int teacherId, std::string title, std::string description, long deadline, unsigned long classId) noexcept(false);
     
     bool isEmpty() {
         return id == 0;
@@ -359,7 +359,7 @@ public:
 
 /// 获取布置的作业列表
 /// @param teacherId 教师ID
-std::vector<Assignment> getAssignmentList(unsigned int teacherId) throw(DMError);
+std::vector<Assignment> getAssignmentList(unsigned int teacherId) noexcept(false);
 
 typedef struct {
     Assignment assignment;
@@ -369,7 +369,7 @@ typedef struct {
 /// 获取某个学生的作业列表
 /// @param studentId 学生ID
 /// @param classId 学生所在班级的ID（增加这一项是为了减少一次数据库的查询）
-std::vector<CompleteHomeworkList> getHomeworkListByStuId(int studentId, long classId) throw(DMError);
+std::vector<CompleteHomeworkList> getHomeworkListByStuId(int studentId, long classId) noexcept(false);
 
 /// 删除布置的作业，同时从数据库移除提交到该任务的所有作业记录
 /// @param id 布置的作业ID
