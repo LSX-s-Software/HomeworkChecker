@@ -93,6 +93,10 @@ int remove(std::string table, std::string conditions);
 /// INSERT、UPDATE、DELETE操作影响的行数
 unsigned long affectedRowCount();
 
+/// SQL注入检查
+/// @param str 要检查的字符串
+std::string sqlInjectionCheck(std::string str);
+
 }
 
 #endif /* DBManager_hpp */
