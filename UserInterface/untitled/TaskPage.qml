@@ -182,6 +182,7 @@ StackView {
             id: info
             InfoOfTask {}
         }
+
     }
 }
 

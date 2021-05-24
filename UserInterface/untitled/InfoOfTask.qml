@@ -1,6 +1,6 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
-import QtQuick.Layouts 1.15
+import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
 
 Rectangle {
@@ -11,6 +11,7 @@ Rectangle {
 
     //ComponentBegein
     Component{
+
         id: studentListItem
         Rectangle {
             id: rectangle1
@@ -35,6 +36,7 @@ Rectangle {
                 id: mouseArea
                 anchors.fill: parent
                 hoverEnabled: true
+
             }
 
             Text {
@@ -164,7 +166,7 @@ Rectangle {
             font.pointSize: 24
             anchors.top: parent.top
         }
-        anchors.top: element28.bottom
+       // anchors.top: element28.bottom
     }
 
     ProgressBar {
@@ -237,7 +239,7 @@ Rectangle {
             font.pointSize: 24
             anchors.top: parent.top
         }
-        anchors.top: element28.bottom
+       // anchors.top: element28.bottom
     }
 
     Rectangle {

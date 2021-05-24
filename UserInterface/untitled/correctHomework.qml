@@ -4,6 +4,7 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 
 
+
 Rectangle {
     id: correctHomework
     x: 0
@@ -26,7 +27,7 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: 40
         anchors.verticalCenter: parent.verticalCenter
-        
+
         TextArea {
             id: textArea
             text: qsTr("Text Area")
@@ -70,6 +71,9 @@ Rectangle {
         MouseArea {
             id: mouseArea
             anchors.fill: parent
+            onClicked: {
+                TaskPage.pop()
+            }
         }
 
         Image {
@@ -195,6 +199,8 @@ Rectangle {
         }
     }
 }
+
+
 
 
 

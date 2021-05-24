@@ -22,74 +22,6 @@ import QtQuick.Controls 2.12
         }
 
         Rectangle {
-            id: passwordEdit
-            x: 21
-            y: 182
-            width: 336
-            height: 50
-            color: "#f5f5f5"
-            radius: 10
-            anchors.horizontalCenterOffset: 12
-            Image {
-                id: image
-                y: 0
-                width: 30
-                height: 34
-                anchors.leftMargin: 10
-                fillMode: Image.PreserveAspectFit
-                anchors.verticalCenter: parent.verticalCenter
-                source: "images/email-1.png"
-                anchors.left: parent.left
-            }
-
-            TextInput {
-                id: textInput1
-                x: 46
-                width: 290
-                height: 20
-                text: qsTr("密码")
-                anchors.right: parent.right
-                font.pixelSize: 20
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            anchors.horizontalCenter: parent.horizontalCenter
-        }
-
-        Rectangle {
-            id: passwordConfirm
-            x: 16
-            y: 244
-            width: 336
-            height: 50
-            color: "#f5f5f5"
-            radius: 10
-            Image {
-                id: image1
-                y: 0
-                width: 30
-                height: 34
-                anchors.leftMargin: 10
-                fillMode: Image.PreserveAspectFit
-                anchors.verticalCenter: parent.verticalCenter
-                source: "images/email-1.png"
-                anchors.left: parent.left
-            }
-
-            TextInput {
-                id: textInput2
-                x: 46
-                width: 290
-                height: 20
-                text: qsTr("确认密码")
-                anchors.right: parent.right
-                font.pixelSize: 20
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.horizontalCenterOffset: 12
-        }
-
-        Rectangle {
             id: logInBtn
             y: 300
             width: 144
@@ -140,37 +72,132 @@ import QtQuick.Controls 2.12
         }
 
         Rectangle {
-            id: emailEdit1
-            x: 26
-            y: 120
-            width: 336
+            id: emailEdit
+            x: 2
             height: 50
             color: "#f5f5f5"
             radius: 10
-            anchors.horizontalCenterOffset: 12
+            anchors.topMargin: 40
+            anchors.left: parent.left
+            anchors.top: element.bottom
+            anchors.right: parent.right
+            Image {
+                id: image1
+                y: 0
+                width: 30
+                height: 34
+                source: "images/email.png"
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.left: parent.left
+                fillMode: Image.PreserveAspectFit
+                anchors.leftMargin: 10
+            }
+
+            TextField {
+                id: emailField
+                x: 46
+                width: 290
+                height: 24
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.right: parent.right
+                placeholderText: qsTr("邮箱")
+                font.pixelSize: 20
+                background: Rectangle {
+                    color: "#f5f5f5"
+                    border.width: 0
+                    anchors.fill: parent
+                }
+                font.family: "Source Han Sans CN"
+            }
+            anchors.leftMargin: 32
+            anchors.rightMargin: 32
+        }
+
+        Rectangle {
+            id: passswordEdit
+            x: -3
+            y: 4
+            height: 50
+            color: "#f5f5f5"
+            radius: 10
+            anchors.topMargin: 12
+            anchors.left: parent.left
+            anchors.rightMargin: 32
             Image {
                 id: image2
                 y: 0
                 width: 30
                 height: 34
-                anchors.leftMargin: 10
+                anchors.left: parent.left
+                source: "images/password.png"
                 fillMode: Image.PreserveAspectFit
                 anchors.verticalCenter: parent.verticalCenter
-                source: "images/at.png"
-                anchors.left: parent.left
+                anchors.leftMargin: 10
             }
 
-            TextInput {
-                id: textInput3
+            TextField {
+                id: passwordField
                 x: 46
                 width: 290
-                height: 20
-                text: qsTr("用于收发作业的邮箱")
+                height: 24
+                text: ""
+                font.family: "Source Han Sans CN"
+                background: Rectangle {
+                    color: "#f5f5f5"
+                    border.width: 0
+                    anchors.fill: parent
+                }
                 anchors.right: parent.right
-                font.pixelSize: 20
+                placeholderText: qsTr("密码")
                 anchors.verticalCenter: parent.verticalCenter
+                font.pixelSize: 20
             }
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.right: parent.right
+            anchors.top: emailEdit.bottom
+            anchors.leftMargin: 32
+        }
+
+        Rectangle {
+            id: passswordConfirm
+            x: -2
+            y: 7
+            height: 50
+            color: "#f5f5f5"
+            radius: 10
+            anchors.topMargin: 74
+            anchors.left: parent.left
+            anchors.rightMargin: 32
+            Image {
+                id: image3
+                y: 0
+                width: 30
+                height: 34
+                anchors.left: parent.left
+                source: "images/password.png"
+                fillMode: Image.PreserveAspectFit
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.leftMargin: 10
+            }
+
+            TextField {
+                id: passwordConfirm
+                x: 46
+                width: 290
+                height: 24
+                font.family: "Source Han Sans CN"
+                background: Rectangle {
+                    color: "#f5f5f5"
+                    border.width: 0
+                    anchors.fill: parent
+                }
+                anchors.right: parent.right
+                placeholderText: qsTr("确认密码")
+                anchors.verticalCenter: parent.verticalCenter
+                font.pixelSize: 20
+            }
+            anchors.right: parent.right
+            anchors.top: emailEdit.bottom
+            anchors.leftMargin: 32
         }
     }
 

@@ -13,7 +13,7 @@
         <file>images/person.png</file>
         <file>images/close.png</file>
         <file>images/student.png</file>
-        <file>correctHomework.qml</file>
+        <file>CorrectHomework.qml</file>
         <file>images/backBtn.png</file>
         <file>markHomework.qml</file>
         <file>detailsOfAddition.qml</file>
