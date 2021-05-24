@@ -312,3 +312,9 @@ void WebsocketClientForApp::sendHeartbeat()
 		Sleep(5000);
 	}
 }
+
+void WebsocketClientForApp::sendNewHomeworkNotification(long assignmentId)
+{
+	std::string msg = "{\"action\":\"send_notification\",\"type\":\"new_homework\",\"assignment_id\":\"" + std::to_string(assignmentId) + "\"}";
+	Send(msg);
+}

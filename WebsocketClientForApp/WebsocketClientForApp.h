@@ -156,8 +156,11 @@ public:
 	/// <param name="homeworkId">作业提交ID</param>
 	/// <param name="fileName">文件名(请确保有效)</param>
 	void getFile(long homeworkId,std::filesystem::path fileName);
-
-	void sendHeartbeat();
+	/// <summary>
+	/// 发送新作业提醒
+	/// </summary>
+	/// <param name="assignmentId">作业布置ID</param>
+	void sendNewHomeworkNotification(long assignmentId);
 
 private:
 
@@ -175,5 +178,8 @@ private:
 	void getFilePart(std::string msg);
 
 	std::thread m_SendHeartbeat;
-
+	/// <summary>
+	/// 发送心跳包
+	/// </summary>
+	void sendHeartbeat();
 };

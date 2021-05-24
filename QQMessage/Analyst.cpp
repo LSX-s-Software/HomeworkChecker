@@ -1043,3 +1043,21 @@ bool sendReview(long homeworkId)
 		return false;
 	}
 }
+
+void sendHomeworkNotification(long long assignmentId,int mode)
+{
+	auto assignment = DataManager::Assignment((unsigned long)assignmentId);
+	auto studentList = DataManager::getStudentList(assignment.getClassId());
+	for (auto& iter : studentList)
+	{
+		if (mode == 1)
+		{
+			std::string message = u8"您收到了新的作业  ";
+			message += (u8"【作业 " + std::to_string(assignmentId) + u8"】" + u8"\r\n");
+			message += (u8"【作业内容】\r\n" + assignment.getDescription() + u8"\r\n");
+			message += (u8"【截止时间】  " + TimeConvert(assignment.getDeadline()) + u8"\r\n");
+			PrivateMessageSender sender(atoll(iter.getQQ().c_str()), message);
+			sender.send();
+		}
+	}
+}

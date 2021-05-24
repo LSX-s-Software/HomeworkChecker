@@ -97,6 +97,15 @@ void WebsocketServer::OnMessage(server* s, WebsocketServer* pWebSocket, websocke
                     return;
                 }
             }
+            if (decode.at("action") == "send_notification")
+            {
+                if (decode.at("type") == "new_homework")
+                {
+                    long long assignmentId = std::atoll(std::string(decode.at("assignment_id")).c_str());
+                    sendHomeworkNotification(assignmentId, 1);
+                    return;
+                }
+            }
             if (decode.at("action") == "get_file")
             {
                 //Init

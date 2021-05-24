@@ -105,7 +105,7 @@ public:
 
 /// 获取学生列表
 /// @param classId 班级ID
-std::vector<Student> getStudentList(int classId) throw(DMError);
+std::vector<Student> getStudentList(long classId) throw(DMError);
 
 //MARK: - Class类定义
 

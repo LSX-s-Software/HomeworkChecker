@@ -164,3 +164,9 @@ void AnaFile(std::string name,std::string url, long long qq_id);
 /// <param name="homeworkId">提交ID</param>
 /// <return>通知成功状态</return>
 bool sendReview(long homeworkId);
+/// <summary>
+/// 发送作业通知
+/// </summary>
+/// <param name="assignmentId">布置作业ID</param>
+/// <param name="mode">模式，1：新增作业 所有人</param>
+void sendHomeworkNotification(long long assignmentId, int mode);

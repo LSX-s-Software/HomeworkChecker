@@ -15,6 +15,8 @@ int main()
 	//ws.sendReview(19);//发送评语+分数
 	//ws.getFile(19, "1.zip");//获取文件
 	//ws.getFile(19, "1.png");
-	Sleep(1000);
+	ws.sendNewHomeworkNotification(2);
+	while(true)
+		Sleep(1000);
 	ws.Close();//程序结束前关闭ws连接
 }
