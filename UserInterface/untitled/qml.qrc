@@ -11,5 +11,21 @@
         <file>images/progress@2x.png</file>
         <file>GeneralPage.qml</file>
         <file>images/person.png</file>
+        <file>images/close.png</file>
+        <file>images/student.png</file>
+        <file>correctHomework.qml</file>
+        <file>images/backBtn.png</file>
+        <file>markHomework.qml</file>
+        <file>detailsOfAddition.qml</file>
+        <file>arrangement.qml</file>
+        <file>images/more.png</file>
+        <file>scoreWithClass.qml</file>
+        <file>scoreWithStudent.qml</file>
+        <file>logInPage.qml</file>
+        <file>registerPage.qml</file>
+        <file>InfoOfClass.qml</file>
+        <file>images/email.png</file>
+        <file>images/password.png</file>
+        <file>InfoOfTask.qml</file>
     </qresource>
 </RCC>

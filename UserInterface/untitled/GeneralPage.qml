@@ -29,13 +29,13 @@ Rectangle {
 
     Rectangle {
         id: rectangle1
-        x: 173
-        y: 533
         width: 300
         height: 185
         color: "#F5F5F5"
         radius: 10
         anchors.bottom: parent.bottom
+        anchors.horizontalCenterOffset: -200
+        anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottomMargin: 50
 
         Image {
@@ -108,13 +108,13 @@ Rectangle {
 
     Rectangle {
         id: rectangle2
-        x: 573
-        y: 533
         width: 300
         height: 185
         color: "#F5F5F5"
         radius: 10
         anchors.bottom: parent.bottom
+        anchors.horizontalCenterOffset: 200
+        anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottomMargin: 50
 
         MouseArea {
@@ -184,6 +184,6 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.75}D{i:4}D{i:6}D{i:11}D{i:13}D{i:14}
+    D{i:0;formeditorZoom:0.75}
 }
 ##^##*/
