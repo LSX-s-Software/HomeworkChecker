@@ -18,6 +18,7 @@
 #include <locale>
 #include <codecvt>
 #include <filesystem>
+#include <thread>
 
 typedef websocketpp::client<websocketpp::config::asio_client> client;
 
@@ -156,7 +157,11 @@ public:
 	/// <param name="fileName">文件名(请确保有效)</param>
 	void getFile(long homeworkId,std::filesystem::path fileName);
 
+	void sendHeartbeat();
+
 private:
+
+	bool enableSendHeartbeat;
 
 	connection_metadata_app::ptr m_ConnectionMetadataPtr;
 	client m_WebsocketClient;
@@ -168,4 +173,7 @@ private:
 	OnMessageFunc m_MessageFunc;
 
 	void getFilePart(std::string msg);
+
+	std::thread m_SendHeartbeat;
+
 };

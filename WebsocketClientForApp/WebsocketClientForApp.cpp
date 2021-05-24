@@ -1,11 +1,14 @@
 #include "WebsocketClientForApp.h"
 #include <fstream>
 #include <json.hpp>
+#include <thread>
+
 
 bool completeFileTransfer = false;//捕获是否下载完成
 
 WebsocketClientForApp::WebsocketClientForApp()
 {
+	enableSendHeartbeat = false;
 	m_WebsocketClient.clear_access_channels(websocketpp::log::alevel::all);  // 开启全部接入日志级别
 	m_WebsocketClient.clear_error_channels(websocketpp::log::elevel::all);   // 开启全部错误日志级别
 
@@ -24,7 +27,7 @@ WebsocketClientForApp::WebsocketClientForApp()
 WebsocketClientForApp::~WebsocketClientForApp()
 {
 	m_WebsocketClient.stop_perpetual();
-
+	enableSendHeartbeat = false;
 	if (m_ConnectionMetadataPtr != nullptr && m_ConnectionMetadataPtr->get_status() == "Open")
 	{
 		websocketpp::lib::error_code ec;
@@ -34,8 +37,9 @@ WebsocketClientForApp::~WebsocketClientForApp()
 			std::cout << "> Error initiating close: " << ec.message() << std::endl;
 		}
 	}
-
+	m_SendHeartbeat.join();
 	m_Thread->join();
+	
 }
 
 bool WebsocketClientForApp::Connect(std::string const& url)
@@ -118,6 +122,9 @@ bool WebsocketClientForApp::Connect(std::string const& url)
 	// 注意，不能在Websocket连接完成之后马上就发送消息，不然会出现Invalid State的错误，
 	// 导致消息发送不成功，所以在连接成功之后，主线程休眠1秒
 	std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+
+	enableSendHeartbeat = true;
+	m_SendHeartbeat = std::thread(&WebsocketClientForApp::sendHeartbeat,this);
 
 	return true;
 }
@@ -293,5 +300,15 @@ void WebsocketClientForApp::getFile(long homeworkId, std::filesystem::path fileN
 			std::cout << "file ok" << std::endl;
 			break;
 		}
+	}
+}
+
+void WebsocketClientForApp::sendHeartbeat()
+{
+	while (true&&enableSendHeartbeat)
+	{
+		std::string msg = "{\"action\":\"heartbeat\",\"time\":\"" + std::to_string(std::time(0)) + "\"}";
+		Send(msg);
+		Sleep(5000);
 	}
 }

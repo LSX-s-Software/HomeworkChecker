@@ -75,7 +75,11 @@ void WebsocketServer::OnMessage(server* s, WebsocketServer* pWebSocket, websocke
         auto decode = nlohmann::json::parse(message);//解析json
         if (decode.contains("action"))//判断存在action
         {
-            if (decode.at("action") == "heartbeat") return; //收到心跳包
+            if (decode.at("action") == "heartbeat") //收到心跳包
+            {
+                std::cerr << "Get Heartbeat Package!" << std::endl;
+                return;
+            }
             if (decode.at("action") == "send_review") //发送review
             {
                 std::string homeworkId_str = decode.at("homework_id");
@@ -169,7 +173,6 @@ void WebsocketServer::start(int port)
         // Start the ASIO io_service run loop
         //echo_server.run();
         m_thread = websocketpp::lib::make_shared<websocketpp::lib::thread>(&server::run, &echo_server);
-        //TODO: 多线程 发送心跳包
     }
     catch (websocketpp::exception const& e)
     {
