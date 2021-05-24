@@ -36,6 +36,8 @@ Rectangle {
                 id: mouseArea
                 anchors.fill: parent
                 hoverEnabled: true
+                onClicked:
+                    taskPage.push(correctHomework)
 
             }
 
@@ -306,7 +308,11 @@ Rectangle {
         anchors.top: parent.top
     }
 
-
+    Component
+    {
+        id:correctHomework
+        CorrectHomework{}
+    }
 
 
 

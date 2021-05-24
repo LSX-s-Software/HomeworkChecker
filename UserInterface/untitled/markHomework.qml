@@ -60,6 +60,8 @@ Rectangle {
         MouseArea {
             id: mouseArea
             anchors.fill: parent
+            onClicked:
+                taskPage.pop()
         }
 
         Image {

@@ -53,6 +53,8 @@ Rectangle {
         MouseArea {
             id: mouseArea
             anchors.fill: parent
+
+
         }
 
         Text {
@@ -180,6 +182,8 @@ Rectangle {
         horizontalAlignment: Text.AlignHCenter
         font.pointSize: 36
     }
+
+
 }
 
 /*##^##

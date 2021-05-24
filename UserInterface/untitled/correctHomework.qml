@@ -72,7 +72,7 @@ Rectangle {
             id: mouseArea
             anchors.fill: parent
             onClicked: {
-                TaskPage.pop()
+                taskPage.pop()
             }
         }
 
@@ -120,6 +120,8 @@ Rectangle {
         MouseArea {
             id: mouseArea1
             anchors.fill: parent
+            onClicked:
+                taskPage.push(detailOfAddition)
         }
     }
 
@@ -196,9 +198,27 @@ Rectangle {
         MouseArea {
             id: mouseArea4
             anchors.fill: parent
+            onClicked:
+                taskPage.push(mark)
         }
     }
+
+
+    Component{
+        id:detailOfAddition
+        DetailsOfAddition{}
+    }
+    Component{
+        id:mark
+        MarkHomework{}
+    }
 }
+
+
+
+
+
+
 
 
 
