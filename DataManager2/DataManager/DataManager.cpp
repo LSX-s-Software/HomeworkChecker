@@ -817,7 +817,7 @@ DMErrorType Assignment::setDeadline(long time) {
     }
 }
 
-std::vector<Assignment> getAssignmentList(unsigned int teacherId) noexcept(false) {
+std::vector<Assignment> getAssignmentList(unsigned int teacherId) throw(DataManager::DMError) {
     std::vector<Assignment> result;
     if (teacherId > 0 && DBManager::connectDatabase()) {
         if (!DBManager::select("assignments", "*", "teacher_id=" + std::to_string(teacherId))) {

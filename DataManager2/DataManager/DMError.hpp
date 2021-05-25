@@ -7,7 +7,6 @@
 
 #ifndef DMError_hpp
 #define DMError_hpp
-#pragma GCC visibility push(default)
 
 #include <exception>
 #include <string>
@@ -192,5 +191,4 @@ namespace DataManager {
 
 }
 
-#pragma GCC visibility pop
 #endif /* DMError_hpp */

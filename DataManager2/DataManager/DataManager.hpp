@@ -7,7 +7,6 @@
 
 #ifndef DataManager_hpp
 #define DataManager_hpp
-#pragma GCC visibility push(default)
 
 #include "DBManager.hpp"
 #include "DMError.hpp"
@@ -379,5 +378,4 @@ DMErrorType deleteAssignment(unsigned long id, bool (* handler)(std::vector<Home
 
 }
 
-#pragma GCC visibility pop
 #endif /* DataManager_hpp */

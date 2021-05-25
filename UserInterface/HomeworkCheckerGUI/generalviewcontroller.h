@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QString>
 #include "qqml.h"
+#include "DataManager.hpp"
 
 class GeneralViewController : public QObject
 {

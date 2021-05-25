@@ -7,7 +7,6 @@
 
 #ifndef DBManager_hpp
 #define DBManager_hpp
-#pragma GCC visibility push(default)
 
 #include <string>
 
@@ -99,7 +98,5 @@ unsigned long affectedRowCount();
 std::string sqlInjectionCheck(std::string str);
 
 }
-
-#pragma GCC visibility pop
 
 #endif /* DBManager_hpp */
