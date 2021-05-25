@@ -58,7 +58,7 @@
     <TargetName>HomeworkCheckerGUI</TargetName>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
     <IncludePath>..\DataManager\DataManager;..\WebsocketClientForApp;$(IncludePath)</IncludePath>
-    <LibraryPath>..\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>..\lib;..\packages\mysql\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>release\</OutDir>
@@ -157,7 +157,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>$(QTDIR)\lib\Qt5QmlModelsd.lib;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(QTDIR)\lib\Qt5QmlModelsd.lib;shell32.lib;D:\Work\HomeworkChecker\packages\mysql\lib\libmysql.lib;D:\Work\HomeworkChecker\lib\DataManager.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\openssl\lib;C:\Utils\my_sql\mysql-5.7.25-winx64\lib;C:\Utils\postgresql\pgsql\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
       <DataExecutionPrevention>true</DataExecutionPrevention>
@@ -193,6 +193,7 @@
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="account.cpp" />
     <ClCompile Include="generalviewcontroller.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -219,6 +220,9 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <CopyFileToFolders Include="..\..\packages\mysql\lib\libmysql.dll">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
     <None Include="Arrangement.qml" />
     <None Include="ClassPage.qml" />
     <None Include="CorrectHomework.qml" />
@@ -256,6 +260,9 @@
     <ProjectReference Include="..\..\WebsocketClientForApp\WebsocketClientForApp.vcxproj">
       <Project>{8a5442ae-b1db-4721-b64e-425f2451c12c}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="account.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
