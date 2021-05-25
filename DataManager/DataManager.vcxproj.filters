@@ -32,9 +32,6 @@
     <ClCompile Include="DataManager\DBManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="DataManager\test.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="DataManager\DMError.cpp">
       <Filter>源文件</Filter>
     </ClCompile>

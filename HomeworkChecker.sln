@@ -12,7 +12,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeworkCheckerServer", "Ho
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WebsocketClientForApp", "WebsocketClientForApp\WebsocketClientForApp.vcxproj", "{8A5442AE-B1DB-4721-B64E-425F2451C12C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UI", "UserInterface\untitled\untitled.vcxproj", "{6A7E8430-031E-339B-A24C-11861F9E2510}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeworkCheckerGUI", "UserInterface\HomeworkCheckerGUI\HomeworkCheckerGUI.vcxproj", "{DBD2E0D0-59B8-3727-A717-9BBD25CB13B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,12 +58,12 @@ Global
 		{8A5442AE-B1DB-4721-B64E-425F2451C12C}.Release|x64.Build.0 = Release|x64
 		{8A5442AE-B1DB-4721-B64E-425F2451C12C}.Release|x86.ActiveCfg = Release|Win32
 		{8A5442AE-B1DB-4721-B64E-425F2451C12C}.Release|x86.Build.0 = Release|Win32
-		{6A7E8430-031E-339B-A24C-11861F9E2510}.Debug|x64.ActiveCfg = Debug|x64
-		{6A7E8430-031E-339B-A24C-11861F9E2510}.Debug|x64.Build.0 = Debug|x64
-		{6A7E8430-031E-339B-A24C-11861F9E2510}.Debug|x86.ActiveCfg = Debug|x64
-		{6A7E8430-031E-339B-A24C-11861F9E2510}.Release|x64.ActiveCfg = Release|x64
-		{6A7E8430-031E-339B-A24C-11861F9E2510}.Release|x64.Build.0 = Release|x64
-		{6A7E8430-031E-339B-A24C-11861F9E2510}.Release|x86.ActiveCfg = Release|x64
+		{DBD2E0D0-59B8-3727-A717-9BBD25CB13B8}.Debug|x64.ActiveCfg = Debug|x64
+		{DBD2E0D0-59B8-3727-A717-9BBD25CB13B8}.Debug|x64.Build.0 = Debug|x64
+		{DBD2E0D0-59B8-3727-A717-9BBD25CB13B8}.Debug|x86.ActiveCfg = Debug|x64
+		{DBD2E0D0-59B8-3727-A717-9BBD25CB13B8}.Release|x64.ActiveCfg = Release|x64
+		{DBD2E0D0-59B8-3727-A717-9BBD25CB13B8}.Release|x64.Build.0 = Release|x64
+		{DBD2E0D0-59B8-3727-A717-9BBD25CB13B8}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

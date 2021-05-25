@@ -123,7 +123,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Program Files\MySQL\MySQL Server 8.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <DisableSpecificWarnings>4290;4819</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4290;4819;4068</DisableSpecificWarnings>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -162,7 +162,6 @@
     <ClCompile Include="DataManager\DataManager.cpp" />
     <ClCompile Include="DataManager\DBManager.cpp" />
     <ClCompile Include="DataManager\DMError.cpp" />
-    <ClCompile Include="DataManager\test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="..\packages\mysql\lib\libmysql.dll">
