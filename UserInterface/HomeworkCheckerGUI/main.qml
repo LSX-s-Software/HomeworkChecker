@@ -16,8 +16,20 @@ Window {
         modal: true
         width: 400
         height: 378
-        LogInPage { }
         visible: true
+        anchors.centerIn: Overlay.overlay
+        closePolicy: Popup.NoAutoClose
+        contentItem: LoginPage {
+            id: loginPage
+            anchors.centerIn: parent
+            anchors.fill: parent
+        }
+        background: Rectangle {
+            anchors.fill: parent
+            clip: true
+            radius: 20
+            color: "white"
+        }
     }
 
     Row {
@@ -346,8 +358,6 @@ Window {
         }
 
     }
-
-
 
 }
 

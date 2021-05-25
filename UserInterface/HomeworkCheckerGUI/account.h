@@ -18,7 +18,7 @@ public:
     void setName(const QString &name);
     
 private:
-    static DataManager::User user;
+    DataManager::User user;
 };
 
 #endif // ACCOUNT_H

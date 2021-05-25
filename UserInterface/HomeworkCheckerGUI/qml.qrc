@@ -21,11 +21,11 @@
         <file>images/more.png</file>
         <file>ScoreWithClass.qml</file>
         <file>ScoreWithStudent.qml</file>
-        <file>LogInPage.qml</file>
         <file>registerPage.qml</file>
         <file>InfoOfClass.qml</file>
         <file>images/email.png</file>
         <file>images/password.png</file>
         <file>InfoOfTask.qml</file>
+        <file>LoginPage.qml</file>
     </qresource>
 </RCC>
