@@ -2,11 +2,11 @@
 
 Account::Account(QObject *parent) : QObject(parent) {}
 
-Q_INVOKABLE int Account::reg(QString userName, QString password) {
+int Account::reg(QString userName, QString password) {
     return user.reg(userName.toStdString(), password.toStdString());
 }
 
-Q_INVOKABLE int Account::login(QString userName, QString password) {
+int Account::login(QString userName, QString password) {
     return user.login(userName.toStdString(), password.toStdString());
 }
 

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EF0BC72E9F8E3269D4903A97"
+               BlueprintIdentifier = "3D418DA034E6D92F2CC94E91"
                BuildableName = "HomeworkCheckerGUI.app"
                BlueprintName = "HomeworkCheckerGUI"
                ReferencedContainer = "container:HomeworkCheckerGUI.xcodeproj">
@@ -31,7 +31,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EF0BC72E9F8E3269D4903A97"
+            BlueprintIdentifier = "3D418DA034E6D92F2CC94E91"
             BuildableName = "HomeworkCheckerGUI.app"
             BlueprintName = "HomeworkCheckerGUI"
             ReferencedContainer = "container:HomeworkCheckerGUI.xcodeproj">
@@ -73,7 +73,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EF0BC72E9F8E3269D4903A97"
+            BlueprintIdentifier = "3D418DA034E6D92F2CC94E91"
             BuildableName = "HomeworkCheckerGUI.app"
             BlueprintName = "HomeworkCheckerGUI"
             ReferencedContainer = "container:HomeworkCheckerGUI.xcodeproj">
@@ -97,7 +97,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EF0BC72E9F8E3269D4903A97"
+            BlueprintIdentifier = "3D418DA034E6D92F2CC94E91"
             BuildableName = "HomeworkCheckerGUI.app"
             BlueprintName = "HomeworkCheckerGUI"
             ReferencedContainer = "container:HomeworkCheckerGUI.xcodeproj">
