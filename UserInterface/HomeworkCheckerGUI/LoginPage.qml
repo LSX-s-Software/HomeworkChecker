@@ -1,14 +1,14 @@
-import QtQuick 2.0
 import QtQuick 2.12
 import QtQuick.Window 2.12
+import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
+import Qt.labs.platform 1.1
 import Account 1.0
 
 Rectangle {
-    id: logInPage
-    width: logInPopup.width
-    height: logInPopup.height
-    anchors.centerIn: parent
+    id: loginPage
+    width: 400
+    height: 378
     color: "#ffffff"
 
     Account {
@@ -101,7 +101,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             font.pixelSize: 20
-            echoMode: 1
+            inputMask: "\u00b7"
             font.family: "Source Han Sans CN"
             placeholderText: qsTr("密码")
             background: Rectangle {
@@ -170,16 +170,17 @@ Rectangle {
                     logInBtnText.text = "登录成功"
                     logInPopup.close()
                 } else {
-                    logInBtnText.text = "登录失败"
+                    msgBox.open()
                 }
             }
         }
     }
 
+    MessageDialog {
+        id: msgBox
+        buttons: MessageDialog.Ok
+        text: "登录失败"
+        informativeText: "请检查用户名和密码"
+    }
+
 }
-
-
-
-
-
-
