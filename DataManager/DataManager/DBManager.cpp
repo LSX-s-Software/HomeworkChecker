@@ -1,4 +1,4 @@
-//
+﻿//
 //  DBManager.cpp
 //  DataManager
 //

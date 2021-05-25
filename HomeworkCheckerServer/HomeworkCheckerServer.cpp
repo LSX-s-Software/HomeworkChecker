@@ -1,12 +1,12 @@
-#include <iostream>
+﻿#include <iostream>
 #include <string>
 
 #include "QQMessage.h"
-std::string rootPath = R"(D:\Work\HomeworkChecker\x64\Debug\tmp\)";
+std::string rootPath = R"(tmp)";
 
 int main()
 {
-    system("CHCP 65001");
+    //system("CHCP 65001");
     
     //::ShellExecute(NULL, L"open", L"D:\\Work\\HomeworkChecker\\go-cqhttp\\start.lnk", L"", NULL, SW_SHOWNORMAL);
     //Sleep(10000);

@@ -1,13 +1,16 @@
-#include "File.h"
+ï»¿#include "File.h"
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <Windows.h>
+
 #include "FileInfo.h"
 #include "Exception.h"
 #include "Tools.h"
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
+	#include <Windows.h>
+    #pragma comment(lib, "urlmon.lib")
+#endif
 
-#pragma comment(lib, "urlmon.lib")
 
 extern std::string rootPath;
 
@@ -128,18 +131,18 @@ std::string File::storeText(std::string data)
 
 std::string File::delFile(std::filesystem::path fileName)
 {
-	if (!std::filesystem::exists(workPath / fileName)) return u8"ÎŞ·¨ÕÒµ½ÎÄ¼ş£º" + fileName.string();
+	if (!std::filesystem::exists(workPath / fileName)) return u8"æ— æ³•æ‰¾åˆ°æ–‡ä»¶ï¼š" + fileName.string();
 	try
 	{
 		std::filesystem::remove(workPath / fileName);
 	}
 	catch (std::exception)
 	{
-		return u8"ÎŞ·¨ÕÒµ½ÎÄ¼ş£º" + fileName.string() + " ÇëÖØÊÔ";
+		return u8"æ— æ³•æ‰¾åˆ°æ–‡ä»¶ï¼š" + fileName.string() + " è¯·é‡è¯•";
 	}
-	return u8"³É¹¦É¾³ıÎÄ¼ş£º" + fileName.string();
+	return u8"æˆåŠŸåˆ é™¤æ–‡ä»¶ï¼š" + fileName.string();
 }
-
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
 LPCWSTR stringToLPCWSTR(std::string orig)
 {
 	size_t origsize = orig.length() + 1;
@@ -150,6 +153,7 @@ LPCWSTR stringToLPCWSTR(std::string orig)
 
 	return wcstring;
 }
+#endif
 
 std::string File::downFile(std::string url, std::filesystem::path fileName)
 {
@@ -159,7 +163,14 @@ std::string File::downFile(std::string url, std::filesystem::path fileName)
 	}
 	try
 	{
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
 		URLDownloadToFile(NULL, stringToLPCWSTR(url), stringToLPCWSTR((workPath / fileName).string()), 0, NULL);
+#else
+		std::string file=(workPath / fileName).string();
+		std::string comm="curl \""+url+"\" --create-dirs -o "+file;
+		std::cout << comm<<std::endl;
+		system(comm.c_str());
+#endif
 		return fileName.string();
 	}
 	catch (...)
@@ -288,12 +299,12 @@ std::string File::getFileList()
 	if (cnt == 0)
 	{
 		std::filesystem::remove_all(workPath);
-		return u8"ÔİÎŞÎÄ¼ş";
+		return u8"æš‚æ— æ–‡ä»¶";
 	}
 	std::string returnString;
 	if (txtFile.size() != 0)
 	{
-		returnString += u8"ÕıÎÄ£º\r\n";
+		returnString += u8"æ­£æ–‡ï¼š\r\n";
 		for (auto& iter : txtFile)
 		{
 			returnString += (iter + " ");
@@ -301,7 +312,7 @@ std::string File::getFileList()
 	}
 	if (picFile.size() != 0)
 	{
-		returnString += u8"\r\nÍ¼Æ¬£º\r\n";
+		returnString += u8"\r\nå›¾ç‰‡ï¼š\r\n";
 		for (auto& iter : picFile)
 		{
 			returnString += (iter + " ");
@@ -309,7 +320,7 @@ std::string File::getFileList()
 	}
 	if (codeFile.size() != 0)
 	{
-		returnString += u8"\r\n´úÂë£º\r\n";
+		returnString += u8"\r\nä»£ç ï¼š\r\n";
 		for (auto& iter : codeFile)
 		{
 			returnString += (iter + " ");
@@ -318,7 +329,7 @@ std::string File::getFileList()
 	
 	if (otherFile.size() != 0)
 	{
-		returnString += u8"\r\nÆäËû¸½¼ş£º\r\n";
+		returnString += u8"\r\nå…¶ä»–é™„ä»¶ï¼š\r\n";
 		for (auto& iter : otherFile)
 		{
 			returnString += (iter + " ");
@@ -332,7 +343,7 @@ std::string File::getFile(std::filesystem::path fileName)
 	FileInfo file(workPath / fileName);
 	if (file.getFileFormats() == FileFormats::OTHER || file.getFileFormats() == FileFormats::PIC)
 	{
-		return u8"¸ÃÀàĞÍÎÄ¼şÔİ²»Ö§³ÖÔÚÏß²é¿´";
+		return u8"è¯¥ç±»å‹æ–‡ä»¶æš‚ä¸æ”¯æŒåœ¨çº¿æŸ¥çœ‹";
 	}
 	std::ifstream in(file.getFilePath());
 	std::ostringstream tmp;

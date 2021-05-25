@@ -1,8 +1,8 @@
-#pragma once
+ï»¿#pragma once
 #include <exception>
 #include <string>
 /// <summary>
-/// wsÁ¬½Ó´íÎó
+/// wsè¿æ¥é”™è¯¯
 /// </summary>
 class WsConnectError : public std::exception
 {
@@ -21,7 +21,7 @@ private:
 };
 
 /// <summary>
-/// ÎÄ¼ş²Ù×÷´íÎó
+/// æ–‡ä»¶æ“ä½œé”™è¯¯
 /// </summary>
 class FileError : public std::exception
 {
@@ -40,7 +40,7 @@ private:
 };
 
 /// <summary>
-/// ÎÄ¼ş²»´æÔÚ
+/// æ–‡ä»¶ä¸å­˜åœ¨
 /// </summary>
 class FileNotExist : public std::exception
 {

@@ -1,7 +1,7 @@
-#include "PrivateMessageSender.h"
+ï»¿#include "PrivateMessageSender.h"
 #include "WebsocketClient.h"
 /// <summary>
-/// ws¿Í»§¶Ë Î»ÓÚQQMessage
+/// wså®¢æˆ·ç«¯ ä½äºQQMessage
 /// </summary>
 extern WebsocketClient wsClient;
 

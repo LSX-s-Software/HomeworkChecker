@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+ï»¿#define _CRT_SECURE_NO_WARNINGS
 #include <string>
 #include <iostream>
 #include <map>
@@ -20,40 +20,40 @@ extern std::map<long long, HomeworkInfo> getHomeworkInfo;
 
 extern WebsocketClient wsClient;
 
-std::string helper = u8"¡¾×¢²á¡¿\nĞÂÓÃ»§Í¨¹ı×¢²áÌá½»ËùÊô°à¼¶¡¢ÕæÊµĞÕÃûÓëÑ§ºÅ£¬ĞÅÏ¢Ò»µ©Ìá½»ºóÑ§ÉúÎŞ·¨×ÔĞĞĞŞ¸Ä¡£\n×¢²áÖĞ¿ÉÍ¨¹ıÈ¡ÏûÃüÁîÍË³ö×¢²á¡£\n\nÃüÁî\n×¢²á\n[Rr]eg\n[Rr]egister\n--------\n¡¾¸öÈËĞÅÏ¢¡¿\n×¢²á³É¹¦ºó¿É²éÑ¯ÈËĞÅÏ¢£¬°üÀ¨ĞÕÃû¡¢Ñ§ºÅ¡¢°à¼¶ºÍÀÏÊ¦¡£\n\nÃüÁî\n²éÑ¯¸öÈËĞÅÏ¢\n»ñÈ¡¸öÈËĞÅÏ¢\n[Gg]etinfo\n--------\n¡¾×÷ÒµÁĞ±í¡¿\nÓÃ»§¿É²éÑ¯¸öÈËËùÓĞ×÷Òµ£¬°üÀ¨×÷ÒµID¡¢×÷Òµ×´Ì¬¡¢½ØÖ¹Ê±¼ä¡¢·ÖÊı\n\nÃüÁî\n²éÑ¯×÷Òµ\n»ñÈ¡×÷Òµ\n[Gg]et\n[Gg]ethomework\n--------\n¡¾×÷ÒµÏêÇé¡¿\nÓÃ»§Í¨¹ıÖ¸¶¨×÷ÒµID²éÑ¯µ±Ç°×÷ÒµÇé¡£\n\n°üÀ¨\n×÷ÒµID¡¢×÷Òµ×´Ì¬¡¢×÷ÒµÄÚÈİ¡¢½ØÖ¹Ê±¼ä\n·ÖÊı¡¢ÆÀÓï\n×÷ÒµÕıÎÄÁĞ±í¡¢×÷Òµ¸½¼şÁĞ±í\n\nÃüÁî\n²éÑ¯×÷Òµ {×÷ÒµID}\n»ñÈ¡×÷Òµ {×÷ÒµID}\n[Gg]et {×÷ÒµID}\n[Gg]ethomework {×÷ÒµID}\n--------\n¡¾Ìá½»×÷Òµ¡¿\nÓÃ»§Í¨¹ıÖ¸¶¨×÷ÒµID½øÈëÌá½»Ä£Ê½£¬ÒÑÌá½»×÷Òµ×Ô¶¯ĞŞ¸Ä¡£\nÏêÏ¸²Ù×÷¿ÉÊäÈë¡°°ïÖú Ìá½»Ä£Ê½¡±²é¿´¡£\n\nÃüÁî\nÌá½»×÷Òµ {×÷ÒµID}\n[Ss]ubmit {×÷ÒµID}\n--------\n¡¾ĞŞ¸Ä×÷Òµ¡¿\nÓÃ»§Í¨¹ıÖ¸¶¨×÷ÒµID½øÈëÌá½»Ä£Ê½£¬Î´Ìá½»×÷Òµ×Ô¶¯ĞÂ½¨¡£\nÏêÏ¸²Ù×÷¿ÉÊäÈë¡°°ïÖú Ìá½»Ä£Ê½¡±²é¿´¡£\n\nÃüÁî\nĞŞ¸Ä×÷Òµ {×÷ÒµID}\n[Mm]odify {×÷ÒµID}\n--------\n¡¾°ïÖú¡¿\nÏÔÊ¾±¾ÎÄµµ\n¸ü¶à°ïÖúĞÅÏ¢¿ÉÊäÈë¡°°ïÖú Ìá½»¡±²é¿´\n\nÃüÁî\n°ïÖú\n[Hh]elp";
-std::string regHelper = u8"ÄúÕı´¦ÓÚ×¢²áÄ£Ê½ÖĞ\n×¢²áĞèÒªÌîĞ´°à¼¶ÑûÇëÂë¡¢Ñ§ÉúĞÕÃû¡¢Ñ§ºÅ\n--------\n¡¾È¡Ïû×¢²á¡¿\nÉ¾³ıËùÓĞÒÑÌîĞ´ĞÅÏ¢£¬ÖØÖÃÎªÎ´×¢²á×´Ì¬\n\nÃüÁî\nÈ¡Ïû\n[Cc]ancel\n";
-std::string subHelper = u8"¡¾Ìá½»ÄÚÈİ¡¿\nÎÄ±¾ºÍÍ¼Æ¬¿ÉÖ±½ÓÔÚ¶Ô»°¿òÄÚÊäÈë·¢ËÍ£¬ÔÚ±¾µØ·Ö±ğ±£´æÎªtxtÎÄ¼şÓëÍ¼Æ¬ÎÄ¼ş\n--------\n¡¾ÎÄ¼şÁĞ±í¡¿\n²éÑ¯¸Ã×÷ÒµÏÂ´æÔÚµÄÎÄ¼ş£¬Êä³öÎÄ¼şÃû(º¬À©Õ¹Ãû)\n\nÃüÁî\n»ñÈ¡ÎÄÁĞ±í\n²éÑ¯ÎÄ¼şÁĞ±í\n[Gg]etlist\n--------\n¡¾²éÑ¯ÎÄ¼ş¡¿\nÓÃ»§Í¨¹ıÖ¸¶¨ÎÄ¼şÃû(º¬À©Õ¹Ãû)£¬·µ»ØÎÄ¼şÄÚÈİ\nÄ¿Ç°¿É·µ»ØÎÄ±¾ÎÄ¼ş¡¢´úÂëÎÄ¼ş\n\nÃüÁî\n»ñÈ¡ {ÎÄ¼şÃû}\n»ñÈ¡ÎÄ¼ş {ÎÄ¼şÃû}\n²éÑ¯ {ÎÄ¼şÃû}\n²éÑ¯ÎÄ¼ş {ÎÄ¼şÃû}\n[Gg]et {ÎÄ¼şÃû}\n--------\n¡¾É¾³ıÎÄ¼ş¡¿\nÓÃ»§Í¨¹ıÖ¸¶¨ÎÄ¼şÃû(º¬À©Õ¹Ãû)£¬É¾³ıÎÄ¼ş\n¿ÉÊ¹ÓÃ|·Ö¸ô·û·Ö¸ô¶à¸öÎÄ¼şÃû£¬ÅúÁ¿É¾³ı\n\nÃüÁî\nÉ¾³ıÎÄ¼ş {ÎÄ¼şÃû1|ÎÄ¼şÃû2|...}\nÉ¾³ı {ÎÄ¼şÃû1|ÎÄ¼şÃû2|...}\n[Dd]elete {ÎÄ¼şÃû1|ÎÄ¼şÃû2|...}\n--------\n¡¾É¾³ıËùÓĞÎÄ¼ş¡¿\nÇå¿Õ¸Ã×÷ÒµÏÂËùÓĞÎÄ¼ş\n£¡×¢Òâ£º¸Ã²Ù×÷ÎŞ·¨»Ö¸´\n\nÃüÁî\nÈ«²¿É¾³ı\nÉ¾³ıÈ«²¿\nÇå¿ÕÎÄ¼ş\n[Dd]eleteall\n--------\n¡¾È¡ÏûÌá½»¡¿\nÍË³öÌá½»Ä£Ê½£¬ËùÎÄ¼ş±£´æÎª²İ¸å\nÈÎºÎĞŞ¸Ä¶¼²»»á·µ»Ø¸ø½ÌÊ¦\n\nÃüÁî\nÈ¡Ïû\nÈ¡ÏûÌá½»\n[Cc]ancel\n--------\n¡¾±£´æÌá½»¡¿\n±£´æ×÷Òµ²¢Ïò½ÌÊ¦Ìá½»\n\nÃüÁî\nÌá½»\nÌá½»×÷Òµ\nÈ·ÈÏÌá½»\n[Ss]ubmit";
-std::string homHelper1 = u8"ÄúÕı´¦ÓÚÌá½»Ä£Ê½ÖĞ\nÕıÔÚÌá½» ×÷Òµ ";
-std::string homHelper2 = u8"\n--------\n¡¾Ìá½»ÄÚÈİ¡¿\nÎÄ±¾ºÍÍ¼Æ¬¿ÉÖ±½ÓÔÚ¶Ô»°¿òÄÚÊäÈë·¢ËÍ£¬ÔÚ±¾µØ·Ö±ğ±£´æÎªtxtÎÄ¼şÓëÍ¼Æ¬ÎÄ¼ş\n--------\n¡¾ÎÄ¼şÁĞ±í¡¿\n²éÑ¯¸Ã×÷ÒµÏÂ´æÔÚµÄÎÄ¼ş£¬Êä³öÎÄ¼şÃû(º¬À©Õ¹Ãû)\n\nÃüÁî\n»ñÈ¡ÎÄÁĞ±í\n²éÑ¯ÎÄ¼şÁĞ±í\n[Gg]etlist\n--------\n¡¾²éÑ¯ÎÄ¼ş¡¿\nÓÃ»§Í¨¹ıÖ¸¶¨ÎÄ¼şÃû(º¬À©Õ¹Ãû)£¬·µ»ØÎÄ¼şÄÚÈİ\nÄ¿Ç°¿É·µ»ØÎÄ±¾ÎÄ¼ş¡¢´úÂëÎÄ¼ş\n\nÃüÁî\n»ñÈ¡ {ÎÄ¼şÃû}\n»ñÈ¡ÎÄ¼ş {ÎÄ¼şÃû}\n²éÑ¯ {ÎÄ¼şÃû}\n²éÑ¯ÎÄ¼ş {ÎÄ¼şÃû}\n[Gg]et {ÎÄ¼şÃû}\n--------\n¡¾É¾³ıÎÄ¼ş¡¿\nÓÃ»§Í¨¹ıÖ¸¶¨ÎÄ¼şÃû(º¬À©Õ¹Ãû)£¬É¾³ıÎÄ¼ş\n¿ÉÊ¹ÓÃ|·Ö¸ô·û·Ö¸ô¶à¸öÎÄ¼şÃû£¬ÅúÁ¿É¾³ı\n\nÃüÁî\nÉ¾³ıÎÄ¼ş {ÎÄ¼şÃû1|ÎÄ¼şÃû2|...}\nÉ¾³ı {ÎÄ¼şÃû1|ÎÄ¼şÃû2|...}\n[Dd]elete {ÎÄ¼şÃû1|ÎÄ¼şÃû2|...}\n--------\n¡¾É¾³ıËùÓĞÎÄ¼ş¡¿\nÇå¿Õ¸Ã×÷ÒµÏÂËùÓĞÎÄ¼ş\n£¡×¢Òâ£º¸Ã²Ù×÷ÎŞ·¨»Ö¸´\n\nÃüÁî\nÈ«²¿É¾³ı\nÉ¾³ıÈ«²¿\nÇå¿ÕÎÄ¼ş\n[Dd]eleteall\n--------\n¡¾È¡ÏûÌá½»¡¿\nÍË³öÌá½»Ä£Ê½£¬ËùÎÄ¼ş±£´æÎª²İ¸å\nÈÎºÎĞŞ¸Ä¶¼²»»á·µ»Ø¸ø½ÌÊ¦\n\nÃüÁî\nÈ¡Ïû\nÈ¡ÏûÌá½»\n[Cc]ancel\n--------\n¡¾±£´æÌá½»¡¿\n±£´æ×÷Òµ²¢Ïò½ÌÊ¦Ìá½»\n\nÃüÁî\nÌá½»\nÌá½»×÷Òµ\nÈ·ÈÏÌá½»\n[Ss]ubmit";
+std::string helper = u8"ã€æ³¨å†Œã€‘\næ–°ç”¨æˆ·é€šè¿‡æ³¨å†Œæäº¤æ‰€å±ç­çº§ã€çœŸå®å§“åä¸å­¦å·ï¼Œä¿¡æ¯ä¸€æ—¦æäº¤åå­¦ç”Ÿæ— æ³•è‡ªè¡Œä¿®æ”¹ã€‚\næ³¨å†Œä¸­å¯é€šè¿‡å–æ¶ˆå‘½ä»¤é€€å‡ºæ³¨å†Œã€‚\n\nå‘½ä»¤\næ³¨å†Œ\n[Rr]eg\n[Rr]egister\n--------\nã€ä¸ªäººä¿¡æ¯ã€‘\næ³¨å†ŒæˆåŠŸåå¯æŸ¥è¯¢äººä¿¡æ¯ï¼ŒåŒ…æ‹¬å§“åã€å­¦å·ã€ç­çº§å’Œè€å¸ˆã€‚\n\nå‘½ä»¤\næŸ¥è¯¢ä¸ªäººä¿¡æ¯\nè·å–ä¸ªäººä¿¡æ¯\n[Gg]etinfo\n--------\nã€ä½œä¸šåˆ—è¡¨ã€‘\nç”¨æˆ·å¯æŸ¥è¯¢ä¸ªäººæ‰€æœ‰ä½œä¸šï¼ŒåŒ…æ‹¬ä½œä¸šIDã€ä½œä¸šçŠ¶æ€ã€æˆªæ­¢æ—¶é—´ã€åˆ†æ•°\n\nå‘½ä»¤\næŸ¥è¯¢ä½œä¸š\nè·å–ä½œä¸š\n[Gg]et\n[Gg]ethomework\n--------\nã€ä½œä¸šè¯¦æƒ…ã€‘\nç”¨æˆ·é€šè¿‡æŒ‡å®šä½œä¸šIDæŸ¥è¯¢å½“å‰ä½œä¸šæƒ…ã€‚\n\nåŒ…æ‹¬\nä½œä¸šIDã€ä½œä¸šçŠ¶æ€ã€ä½œä¸šå†…å®¹ã€æˆªæ­¢æ—¶é—´\nåˆ†æ•°ã€è¯„è¯­\nä½œä¸šæ­£æ–‡åˆ—è¡¨ã€ä½œä¸šé™„ä»¶åˆ—è¡¨\n\nå‘½ä»¤\næŸ¥è¯¢ä½œä¸š {ä½œä¸šID}\nè·å–ä½œä¸š {ä½œä¸šID}\n[Gg]et {ä½œä¸šID}\n[Gg]ethomework {ä½œä¸šID}\n--------\nã€æäº¤ä½œä¸šã€‘\nç”¨æˆ·é€šè¿‡æŒ‡å®šä½œä¸šIDè¿›å…¥æäº¤æ¨¡å¼ï¼Œå·²æäº¤ä½œä¸šè‡ªåŠ¨ä¿®æ”¹ã€‚\nè¯¦ç»†æ“ä½œå¯è¾“å…¥â€œå¸®åŠ© æäº¤æ¨¡å¼â€æŸ¥çœ‹ã€‚\n\nå‘½ä»¤\næäº¤ä½œä¸š {ä½œä¸šID}\n[Ss]ubmit {ä½œä¸šID}\n--------\nã€ä¿®æ”¹ä½œä¸šã€‘\nç”¨æˆ·é€šè¿‡æŒ‡å®šä½œä¸šIDè¿›å…¥æäº¤æ¨¡å¼ï¼Œæœªæäº¤ä½œä¸šè‡ªåŠ¨æ–°å»ºã€‚\nè¯¦ç»†æ“ä½œå¯è¾“å…¥â€œå¸®åŠ© æäº¤æ¨¡å¼â€æŸ¥çœ‹ã€‚\n\nå‘½ä»¤\nä¿®æ”¹ä½œä¸š {ä½œä¸šID}\n[Mm]odify {ä½œä¸šID}\n--------\nã€å¸®åŠ©ã€‘\næ˜¾ç¤ºæœ¬æ–‡æ¡£\næ›´å¤šå¸®åŠ©ä¿¡æ¯å¯è¾“å…¥â€œå¸®åŠ© æäº¤â€æŸ¥çœ‹\n\nå‘½ä»¤\nå¸®åŠ©\n[Hh]elp";
+std::string regHelper = u8"æ‚¨æ­£å¤„äºæ³¨å†Œæ¨¡å¼ä¸­\næ³¨å†Œéœ€è¦å¡«å†™ç­çº§é‚€è¯·ç ã€å­¦ç”Ÿå§“åã€å­¦å·\n--------\nã€å–æ¶ˆæ³¨å†Œã€‘\nåˆ é™¤æ‰€æœ‰å·²å¡«å†™ä¿¡æ¯ï¼Œé‡ç½®ä¸ºæœªæ³¨å†ŒçŠ¶æ€\n\nå‘½ä»¤\nå–æ¶ˆ\n[Cc]ancel\n";
+std::string subHelper = u8"ã€æäº¤å†…å®¹ã€‘\næ–‡æœ¬å’Œå›¾ç‰‡å¯ç›´æ¥åœ¨å¯¹è¯æ¡†å†…è¾“å…¥å‘é€ï¼Œåœ¨æœ¬åœ°åˆ†åˆ«ä¿å­˜ä¸ºtxtæ–‡ä»¶ä¸å›¾ç‰‡æ–‡ä»¶\n--------\nã€æ–‡ä»¶åˆ—è¡¨ã€‘\næŸ¥è¯¢è¯¥ä½œä¸šä¸‹å­˜åœ¨çš„æ–‡ä»¶ï¼Œè¾“å‡ºæ–‡ä»¶å(å«æ‰©å±•å)\n\nå‘½ä»¤\nè·å–æ–‡åˆ—è¡¨\næŸ¥è¯¢æ–‡ä»¶åˆ—è¡¨\n[Gg]etlist\n--------\nã€æŸ¥è¯¢æ–‡ä»¶ã€‘\nç”¨æˆ·é€šè¿‡æŒ‡å®šæ–‡ä»¶å(å«æ‰©å±•å)ï¼Œè¿”å›æ–‡ä»¶å†…å®¹\nç›®å‰å¯è¿”å›æ–‡æœ¬æ–‡ä»¶ã€ä»£ç æ–‡ä»¶\n\nå‘½ä»¤\nè·å– {æ–‡ä»¶å}\nè·å–æ–‡ä»¶ {æ–‡ä»¶å}\næŸ¥è¯¢ {æ–‡ä»¶å}\næŸ¥è¯¢æ–‡ä»¶ {æ–‡ä»¶å}\n[Gg]et {æ–‡ä»¶å}\n--------\nã€åˆ é™¤æ–‡ä»¶ã€‘\nç”¨æˆ·é€šè¿‡æŒ‡å®šæ–‡ä»¶å(å«æ‰©å±•å)ï¼Œåˆ é™¤æ–‡ä»¶\nå¯ä½¿ç”¨|åˆ†éš”ç¬¦åˆ†éš”å¤šä¸ªæ–‡ä»¶åï¼Œæ‰¹é‡åˆ é™¤\n\nå‘½ä»¤\nåˆ é™¤æ–‡ä»¶ {æ–‡ä»¶å1|æ–‡ä»¶å2|...}\nåˆ é™¤ {æ–‡ä»¶å1|æ–‡ä»¶å2|...}\n[Dd]elete {æ–‡ä»¶å1|æ–‡ä»¶å2|...}\n--------\nã€åˆ é™¤æ‰€æœ‰æ–‡ä»¶ã€‘\næ¸…ç©ºè¯¥ä½œä¸šä¸‹æ‰€æœ‰æ–‡ä»¶\nï¼æ³¨æ„ï¼šè¯¥æ“ä½œæ— æ³•æ¢å¤\n\nå‘½ä»¤\nå…¨éƒ¨åˆ é™¤\nåˆ é™¤å…¨éƒ¨\næ¸…ç©ºæ–‡ä»¶\n[Dd]eleteall\n--------\nã€å–æ¶ˆæäº¤ã€‘\né€€å‡ºæäº¤æ¨¡å¼ï¼Œæ‰€æ–‡ä»¶ä¿å­˜ä¸ºè‰ç¨¿\nä»»ä½•ä¿®æ”¹éƒ½ä¸ä¼šè¿”å›ç»™æ•™å¸ˆ\n\nå‘½ä»¤\nå–æ¶ˆ\nå–æ¶ˆæäº¤\n[Cc]ancel\n--------\nã€ä¿å­˜æäº¤ã€‘\nä¿å­˜ä½œä¸šå¹¶å‘æ•™å¸ˆæäº¤\n\nå‘½ä»¤\næäº¤\næäº¤ä½œä¸š\nç¡®è®¤æäº¤\n[Ss]ubmit";
+std::string homHelper1 = u8"æ‚¨æ­£å¤„äºæäº¤æ¨¡å¼ä¸­\næ­£åœ¨æäº¤ ä½œä¸š ";
+std::string homHelper2 = u8"\n--------\nã€æäº¤å†…å®¹ã€‘\næ–‡æœ¬å’Œå›¾ç‰‡å¯ç›´æ¥åœ¨å¯¹è¯æ¡†å†…è¾“å…¥å‘é€ï¼Œåœ¨æœ¬åœ°åˆ†åˆ«ä¿å­˜ä¸ºtxtæ–‡ä»¶ä¸å›¾ç‰‡æ–‡ä»¶\n--------\nã€æ–‡ä»¶åˆ—è¡¨ã€‘\næŸ¥è¯¢è¯¥ä½œä¸šä¸‹å­˜åœ¨çš„æ–‡ä»¶ï¼Œè¾“å‡ºæ–‡ä»¶å(å«æ‰©å±•å)\n\nå‘½ä»¤\nè·å–æ–‡åˆ—è¡¨\næŸ¥è¯¢æ–‡ä»¶åˆ—è¡¨\n[Gg]etlist\n--------\nã€æŸ¥è¯¢æ–‡ä»¶ã€‘\nç”¨æˆ·é€šè¿‡æŒ‡å®šæ–‡ä»¶å(å«æ‰©å±•å)ï¼Œè¿”å›æ–‡ä»¶å†…å®¹\nç›®å‰å¯è¿”å›æ–‡æœ¬æ–‡ä»¶ã€ä»£ç æ–‡ä»¶\n\nå‘½ä»¤\nè·å– {æ–‡ä»¶å}\nè·å–æ–‡ä»¶ {æ–‡ä»¶å}\næŸ¥è¯¢ {æ–‡ä»¶å}\næŸ¥è¯¢æ–‡ä»¶ {æ–‡ä»¶å}\n[Gg]et {æ–‡ä»¶å}\n--------\nã€åˆ é™¤æ–‡ä»¶ã€‘\nç”¨æˆ·é€šè¿‡æŒ‡å®šæ–‡ä»¶å(å«æ‰©å±•å)ï¼Œåˆ é™¤æ–‡ä»¶\nå¯ä½¿ç”¨|åˆ†éš”ç¬¦åˆ†éš”å¤šä¸ªæ–‡ä»¶åï¼Œæ‰¹é‡åˆ é™¤\n\nå‘½ä»¤\nåˆ é™¤æ–‡ä»¶ {æ–‡ä»¶å1|æ–‡ä»¶å2|...}\nåˆ é™¤ {æ–‡ä»¶å1|æ–‡ä»¶å2|...}\n[Dd]elete {æ–‡ä»¶å1|æ–‡ä»¶å2|...}\n--------\nã€åˆ é™¤æ‰€æœ‰æ–‡ä»¶ã€‘\næ¸…ç©ºè¯¥ä½œä¸šä¸‹æ‰€æœ‰æ–‡ä»¶\nï¼æ³¨æ„ï¼šè¯¥æ“ä½œæ— æ³•æ¢å¤\n\nå‘½ä»¤\nå…¨éƒ¨åˆ é™¤\nåˆ é™¤å…¨éƒ¨\næ¸…ç©ºæ–‡ä»¶\n[Dd]eleteall\n--------\nã€å–æ¶ˆæäº¤ã€‘\né€€å‡ºæäº¤æ¨¡å¼ï¼Œæ‰€æ–‡ä»¶ä¿å­˜ä¸ºè‰ç¨¿\nä»»ä½•ä¿®æ”¹éƒ½ä¸ä¼šè¿”å›ç»™æ•™å¸ˆ\n\nå‘½ä»¤\nå–æ¶ˆ\nå–æ¶ˆæäº¤\n[Cc]ancel\n--------\nã€ä¿å­˜æäº¤ã€‘\nä¿å­˜ä½œä¸šå¹¶å‘æ•™å¸ˆæäº¤\n\nå‘½ä»¤\næäº¤\næäº¤ä½œä¸š\nç¡®è®¤æäº¤\n[Ss]ubmit";
 
 
 void RegCommand(std::u16string data, long long qq_id);
 void HomCommand(std::u16string data, long long qq_id);
 /// <summary>
-/// ×ª»»×÷Òµ×´Ì¬
+/// è½¬æ¢ä½œä¸šçŠ¶æ€
 /// </summary>
-/// <param name="id">×´Ì¬id</param>
+/// <param name="id">çŠ¶æ€id</param>
 /// <returns></returns>
 std::string getHomeworkStatus(int id)
 {
-	if (id == 0) return u8"Î´Ìá½»";
-	if (id == 1) return u8"ÒÑÌá½»";
-	if (id == 2) return u8"ÒÑÅú¸Ä";
-	return u8"Î´Öª×´Ì¬";
+	if (id == 0) return u8"æœªæäº¤";
+	if (id == 1) return u8"å·²æäº¤";
+	if (id == 2) return u8"å·²æ‰¹æ”¹";
+	return u8"æœªçŸ¥çŠ¶æ€";
 }
 /// <summary>
-/// ×Ö·û´®·Ö¸ô
+/// å­—ç¬¦ä¸²åˆ†éš”
 /// </summary>
-/// <param name="s">Ô­Ê¼×Ö·û´®</param>
-/// <param name="seperator">·Ö¸ô·û ¿É¶à¸ö</param>
-/// <returns>·Ö¸ôºó×Ö·û´®ÁĞ±í</returns>
+/// <param name="s">åŸå§‹å­—ç¬¦ä¸²</param>
+/// <param name="seperator">åˆ†éš”ç¬¦ å¯å¤šä¸ª</param>
+/// <returns>åˆ†éš”åå­—ç¬¦ä¸²åˆ—è¡¨</returns>
 std::vector<std::string> split(const std::string& s, const std::string& seperator) {
 	std::vector<std::string> result;
 	typedef std::string::size_type string_size;
 	string_size i = 0;
 
 	while (i != s.size()) {
-		//ÕÒµ½×Ö·û´®ÖĞÊ×¸ö²»µÈÓÚ·Ö¸ô·ûµÄ×ÖÄ¸£»
+		//æ‰¾åˆ°å­—ç¬¦ä¸²ä¸­é¦–ä¸ªä¸ç­‰äºåˆ†éš”ç¬¦çš„å­—æ¯ï¼›
 		int flag = 0;
 		while (i != s.size() && flag == 0) {
 			flag = 1;
@@ -65,7 +65,7 @@ std::vector<std::string> split(const std::string& s, const std::string& seperato
 				}
 		}
 
-		//ÕÒµ½ÓÖÒ»¸ö·Ö¸ô·û£¬½«Á½¸ö·Ö¸ô·ûÖ®¼äµÄ×Ö·û´®È¡³ö£»
+		//æ‰¾åˆ°åˆä¸€ä¸ªåˆ†éš”ç¬¦ï¼Œå°†ä¸¤ä¸ªåˆ†éš”ç¬¦ä¹‹é—´çš„å­—ç¬¦ä¸²å–å‡ºï¼›
 		flag = 0;
 		string_size j = i;
 		while (j != s.size() && flag == 0) {
@@ -86,18 +86,18 @@ std::vector<std::string> split(const std::string& s, const std::string& seperato
 }
 
 /// <summary>
-/// ×Ö·û´®·Ö¸ô
+/// å­—ç¬¦ä¸²åˆ†éš”
 /// </summary>
-/// <param name="s">Ô­Ê¼×Ö·û´®</param>
-/// <param name="seperator">·Ö¸ô·û ¿É¶à¸ö</param>
-/// <returns>·Ö¸ôºó×Ö·û´®ÁĞ±í</returns>
+/// <param name="s">åŸå§‹å­—ç¬¦ä¸²</param>
+/// <param name="seperator">åˆ†éš”ç¬¦ å¯å¤šä¸ª</param>
+/// <returns>åˆ†éš”åå­—ç¬¦ä¸²åˆ—è¡¨</returns>
 std::vector<std::u16string> split(const std::u16string& s, const std::u16string& seperator) {
 	std::vector<std::u16string> result;
 	typedef std::u16string::size_type string_size;
 	string_size i = 0;
 
 	while (i != s.size()) {
-		//ÕÒµ½×Ö·û´®ÖĞÊ×¸ö²»µÈÓÚ·Ö¸ô·ûµÄ×ÖÄ¸£»
+		//æ‰¾åˆ°å­—ç¬¦ä¸²ä¸­é¦–ä¸ªä¸ç­‰äºåˆ†éš”ç¬¦çš„å­—æ¯ï¼›
 		int flag = 0;
 		while (i != s.size() && flag == 0) {
 			flag = 1;
@@ -109,7 +109,7 @@ std::vector<std::u16string> split(const std::u16string& s, const std::u16string&
 				}
 		}
 
-		//ÕÒµ½ÓÖÒ»¸ö·Ö¸ô·û£¬½«Á½¸ö·Ö¸ô·ûÖ®¼äµÄ×Ö·û´®È¡³ö£»
+		//æ‰¾åˆ°åˆä¸€ä¸ªåˆ†éš”ç¬¦ï¼Œå°†ä¸¤ä¸ªåˆ†éš”ç¬¦ä¹‹é—´çš„å­—ç¬¦ä¸²å–å‡ºï¼›
 		flag = 0;
 		string_size j = i;
 		while (j != s.size() && flag == 0) {
@@ -130,10 +130,10 @@ std::vector<std::u16string> split(const std::u16string& s, const std::u16string&
 }
 
 /// <summary>
-/// »ñÈ¡ÎÄ¼şÃûÁĞ±í
+/// è·å–æ–‡ä»¶ååˆ—è¡¨
 /// </summary>
-/// <param name="raw">¶ÁÈëurl | ·Ö¸ô</param>
-/// <returns>·µ»ØÎÄ¼şÃû ¿Õ¸ñ·Ö¸ô</returns>
+/// <param name="raw">è¯»å…¥url | åˆ†éš”</param>
+/// <returns>è¿”å›æ–‡ä»¶å ç©ºæ ¼åˆ†éš”</returns>
 std::string getHomeworkFilename(std::string raw)
 {
 	std::vector<std::u16string> rawList = split(Tools::to_utf16(raw), u"|");
@@ -147,10 +147,10 @@ std::string getHomeworkFilename(std::string raw)
 }
 
 /// <summary>
-/// TimeStamp×ª»»ÎªÈÕÆÚÊ±¼ä
+/// TimeStampè½¬æ¢ä¸ºæ—¥æœŸæ—¶é—´
 /// </summary>
 /// <param name="timeStamp"></param>
-/// <returns>ÈÕÆÚÊ±¼ä×Ö·û´®</returns>
+/// <returns>æ—¥æœŸæ—¶é—´å­—ç¬¦ä¸²</returns>
 std::string TimeConvert(std::string timeStamp)
 {
 	std::stringstream ss;
@@ -178,7 +178,7 @@ DataManager::CompleteHomeworkList getCH(long long qq_id,long long assignmentId)
 {
 	std::vector<DataManager::CompleteHomeworkList> homeworklist = DataManager::getHomeworkListByStuId((long)getStuInfo[qq_id].studentId, (long)getStuInfo[qq_id].classId);
 	DataManager::CompleteHomeworkList ch;
-	for (auto& iter : homeworklist)//²éÕÒµ±Ç°×÷Òµid
+	for (auto& iter : homeworklist)//æŸ¥æ‰¾å½“å‰ä½œä¸šid
 	{
 		if (iter.assignment.getId() == assignmentId)
 		{
@@ -194,9 +194,9 @@ void AnaText(std::u16string data, long long qq_id)
 	typedef std::pair<long long, PeerStatus> pair;
 	std::u16string subCom, retInfo;
 
-	//Ìí¼Óµ±Ç°×´Ì¬
+	//æ·»åŠ å½“å‰çŠ¶æ€
 	if (!status.count(qq_id)) status.insert(pair(qq_id, PeerStatus::IDLE));
-	//±¾µØ»¯Ñ§ÉúÊı¾İ
+	//æœ¬åœ°åŒ–å­¦ç”Ÿæ•°æ®
 	if ((status[qq_id] != PeerStatus::REGISTER)&&!getStuInfo.count(qq_id) && (status[qq_id] != PeerStatus::UNREG)) 
 	{
 		try
@@ -214,7 +214,7 @@ void AnaText(std::u16string data, long long qq_id)
 		}
 	}
 
-	//×¢²áÖĞ
+	//æ³¨å†Œä¸­
 	if (status[qq_id] == PeerStatus::REGISTER)
 	{
 		subCom = data;
@@ -223,7 +223,7 @@ void AnaText(std::u16string data, long long qq_id)
 		return;
 	}
 
-	//Ìá½»×÷ÒµÖĞ
+	//æäº¤ä½œä¸šä¸­
 	if (status[qq_id] == PeerStatus::HOMEWORK)
 	{
 		subCom = data;
@@ -232,14 +232,14 @@ void AnaText(std::u16string data, long long qq_id)
 		return;
 	}
 
-	//¿ªÊ¼×¢²á
-	if (data == u"×¢²á"|| data == u"reg" || data == u"register"|| data == u"Register"|| data == u"Reg")
+	//å¼€å§‹æ³¨å†Œ
+	if (data == u"æ³¨å†Œ"|| data == u"reg" || data == u"register"|| data == u"Register"|| data == u"Reg")
 	{
 		if (status[qq_id] == PeerStatus::UNREG)
 			status[qq_id] = PeerStatus::REGISTER;
 		if (getStuInfo.count(qq_id))
 		{
-			PrivateMessageSender sender(qq_id, u8"ÄúÒÑ×¢²á\nÊäÈë¡°²éÑ¯¸öÈËĞÅÏ¢¡±ÒÔ²éÑ¯");
+			PrivateMessageSender sender(qq_id, u8"æ‚¨å·²æ³¨å†Œ\nè¾“å…¥â€œæŸ¥è¯¢ä¸ªäººä¿¡æ¯â€ä»¥æŸ¥è¯¢");
 			sender.send();
 			return;
 		}
@@ -249,55 +249,55 @@ void AnaText(std::u16string data, long long qq_id)
 		return;
 	}
 
-	if (data == u"°ïÖú" || data == u"Help" || data == u"help")
+	if (data == u"å¸®åŠ©" || data == u"Help" || data == u"help")
 	{
 		PrivateMessageSender sender(qq_id, helper);
 		sender.send();
 		return;
 	}
 
-	if (data == u"°ïÖú Ìá½»Ä£Ê½" || data == u"Help Ìá½»Ä£Ê½" || data == u"help Ìá½»Ä£Ê½" || data == u"help submit" || data == u"Help Submit")
+	if (data == u"å¸®åŠ© æäº¤æ¨¡å¼" || data == u"Help æäº¤æ¨¡å¼" || data == u"help æäº¤æ¨¡å¼" || data == u"help submit" || data == u"Help Submit")
 	{
 		PrivateMessageSender sender(qq_id, subHelper);
 		sender.send();
 		return;
 	}
 
-	//Î´×¢²á
-	if (status[qq_id] == PeerStatus::UNREG)//Î´×¢²á
+	//æœªæ³¨å†Œ
+	if (status[qq_id] == PeerStatus::UNREG)//æœªæ³¨å†Œ
 	{
-		PrivateMessageSender sender(qq_id, u8"Î´×¢²áÕËºÅ£¬ÇëÊäÈë¡°×¢²á¡±ÒÔ¿ªÊ¼");
+		PrivateMessageSender sender(qq_id, u8"æœªæ³¨å†Œè´¦å·ï¼Œè¯·è¾“å…¥â€œæ³¨å†Œâ€ä»¥å¼€å§‹");
 		sender.send();
 		return;
 	}
 
-	//¿ÕÏĞ×´Ì¬
+	//ç©ºé—²çŠ¶æ€
 	if (status[qq_id] == PeerStatus::IDLE)
 	{
-		//²éÑ¯¸öÈËĞÅÏ¢
-		if (data==u"²éÑ¯¸öÈËĞÅÏ¢"|| data == u"»ñÈ¡¸öÈËĞÅÏ¢" || data == u"getinfo" || data == u"Getinfo")
+		//æŸ¥è¯¢ä¸ªäººä¿¡æ¯
+		if (data==u"æŸ¥è¯¢ä¸ªäººä¿¡æ¯"|| data == u"è·å–ä¸ªäººä¿¡æ¯" || data == u"getinfo" || data == u"Getinfo")
 		{
 			DataManager::Student st((int)getStuInfo[qq_id].studentId);
 			DataManager::Class cl(st.getClassId());
-			std::string send = u8"ÄúµÄ¸öÈËĞÅÏ¢ÈçÏÂ\n\nĞÕÃû£º" + st.getName() + u8"\nÑ§ºÅ£º" + st.getSchoolNum() + u8"\n°à¼¶£º" + cl.getName(); 
+			std::string send = u8"æ‚¨çš„ä¸ªäººä¿¡æ¯å¦‚ä¸‹\n\nå§“åï¼š" + st.getName() + u8"\nå­¦å·ï¼š" + st.getSchoolNum() + u8"\nç­çº§ï¼š" + cl.getName(); 
 			if (cl.getLocation() != u8"")
 			{
-				send += (u8"\nÉÏ¿ÎµØµã£º" + cl.getLocation());
+				send += (u8"\nä¸Šè¯¾åœ°ç‚¹ï¼š" + cl.getLocation());
 			}
 			if (cl.getTime() != u8"")
 			{
-				send += (u8"\nÉÏ¿ÎÊ±¼ä£º" + cl.getTime());
+				send += (u8"\nä¸Šè¯¾æ—¶é—´ï¼š" + cl.getTime());
 			}
 			PrivateMessageSender sender(qq_id, send);
 			sender.send();
 			return;
 		}
 
-		//²éÑ¯×÷Òµ£¨ÁĞ±í£©
-		if (data.substr(0, 4) == u"²éÑ¯×÷Òµ"|| data.substr(0, 4) == u"»ñÈ¡×÷Òµ")
+		//æŸ¥è¯¢ä½œä¸šï¼ˆåˆ—è¡¨ï¼‰
+		if (data.substr(0, 4) == u"æŸ¥è¯¢ä½œä¸š"|| data.substr(0, 4) == u"è·å–ä½œä¸š")
 		{
 			std::string assignmentId_str = Tools::to_utf8(Tools::delFirstCom(data, 4));
-			if (!Tools::isNum(assignmentId_str))//Î´¼ì²âµ½Êı×Ö
+			if (!Tools::isNum(assignmentId_str))//æœªæ£€æµ‹åˆ°æ•°å­—
 			{
 				std::string message;
 					std::vector<DataManager::CompleteHomeworkList> homeworklist = DataManager::getHomeworkListByStuId((long)getStuInfo[qq_id].studentId, (long)getStuInfo[qq_id].classId);
@@ -306,32 +306,32 @@ void AnaText(std::u16string data, long long qq_id)
 						for (auto& iter : homeworklist)
 						{
 							int status = iter.homework.getStatus();
-							message += (u8"¡¾×÷Òµ " + std::to_string(iter.assignment.getId()) + u8"¡¿  " + getHomeworkStatus(status) + u8"  ");
-							if (status == 0)//Î´Ìá½»
+							message += (u8"ã€ä½œä¸š " + std::to_string(iter.assignment.getId()) + u8"ã€‘  " + getHomeworkStatus(status) + u8"  ");
+							if (status == 0)//æœªæäº¤
 							{
 								if (std::time(0) > iter.assignment.getDeadline())
 								{
-									message += (u8"ÒÑ½ØÖ¹Ìá½»");
+									message += (u8"å·²æˆªæ­¢æäº¤");
 								}
 								else
 								{
-									message += (u8"½ØÖ¹Ê±¼ä£º" + TimeConvert(iter.assignment.getDeadline()));
+									message += (u8"æˆªæ­¢æ—¶é—´ï¼š" + TimeConvert(iter.assignment.getDeadline()));
 								}
 							}
-							if (status == 2)//ÒÑÅú¸Ä
+							if (status == 2)//å·²æ‰¹æ”¹
 							{
-								message += u8"·ÖÊı£º" + std::to_string(iter.homework.getScore());
+								message += u8"åˆ†æ•°ï¼š" + std::to_string(iter.homework.getScore());
 							}
 							message += "\r\n";
 						}
 					}
 					else
-						message = u8"ÔİÎŞ×÷Òµ";
-				PrivateMessageSender sender(qq_id, u8"×÷ÒµÁĞ±íÈçÏÂ\r\n" + message);
+						message = u8"æš‚æ— ä½œä¸š";
+				PrivateMessageSender sender(qq_id, u8"ä½œä¸šåˆ—è¡¨å¦‚ä¸‹\r\n" + message);
 				sender.send();
 				return;
 			}
-			//½øÈëÏêÇé²éÑ¯
+			//è¿›å…¥è¯¦æƒ…æŸ¥è¯¢
 			int assignmentId = atoi(assignmentId_str.c_str());
 			std::string message;
 			try
@@ -340,49 +340,49 @@ void AnaText(std::u16string data, long long qq_id)
 				DataManager::CompleteHomeworkList ch = getCH(qq_id, assignmentId);
 				
 				int homeworkStatus = ch.homework.getStatus();
-				if (homeworkStatus == 0)//Î´Ìá½»
+				if (homeworkStatus == 0)//æœªæäº¤
 				{
-					message += (u8"¡¾×÷Òµ " + std::to_string(ch.assignment.getId()) + u8"¡¿  " + getHomeworkStatus(homeworkStatus))+ u8"\r\n";
-					message += (u8"¡¾×÷ÒµÄÚÈİ¡¿\r\n" + ch.assignment.getDescription() + u8"\r\n");
-					message += (u8"¡¾½ØÖ¹Ê±¼ä¡¿  " + TimeConvert(ch.assignment.getDeadline()) + u8"\r\n");
+					message += (u8"ã€ä½œä¸š " + std::to_string(ch.assignment.getId()) + u8"ã€‘  " + getHomeworkStatus(homeworkStatus))+ u8"\r\n";
+					message += (u8"ã€ä½œä¸šå†…å®¹ã€‘\r\n" + ch.assignment.getDescription() + u8"\r\n");
+					message += (u8"ã€æˆªæ­¢æ—¶é—´ã€‘  " + TimeConvert(ch.assignment.getDeadline()) + u8"\r\n");
 					PrivateMessageSender sender(qq_id, message);
 					sender.send();
 					return;
 				}
-				if (homeworkStatus == 1)//ÒÑÌá½»
+				if (homeworkStatus == 1)//å·²æäº¤
 				{
-					message += (u8"¡¾×÷Òµ " + std::to_string(ch.assignment.getId()) + u8"¡¿  " + getHomeworkStatus(homeworkStatus)) + u8"\n\n";
-					message += (u8"¡¾×÷ÒµÄÚÈİ¡¿\r\n" + ch.assignment.getDescription() + u8"\r\n");
-					message += (u8"¡¾½ØÖ¹Ê±¼ä¡¿  " + TimeConvert(ch.assignment.getDeadline()) + u8"\n\n");
-					message += (u8"¡¾×÷ÒµÕıÎÄÁĞ±í¡¿\r\n" + getHomeworkFilename(ch.homework.getContentURL())+u8"\r\n");
-					message += (u8"¡¾×÷Òµ¸½¼şÁĞ±í¡¿\r\n" + getHomeworkFilename(ch.homework.getAttachmentURL()) + u8"\r\n");
+					message += (u8"ã€ä½œä¸š " + std::to_string(ch.assignment.getId()) + u8"ã€‘  " + getHomeworkStatus(homeworkStatus)) + u8"\n\n";
+					message += (u8"ã€ä½œä¸šå†…å®¹ã€‘\r\n" + ch.assignment.getDescription() + u8"\r\n");
+					message += (u8"ã€æˆªæ­¢æ—¶é—´ã€‘  " + TimeConvert(ch.assignment.getDeadline()) + u8"\n\n");
+					message += (u8"ã€ä½œä¸šæ­£æ–‡åˆ—è¡¨ã€‘\r\n" + getHomeworkFilename(ch.homework.getContentURL())+u8"\r\n");
+					message += (u8"ã€ä½œä¸šé™„ä»¶åˆ—è¡¨ã€‘\r\n" + getHomeworkFilename(ch.homework.getAttachmentURL()) + u8"\r\n");
 					PrivateMessageSender sender(qq_id, message);
 					sender.send();
 					return;
 				}
-				if (homeworkStatus == 2)//ÒÑÅú¸Ä
+				if (homeworkStatus == 2)//å·²æ‰¹æ”¹
 				{
-					message += (u8"¡¾×÷Òµ " + std::to_string(ch.assignment.getId()) + u8"¡¿  " + getHomeworkStatus(homeworkStatus)) + u8"\n\n";
-					message += (u8"¡¾×÷ÒµÄÚÈİ¡¿\r\n" + ch.assignment.getDescription() + u8"\r\n");
-					message += (u8"¡¾½ØÖ¹Ê±¼ä¡¿  " + TimeConvert(ch.assignment.getDeadline()) + u8"\n\n");
-					message += (u8"¡¾·ÖÊı¡¿ " + std::to_string(ch.homework.getScore()) + u8"\r\n");
-					message += (u8"¡¾ÆÀÓï¡¿\r\n" + ch.homework.getComments() + u8"\n\n");
-					message += (u8"¡¾×÷ÒµÕıÎÄÁĞ±í¡¿\r\n" + getHomeworkFilename(ch.homework.getContentURL()) + u8"\r\n");
-					message += (u8"¡¾×÷Òµ¸½¼şÁĞ±í¡¿\r\n" + getHomeworkFilename(ch.homework.getAttachmentURL()) + u8"\r\n");
+					message += (u8"ã€ä½œä¸š " + std::to_string(ch.assignment.getId()) + u8"ã€‘  " + getHomeworkStatus(homeworkStatus)) + u8"\n\n";
+					message += (u8"ã€ä½œä¸šå†…å®¹ã€‘\r\n" + ch.assignment.getDescription() + u8"\r\n");
+					message += (u8"ã€æˆªæ­¢æ—¶é—´ã€‘  " + TimeConvert(ch.assignment.getDeadline()) + u8"\n\n");
+					message += (u8"ã€åˆ†æ•°ã€‘ " + std::to_string(ch.homework.getScore()) + u8"\r\n");
+					message += (u8"ã€è¯„è¯­ã€‘\r\n" + ch.homework.getComments() + u8"\n\n");
+					message += (u8"ã€ä½œä¸šæ­£æ–‡åˆ—è¡¨ã€‘\r\n" + getHomeworkFilename(ch.homework.getContentURL()) + u8"\r\n");
+					message += (u8"ã€ä½œä¸šé™„ä»¶åˆ—è¡¨ã€‘\r\n" + getHomeworkFilename(ch.homework.getAttachmentURL()) + u8"\r\n");
 					PrivateMessageSender sender(qq_id, message);
 					sender.send();
 					return;
 				}
 			}
-			catch(DataManager::DMException::TARGET_NOT_FOUND)//ÎŞ×÷Òµ
+			catch(DataManager::DMException::TARGET_NOT_FOUND)//æ— ä½œä¸š
 			{
-				PrivateMessageSender sender(qq_id, u8"ÔİÎŞ¸Ã×÷Òµ£¬ÇëÖØÊÔ");
+				PrivateMessageSender sender(qq_id, u8"æš‚æ— è¯¥ä½œä¸šï¼Œè¯·é‡è¯•");
 				sender.send();
 				return;
 			}
 			catch (std::exception)
 			{
-				PrivateMessageSender sender(qq_id, u8"Î´Öª´íÎó£¬ÇëÖØÊÔ");
+				PrivateMessageSender sender(qq_id, u8"æœªçŸ¥é”™è¯¯ï¼Œè¯·é‡è¯•");
 				sender.send();
 				return;
 			}
@@ -391,7 +391,7 @@ void AnaText(std::u16string data, long long qq_id)
 		if (data.substr(0, 11) == u"gethomework" || data.substr(0, 11) == u"Gethomework")
 		{
 			std::string assignmentId_str = Tools::to_utf8(Tools::delFirstCom(data, 11));
-			if (!Tools::isNum(assignmentId_str))//Î´¼ì²âµ½Êı×Ö
+			if (!Tools::isNum(assignmentId_str))//æœªæ£€æµ‹åˆ°æ•°å­—
 			{
 				std::string message;
 				std::vector<DataManager::CompleteHomeworkList> homeworklist = DataManager::getHomeworkListByStuId((long)getStuInfo[qq_id].studentId, (long)getStuInfo[qq_id].classId);
@@ -400,32 +400,32 @@ void AnaText(std::u16string data, long long qq_id)
 					for (auto& iter : homeworklist)
 					{
 						int status = iter.homework.getStatus();
-						message += (u8"¡¾×÷Òµ " + std::to_string(iter.assignment.getId()) + u8"¡¿  " + getHomeworkStatus(status) + u8"  ");
-						if (status == 0)//Î´Ìá½»
+						message += (u8"ã€ä½œä¸š " + std::to_string(iter.assignment.getId()) + u8"ã€‘  " + getHomeworkStatus(status) + u8"  ");
+						if (status == 0)//æœªæäº¤
 						{
 							if (std::time(0) > iter.assignment.getDeadline())
 							{
-								message += (u8"ÒÑ½ØÖ¹Ìá½»");
+								message += (u8"å·²æˆªæ­¢æäº¤");
 							}
 							else
 							{
-								message += (u8"½ØÖ¹Ê±¼ä£º" + TimeConvert(iter.assignment.getDeadline()));
+								message += (u8"æˆªæ­¢æ—¶é—´ï¼š" + TimeConvert(iter.assignment.getDeadline()));
 							}
 						}
-						if (status == 2)//ÒÑÅú¸Ä
+						if (status == 2)//å·²æ‰¹æ”¹
 						{
-							message += u8"·ÖÊı£º" + std::to_string(iter.homework.getScore());
+							message += u8"åˆ†æ•°ï¼š" + std::to_string(iter.homework.getScore());
 						}
 						message += "\r\n";
 					}
 				}
 				else
-					message = u8"ÔİÎŞ×÷Òµ";
-				PrivateMessageSender sender(qq_id, u8"×÷ÒµÁĞ±íÈçÏÂ\r\n" + message);
+					message = u8"æš‚æ— ä½œä¸š";
+				PrivateMessageSender sender(qq_id, u8"ä½œä¸šåˆ—è¡¨å¦‚ä¸‹\r\n" + message);
 				sender.send();
 				return;
 			}
-			//½øÈëÏêÇé²éÑ¯
+			//è¿›å…¥è¯¦æƒ…æŸ¥è¯¢
 			int assignmentId = atoi(assignmentId_str.c_str());
 			std::string message;
 			try
@@ -434,49 +434,49 @@ void AnaText(std::u16string data, long long qq_id)
 				DataManager::CompleteHomeworkList ch = getCH(qq_id, assignmentId);
 
 				int homeworkStatus = ch.homework.getStatus();
-				if (homeworkStatus == 0)//Î´Ìá½»
+				if (homeworkStatus == 0)//æœªæäº¤
 				{
-					message += (u8"¡¾×÷Òµ " + std::to_string(ch.assignment.getId()) + u8"¡¿  " + getHomeworkStatus(homeworkStatus)) + u8"\r\n";
-					message += (u8"¡¾×÷ÒµÄÚÈİ¡¿\r\n" + ch.assignment.getDescription() + u8"\r\n");
-					message += (u8"¡¾½ØÖ¹Ê±¼ä¡¿  " + TimeConvert(ch.assignment.getDeadline()) + u8"\r\n");
+					message += (u8"ã€ä½œä¸š " + std::to_string(ch.assignment.getId()) + u8"ã€‘  " + getHomeworkStatus(homeworkStatus)) + u8"\r\n";
+					message += (u8"ã€ä½œä¸šå†…å®¹ã€‘\r\n" + ch.assignment.getDescription() + u8"\r\n");
+					message += (u8"ã€æˆªæ­¢æ—¶é—´ã€‘  " + TimeConvert(ch.assignment.getDeadline()) + u8"\r\n");
 					PrivateMessageSender sender(qq_id, message);
 					sender.send();
 					return;
 				}
-				if (homeworkStatus == 1)//ÒÑÌá½»
+				if (homeworkStatus == 1)//å·²æäº¤
 				{
-					message += (u8"¡¾×÷Òµ " + std::to_string(ch.assignment.getId()) + u8"¡¿  " + getHomeworkStatus(homeworkStatus)) + u8"\n\n";
-					message += (u8"¡¾×÷ÒµÄÚÈİ¡¿\r\n" + ch.assignment.getDescription() + u8"\r\n");
-					message += (u8"¡¾½ØÖ¹Ê±¼ä¡¿  " + TimeConvert(ch.assignment.getDeadline()) + u8"\n\n");
-					message += (u8"¡¾×÷ÒµÕıÎÄÁĞ±í¡¿\r\n" + getHomeworkFilename(ch.homework.getContentURL()) + u8"\r\n");
-					message += (u8"¡¾×÷Òµ¸½¼şÁĞ±í¡¿\r\n" + getHomeworkFilename(ch.homework.getAttachmentURL()) + u8"\r\n");
+					message += (u8"ã€ä½œä¸š " + std::to_string(ch.assignment.getId()) + u8"ã€‘  " + getHomeworkStatus(homeworkStatus)) + u8"\n\n";
+					message += (u8"ã€ä½œä¸šå†…å®¹ã€‘\r\n" + ch.assignment.getDescription() + u8"\r\n");
+					message += (u8"ã€æˆªæ­¢æ—¶é—´ã€‘  " + TimeConvert(ch.assignment.getDeadline()) + u8"\n\n");
+					message += (u8"ã€ä½œä¸šæ­£æ–‡åˆ—è¡¨ã€‘\r\n" + getHomeworkFilename(ch.homework.getContentURL()) + u8"\r\n");
+					message += (u8"ã€ä½œä¸šé™„ä»¶åˆ—è¡¨ã€‘\r\n" + getHomeworkFilename(ch.homework.getAttachmentURL()) + u8"\r\n");
 					PrivateMessageSender sender(qq_id, message);
 					sender.send();
 					return;
 				}
-				if (homeworkStatus == 2)//ÒÑÅú¸Ä
+				if (homeworkStatus == 2)//å·²æ‰¹æ”¹
 				{
-					message += (u8"¡¾×÷Òµ " + std::to_string(ch.assignment.getId()) + u8"¡¿  " + getHomeworkStatus(homeworkStatus)) + u8"\n\n";
-					message += (u8"¡¾×÷ÒµÄÚÈİ¡¿\r\n" + ch.assignment.getDescription() + u8"\r\n");
-					message += (u8"¡¾½ØÖ¹Ê±¼ä¡¿  " + TimeConvert(ch.assignment.getDeadline()) + u8"\n\n");
-					message += (u8"¡¾·ÖÊı¡¿ " + std::to_string(ch.homework.getScore()) + u8"\r\n");
-					message += (u8"¡¾ÆÀÓï¡¿\r\n" + ch.homework.getComments() + u8"\n\n");
-					message += (u8"¡¾×÷ÒµÕıÎÄÁĞ±í¡¿\r\n" + getHomeworkFilename(ch.homework.getContentURL()) + u8"\r\n");
-					message += (u8"¡¾×÷Òµ¸½¼şÁĞ±í¡¿\r\n" + getHomeworkFilename(ch.homework.getAttachmentURL()) + u8"\r\n");
+					message += (u8"ã€ä½œä¸š " + std::to_string(ch.assignment.getId()) + u8"ã€‘  " + getHomeworkStatus(homeworkStatus)) + u8"\n\n";
+					message += (u8"ã€ä½œä¸šå†…å®¹ã€‘\r\n" + ch.assignment.getDescription() + u8"\r\n");
+					message += (u8"ã€æˆªæ­¢æ—¶é—´ã€‘  " + TimeConvert(ch.assignment.getDeadline()) + u8"\n\n");
+					message += (u8"ã€åˆ†æ•°ã€‘ " + std::to_string(ch.homework.getScore()) + u8"\r\n");
+					message += (u8"ã€è¯„è¯­ã€‘\r\n" + ch.homework.getComments() + u8"\n\n");
+					message += (u8"ã€ä½œä¸šæ­£æ–‡åˆ—è¡¨ã€‘\r\n" + getHomeworkFilename(ch.homework.getContentURL()) + u8"\r\n");
+					message += (u8"ã€ä½œä¸šé™„ä»¶åˆ—è¡¨ã€‘\r\n" + getHomeworkFilename(ch.homework.getAttachmentURL()) + u8"\r\n");
 					PrivateMessageSender sender(qq_id, message);
 					sender.send();
 					return;
 				}
 			}
-			catch (DataManager::DMException::TARGET_NOT_FOUND)//ÎŞ×÷Òµ
+			catch (DataManager::DMException::TARGET_NOT_FOUND)//æ— ä½œä¸š
 			{
-				PrivateMessageSender sender(qq_id, u8"ÔİÎŞ¸Ã×÷Òµ£¬ÇëÖØÊÔ");
+				PrivateMessageSender sender(qq_id, u8"æš‚æ— è¯¥ä½œä¸šï¼Œè¯·é‡è¯•");
 				sender.send();
 				return;
 			}
 			catch (std::exception)
 			{
-				PrivateMessageSender sender(qq_id, u8"Î´Öª´íÎó£¬ÇëÖØÊÔ");
+				PrivateMessageSender sender(qq_id, u8"æœªçŸ¥é”™è¯¯ï¼Œè¯·é‡è¯•");
 				sender.send();
 				return;
 			}
@@ -485,7 +485,7 @@ void AnaText(std::u16string data, long long qq_id)
 		if (data.substr(0, 3) == u"get" || data.substr(0, 3) == u"Get")
 		{
 			std::string assignmentId_str = Tools::to_utf8(Tools::delFirstCom(data, 3));
-			if (!Tools::isNum(assignmentId_str))//Î´¼ì²âµ½Êı×Ö
+			if (!Tools::isNum(assignmentId_str))//æœªæ£€æµ‹åˆ°æ•°å­—
 			{
 				std::string message;
 				std::vector<DataManager::CompleteHomeworkList> homeworklist = DataManager::getHomeworkListByStuId((long)getStuInfo[qq_id].studentId, (long)getStuInfo[qq_id].classId);
@@ -494,32 +494,32 @@ void AnaText(std::u16string data, long long qq_id)
 					for (auto& iter : homeworklist)
 					{
 						int status = iter.homework.getStatus();
-						message += (u8"¡¾×÷Òµ " + std::to_string(iter.assignment.getId()) + u8"¡¿  " + getHomeworkStatus(status) + u8"  ");
-						if (status == 0)//Î´Ìá½»
+						message += (u8"ã€ä½œä¸š " + std::to_string(iter.assignment.getId()) + u8"ã€‘  " + getHomeworkStatus(status) + u8"  ");
+						if (status == 0)//æœªæäº¤
 						{
 							if (std::time(0) > iter.assignment.getDeadline())
 							{
-								message += (u8"ÒÑ½ØÖ¹Ìá½»");
+								message += (u8"å·²æˆªæ­¢æäº¤");
 							}
 							else
 							{
-								message += (u8"½ØÖ¹Ê±¼ä£º" + TimeConvert(iter.assignment.getDeadline()));
+								message += (u8"æˆªæ­¢æ—¶é—´ï¼š" + TimeConvert(iter.assignment.getDeadline()));
 							}
 						}
-						if (status == 2)//ÒÑÅú¸Ä
+						if (status == 2)//å·²æ‰¹æ”¹
 						{
-							message += u8"·ÖÊı£º" + std::to_string(iter.homework.getScore());
+							message += u8"åˆ†æ•°ï¼š" + std::to_string(iter.homework.getScore());
 						}
 						message += "\r\n";
 					}
 				}
 				else
-					message = u8"ÔİÎŞ×÷Òµ";
-				PrivateMessageSender sender(qq_id, u8"×÷ÒµÁĞ±íÈçÏÂ\r\n" + message);
+					message = u8"æš‚æ— ä½œä¸š";
+				PrivateMessageSender sender(qq_id, u8"ä½œä¸šåˆ—è¡¨å¦‚ä¸‹\r\n" + message);
 				sender.send();
 				return;
 			}
-			//½øÈëÏêÇé²éÑ¯
+			//è¿›å…¥è¯¦æƒ…æŸ¥è¯¢
 			int assignmentId = atoi(assignmentId_str.c_str());
 			std::string message;
 			try
@@ -528,62 +528,62 @@ void AnaText(std::u16string data, long long qq_id)
 				DataManager::CompleteHomeworkList ch = getCH(qq_id, assignmentId);
 
 				int homeworkStatus = ch.homework.getStatus();
-				if (homeworkStatus == 0)//Î´Ìá½»
+				if (homeworkStatus == 0)//æœªæäº¤
 				{
-					message += (u8"¡¾×÷Òµ " + std::to_string(ch.assignment.getId()) + u8"¡¿  " + getHomeworkStatus(homeworkStatus)) + u8"\r\n";
-					message += (u8"¡¾×÷ÒµÄÚÈİ¡¿\r\n" + ch.assignment.getDescription() + u8"\r\n");
-					message += (u8"¡¾½ØÖ¹Ê±¼ä¡¿  " + TimeConvert(ch.assignment.getDeadline()) + u8"\r\n");
+					message += (u8"ã€ä½œä¸š " + std::to_string(ch.assignment.getId()) + u8"ã€‘  " + getHomeworkStatus(homeworkStatus)) + u8"\r\n";
+					message += (u8"ã€ä½œä¸šå†…å®¹ã€‘\r\n" + ch.assignment.getDescription() + u8"\r\n");
+					message += (u8"ã€æˆªæ­¢æ—¶é—´ã€‘  " + TimeConvert(ch.assignment.getDeadline()) + u8"\r\n");
 					PrivateMessageSender sender(qq_id, message);
 					sender.send();
 					return;
 				}
-				if (homeworkStatus == 1)//ÒÑÌá½»
+				if (homeworkStatus == 1)//å·²æäº¤
 				{
-					message += (u8"¡¾×÷Òµ " + std::to_string(ch.assignment.getId()) + u8"¡¿  " + getHomeworkStatus(homeworkStatus)) + u8"\n\n";
-					message += (u8"¡¾×÷ÒµÄÚÈİ¡¿\r\n" + ch.assignment.getDescription() + u8"\r\n");
-					message += (u8"¡¾½ØÖ¹Ê±¼ä¡¿  " + TimeConvert(ch.assignment.getDeadline()) + u8"\n\n");
-					message += (u8"¡¾×÷ÒµÕıÎÄÁĞ±í¡¿\r\n" + getHomeworkFilename(ch.homework.getContentURL()) + u8"\r\n");
-					message += (u8"¡¾×÷Òµ¸½¼şÁĞ±í¡¿\r\n" + getHomeworkFilename(ch.homework.getAttachmentURL()) + u8"\r\n");
+					message += (u8"ã€ä½œä¸š " + std::to_string(ch.assignment.getId()) + u8"ã€‘  " + getHomeworkStatus(homeworkStatus)) + u8"\n\n";
+					message += (u8"ã€ä½œä¸šå†…å®¹ã€‘\r\n" + ch.assignment.getDescription() + u8"\r\n");
+					message += (u8"ã€æˆªæ­¢æ—¶é—´ã€‘  " + TimeConvert(ch.assignment.getDeadline()) + u8"\n\n");
+					message += (u8"ã€ä½œä¸šæ­£æ–‡åˆ—è¡¨ã€‘\r\n" + getHomeworkFilename(ch.homework.getContentURL()) + u8"\r\n");
+					message += (u8"ã€ä½œä¸šé™„ä»¶åˆ—è¡¨ã€‘\r\n" + getHomeworkFilename(ch.homework.getAttachmentURL()) + u8"\r\n");
 					PrivateMessageSender sender(qq_id, message);
 					sender.send();
 					return;
 				}
-				if (homeworkStatus == 2)//ÒÑÅú¸Ä
+				if (homeworkStatus == 2)//å·²æ‰¹æ”¹
 				{
-					message += (u8"¡¾×÷Òµ " + std::to_string(ch.assignment.getId()) + u8"¡¿  " + getHomeworkStatus(homeworkStatus)) + u8"\n\n";
-					message += (u8"¡¾×÷ÒµÄÚÈİ¡¿\r\n" + ch.assignment.getDescription() + u8"\r\n");
-					message += (u8"¡¾½ØÖ¹Ê±¼ä¡¿  " + TimeConvert(ch.assignment.getDeadline()) + u8"\n\n");
-					message += (u8"¡¾·ÖÊı¡¿ " + std::to_string(ch.homework.getScore()) + u8"\r\n");
-					message += (u8"¡¾ÆÀÓï¡¿\r\n" + ch.homework.getComments() + u8"\n\n");
-					message += (u8"¡¾×÷ÒµÕıÎÄÁĞ±í¡¿\r\n" + getHomeworkFilename(ch.homework.getContentURL()) + u8"\r\n");
-					message += (u8"¡¾×÷Òµ¸½¼şÁĞ±í¡¿\r\n" + getHomeworkFilename(ch.homework.getAttachmentURL()) + u8"\r\n");
+					message += (u8"ã€ä½œä¸š " + std::to_string(ch.assignment.getId()) + u8"ã€‘  " + getHomeworkStatus(homeworkStatus)) + u8"\n\n";
+					message += (u8"ã€ä½œä¸šå†…å®¹ã€‘\r\n" + ch.assignment.getDescription() + u8"\r\n");
+					message += (u8"ã€æˆªæ­¢æ—¶é—´ã€‘  " + TimeConvert(ch.assignment.getDeadline()) + u8"\n\n");
+					message += (u8"ã€åˆ†æ•°ã€‘ " + std::to_string(ch.homework.getScore()) + u8"\r\n");
+					message += (u8"ã€è¯„è¯­ã€‘\r\n" + ch.homework.getComments() + u8"\n\n");
+					message += (u8"ã€ä½œä¸šæ­£æ–‡åˆ—è¡¨ã€‘\r\n" + getHomeworkFilename(ch.homework.getContentURL()) + u8"\r\n");
+					message += (u8"ã€ä½œä¸šé™„ä»¶åˆ—è¡¨ã€‘\r\n" + getHomeworkFilename(ch.homework.getAttachmentURL()) + u8"\r\n");
 					PrivateMessageSender sender(qq_id, message);
 					sender.send();
 					return;
 				}
 			}
-			catch (DataManager::DMException::TARGET_NOT_FOUND)//ÎŞ×÷Òµ
+			catch (DataManager::DMException::TARGET_NOT_FOUND)//æ— ä½œä¸š
 			{
-				PrivateMessageSender sender(qq_id, u8"ÔİÎŞ¸Ã×÷Òµ£¬ÇëÖØÊÔ");
+				PrivateMessageSender sender(qq_id, u8"æš‚æ— è¯¥ä½œä¸šï¼Œè¯·é‡è¯•");
 				sender.send();
 				return;
 			}
 			catch (std::exception)
 			{
-				PrivateMessageSender sender(qq_id, u8"Î´Öª´íÎó£¬ÇëÖØÊÔ");
+				PrivateMessageSender sender(qq_id, u8"æœªçŸ¥é”™è¯¯ï¼Œè¯·é‡è¯•");
 				sender.send();
 				return;
 			}
 			return;
 		}
 
-		//Ìá½»&ĞŞ¸Ä×÷Òµ
-		if (data.substr(0, 4) == u"Ìá½»×÷Òµ"|| data.substr(0, 4) == u"ĞŞ¸Ä×÷Òµ")
+		//æäº¤&ä¿®æ”¹ä½œä¸š
+		if (data.substr(0, 4) == u"æäº¤ä½œä¸š"|| data.substr(0, 4) == u"ä¿®æ”¹ä½œä¸š")
 		{
 			std::string assignmentId_str = Tools::to_utf8(Tools::delFirstCom(data, 4));
 			if (!Tools::isNum(assignmentId_str)|| assignmentId_str=="")
 			{
-				PrivateMessageSender sender(qq_id, u8"Î´ÖªÃüÁî£¬ÇëÖØÊÔ");
+				PrivateMessageSender sender(qq_id, u8"æœªçŸ¥å‘½ä»¤ï¼Œè¯·é‡è¯•");
 				sender.send();
 				return;
 			}
@@ -597,12 +597,12 @@ void AnaText(std::u16string data, long long qq_id)
 				DataManager::Student st((long)getStuInfo[qq_id].studentId);
 				if (std::time(0) > ch.assignment.getDeadline())
 				{
-					PrivateMessageSender sender(qq_id, u8"×÷ÒµÌá½»ÒÑ½ØÖ¹");
+					PrivateMessageSender sender(qq_id, u8"ä½œä¸šæäº¤å·²æˆªæ­¢");
 					sender.send();
 					status[qq_id] = PeerStatus::IDLE;
 					return;
 				}
-				PrivateMessageSender sender(qq_id, u8"ÒÑĞÂ½¨×÷Òµ");
+				PrivateMessageSender sender(qq_id, u8"å·²æ–°å»ºä½œä¸š");
 				sender.send();
 
 				HomeworkInfo info;
@@ -613,14 +613,14 @@ void AnaText(std::u16string data, long long qq_id)
 				if (getHomeworkInfo.count(qq_id))
 					getHomeworkInfo.erase(qq_id);
 				getHomeworkInfo.insert(std::pair<long long, HomeworkInfo>(qq_id, info));
-				PrivateMessageSender sender2(qq_id, u8"¿ªÊ¼Ìá½»×÷Òµ" + std::to_string(info.homeworkId) + u8"\r\n½áÊøºó£¬ÊäÈë¡°È·ÈÏÌá½»¡±ÒÔÌá½»£¬ÊäÈë¡°È¡ÏûÌá½»¡±ÒÔÈ¡Ïû");
+				PrivateMessageSender sender2(qq_id, u8"å¼€å§‹æäº¤ä½œä¸š" + std::to_string(info.homeworkId) + u8"\r\nç»“æŸåï¼Œè¾“å…¥â€œç¡®è®¤æäº¤â€ä»¥æäº¤ï¼Œè¾“å…¥â€œå–æ¶ˆæäº¤â€ä»¥å–æ¶ˆ");
 				sender2.send();
 
 				File file(info);
 				std::string filelist = file.getFileList();
-				if (filelist != u8"ÔİÎŞÎÄ¼ş")
+				if (filelist != u8"æš‚æ— æ–‡ä»¶")
 				{
-					PrivateMessageSender sender(qq_id, u8"ÒÑ¼ì²âµ½²İ¸å\n" + filelist);
+					PrivateMessageSender sender(qq_id, u8"å·²æ£€æµ‹åˆ°è‰ç¨¿\n" + filelist);
 					sender.send();
 				}
 
@@ -629,7 +629,7 @@ void AnaText(std::u16string data, long long qq_id)
 			catch (DataManager::DMException::TARGET_NOT_FOUND)
 			{
 				status[qq_id] = PeerStatus::IDLE;
-				PrivateMessageSender sender(qq_id, u8"ÔİÎŞ¸Ã×÷Òµ£¬ÇëÖØÊÔ");
+				PrivateMessageSender sender(qq_id, u8"æš‚æ— è¯¥ä½œä¸šï¼Œè¯·é‡è¯•");
 				sender.send();
 				return;
 			}
@@ -639,7 +639,7 @@ void AnaText(std::u16string data, long long qq_id)
 			std::string assignmentId_str = Tools::to_utf8(Tools::delFirstCom(data, 6));
 			if (!Tools::isNum(assignmentId_str) || assignmentId_str == "")
 			{
-				PrivateMessageSender sender(qq_id, u8"Î´ÖªÃüÁî£¬ÇëÖØÊÔ");
+				PrivateMessageSender sender(qq_id, u8"æœªçŸ¥å‘½ä»¤ï¼Œè¯·é‡è¯•");
 				sender.send();
 				return;
 			}
@@ -653,12 +653,12 @@ void AnaText(std::u16string data, long long qq_id)
 				DataManager::Student st((long)getStuInfo[qq_id].studentId);
 				if (std::time(0) > ch.assignment.getDeadline())
 				{
-					PrivateMessageSender sender(qq_id, u8"×÷ÒµÌá½»ÒÑ½ØÖ¹");
+					PrivateMessageSender sender(qq_id, u8"ä½œä¸šæäº¤å·²æˆªæ­¢");
 					sender.send();
 					status[qq_id] = PeerStatus::IDLE;
 					return;
 				}
-				PrivateMessageSender sender(qq_id, u8"ÒÑĞÂ½¨×÷Òµ");
+				PrivateMessageSender sender(qq_id, u8"å·²æ–°å»ºä½œä¸š");
 				sender.send();
 
 				HomeworkInfo info;
@@ -669,14 +669,14 @@ void AnaText(std::u16string data, long long qq_id)
 				if (getHomeworkInfo.count(qq_id))
 					getHomeworkInfo.erase(qq_id);
 				getHomeworkInfo.insert(std::pair<long long, HomeworkInfo>(qq_id, info));
-				PrivateMessageSender sender2(qq_id, u8"¿ªÊ¼Ìá½»×÷Òµ" + std::to_string(info.homeworkId) + u8"\r\n½áÊøºó£¬ÊäÈë¡°È·ÈÏÌá½»¡±ÒÔÌá½»£¬ÊäÈë¡°È¡ÏûÌá½»¡±ÒÔÈ¡Ïû");
+				PrivateMessageSender sender2(qq_id, u8"å¼€å§‹æäº¤ä½œä¸š" + std::to_string(info.homeworkId) + u8"\r\nç»“æŸåï¼Œè¾“å…¥â€œç¡®è®¤æäº¤â€ä»¥æäº¤ï¼Œè¾“å…¥â€œå–æ¶ˆæäº¤â€ä»¥å–æ¶ˆ");
 				sender2.send();
 
 				File file(info);
 				std::string filelist = file.getFileList();
-				if (filelist != u8"ÔİÎŞÎÄ¼ş")
+				if (filelist != u8"æš‚æ— æ–‡ä»¶")
 				{
-					PrivateMessageSender sender(qq_id, u8"ÒÑ¼ì²âµ½²İ¸å\n" + filelist);
+					PrivateMessageSender sender(qq_id, u8"å·²æ£€æµ‹åˆ°è‰ç¨¿\n" + filelist);
 					sender.send();
 				}
 
@@ -685,14 +685,14 @@ void AnaText(std::u16string data, long long qq_id)
 			catch (DataManager::DMException::TARGET_NOT_FOUND)
 			{
 				status[qq_id] = PeerStatus::IDLE;
-				PrivateMessageSender sender(qq_id, u8"ÔİÎŞ¸Ã×÷Òµ£¬ÇëÖØÊÔ");
+				PrivateMessageSender sender(qq_id, u8"æš‚æ— è¯¥ä½œä¸šï¼Œè¯·é‡è¯•");
 				sender.send();
 				return;
 			}
 		}
 	}
 
-	PrivateMessageSender sender(qq_id, u8"Î´ÖªÃüÁî£¬ÇëÖØÊÔ\nÊäÈë¡°°ïÖú¡±ÒÔ»ñµÃÃüÁîÁĞ±í");
+	PrivateMessageSender sender(qq_id, u8"æœªçŸ¥å‘½ä»¤ï¼Œè¯·é‡è¯•\nè¾“å…¥â€œå¸®åŠ©â€ä»¥è·å¾—å‘½ä»¤åˆ—è¡¨");
 	sender.send();
 	return;
 }
@@ -708,15 +708,15 @@ void RegCommand(std::u16string data, long long qq_id)
 
 	regInfo = regStatus[qq_id];
 
-	if (data == u"È¡Ïû×¢²á" || data == u"È¡Ïû" || data == u"Cancel" || data == u"cancel")
+	if (data == u"å–æ¶ˆæ³¨å†Œ" || data == u"å–æ¶ˆ" || data == u"Cancel" || data == u"cancel")
 	{
-		PrivateMessageSender sender(qq_id, u8"ÒÑÈ¡Ïû×¢²á");
+		PrivateMessageSender sender(qq_id, u8"å·²å–æ¶ˆæ³¨å†Œ");
 		sender.send();
 		regStatus.erase(qq_id);
 		status[qq_id] = PeerStatus::IDLE;
 		return;
 	}
-	if (data == u"°ïÖú" || data == u"Help" || data == u"help")
+	if (data == u"å¸®åŠ©" || data == u"Help" || data == u"help")
 	{
 		PrivateMessageSender sender(qq_id, regHelper);
 		sender.send();
@@ -724,7 +724,7 @@ void RegCommand(std::u16string data, long long qq_id)
 	}
 	if (regInfo.status == RegStatus::START)
 	{
-		PrivateMessageSender sender1(qq_id, u8"¿ªÊ¼×¢²á£¬ÊäÈë¡°È¡Ïû¡±¼´¿ÉÍË³ö×¢²á\n\nÇëÊäÈë¿Î³ÌÑûÇëÂë");
+		PrivateMessageSender sender1(qq_id, u8"å¼€å§‹æ³¨å†Œï¼Œè¾“å…¥â€œå–æ¶ˆâ€å³å¯é€€å‡ºæ³¨å†Œ\n\nè¯·è¾“å…¥è¯¾ç¨‹é‚€è¯·ç ");
 		sender1.send();
 		regInfo.status = RegStatus::CLASS;
 		regStatus[qq_id] = regInfo;
@@ -738,7 +738,7 @@ void RegCommand(std::u16string data, long long qq_id)
 		{
 			DataManager::Class cl(Tools::to_utf8(classCode)); 
 			//DataManager::Class cl(1);
-			std::string classInfo = u8"Äú¼´½«¼ÓÈë£º"+cl.getName()+u8"\n\nÇëÊäÈëĞÕÃû";
+			std::string classInfo = u8"æ‚¨å³å°†åŠ å…¥ï¼š"+cl.getName()+u8"\n\nè¯·è¾“å…¥å§“å";
 
 			PrivateMessageSender sender(qq_id, classInfo);
 			sender.send();
@@ -750,7 +750,7 @@ void RegCommand(std::u16string data, long long qq_id)
 		
 		catch(DataManager::DMError)
 		{
-			PrivateMessageSender sender(qq_id, u8"Î´Öª¿Î³ÌÑûÇëÂë£¬ÇëÖØÊÔ");
+			PrivateMessageSender sender(qq_id, u8"æœªçŸ¥è¯¾ç¨‹é‚€è¯·ç ï¼Œè¯·é‡è¯•");
 			sender.send();
 			return;
 		}
@@ -760,7 +760,7 @@ void RegCommand(std::u16string data, long long qq_id)
 	if (regInfo.status == RegStatus::NAME)
 	{
 		std::u16string name = data.substr(0, data.find_first_of(u" "));
-		PrivateMessageSender sender(qq_id, u8"ÇëÊäÈëÑ§ºÅ");
+		PrivateMessageSender sender(qq_id, u8"è¯·è¾“å…¥å­¦å·");
 		sender.send();
 		regInfo.status = RegStatus::NUM;
 		regInfo.name = Tools::to_utf8(name);
@@ -774,7 +774,7 @@ void RegCommand(std::u16string data, long long qq_id)
 
 		if (!Tools::isNum(schoolID_str)||schoolID_str.length()>18)
 		{
-			PrivateMessageSender sender(qq_id, u8"Ñ§ºÅ¸ñÊ½´íÎó£¬ÇëÖØÊÔ");
+			PrivateMessageSender sender(qq_id, u8"å­¦å·æ ¼å¼é”™è¯¯ï¼Œè¯·é‡è¯•");
 			sender.send();
 			return;
 		}
@@ -785,7 +785,7 @@ void RegCommand(std::u16string data, long long qq_id)
 		regInfo.schoolId = schoolID;
 		regStatus[qq_id] = regInfo;
 
-		std::string classInfo = u8"ÄúµÄ×¢²áĞÅÏ¢ÈçÏÂ\r\nĞÕÃû£º" + regInfo.name + u8"\r\nÑ§ºÅ£º" + std::to_string(regInfo.schoolId) + u8"\r\n\r\nÊäÈë¡°È·ÈÏ¡±ÒÔÌá½»";
+		std::string classInfo = u8"æ‚¨çš„æ³¨å†Œä¿¡æ¯å¦‚ä¸‹\r\nå§“åï¼š" + regInfo.name + u8"\r\nå­¦å·ï¼š" + std::to_string(regInfo.schoolId) + u8"\r\n\r\nè¾“å…¥â€œç¡®è®¤â€ä»¥æäº¤";
 		PrivateMessageSender sender(qq_id, classInfo);
 		sender.send();
 		return;
@@ -794,9 +794,9 @@ void RegCommand(std::u16string data, long long qq_id)
 	if (regInfo.status == RegStatus::CONFIRM)
 	{
 		std::u16string command = data.substr(0, data.find_first_of(u" "));
-		if (command != u"È·ÈÏ")
+		if (command != u"ç¡®è®¤")
 		{
-			PrivateMessageSender sender(qq_id, u8"ÒÑÈ¡Ïû×¢²á");
+			PrivateMessageSender sender(qq_id, u8"å·²å–æ¶ˆæ³¨å†Œ");
 			sender.send();
 			regStatus.erase(qq_id);
 			status[qq_id] = PeerStatus::IDLE;
@@ -809,12 +809,12 @@ void RegCommand(std::u16string data, long long qq_id)
 		}
 		catch(DataManager::DMError)
 		{
-			PrivateMessageSender sender(qq_id, u8"×¢²áÊ§°Ü£¬ÇëÖØÊÔ");
+			PrivateMessageSender sender(qq_id, u8"æ³¨å†Œå¤±è´¥ï¼Œè¯·é‡è¯•");
 			sender.send();
 			regStatus.erase(qq_id);
 			status[qq_id] = PeerStatus::UNREG;
 		}
-		PrivateMessageSender sender(qq_id, u8"×¢²á³É¹¦");
+		PrivateMessageSender sender(qq_id, u8"æ³¨å†ŒæˆåŠŸ");
 		sender.send();
 		regStatus.erase(qq_id);
 		status[qq_id] = PeerStatus::IDLE;
@@ -824,29 +824,29 @@ void RegCommand(std::u16string data, long long qq_id)
 
 void HomCommand(std::u16string data, long long qq_id)
 {
-	if (data == u"È¡Ïû"|| data == u"È¡ÏûÌá½»"|| data == u"Cancel"||data == u"cancel")
+	if (data == u"å–æ¶ˆ"|| data == u"å–æ¶ˆæäº¤"|| data == u"Cancel"||data == u"cancel")
 	{
-		PrivateMessageSender sender(qq_id, u8"ÄúÒÑÈ¡ÏûÌá½»×÷Òµ" + std::to_string(getHomeworkInfo[qq_id].homeworkId)+u8"\nµ±Ç°²İ¸åÒÑ±£´æ");
+		PrivateMessageSender sender(qq_id, u8"æ‚¨å·²å–æ¶ˆæäº¤ä½œä¸š" + std::to_string(getHomeworkInfo[qq_id].homeworkId)+u8"\nå½“å‰è‰ç¨¿å·²ä¿å­˜");
 		sender.send();
 		status[qq_id] = PeerStatus::IDLE;
 		getHomeworkInfo.erase(qq_id);
 		return;
 	}
-	if (data == u"°ïÖú" || data == u"Help" || data == u"help")
+	if (data == u"å¸®åŠ©" || data == u"Help" || data == u"help")
 	{
 		PrivateMessageSender sender(qq_id, homHelper1+std::to_string(getHomeworkInfo[qq_id].homeworkId)+homHelper2);
 		sender.send();
 		return;
 	}
-	if (data == u"È«²¿É¾³ı" || data == u"Çå¿ÕÎÄ¼ş" || data == u"Deleteall" || data == u"deleteall")
+	if (data == u"å…¨éƒ¨åˆ é™¤" || data == u"æ¸…ç©ºæ–‡ä»¶" || data == u"Deleteall" || data == u"deleteall")
 	{
 		File file(getHomeworkInfo.at(qq_id));
 		file.delAll();
-		PrivateMessageSender sender(qq_id, u8"ÎÄ¼şÒÑÇå¿Õ");
+		PrivateMessageSender sender(qq_id, u8"æ–‡ä»¶å·²æ¸…ç©º");
 		sender.send();
 		return;
 	}
-	if (data.substr(0, 4) == u"É¾³ıÎÄ¼ş")
+	if (data.substr(0, 4) == u"åˆ é™¤æ–‡ä»¶")
 	{
 		std::u16string tmp = Tools::delFirstCom(data, 2);
 		std::vector<std::u16string> delList = split(tmp, u"|");
@@ -858,7 +858,7 @@ void HomCommand(std::u16string data, long long qq_id)
 		}
 		return;
 	}
-	if (data.substr(0, 2) == u"É¾³ı")
+	if (data.substr(0, 2) == u"åˆ é™¤")
 	{
 		std::u16string tmp = Tools::delFirstCom(data, 2);
 		std::vector<std::u16string> delList = split(tmp, u"|");
@@ -882,7 +882,7 @@ void HomCommand(std::u16string data, long long qq_id)
 		}
 		return;
 	}
-	if (data == u"»ñÈ¡ÎÄ¼şÁĞ±í"|| data == u"²éÑ¯ÎÄ¼şÁĞ±í" || data == u"Getlist" || data == u"getlist")
+	if (data == u"è·å–æ–‡ä»¶åˆ—è¡¨"|| data == u"æŸ¥è¯¢æ–‡ä»¶åˆ—è¡¨" || data == u"Getlist" || data == u"getlist")
 	{
 		File file(getHomeworkInfo[qq_id]);
 		PrivateMessageSender sender(qq_id, file.getFileList());
@@ -897,7 +897,7 @@ void HomCommand(std::u16string data, long long qq_id)
 		sender.send();
 		return;
 	}
-	if (data.substr(0, 2) == u"»ñÈ¡" || data.substr(0, 2) == u"²éÑ¯")
+	if (data.substr(0, 2) == u"è·å–" || data.substr(0, 2) == u"æŸ¥è¯¢")
 	{
 		std::u16string tmp = Tools::delFirstCom(data, 2);
 		File file(getHomeworkInfo[qq_id]);
@@ -905,7 +905,7 @@ void HomCommand(std::u16string data, long long qq_id)
 		sender.send();
 		return;
 	}
-	if (data.substr(0, 4) == u"»ñÈ¡ÎÄ¼ş" || data.substr(0, 4) == u"²éÑ¯ÎÄ¼ş")
+	if (data.substr(0, 4) == u"è·å–æ–‡ä»¶" || data.substr(0, 4) == u"æŸ¥è¯¢æ–‡ä»¶")
 	{
 		std::u16string tmp = Tools::delFirstCom(data, 4);
 		File file(getHomeworkInfo[qq_id]);
@@ -914,24 +914,24 @@ void HomCommand(std::u16string data, long long qq_id)
 		return;
 	}
 	
-	if (data == u"Ìá½»×÷Òµ" || data == u"È·ÈÏÌá½»" || data == u"Ìá½»" || data == u"Submit" || data == u"submit")
+	if (data == u"æäº¤ä½œä¸š" || data == u"ç¡®è®¤æäº¤" || data == u"æäº¤" || data == u"Submit" || data == u"submit")
 	{
 		File file(getHomeworkInfo[qq_id]);
 		try
 		{
 			DataManager::Homework hm((long)getStuInfo[qq_id].studentId, (long)getHomeworkInfo[qq_id].homeworkId);
-			if (file.save(hm.getId()))//ÉÏ´«³É¹¦
+			if (file.save(hm.getId()))//ä¸Šä¼ æˆåŠŸ
 			{
 				hm.submit(file.getContentFile(), file.getAttachmentFile());
 				status[qq_id] = PeerStatus::IDLE;
-				PrivateMessageSender sender(qq_id, u8"Ìá½»³É¹¦");
+				PrivateMessageSender sender(qq_id, u8"æäº¤æˆåŠŸ");
 				sender.send();
 				return;
 			}
 			else
 			{
 				DataManager::deleteHomework(hm.getId());
-				PrivateMessageSender sender(qq_id, u8"Ìá½»Ê§°Ü");
+				PrivateMessageSender sender(qq_id, u8"æäº¤å¤±è´¥");
 				sender.send();
 				return;
 			}
@@ -940,25 +940,25 @@ void HomCommand(std::u16string data, long long qq_id)
 		{
 			long long submitId = file.getSubmitId();
 			DataManager::Homework hm((long)submitId);
-			if (file.save(submitId))//ÉÏ´«³É¹¦
+			if (file.save(submitId))//ä¸Šä¼ æˆåŠŸ
 			{
 				hm.submit(file.getContentFile(), file.getAttachmentFile());
 				status[qq_id] = PeerStatus::IDLE;
-				PrivateMessageSender sender(qq_id, u8"Ìá½»³É¹¦");
+				PrivateMessageSender sender(qq_id, u8"æäº¤æˆåŠŸ");
 				sender.send();
 				return;
 			}
 			else
 			{
 				DataManager::deleteHomework(hm.getId());
-				PrivateMessageSender sender(qq_id, u8"Ìá½»Ê§°Ü");
+				PrivateMessageSender sender(qq_id, u8"æäº¤å¤±è´¥");
 				sender.send();
 				return;
 			}
 		}
 		catch (...)
 		{
-			PrivateMessageSender sender(qq_id, u8"Ìá½»Ê§°Ü");
+			PrivateMessageSender sender(qq_id, u8"æäº¤å¤±è´¥");
 			sender.send();
 			return;
 		}
@@ -978,19 +978,19 @@ void HomCommand(std::u16string data, long long qq_id)
 			File fl(getHomeworkInfo[qq_id]);
 			std::string fileName = fl.storePic(posURL->str());
 			msg.replace(msg.find(posCQ->str()), posCQ->str().length(), fileName);
-			PrivateMessageSender sender(qq_id, u8"Í¼Æ¬£º" + fileName + u8" ÒÑ±£´æ");
+			PrivateMessageSender sender(qq_id, u8"å›¾ç‰‡ï¼š" + fileName + u8" å·²ä¿å­˜");
 			sender.send();
 		}
 
 		File file(getHomeworkInfo[qq_id]);
 		std::string fileName = file.storeText(msg);
-		PrivateMessageSender sender(qq_id, u8"ÎÄ±¾£º" + fileName + u8" ÒÑ±£´æ");
+		PrivateMessageSender sender(qq_id, u8"æ–‡æœ¬ï¼š" + fileName + u8" å·²ä¿å­˜");
 		sender.send();
 		return;
 	}
 	catch (...)
 	{
-		PrivateMessageSender sender(qq_id, u8"±£´æÊ§°Ü£¬ÇëÖØÊÔ");
+		PrivateMessageSender sender(qq_id, u8"ä¿å­˜å¤±è´¥ï¼Œè¯·é‡è¯•");
 		sender.send();
 		return;
 	}
@@ -1004,20 +1004,20 @@ void AnaFile(std::string name, std::string url, long long qq_id)
 		std::string filename = fl.downFile(url, name);
 		if (filename != "")
 		{
-			PrivateMessageSender sender(qq_id, u8"ÎÄ¼ş£º" + filename + u8" ÒÑ½ÓÊÕ");
+			PrivateMessageSender sender(qq_id, u8"æ–‡ä»¶ï¼š" + filename + u8" å·²æ¥æ”¶");
 			sender.send();
 			return;
 		}
 		else
 		{
-			PrivateMessageSender sender(qq_id, u8"ÎÄ¼ş½ÓÊÕÊ§°Ü£¬ÇëÖØÊÔ");
+			PrivateMessageSender sender(qq_id, u8"æ–‡ä»¶æ¥æ”¶å¤±è´¥ï¼Œè¯·é‡è¯•");
 			sender.send();
 			return;
 		}
 	}
 	else
 	{
-		PrivateMessageSender sender(qq_id, u8"·Ç×÷ÒµÄ£Ê½ÏÂ²»ÔÊĞíÌá½»ÎÄ¼ş");
+		PrivateMessageSender sender(qq_id, u8"éä½œä¸šæ¨¡å¼ä¸‹ä¸å…è®¸æäº¤æ–‡ä»¶");
 		sender.send();
 		return;
 	}
@@ -1025,7 +1025,7 @@ void AnaFile(std::string name, std::string url, long long qq_id)
 
 bool sendReview(long homeworkId)
 {
-	std::string msg = u8"Î´ÖªÏûÏ¢";
+	std::string msg = u8"æœªçŸ¥æ¶ˆæ¯";
 	try
 	{
 		DataManager::Homework hm(homeworkId);
@@ -1033,7 +1033,7 @@ bool sendReview(long homeworkId)
 		DataManager::Student st(hm.getStudentId());
 
 		long long qq_id = atoll(st.getQQ().c_str());
-		std::string msg = u8"ÄúÌá½»µÄ×÷Òµ " + std::to_string(as.getId()) + u8"ÒÑÅú¸Ä\n\n¡¾·ÖÊı¡¿ " + std::to_string(hm.getScore()) + u8"\n¡¾ÆÀÓï¡¿\n" + hm.getComments();
+		std::string msg = u8"æ‚¨æäº¤çš„ä½œä¸š " + std::to_string(as.getId()) + u8"å·²æ‰¹æ”¹\n\nã€åˆ†æ•°ã€‘ " + std::to_string(hm.getScore()) + u8"\nã€è¯„è¯­ã€‘\n" + hm.getComments();
 		PrivateMessageSender sender(qq_id, msg);
 		sender.send();
 		return true;
@@ -1052,10 +1052,10 @@ void sendHomeworkNotification(long long assignmentId,int mode)
 	{
 		if (mode == 1)
 		{
-			std::string message = u8"ÄúÊÕµ½ÁËĞÂµÄ×÷Òµ  ";
-			message += (u8"¡¾×÷Òµ " + std::to_string(assignmentId) + u8"¡¿" + u8"\r\n");
-			message += (u8"¡¾×÷ÒµÄÚÈİ¡¿\r\n" + assignment.getDescription() + u8"\r\n");
-			message += (u8"¡¾½ØÖ¹Ê±¼ä¡¿  " + TimeConvert(assignment.getDeadline()) + u8"\r\n");
+			std::string message = u8"æ‚¨æ”¶åˆ°äº†æ–°çš„ä½œä¸š  ";
+			message += (u8"ã€ä½œä¸š " + std::to_string(assignmentId) + u8"ã€‘" + u8"\r\n");
+			message += (u8"ã€ä½œä¸šå†…å®¹ã€‘\r\n" + assignment.getDescription() + u8"\r\n");
+			message += (u8"ã€æˆªæ­¢æ—¶é—´ã€‘  " + TimeConvert(assignment.getDeadline()) + u8"\r\n");
 			PrivateMessageSender sender(atoll(iter.getQQ().c_str()), message);
 			sender.send();
 		}

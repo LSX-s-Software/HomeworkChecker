@@ -1,38 +1,38 @@
-#pragma once
+ï»¿#pragma once
 #include "Analyst.h"
 #include "WebsocketServer.h"
 
 /// <summary>
-/// ¾²Ì¬Àà
-/// <para>¹ÜÀíQQÏûÏ¢</para>
+/// é™æ€ç±»
+/// <para>ç®¡ç†QQæ¶ˆæ¯</para>
 /// </summary>
 class QQMessage {
 public:
 	/// <summary>
-	/// »Øµ÷º¯ÊıOpen
+	/// å›è°ƒå‡½æ•°Open
 	/// </summary>
 	static void onOpen();
 	/// <summary>
-	/// »Øµ÷º¯ÊıClose
+	/// å›è°ƒå‡½æ•°Close
 	/// </summary>
 	static void onClose();
 	/// <summary>
-	/// »Øµ÷º¯ÊıFail
+	/// å›è°ƒå‡½æ•°Fail
 	/// </summary>
 	static void onFail();
 	/// <summary>
-	/// »Øµ÷º¯ÊıMessage
+	/// å›è°ƒå‡½æ•°Message
 	/// </summary>
-	/// <param name="message">»ñÈ¡µÄÏûÏ¢</param>
+	/// <param name="message">è·å–çš„æ¶ˆæ¯</param>
 	static void readMessage(const std::string& message);
 	/// <summary>
-	/// ³õÊ¼»¯Á¬½Ó
+	/// åˆå§‹åŒ–è¿æ¥
 	/// </summary>
-	/// <param name="url">Á¬½Óip:¶Ë¿Ú</param>
+	/// <param name="url">è¿æ¥ip:ç«¯å£</param>
 	static void _InitClient(std::string url = "127.0.0.1:6700");
 	static void _InitServer(int port);
 	/// <summary>
-	/// ¹Ø±ÕÁ¬½Ó
+	/// å…³é—­è¿æ¥
 	/// </summary>
 	static void _Stop();
 };

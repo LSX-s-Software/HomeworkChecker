@@ -1,13 +1,13 @@
-#define ASIO_STANDALONE
+ï»¿#define ASIO_STANDALONE
 #define _WEBSOCKETPP_CPP11_RANDOM_DEVICE_
 #define _WEBSOCKETPP_CPP11_TYPE_TRAITS_
 #pragma once
 
-// ²»°üº¬TLS Client
+// ä¸åŒ…å«TLS Client
 #include <websocketpp/config/asio_no_tls_client.hpp>
 #include <websocketpp/client.hpp>
 
-// °üº¬TLS Client
+// åŒ…å«TLS Client
 // #include <websocketpp/config/asio_client.hpp>
 // #include <websocketpp/client.hpp>
 
@@ -20,7 +20,7 @@
 
 typedef websocketpp::client<websocketpp::config::asio_client> client;
 
-//×Ö·û×ª»»
+//å­—ç¬¦è½¬æ¢
 //static std::wstring string_to_wstring(const std::string& s)
 //{
 //	using default_convert = std::codecvt<wchar_t, char, std::mbstate_t>;
@@ -44,27 +44,27 @@ typedef websocketpp::client<websocketpp::config::asio_client> client;
 //	return wstring_to_string(conv.from_bytes(s));
 //}
 
-//»Øµ÷º¯Êı
+//å›è°ƒå‡½æ•°
 
 /// <summary>
-/// ½¨Á¢Á¬½ÓºóÖ´ĞĞ
+/// å»ºç«‹è¿æ¥åæ‰§è¡Œ
 /// </summary>
 typedef std::function<void()> OnOpenFunc;
 /// <summary>
-/// Á¬½ÓÊ§°ÜºóÖ´ĞĞ
+/// è¿æ¥å¤±è´¥åæ‰§è¡Œ
 /// </summary>
 typedef std::function<void()> OnFailFunc;
 /// <summary>
-/// Á¬½Ó¹Ø±ÕºóÖ´ĞĞ
+/// è¿æ¥å…³é—­åæ‰§è¡Œ
 /// </summary>
 typedef std::function<void()> OnCloseFunc;
 /// <summary>
-/// »ñÈ¡ÏûÏ¢ºóÖ´ĞĞ
+/// è·å–æ¶ˆæ¯åæ‰§è¡Œ
 /// </summary>
 typedef std::function<void(const std::string& message)> OnMessageFunc;
 
 /// <summary>
-/// ±£´æÁ¬½ÓµÄmetadata
+/// ä¿å­˜è¿æ¥çš„metadata
 /// </summary>
 class connection_metadata {
 public:
@@ -87,48 +87,48 @@ public:
 		return m_Status;
 	}
 private:
-	websocketpp::connection_hdl m_Hdl;  // websocketpp±íÊ¾Á¬½ÓµÄ±àºÅ
-	std::string m_Status;               // Á¬½Ó×Ô¶¯×´Ì¬
-	std::string m_Url;                  // Á¬½ÓµÄURI
-	std::string m_Server;               // ·şÎñÆ÷ĞÅÏ¢
-	std::string m_Error_reason;         // ´íÎóÔ­Òò
+	websocketpp::connection_hdl m_Hdl;  // websocketppè¡¨ç¤ºè¿æ¥çš„ç¼–å·
+	std::string m_Status;               // è¿æ¥è‡ªåŠ¨çŠ¶æ€
+	std::string m_Url;                  // è¿æ¥çš„URI
+	std::string m_Server;               // æœåŠ¡å™¨ä¿¡æ¯
+	std::string m_Error_reason;         // é”™è¯¯åŸå› 
 };
 
 /// <summary>
-/// Ws¿Í»§¶Ë
+/// Wså®¢æˆ·ç«¯
 /// </summary>
 class WebsocketClient
 {
 public:
 	/// <summary>
-	/// ¹¹Ôìº¯Êı
+	/// æ„é€ å‡½æ•°
 	/// </summary>
 	WebsocketClient();
 	/// <summary>
-	/// Îö¹¹º¯Êı
+	/// ææ„å‡½æ•°
 	/// </summary>
 	virtual~WebsocketClient();
 
 public:
 	/// <summary>
-	/// ¿ªÊ¼Á¬½Ó
+	/// å¼€å§‹è¿æ¥
 	/// </summary>
-	/// <param name="url">µØÖ·
+	/// <param name="url">åœ°å€
 	/// ws://ip:port
 	/// </param>
-	/// <returns>Á¬½Ó½á¹û</returns>
+	/// <returns>è¿æ¥ç»“æœ</returns>
 	bool Connect(std::string const& url);
 	/// <summary>
-	/// Ö÷¶¯¹Ø±ÕÁ¬½Ó
+	/// ä¸»åŠ¨å…³é—­è¿æ¥
 	/// </summary>
-	/// <param name="reason">¹Ø±ÕÔ­Òò</param>
-	/// <returns>¹Ø±Õ½á¹û</returns>
+	/// <param name="reason">å…³é—­åŸå› </param>
+	/// <returns>å…³é—­ç»“æœ</returns>
 	bool Close(std::string reason = "");
 	/// <summary>
-	/// ·¢ËÍÏûÏ¢
+	/// å‘é€æ¶ˆæ¯
 	/// </summary>
-	/// <param name="message">ÏûÏ¢ÄÚÈİ</param>
-	/// <returns>·¢ËÍ½á¹û</returns>
+	/// <param name="message">æ¶ˆæ¯å†…å®¹</param>
+	/// <returns>å‘é€ç»“æœ</returns>
 	bool Send(std::string message);
 
 	connection_metadata::ptr GetConnectionMetadataPtr();
@@ -146,7 +146,7 @@ public:
 private:
 	connection_metadata::ptr m_ConnectionMetadataPtr;
 	client m_WebsocketClient;
-	websocketpp::lib::shared_ptr<websocketpp::lib::thread> m_Thread; // Ïß³Ì
+	websocketpp::lib::shared_ptr<websocketpp::lib::thread> m_Thread; // çº¿ç¨‹
 
 	OnOpenFunc m_OnOpenFunc;
 	OnFailFunc m_OnFailFunc;
