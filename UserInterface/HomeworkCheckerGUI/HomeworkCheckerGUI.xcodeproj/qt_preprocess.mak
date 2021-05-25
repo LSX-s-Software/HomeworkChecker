@@ -17,7 +17,7 @@ LEXFLAGS  =
 YACC      = yacc
 YACCFLAGS = -d
 DEFINES       = -DQT_NO_DEBUG -DQT_QUICK_LIB -DQT_OPENGL_LIB -DQT_GUI_LIB -DQT_QMLMODELS_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
-INCPATH       = -I. -I../../DataManager/DataManager -I../../packages/mysql/include -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQuick.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtOpenGL.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQmlModels.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQml.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtNetwork.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AGL.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AGL.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/mkspecs/macx-clang -F/Users/linsixing/Qt/6.1.0/clang_64/lib
+INCPATH       = -I. -I../../DataManager/DataManager -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQuick.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtOpenGL.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQmlModels.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQml.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtNetwork.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AGL.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AGL.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/mkspecs/macx-clang -F/Users/linsixing/Qt/6.1.0/clang_64/lib
 DEL_FILE  = rm -f
 MOVE      = mv -f
 
@@ -32,19 +32,19 @@ check: first
 
 benchmark: first
 
-compilers: qrc_qml.cpp moc_predefs.h moc_generalviewcontroller.cpp
+compilers: qrc_qml.cpp moc_predefs.h moc_account.cpp moc_generalviewcontroller.cpp
 compiler_rcc_make_all: qrc_qml.cpp
 compiler_rcc_clean:
 	-$(DEL_FILE) qrc_qml.cpp
 qrc_qml.cpp: qml.qrc \
 		/Users/linsixing/Qt/6.1.0/clang_64/libexec/rcc \
 		ClassPage.qml \
-		logInPage.qml \
 		MarkHomework.qml \
 		GeneralPage.qml \
 		MarkPage.qml \
 		SettingPage.qml \
 		CorrectHomework.qml \
+		LogInPage.qml \
 		NewAClass.qml \
 		registerPage.qml \
 		Arrangement.qml \
@@ -73,9 +73,18 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /Users/linsixing/Qt/6.1.0/clang_64/mkspecs/features/data/dummy.cpp
 	/Library/Developer/CommandLineTools/usr/bin/clang++ -pipe -stdlib=libc++ -O2 -std=gnu++1z -Wall -Wextra -dM -E -o moc_predefs.h /Users/linsixing/Qt/6.1.0/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_generalviewcontroller.cpp
+compiler_moc_header_make_all: moc_account.cpp moc_generalviewcontroller.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_generalviewcontroller.cpp
+	-$(DEL_FILE) moc_account.cpp moc_generalviewcontroller.cpp
+moc_account.cpp: account.h \
+		/Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QObject \
+		/Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
+		/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQml.framework/Headers/qqml.h \
+		../../DataManager/DataManager/DataManager.hpp \
+		moc_predefs.h \
+		/Users/linsixing/Qt/6.1.0/clang_64/libexec/moc
+	/Users/linsixing/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include '/Users/linsixing/Library/Mobile Documents/com~apple~CloudDocs/Programming Projects/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_predefs.h' -I/Users/linsixing/Qt/6.1.0/clang_64/mkspecs/macx-clang -I'/Users/linsixing/Library/Mobile Documents/com~apple~CloudDocs/Programming Projects/HomeworkChecker/UserInterface/HomeworkCheckerGUI' -I'/Users/linsixing/Library/Mobile Documents/com~apple~CloudDocs/Programming Projects/HomeworkChecker/DataManager/DataManager' -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQuick.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtOpenGL.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQmlModels.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQml.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtNetwork.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/linsixing/Qt/6.1.0/clang_64/lib account.h -o moc_account.cpp
+
 moc_generalviewcontroller.cpp: generalviewcontroller.h \
 		/Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
@@ -83,7 +92,7 @@ moc_generalviewcontroller.cpp: generalviewcontroller.h \
 		../../DataManager/DataManager/DataManager.hpp \
 		moc_predefs.h \
 		/Users/linsixing/Qt/6.1.0/clang_64/libexec/moc
-	/Users/linsixing/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include '/Users/linsixing/Library/Mobile Documents/com~apple~CloudDocs/Programming Projects/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_predefs.h' -I/Users/linsixing/Qt/6.1.0/clang_64/mkspecs/macx-clang -I'/Users/linsixing/Library/Mobile Documents/com~apple~CloudDocs/Programming Projects/HomeworkChecker/UserInterface/HomeworkCheckerGUI' -I'/Users/linsixing/Library/Mobile Documents/com~apple~CloudDocs/Programming Projects/HomeworkChecker/DataManager/DataManager' -I'/Users/linsixing/Library/Mobile Documents/com~apple~CloudDocs/Programming Projects/HomeworkChecker/packages/mysql/include' -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQuick.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtOpenGL.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQmlModels.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQml.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtNetwork.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/linsixing/Qt/6.1.0/clang_64/lib generalviewcontroller.h -o moc_generalviewcontroller.cpp
+	/Users/linsixing/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include '/Users/linsixing/Library/Mobile Documents/com~apple~CloudDocs/Programming Projects/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_predefs.h' -I/Users/linsixing/Qt/6.1.0/clang_64/mkspecs/macx-clang -I'/Users/linsixing/Library/Mobile Documents/com~apple~CloudDocs/Programming Projects/HomeworkChecker/UserInterface/HomeworkCheckerGUI' -I'/Users/linsixing/Library/Mobile Documents/com~apple~CloudDocs/Programming Projects/HomeworkChecker/DataManager/DataManager' -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQuick.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtOpenGL.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQmlModels.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQml.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtNetwork.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/linsixing/Qt/6.1.0/clang_64/lib generalviewcontroller.h -o moc_generalviewcontroller.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:

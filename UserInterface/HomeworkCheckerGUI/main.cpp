@@ -3,6 +3,7 @@
 
 //自定义CPP模块头文件
 #include "generalviewcontroller.h"
+#include "account.h"
 
 int main(int argc, char *argv[])
 {
@@ -14,6 +15,7 @@ int main(int argc, char *argv[])
 
     //自定义CPP模块
     qmlRegisterType<GeneralViewController>("GeneralVC",1,0,"GeneralVC");
+    qmlRegisterType<Account>("Account",1,0,"Account");
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));

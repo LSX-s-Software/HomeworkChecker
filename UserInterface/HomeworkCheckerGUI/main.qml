@@ -11,6 +11,15 @@ Window {
     visible: true
     title: qsTr("Homework Checker")
 
+    Popup {
+        id: logInPopup
+        modal: true
+        width: 400
+        height: 378
+        LogInPage { }
+        visible: true
+    }
+
     Row {
         id: splitView
         visible: true

@@ -2,12 +2,18 @@ import QtQuick 2.0
 import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
+import Account 1.0
 
 Rectangle {
     id: logInPage
-    width: 400
-    height: 378
+    width: logInPopup.width
+    height: logInPopup.height
+    anchors.centerIn: parent
     color: "#ffffff"
+
+    Account {
+        id: account
+    }
 
     Text {
         id: title
@@ -145,7 +151,7 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
 
         Text {
-            id: element2
+            id: logInBtnText
             color: "#ffffff"
             text: qsTr("登录")
             verticalAlignment: Text.AlignVCenter
@@ -158,6 +164,15 @@ Rectangle {
         MouseArea {
             id: mouseArea1
             anchors.fill: parent
+            onClicked: {
+                var result = account.login(emailField.text, passwordField.text);
+                if (result === 0) {
+                    logInBtnText.text = "登录成功"
+                    logInPopup.close()
+                } else {
+                    logInBtnText.text = "登录失败"
+                }
+            }
         }
     }
 
