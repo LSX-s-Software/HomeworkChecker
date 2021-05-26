@@ -138,6 +138,7 @@ Rectangle {
         anchors.top: location.bottom
         anchors.topMargin: 32
         anchors.horizontalCenter: parent.horizontalCenter
+        radius: 10
 
         Text {
             id: element35

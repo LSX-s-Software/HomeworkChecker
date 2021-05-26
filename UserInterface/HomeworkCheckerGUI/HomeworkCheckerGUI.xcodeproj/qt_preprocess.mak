@@ -46,13 +46,13 @@ qrc_qml.cpp: qml.qrc \
 		SettingPage.qml \
 		CorrectHomework.qml \
 		NewAClass.qml \
-		Arrangement.qml \
 		ScoreWithClass.qml \
 		LoginPage.qml \
 		InfoOfClass.qml \
 		TaskPage.qml \
 		ScoreWithStudent.qml \
 		DetailsOfAddition.qml \
+		NewAssignment.qml \
 		main.qml \
 		InfoOfTask.qml \
 		images/person.png \
@@ -61,6 +61,7 @@ qrc_qml.cpp: qml.qrc \
 		images/more.png \
 		images/email.png \
 		images/add@2x.png \
+		images/name.png \
 		images/progress@2x.png \
 		images/close.png \
 		images/homework@2x.png \
