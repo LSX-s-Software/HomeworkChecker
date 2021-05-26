@@ -164,6 +164,7 @@ Rectangle {
             id: logInBtnText
             color: "#ffffff"
             text: qsTr("登录")
+            font.weight: Font.Medium
             verticalAlignment: Text.AlignVCenter
             font.family: "Source Han Sans CN"
             horizontalAlignment: Text.AlignHCenter
