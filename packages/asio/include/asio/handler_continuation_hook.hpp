@@ -1,4 +1,4 @@
-//
+﻿//
 // handler_continuation_hook.hpp
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //

@@ -13,7 +13,7 @@ int main()
     try
     {
         //QQMessage::_InitClient("127.0.0.1:6700");
-        QQMessage::_InitClient("114.116.231.126:6700");
+        QQMessage::_InitClient("42.193.50.174:6700");
         QQMessage::_InitServer(6701);
     }
     catch (std::exception& e)

@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <string>
 std::string rootPath = R"(D:\Work\HomeworkChecker\x64\Debug\tmp\)";
 #include "QQMessage.h"

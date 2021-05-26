@@ -164,17 +164,17 @@
     <ClCompile Include="DataManager\DMError.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="..\packages\mysql\lib\libmysql.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
     <CopyFileToFolders Include="..\packages\mysql\lib\libssl-1_1-x64.dll">
       <FileType>Document</FileType>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="..\packages\mysql\lib\libcrypto-1_1-x64.dll">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="..\packages\mysql\lib\libmysql.dll">
       <FileType>Document</FileType>
     </CopyFileToFolders>
   </ItemGroup>

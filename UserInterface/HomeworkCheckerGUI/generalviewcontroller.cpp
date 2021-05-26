@@ -1,4 +1,4 @@
-#include "generalviewcontroller.h"
+﻿#include "generalviewcontroller.h"
 
 GeneralViewController::GeneralViewController(QObject *parent) : QObject(parent) {}
 

@@ -1,4 +1,4 @@
-//
+﻿//
 // traits/equality_comparable.hpp
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //

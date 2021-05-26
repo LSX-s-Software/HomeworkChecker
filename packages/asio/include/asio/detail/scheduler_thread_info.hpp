@@ -1,4 +1,4 @@
-//
+﻿//
 // detail/scheduler_thread_info.hpp
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //

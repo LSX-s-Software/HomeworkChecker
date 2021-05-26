@@ -300,6 +300,8 @@ void AnaText(std::u16string data, long long qq_id)
 			if (!Tools::isNum(assignmentId_str))//未检测到数字
 			{
 				std::string message;
+				try
+				{
 					std::vector<DataManager::CompleteHomeworkList> homeworklist = DataManager::getHomeworkListByStuId((long)getStuInfo[qq_id].studentId, (long)getStuInfo[qq_id].classId);
 					if (homeworklist.size() != 0)
 					{
@@ -327,6 +329,11 @@ void AnaText(std::u16string data, long long qq_id)
 					}
 					else
 						message = u8"暂无作业";
+				}
+				catch (...)
+				{
+					message = u8"暂无作业";
+				}
 				PrivateMessageSender sender(qq_id, u8"作业列表如下\r\n" + message);
 				sender.send();
 				return;
@@ -394,33 +401,40 @@ void AnaText(std::u16string data, long long qq_id)
 			if (!Tools::isNum(assignmentId_str))//未检测到数字
 			{
 				std::string message;
-				std::vector<DataManager::CompleteHomeworkList> homeworklist = DataManager::getHomeworkListByStuId((long)getStuInfo[qq_id].studentId, (long)getStuInfo[qq_id].classId);
-				if (homeworklist.size() != 0)
+				try
 				{
-					for (auto& iter : homeworklist)
+					std::vector<DataManager::CompleteHomeworkList> homeworklist = DataManager::getHomeworkListByStuId((long)getStuInfo[qq_id].studentId, (long)getStuInfo[qq_id].classId);
+					if (homeworklist.size() != 0)
 					{
-						int status = iter.homework.getStatus();
-						message += (u8"【作业 " + std::to_string(iter.assignment.getId()) + u8"】  " + getHomeworkStatus(status) + u8"  ");
-						if (status == 0)//未提交
+						for (auto& iter : homeworklist)
 						{
-							if (std::time(0) > iter.assignment.getDeadline())
+							int status = iter.homework.getStatus();
+							message += (u8"【作业 " + std::to_string(iter.assignment.getId()) + u8"】  " + getHomeworkStatus(status) + u8"  ");
+							if (status == 0)//未提交
 							{
-								message += (u8"已截止提交");
+								if (std::time(0) > iter.assignment.getDeadline())
+								{
+									message += (u8"已截止提交");
+								}
+								else
+								{
+									message += (u8"截止时间：" + TimeConvert(iter.assignment.getDeadline()));
+								}
 							}
-							else
+							if (status == 2)//已批改
 							{
-								message += (u8"截止时间：" + TimeConvert(iter.assignment.getDeadline()));
+								message += u8"分数：" + std::to_string(iter.homework.getScore());
 							}
+							message += "\r\n";
 						}
-						if (status == 2)//已批改
-						{
-							message += u8"分数：" + std::to_string(iter.homework.getScore());
-						}
-						message += "\r\n";
 					}
+					else
+						message = u8"暂无作业";
 				}
-				else
+				catch (...)
+				{
 					message = u8"暂无作业";
+				}
 				PrivateMessageSender sender(qq_id, u8"作业列表如下\r\n" + message);
 				sender.send();
 				return;
@@ -488,33 +502,40 @@ void AnaText(std::u16string data, long long qq_id)
 			if (!Tools::isNum(assignmentId_str))//未检测到数字
 			{
 				std::string message;
-				std::vector<DataManager::CompleteHomeworkList> homeworklist = DataManager::getHomeworkListByStuId((long)getStuInfo[qq_id].studentId, (long)getStuInfo[qq_id].classId);
-				if (homeworklist.size() != 0)
+				try
 				{
-					for (auto& iter : homeworklist)
+					std::vector<DataManager::CompleteHomeworkList> homeworklist = DataManager::getHomeworkListByStuId((long)getStuInfo[qq_id].studentId, (long)getStuInfo[qq_id].classId);
+					if (homeworklist.size() != 0)
 					{
-						int status = iter.homework.getStatus();
-						message += (u8"【作业 " + std::to_string(iter.assignment.getId()) + u8"】  " + getHomeworkStatus(status) + u8"  ");
-						if (status == 0)//未提交
+						for (auto& iter : homeworklist)
 						{
-							if (std::time(0) > iter.assignment.getDeadline())
+							int status = iter.homework.getStatus();
+							message += (u8"【作业 " + std::to_string(iter.assignment.getId()) + u8"】  " + getHomeworkStatus(status) + u8"  ");
+							if (status == 0)//未提交
 							{
-								message += (u8"已截止提交");
+								if (std::time(0) > iter.assignment.getDeadline())
+								{
+									message += (u8"已截止提交");
+								}
+								else
+								{
+									message += (u8"截止时间：" + TimeConvert(iter.assignment.getDeadline()));
+								}
 							}
-							else
+							if (status == 2)//已批改
 							{
-								message += (u8"截止时间：" + TimeConvert(iter.assignment.getDeadline()));
+								message += u8"分数：" + std::to_string(iter.homework.getScore());
 							}
+							message += "\r\n";
 						}
-						if (status == 2)//已批改
-						{
-							message += u8"分数：" + std::to_string(iter.homework.getScore());
-						}
-						message += "\r\n";
 					}
+					else
+						message = u8"暂无作业";
 				}
-				else
+				catch (...)
+				{
 					message = u8"暂无作业";
+				}
 				PrivateMessageSender sender(qq_id, u8"作业列表如下\r\n" + message);
 				sender.send();
 				return;
@@ -739,7 +760,6 @@ void RegCommand(std::u16string data, long long qq_id)
 			DataManager::Class cl(Tools::to_utf8(classCode)); 
 			//DataManager::Class cl(1);
 			std::string classInfo = u8"您即将加入："+cl.getName()+u8"\n\n请输入姓名";
-
 			PrivateMessageSender sender(qq_id, classInfo);
 			sender.send();
 			regInfo.status = RegStatus::NAME;
@@ -760,6 +780,12 @@ void RegCommand(std::u16string data, long long qq_id)
 	if (regInfo.status == RegStatus::NAME)
 	{
 		std::u16string name = data.substr(0, data.find_first_of(u" "));
+		if (name.length() < 1 || name.length() > 20)
+		{
+			PrivateMessageSender sender(qq_id, u8"非法姓名，请重新输入");
+			sender.send();
+			return;
+		}
 		PrivateMessageSender sender(qq_id, u8"请输入学号");
 		sender.send();
 		regInfo.status = RegStatus::NUM;
@@ -774,7 +800,7 @@ void RegCommand(std::u16string data, long long qq_id)
 
 		if (!Tools::isNum(schoolID_str)||schoolID_str.length()>18)
 		{
-			PrivateMessageSender sender(qq_id, u8"学号格式错误，请重试");
+			PrivateMessageSender sender(qq_id, u8"学号格式错误，请重新输入");
 			sender.send();
 			return;
 		}
@@ -806,6 +832,7 @@ void RegCommand(std::u16string data, long long qq_id)
 		try
 		{
 			DataManager::Student st(std::to_string(regInfo.schoolId), std::to_string(qq_id), regInfo.name);
+			st.setClassId((long)regInfo.classId);
 		}
 		catch(DataManager::DMError)
 		{
@@ -813,6 +840,7 @@ void RegCommand(std::u16string data, long long qq_id)
 			sender.send();
 			regStatus.erase(qq_id);
 			status[qq_id] = PeerStatus::UNREG;
+			return;
 		}
 		PrivateMessageSender sender(qq_id, u8"注册成功");
 		sender.send();
