@@ -17,7 +17,7 @@
         <file>images/backBtn.png</file>
         <file>MarkHomework.qml</file>
         <file>DetailsOfAddition.qml</file>
-        <file>Arrangement.qml</file>
+        <file>NewAssignment.qml</file>
         <file>images/more.png</file>
         <file>ScoreWithClass.qml</file>
         <file>ScoreWithStudent.qml</file>

@@ -8,25 +8,6 @@ Rectangle {
     height: 768
     color: "#ffffff"
 
-    Image {
-        id: addBtn
-        width: 60
-        height: 60
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        source: "images/add@2x.png"
-        anchors.bottomMargin: 28
-        anchors.rightMargin: 32
-        MouseArea {
-            hoverEnabled: true
-            anchors.fill: parent
-            cursorShape: Qt.PointingHandCursor
-            onClicked: {
-                newClass.open()
-            }
-        }
-    }
-
     Popup {
         id: newClass
         modal: true
@@ -208,6 +189,25 @@ Rectangle {
                 time: "周五下午"
                 location: "3区1-507"
                 count: 30
+            }
+        }
+    }
+
+    Image {
+        id: addBtn
+        width: 60
+        height: 60
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        source: "images/add@2x.png"
+        anchors.bottomMargin: 28
+        anchors.rightMargin: 32
+        MouseArea {
+            hoverEnabled: true
+            anchors.fill: parent
+            cursorShape: Qt.PointingHandCursor
+            onClicked: {
+                newClass.open()
             }
         }
     }
