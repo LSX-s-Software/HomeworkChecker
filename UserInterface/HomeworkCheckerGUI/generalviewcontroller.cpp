@@ -1,4 +1,4 @@
-#include "generalviewcontroller.h"
+﻿#include "generalviewcontroller.h"
 #include "account.h"
 #include <iostream>
 
@@ -23,9 +23,9 @@ QString GeneralViewController::userName() {
 
 QString GeneralViewController::correctedCount() {
     if (homeworkList.size() == 0) {
-        return "无作业";
+        return u8"无作业";
     } else if (totalClassSize == 0) {
-        return "无班级";
+        return u8"无班级";
     } else {
         int sum = 0;
         for (auto item : homeworkList) {
@@ -39,9 +39,9 @@ QString GeneralViewController::correctedCount() {
 
 QString GeneralViewController::submittedCount() {
     if (homeworkList.size() == 0) {
-        return "无作业";
+        return u8"无作业";
     } else if (totalClassSize == 0) {
-        return "无班级";
+        return u8"无班级";
     } else {
         return QString::fromStdString(std::to_string(homeworkList.size()) + "/" + std::to_string(totalClassSize));
     }
@@ -49,9 +49,9 @@ QString GeneralViewController::submittedCount() {
 
 QString GeneralViewController::correctedProg() {
     if (homeworkList.size() == 0) {
-        return "未布置作业";
+        return u8"未布置作业";
     } else if (totalClassSize == 0) {
-        return "未创建班级";
+        return u8"未创建班级";
     } else {
         double prog = double(homeworkList.size()) / double() * 100;
         return QString::fromStdString(std::to_string(prog) + "%");
