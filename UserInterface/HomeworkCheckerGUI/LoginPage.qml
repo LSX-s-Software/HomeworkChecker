@@ -2,7 +2,6 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
-import Qt.labs.platform 1.1
 import Account 1.0
 
 Rectangle {
@@ -10,6 +9,8 @@ Rectangle {
     width: 400
     height: 378
     color: "#ffffff"
+    radius: 20
+    clip: true
 
     Account {
         id: account
@@ -57,10 +58,12 @@ Rectangle {
             id: emailField
             x: 46
             width: 290
-            height: 24
+            height: 30
+            verticalAlignment: "AlignVCenter"
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             font.pixelSize: 20
+            selectByMouse: true
             font.family: "Source Han Sans CN"
             placeholderText: qsTr("邮箱")
             background: Rectangle {
@@ -97,11 +100,14 @@ Rectangle {
             id: passwordField
             x: 46
             width: 290
-            height: 24
+            height: 30
+            verticalAlignment: "AlignVCenter"
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             font.pixelSize: 20
-            inputMask: "\u00b7"
+            passwordCharacter: "·"
+            echoMode: TextField.Password
+            selectByMouse: true
             font.family: "Source Han Sans CN"
             placeholderText: qsTr("密码")
             background: Rectangle {
@@ -135,6 +141,10 @@ Rectangle {
         MouseArea {
             id: mouseArea
             anchors.fill: parent
+            onClicked: {
+                logInPopup.close()
+                regPopup.open()
+            }
         }
     }
 
@@ -168,19 +178,14 @@ Rectangle {
                 var result = account.login(emailField.text, passwordField.text);
                 if (result === 0) {
                     logInBtnText.text = "登录成功"
+                    generalPage.visible = true
+                    generalPage.refresh()
                     logInPopup.close()
                 } else {
-                    msgBox.open()
+                    logInBtnText.text = "登录失败"
                 }
             }
         }
-    }
-
-    MessageDialog {
-        id: msgBox
-        buttons: MessageDialog.Ok
-        text: "登录失败"
-        informativeText: "请检查用户名和密码"
     }
 
 }

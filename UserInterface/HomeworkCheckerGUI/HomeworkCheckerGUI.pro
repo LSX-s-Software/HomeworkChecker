@@ -34,9 +34,9 @@ HEADERS += \
 
 INCLUDEPATH += /usr/local/Cellar/mysql/8.0.23_1/include/mysql
 
-macx: LIBS += -L/usr/local/mysql-connector-c++-8.0.25/lib64/ -lcrypto
+#macx: LIBS += -L/usr/local/mysql-connector-c++-8.0.25/lib64/ -lcrypto
 
-macx: LIBS += -L/usr/local/mysql-connector-c++-8.0.25/lib64/ -lssl
+#macx: LIBS += -L/usr/local/mysql-connector-c++-8.0.25/lib64/ -lssl
 
 macx: LIBS += -L/usr/local/mysql-connector-c++-8.0.25/lib64/ -lmysqlcppconn
 

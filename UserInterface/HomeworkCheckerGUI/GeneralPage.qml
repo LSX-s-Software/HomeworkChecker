@@ -6,14 +6,29 @@ Rectangle {
     id: generalPage
     width: 1046
     height: 768
-    clip: false
 
     GeneralVC {
         id: vc
+    }
 
-//        property string correctedCount: "Loading"
-//        property string submittedCount: "Loading"
-//        property string correctedProg: "Loading"
+    function getTimePeriod() {
+        var now = new Date()
+        var hour = now.getHours()
+        if (hour < 6) { return "凌晨" }
+        else if (hour < 9) { return "早上" }
+        else if (hour < 12) { return "上午" }
+        else if (hour < 14) { return "中午" }
+        else if (hour < 17) { return "下午" }
+        else if (hour < 19) { return "傍晚" }
+        else { return "晚上" }
+    }
+
+    function refresh() {
+        vc.refresh()
+        greetings.text = getTimePeriod() + "好！" + vc.userName + "老师";
+        correctNum.text = vc.correctedCount
+        submitNum.text = vc.submittedCount
+        correctNum2.text = vc.correctedProg
     }
 
     Rectangle {
@@ -64,7 +79,7 @@ Rectangle {
             id: correctNum
             x: 36
             y: 92
-            text: vc.correctedCount
+            text: "加载中"
             anchors.bottom: element8.top
             font.pixelSize: 40
             anchors.horizontalCenter: element8.horizontalCenter
@@ -76,7 +91,7 @@ Rectangle {
             id: submitNum
             x: 112
             y: 91
-            text: vc.submittedCount
+            text: "加载中"
             anchors.bottom: element9.top
             font.pixelSize: 40
             font.family: "Source Han Sans CN"
@@ -203,7 +218,7 @@ Rectangle {
             id: correctNum2
             x: 36
             y: 92
-            text: vc.correctedProg
+            text: "加载中"
             anchors.bottom: element11.top
             font.pixelSize: 40
             font.family: "Source Han Sans CN"
@@ -215,7 +230,7 @@ Rectangle {
     Text {
         id: greetings
         height: 48
-        text: "早上好！" + vc.userName + "老师"
+        text: "加载中"
         anchors.top: avatarMask.bottom
         verticalAlignment: Text.AlignVCenter
         anchors.topMargin: 32
@@ -231,6 +246,6 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.75}D{i:6}D{i:16}
+    D{i:0;formeditorZoom:0.75}
 }
 ##^##*/
