@@ -39,13 +39,13 @@ compiler_rcc_clean:
 qrc_qml.cpp: qml.qrc \
 		../../../Qt/6.1.0/clang_64/libexec/rcc \
 		ClassPage.qml \
+		RegPage.qml \
 		MarkHomework.qml \
 		GeneralPage.qml \
 		MarkPage.qml \
 		SettingPage.qml \
 		CorrectHomework.qml \
 		NewAClass.qml \
-		registerPage.qml \
 		Arrangement.qml \
 		ScoreWithClass.qml \
 		LoginPage.qml \

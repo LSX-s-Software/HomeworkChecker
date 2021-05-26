@@ -469,6 +469,27 @@ std::vector<Class> getClassList(int teacherId) noexcept(false) {
         throw DMError(CONNECTION_ERROR);
 }
 
+long getTotalClassSize(int teacherId) noexcept(false) {
+    if (teacherId <= 0)
+        throw DMError(INVALID_ARGUMENT);
+    long result = 0;
+    if (DBManager::connectDatabase()) {
+        if (!DBManager::select("classes", "count(*)", "teacher_id=" + std::to_string(teacherId) + " AND status=0")) {
+            if (DBManager::numRows() > 0) {
+                MYSQL_ROW row = DBManager::fetchRow();
+                std::string count = row[0];
+                result = atol(count.c_str());
+            }
+            DBManager::closeConnection();
+            return result;
+        } else {
+            DBManager::closeConnection();
+            throw DMError(DATABASE_OPERATION_ERROR);
+        }
+    } else
+        throw DMError(CONNECTION_ERROR);
+}
+
 DMErrorType deleteClass(long id) {
     if (id <= 0)
         return INVALID_ARGUMENT;

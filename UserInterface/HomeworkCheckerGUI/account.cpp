@@ -1,5 +1,7 @@
 #include "account.h"
 
+DataManager::User Account::user = DataManager::User();
+
 Account::Account(QObject *parent) : QObject(parent) {}
 
 int Account::reg(QString userName, QString password) {
@@ -8,6 +10,10 @@ int Account::reg(QString userName, QString password) {
 
 int Account::login(QString userName, QString password) {
     return user.login(userName.toStdString(), password.toStdString());
+}
+
+int Account::getId() {
+    return user.getId();
 }
 
 QString Account::getName() {

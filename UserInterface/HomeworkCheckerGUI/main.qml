@@ -32,6 +32,26 @@ Window {
         }
     }
 
+    Popup {
+        id: regPopup
+        modal: true
+        width: 400
+        height: 500
+        anchors.centerIn: Overlay.overlay
+        closePolicy: Popup.NoAutoClose
+        contentItem: RegPage {
+            id: regPage
+            anchors.centerIn: parent
+            anchors.fill: parent
+        }
+        background: Rectangle {
+            anchors.fill: parent
+            clip: true
+            radius: 20
+            color: "white"
+        }
+    }
+
     Row {
         id: splitView
         visible: true
@@ -103,6 +123,7 @@ Window {
                         naviBtn3.color="white";
                         naviBtn4.color="white";
                         generalPage.visible=true;
+                        generalPage.refresh();
                         classPage.visible=false;
                         taskPage.visible=false;
                         markPage.visible=false;
@@ -324,7 +345,7 @@ Window {
 
         GeneralPage {
             id: generalPage
-            visible: true
+            visible: false
             width: window.width - naviList.width
             height: window.height
         }

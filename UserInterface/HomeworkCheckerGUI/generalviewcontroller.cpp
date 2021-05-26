@@ -1,19 +1,59 @@
 #include "generalviewcontroller.h"
+#include "account.h"
+#include <iostream>
 
 GeneralViewController::GeneralViewController(QObject *parent) : QObject(parent) {}
 
+void GeneralViewController::refresh() {
+    try {
+        totalClassSize = DataManager::getTotalClassSize(Account::getId());
+        assmList = DataManager::getAssignmentList(Account::getId());
+        for (auto item : assmList) {
+            std::vector<DataManager::Homework> hList = DataManager::getHomeworkListByAsmId(item.getId());
+            homeworkList.insert(homeworkList.begin(), hList.begin(), hList.end());
+        }
+    } catch (...) {
+        std::cout << "[ERROR] [GeneralViewController] An Error Occoured" << std::endl;
+    }
+}
+
 QString GeneralViewController::userName() {
-    return "张三";
+    return Account::getName();
 }
 
 QString GeneralViewController::correctedCount() {
-    return "22/30";
+    if (homeworkList.size() == 0) {
+        return "无作业";
+    } else if (totalClassSize == 0) {
+        return "无班级";
+    } else {
+        int sum = 0;
+        for (auto item : homeworkList) {
+            if (item.getStatus() == 2) {
+                sum++;
+            }
+        }
+        return QString::fromStdString(std::to_string(sum) + "/" + std::to_string(homeworkList.size()));
+    }
 }
 
 QString GeneralViewController::submittedCount() {
-    return "28/30";
+    if (homeworkList.size() == 0) {
+        return "无作业";
+    } else if (totalClassSize == 0) {
+        return "无班级";
+    } else {
+        return QString::fromStdString(std::to_string(homeworkList.size()) + "/" + std::to_string(totalClassSize));
+    }
 }
 
 QString GeneralViewController::correctedProg() {
-    return "3/4";
+    if (homeworkList.size() == 0) {
+        return "未布置作业";
+    } else if (totalClassSize == 0) {
+        return "未创建班级";
+    } else {
+        double prog = double(homeworkList.size()) / double() * 100;
+        return QString::fromStdString(std::to_string(prog) + "%");
+    }
 }
