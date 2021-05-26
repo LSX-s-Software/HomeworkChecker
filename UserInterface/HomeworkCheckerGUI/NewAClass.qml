@@ -183,6 +183,7 @@ Rectangle {
             height: 32
             color: "#ffffff"
             text: qsTr("创建")
+            font.weight: Font.Medium
             anchors.horizontalCenter: parent.horizontalCenter
             verticalAlignment: Text.AlignVCenter
             font.family: "Source Han Sans CN"

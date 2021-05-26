@@ -80,6 +80,8 @@ Rectangle {
             id: nextBtnTxt
             color: "#ffffff"
             text: qsTr("注册")
+            font.bold: false
+            font.weight: Font.Medium
             anchors.fill: parent
             font.pixelSize: 28
             verticalAlignment: Text.AlignVCenter

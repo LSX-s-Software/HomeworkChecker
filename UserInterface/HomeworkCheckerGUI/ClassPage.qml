@@ -14,6 +14,7 @@ Rectangle {
         closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
         width: 720
         height: 461
+        visible: true
         focus: true
         clip: true
         anchors.centerIn: classPage
@@ -33,6 +34,7 @@ Rectangle {
         focus: true
         width: 720
         height: 461
+        visible: true
         clip: true
         anchors.centerIn: classPage
         background: Rectangle {
@@ -160,6 +162,7 @@ Rectangle {
 
     ListView {
         id: listView
+        visible: true
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: rectangle7.bottom
