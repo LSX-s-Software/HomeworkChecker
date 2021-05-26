@@ -1,4 +1,4 @@
-/*
+﻿/*
     ******
     base64.hpp is a repackaging of the base64.cpp and base64.h files into a
     single header suitable for use as a header only library. This conversion was

@@ -1,4 +1,4 @@
-/*
+﻿/*
 *****
 sha1.hpp is a repackaging of the sha1.cpp and sha1.h files from the smallsha1
 library (http://code.google.com/p/smallsha1/) into a single header suitable for

@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <string>
 #include "WebsocketClientForApp.h"
 
@@ -8,15 +8,15 @@ using namespace std;
 int main()
 {
 	system("CHCP 65001");
-	WebsocketClientForApp ws;//´´½¨ws¿Í»§¶Ë¶ÔÏó
-	ws.rootPath = R"(E:/tmp)";//Ö¸¶¨±¾µØ¸ùÂ·¾¶
-	ws.Connect("ws://127.0.0.1:6701");//Á¬½Óws
-	//ws.Connect("ws://119.29.3.36:6700");
-	//ws.sendReview(19);//·¢ËÍÆÀÓï+·ÖÊı
-	//ws.getFile(19, "1.zip");//»ñÈ¡ÎÄ¼ş
-	//ws.getFile(19, "1.png");
-	ws.sendNewHomeworkNotification(2);
+	WebsocketClientForApp ws;//åˆ›å»ºwså®¢æˆ·ç«¯å¯¹è±¡
+	ws.rootPath = R"(E:/tmp)";//æŒ‡å®šæœ¬åœ°æ ¹è·¯å¾„
+	//ws.Connect("ws://127.0.0.1:6701");//è¿æ¥ws
+	ws.Connect("ws://42.193.50.174:6701");
+	//ws.sendReview(19);//å‘é€è¯„è¯­+åˆ†æ•°
+	ws.getFile(22, "2020302111311.docx");//è·å–æ–‡ä»¶
+	//ws.getFile(22, "1.png");
+	//ws.sendNewHomeworkNotification(2);
 	while(true)
 		Sleep(1000);
-	ws.Close();//³ÌĞò½áÊøÇ°¹Ø±ÕwsÁ¬½Ó
+	ws.Close();//ç¨‹åºç»“æŸå‰å…³é—­wsè¿æ¥
 }

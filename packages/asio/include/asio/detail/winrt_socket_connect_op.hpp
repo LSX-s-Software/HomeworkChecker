@@ -1,4 +1,4 @@
-//
+﻿//
 // detail/winrt_socket_connect_op.hpp
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //

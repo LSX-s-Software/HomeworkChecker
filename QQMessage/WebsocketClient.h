@@ -148,6 +148,8 @@ private:
 	client m_WebsocketClient;
 	websocketpp::lib::shared_ptr<websocketpp::lib::thread> m_Thread; // 线程
 
+	std::string lastURL;
+
 	OnOpenFunc m_OnOpenFunc;
 	OnFailFunc m_OnFailFunc;
 	OnCloseFunc m_OnCloseFunc;

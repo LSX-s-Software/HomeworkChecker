@@ -45,12 +45,24 @@ void QQMessage::onOpen()
 }
 void QQMessage::onClose()
 {
-	std::cerr << "Client Closed." << std::endl;
+	std::cerr << "Client Closed." << std::endl << "Re-connecting..." << std::endl;
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
+	Sleep(15000);
+#else
+	sleep(15);
+#endif
+	wsClient.Connect("");
 	return;
 }
 void QQMessage::onFail()
 {
-	std::cerr << "Client Connect Failed." << std::endl;
+	std::cerr << "Client Connect Failed." << std::endl << "Re-connecting..." << std::endl;
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
+	Sleep(1000);
+#else
+	sleep(1);
+#endif
+	wsClient.Connect("");
 	return;
 }
 

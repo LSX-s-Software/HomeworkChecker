@@ -53,7 +53,7 @@ File::File(long long classId, long long schoolId, long long homeworkId) :
 
 File::File(HomeworkInfo info)
 	:
-	classId(info.classId), schoolId(info.studentNum), homeworkId(info.homeworkId), submitId(info.submitId)
+	classId(info.classId), schoolId(info.studentId), homeworkId(info.homeworkId), submitId(info.submitId)
 {
 	workPath = rootPath;
 	workPath.append(std::to_string(classId)).append(std::to_string(schoolId)).append(std::to_string(homeworkId));

@@ -35,10 +35,11 @@ WebsocketClient::~WebsocketClient()
 
 bool WebsocketClient::Connect(std::string const& url)
 {
+	if (url != "") lastURL = url;
 	websocketpp::lib::error_code ec;
 
 	// 创建connect的共享指针，注意，此时创建并没有实际建立
-	client::connection_ptr con = m_WebsocketClient.get_connection(url, ec);
+	client::connection_ptr con = m_WebsocketClient.get_connection(lastURL, ec);
 
 	if (ec) {
 		std::cout << "> Connect initialization error: " << ec.message() << std::endl;
@@ -46,7 +47,7 @@ bool WebsocketClient::Connect(std::string const& url)
 	}
 
 	// 创建连接的metadata信息，并保存
-	connection_metadata::ptr metadata_ptr = websocketpp::lib::make_shared<connection_metadata>(con->get_handle(), url);
+	connection_metadata::ptr metadata_ptr = websocketpp::lib::make_shared<connection_metadata>(con->get_handle(), lastURL);
 	m_ConnectionMetadataPtr = metadata_ptr;
 
 	// 注册连接打开的Handler
