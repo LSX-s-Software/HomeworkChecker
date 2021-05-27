@@ -1,14 +1,15 @@
-﻿#ifndef ACCOUNT_H
+#ifndef ACCOUNT_H
 #define ACCOUNT_H
 
 #include <QObject>
 #include <QString>
+#include <QDebug>
 #include "qqml.h"
 #include "DataManager.hpp"
 
 class Account: public QObject {
     Q_OBJECT
-    Q_PROPERTY(int id READ getId)
+    Q_PROPERTY(int id READ getId CONSTANT)
     Q_PROPERTY(QString userName READ getName WRITE setName)
     QML_ELEMENT
 public:

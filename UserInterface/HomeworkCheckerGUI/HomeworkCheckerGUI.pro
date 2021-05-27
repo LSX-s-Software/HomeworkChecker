@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
         account.cpp \
+        classviewcontroller.cpp \
         generalviewcontroller.cpp \
         main.cpp \
         settingpage.cpp
@@ -31,6 +32,7 @@ INCLUDEPATH += "../../DataManager/DataManager"
 
 HEADERS += \
     account.h \
+    classviewcontroller.h \
     generalviewcontroller.h \
     settingpage.h
 

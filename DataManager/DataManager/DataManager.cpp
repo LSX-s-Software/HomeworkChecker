@@ -1,4 +1,4 @@
-﻿//
+//
 //  DataManager.cpp
 //  DataManager
 //
@@ -458,6 +458,27 @@ std::vector<Class> getClassList(int teacherId) noexcept(false) {
                     std::string idStr = row[0], statusStr = row[6];
                     result.push_back(Class(atol(idStr.c_str()), teacherId, row[2], (row[3]==NULL?"":row[3]), (row[4]==NULL?"":row[4]), row[5], (atoi(statusStr.c_str()) ? CLASS_ENDED : CLASS_RUNNING)));
                 }
+            }
+            DBManager::closeConnection();
+            return result;
+        } else {
+            DBManager::closeConnection();
+            throw DMError(DATABASE_OPERATION_ERROR);
+        }
+    } else
+        throw DMError(CONNECTION_ERROR);
+}
+
+int Class::getSize() noexcept(false) {
+    if (id <= 0)
+        return 0;
+    if (DBManager::connectDatabase()) {
+        if (!DBManager::select("students", "count(*)", "class_id=" + std::to_string(id))) {
+            int result = 0;
+            if (DBManager::numRows() > 0) {
+                MYSQL_ROW row = DBManager::fetchRow();
+                std::string count = row[0];
+                result = atoi(count.c_str());
             }
             DBManager::closeConnection();
             return result;

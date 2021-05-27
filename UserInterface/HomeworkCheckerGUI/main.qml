@@ -23,7 +23,7 @@ Window {
         height: 378
         visible: true
         anchors.centerIn: Overlay.overlay
-        closePolicy: Popup.NoAutoClose
+//        closePolicy: Popup.NoAutoClose
         contentItem: LoginPage {
             id: loginPage
             anchors.centerIn: parent
@@ -128,12 +128,13 @@ Window {
                         naviBtn3.color="white";
                         naviBtn4.color="white";
                         generalPage.visible=true;
-                        generalPage.refresh();
                         classPage.visible=false;
                         taskPage.visible=false;
                         markPage.visible=false;
                         settingPage.visible=false;
                         naviList.index = 0;
+
+                        generalPage.refresh();
                     }
                 }
             }
@@ -186,6 +187,7 @@ Window {
                         settingPage.visible=false;
 
                         naviList.index = 1;
+                        classPage.refresh()
                     }
                 }
             }

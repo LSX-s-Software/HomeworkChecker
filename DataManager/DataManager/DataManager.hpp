@@ -1,4 +1,4 @@
-﻿//
+//
 //  DataManager.hpp
 //  DataManager
 //
@@ -178,6 +178,7 @@ public:
     ClassStatus getStatus() {
         return status;
     }
+    int getSize() noexcept(false);
     
     DMErrorType setName(std::string newName);
     DMErrorType setLocation(std::string newLocation);

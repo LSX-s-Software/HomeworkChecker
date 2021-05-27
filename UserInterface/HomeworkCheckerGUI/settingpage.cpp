@@ -1,6 +1,7 @@
 #include "settingpage.h"
 #include <fstream>
 #include <filesystem>
+#include <sstream>
 #include <json.hpp>
 
 std::string SettingPage::workPath;

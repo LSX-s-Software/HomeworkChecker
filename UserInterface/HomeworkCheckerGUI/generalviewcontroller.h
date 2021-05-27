@@ -1,8 +1,9 @@
-﻿#ifndef GENERALVIEWCONTROLLER_H
+#ifndef GENERALVIEWCONTROLLER_H
 #define GENERALVIEWCONTROLLER_H
 
 #include <QObject>
 #include <QString>
+#include <QDebug>
 #include "qqml.h"
 #include "DataManager.hpp"
 #include <vector>
@@ -10,10 +11,10 @@
 class GeneralViewController : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString userName READ userName)
-    Q_PROPERTY(QString correctedCount READ correctedCount)
-    Q_PROPERTY(QString submittedCount READ submittedCount)
-    Q_PROPERTY(QString correctedProg READ correctedProg)
+    Q_PROPERTY(QString userName READ userName CONSTANT)
+    Q_PROPERTY(QString correctedCount READ correctedCount CONSTANT)
+    Q_PROPERTY(QString submittedCount READ submittedCount CONSTANT)
+    Q_PROPERTY(QString correctedProg READ correctedProg CONSTANT)
     QML_ELEMENT
 public:
     explicit GeneralViewController(QObject *parent = nullptr);
