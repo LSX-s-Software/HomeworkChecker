@@ -1,11 +1,19 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
+import QtQuick.Controls 2.14
+import Qt.labs.platform 1.0
+import mySettingPage 1.0
 
 Rectangle {
     id: settingPage
     width: 1046
     height: 768
     color: "#ffffff"
+
+    MySettingPage {
+        id:setting
+    }
+
     Text {
         id: title
         x: 483
@@ -39,7 +47,7 @@ Rectangle {
             font.family: "Source Han Sans CN"
             anchors.fill: parent
             horizontalAlignment: Text.AlignHCenter
-            font.pointSize: 32
+            font.pixelSize: 30
             verticalAlignment: Text.AlignVCenter
         }
 
@@ -68,7 +76,7 @@ Rectangle {
             height: 37
             text: qsTr("附件下载目录")
             horizontalAlignment: Text.AlignHCenter
-            font.pointSize: 28
+            font.pixelSize: 25
             verticalAlignment: Text.AlignVCenter
             font.family: "Source Han Sans CN"
         }
@@ -79,17 +87,26 @@ Rectangle {
             y: 44
             width: 166
             height: 27
-            text: qsTr("D:\\Download\\CPP")
+            text:folderDialog.folder
+            activeFocusOnTab:true
+            //selectByMouse: true //是否可以选择文本
             horizontalAlignment: Text.AlignHCenter
-            font.pointSize: 20
+            font.pixelSize: 18
             verticalAlignment: Text.AlignVCenter
             font.family: "Source Han Sans CN"
         }
 
-        MouseArea {
-            id: mouseArea13
+        MouseArea{
             anchors.fill: parent
+            onClicked: {
+                folderDialog.open()
+            }
         }
+
+        FolderDialog {
+            id: folderDialog
+            folder: "file:tmp"
+            }
     }
 
     Rectangle {
@@ -103,6 +120,8 @@ Rectangle {
         anchors.leftMargin: 32
         anchors.topMargin: 16
 
+
+
         Text {
             id: element26
             color: "#0098f7"
@@ -113,11 +132,18 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             anchors.fill: parent
             font.pointSize: 24
+            anchors{
+                verticalCenter: Text.verticalCenter
+                left: Text.right
+                leftMargin: 20
+            }
         }
 
         MouseArea {
-            id: mouseArea14
             anchors.fill: parent
+            onClicked: {
+                setting.setWorkPath(element23.text)
+            }
         }
     }
 
@@ -152,6 +178,6 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.66}D{i:1}D{i:2}D{i:5}D{i:9}D{i:12}
+    D{i:0;formeditorZoom:0.66}
 }
 ##^##*/

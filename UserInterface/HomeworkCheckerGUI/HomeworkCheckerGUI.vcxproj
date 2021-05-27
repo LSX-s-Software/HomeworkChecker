@@ -196,6 +196,7 @@
     <ClCompile Include="account.cpp" />
     <ClCompile Include="generalviewcontroller.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="settingpage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="generalviewcontroller.h">
@@ -263,6 +264,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="account.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="settingpage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
