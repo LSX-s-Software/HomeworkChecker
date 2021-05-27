@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <QObject>
 #include <QString>
 #include "qqml.h"

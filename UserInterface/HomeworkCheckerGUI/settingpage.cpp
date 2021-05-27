@@ -1,8 +1,9 @@
-#include "settingpage.h"
+﻿#include "settingpage.h"
 #include <fstream>
 #include <filesystem>
 #include <sstream>
 #include <json.hpp>
+#include <QDebug>
 
 std::string SettingPage::workPath;
 std::string SettingPage::wsClientUrl;
@@ -37,6 +38,7 @@ QString SettingPage::getWorkPath()
 void SettingPage::saveToFile()
 {
     std::filesystem::path settingFile = "setting.config";
+    std::string a = std::filesystem::canonical(settingFile).string();
     std::ofstream out;
     out.open(settingFile, std::ios::trunc);
     nlohmann::json encode{

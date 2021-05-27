@@ -1,4 +1,4 @@
-#ifndef CLASSVIEWCONTROLLER_H
+﻿#ifndef CLASSVIEWCONTROLLER_H
 #define CLASSVIEWCONTROLLER_H
 
 #include <QObject>
