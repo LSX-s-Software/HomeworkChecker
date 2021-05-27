@@ -1,4 +1,4 @@
-//
+﻿//
 // detail/socket_select_interrupter.hpp
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //

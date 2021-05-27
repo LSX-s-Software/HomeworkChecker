@@ -1,4 +1,4 @@
-#define ASIO_STANDALONE
+ï»¿#define ASIO_STANDALONE
 #define _WEBSOCKETPP_CPP11_RANDOM_DEVICE_
 #define _WEBSOCKETPP_CPP11_TYPE_TRAITS_
 #pragma once
@@ -49,15 +49,15 @@ public:
     WebsocketServer();
     ~WebsocketServer();
     /// <summary>
-    /// Á¬½Ó
+    /// è¿žæŽ¥
     /// </summary>
     static void OnOpen(server* s, WebsocketServer* pWebSocket, websocketpp::connection_hdl hdl);
     /// <summary>
-    /// ¶Ï¿ª
+    /// æ–­å¼€
     /// </summary>
     static void OnClose(server* s, WebsocketServer* pWebSocket, websocketpp::connection_hdl hdl);
     /// <summary>
-    /// Í¨ÐÅ
+    /// é€šä¿¡
     /// </summary>
     static void OnMessage(server* s, WebsocketServer* pWebSocket, websocketpp::connection_hdl hdl, message_ptr msg);
 

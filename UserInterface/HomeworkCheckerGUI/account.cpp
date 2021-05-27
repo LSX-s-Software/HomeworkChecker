@@ -1,4 +1,4 @@
-#include "account.h"
+﻿#include "account.h"
 
 DataManager::User Account::user = DataManager::User();
 

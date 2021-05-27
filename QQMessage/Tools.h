@@ -1,45 +1,45 @@
-#pragma once
+ï»¿#pragma once
 
 /// <summary>
-/// ¹¤¾ß¼¯
+/// å·¥å…·é›†
 /// </summary>
 class Tools
 {
 public:
 	/// <summary>
-	/// utf8×ªutf16
+	/// utf8è½¬utf16
 	/// </summary>
-	/// <param name="str">utf8×Ö´®</param>
-	/// <returns>utf16×Ö´®</returns>
+	/// <param name="str">utf8å­—ä¸²</param>
+	/// <returns>utf16å­—ä¸²</returns>
 	static std::u16string to_utf16(std::string str);
 
 	/// <summary>
-	/// utf16×ªutf8
+	/// utf16è½¬utf8
 	/// </summary>
-	/// <param name="str">utf16×Ö´®</param>
-	/// <returns>utf8×Ö´®</returns>
+	/// <param name="str">utf16å­—ä¸²</param>
+	/// <returns>utf8å­—ä¸²</returns>
 	static std::string to_utf8(std::u16string str16);
 	/// <summary>
-	/// ¼ì²âÊÇ·ñÎªÊı×Ö
+	/// æ£€æµ‹æ˜¯å¦ä¸ºæ•°å­—
 	/// </summary>
-	/// <param name="str">utf8×Ö·û´®</param>
+	/// <param name="str">utf8å­—ç¬¦ä¸²</param>
 	/// <returns></returns>
 	static bool isNum(std::string str);
 	/// <summary>
-	/// É¾³ıÇ°¶Ë¶àÓà¿Õ¸ñ
+	/// åˆ é™¤å‰ç«¯å¤šä½™ç©ºæ ¼
 	/// </summary>
-	/// <param name="x">utf16×Ö·û´®</param>
+	/// <param name="x">utf16å­—ç¬¦ä¸²</param>
 	static void delSpaceAhead(std::u16string& x);
 	/// <summary>
-	/// É¾³ıÇ°ĞòÃüÁî
+	/// åˆ é™¤å‰åºå‘½ä»¤
 	/// </summary>
-	/// <param name="data">Ô­Ê¼utf16ÏûÏ¢</param>
-	/// <param name="data">Ç°ĞòÃüÁî³¤¶È</param>
-	/// <returns>¶ş¼¶ÏûÏ¢</returns>
+	/// <param name="data">åŸå§‹utf16æ¶ˆæ¯</param>
+	/// <param name="data">å‰åºå‘½ä»¤é•¿åº¦</param>
+	/// <returns>äºŒçº§æ¶ˆæ¯</returns>
 	static std::u16string delFirstCom(std::u16string data,int len);
 
 	/// <summary>
-	/// »ñÈ¡µ±Ç°Ê±¼ä´Á
+	/// è·å–å½“å‰æ—¶é—´æˆ³
 	/// </summary>
 	/// <returns></returns>
 	static long long getTimestamp();

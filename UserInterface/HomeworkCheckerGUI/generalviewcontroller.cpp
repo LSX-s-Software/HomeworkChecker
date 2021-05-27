@@ -2,6 +2,7 @@
 #include "account.h"
 #include <iostream>
 
+
 GeneralViewController::GeneralViewController(QObject *parent) : QObject(parent) {}
 
 void GeneralViewController::refresh() {

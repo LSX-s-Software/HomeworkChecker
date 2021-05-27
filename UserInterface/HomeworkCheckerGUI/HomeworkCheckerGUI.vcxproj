@@ -57,7 +57,7 @@
     <IntDir>debug\</IntDir>
     <TargetName>HomeworkCheckerGUI</TargetName>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
-    <IncludePath>..\DataManager\DataManager;..\WebsocketClientForApp;$(IncludePath)</IncludePath>
+    <IncludePath>..\DataManager\DataManager;..\WebsocketClientForApp;D:\Qt\5.15.2\msvc2019_64\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\lib;..\packages\mysql\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

@@ -1,4 +1,4 @@
-//
+﻿//
 // detail/base_from_completion_cond.hpp
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //

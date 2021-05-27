@@ -1,4 +1,4 @@
-//
+﻿//
 // detail/handler_alloc_helpers.hpp
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //

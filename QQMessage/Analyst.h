@@ -1,172 +1,172 @@
-#pragma once
+ï»¿#pragma once
 #include <string>
 #include "WebsocketClient.h"
 
 /// <summary>
-/// ¹²ÓÃÃ¶¾ÙÀàĞÍ
+/// å…±ç”¨æšä¸¾ç±»å‹
 /// <para>
-/// Ò»¼¶²Ëµ¥Ö÷×´Ì¬¼ÇÂ¼
+/// ä¸€çº§èœå•ä¸»çŠ¶æ€è®°å½•
 /// </para>
 /// </summary>
 enum class PeerStatus {
 	/// <summary>
-	/// ¿ÕÏĞ
+	/// ç©ºé—²
 	/// </summary>
 	IDLE,
 	/// <summary>
-	/// ×¢²áÖĞ
+	/// æ³¨å†Œä¸­
 	/// </summary>
 	REGISTER,
 	/// <summary>
-	/// Ìá½»×÷ÒµÖĞ
+	/// æäº¤ä½œä¸šä¸­
 	/// </summary>
 	HOMEWORK,
 	/// <summary>
-	/// Î´×¢²á
+	/// æœªæ³¨å†Œ
 	/// </summary>
 	UNREG
 };
 
 /// <summary>
-/// ¹²ÓÃÃ¶¾ÙÀàĞÍ
+/// å…±ç”¨æšä¸¾ç±»å‹
 /// <para>
-/// ¶ş¼¶²Ëµ¥×¢²á×´Ì¬¼ÇÂ¼
+/// äºŒçº§èœå•æ³¨å†ŒçŠ¶æ€è®°å½•
 /// </para>
 /// </summary>
 enum class RegStatus {
 	/// <summary>
-	/// ¿ªÊ¼×¢²á
+	/// å¼€å§‹æ³¨å†Œ
 	/// </summary>
 	START,
 	/// <summary>
-	/// Ìá½»°à¼¶ÑûÇëÂë
+	/// æäº¤ç­çº§é‚€è¯·ç 
 	/// </summary>
 	CLASS,
 	/// <summary>
-	/// Ìá½»Ñ§ºÅ
+	/// æäº¤å­¦å·
 	/// </summary>
 	NUM,
 	/// <summary>
-	/// Ìá½»ĞÕÃû
+	/// æäº¤å§“å
 	/// </summary>
 	NAME,
 	/// <summary>
-	/// È·ÈÏ
+	/// ç¡®è®¤
 	/// </summary>
 	CONFIRM
 };
 /// <summary>
-/// ¹²ÓÃ½á¹¹Ìå
+/// å…±ç”¨ç»“æ„ä½“
 /// <para>
-/// ¼ÇÂ¼×¢²áĞÅÏ¢£¬±ãÓÚ·¢ËÍ
+/// è®°å½•æ³¨å†Œä¿¡æ¯ï¼Œä¾¿äºå‘é€
 /// </para>
 /// </summary>
 struct RegInfo
 {
 	/// <summary>
-	/// ×¢²á×´Ì¬
+	/// æ³¨å†ŒçŠ¶æ€
 	/// </summary>
 	RegStatus status = RegStatus::START;
 	/// <summary>
-	/// ĞÕÃû
+	/// å§“å
 	/// </summary>
 	std::string name;
 	/// <summary>
-	/// °à¼¶ID
+	/// ç­çº§ID
 	/// </summary>
 	long long classId;
 	/// <summary>
-	/// Ñ§ºÅ
+	/// å­¦å·
 	/// </summary>
 	long long schoolId;
 };
 
 /// <summary>
-/// ×÷ÒµÌá½»ÏêÇé
+/// ä½œä¸šæäº¤è¯¦æƒ…
 /// </summary>
 struct StuInfo
 {
 	/// <summary>
-	/// Ñ§Éúid
+	/// å­¦ç”Ÿid
 	/// </summary>
 	long long studentId;
 	/// <summary>
-	/// Ñ§ºÅ
+	/// å­¦å·
 	/// </summary>
 	long long studentNum;
 	/// <summary>
-	/// °à¼¶id
+	/// ç­çº§id
 	/// </summary>
 	long long classId;
 };
 
 /// <summary>
-/// ×÷ÒµÌá½»ÏêÇé
+/// ä½œä¸šæäº¤è¯¦æƒ…
 /// </summary>
 struct HomeworkInfo
 {
 	/// <summary>
-	/// Ñ§Éúid
+	/// å­¦ç”Ÿid
 	/// </summary>
 	long long studentId;
 	/// <summary>
-	/// Ñ§ºÅ
+	/// å­¦å·
 	/// </summary>
 	long long studentNum;
 	/// <summary>
-	/// °à¼¶id
+	/// ç­çº§id
 	/// </summary>
 	long long classId;
 
 	/// <summary>
-	/// ×÷Òµid
+	/// ä½œä¸šid
 	/// </summary>
 	long long homeworkId;
 	/// <summary>
-	/// Ìá½»id
+	/// æäº¤id
 	/// </summary>
 	long long submitId;
 };
 /// <summary>
-/// Ë½ÁÄÏûÏ¢·¢ËÍ
+/// ç§èŠæ¶ˆæ¯å‘é€
 /// </summary>
 class PrivateMessageSender;
 
 /// <summary>
-/// ¼ì²âÊäÈëÎÄ±¾¡¾Ò»¼¶²Ëµ¥¡¿
+/// æ£€æµ‹è¾“å…¥æ–‡æœ¬ã€ä¸€çº§èœå•ã€‘
 /// </summary>
-/// <param name="data">ÁÄÌìÏûÏ¢</param>
-/// <param name="qq_id">¶ÔÏóqq</param>
+/// <param name="data">èŠå¤©æ¶ˆæ¯</param>
+/// <param name="qq_id">å¯¹è±¡qq</param>
 void AnaText(std::u16string data, long long qq_id);
 
 /// <summary>
-/// ×¢²á¡¾¶ş¼¶²Ëµ¥¡¿
+/// æ³¨å†Œã€äºŒçº§èœå•ã€‘
 /// </summary>
-/// <param name="data">ÁÄÌìÏûÏ¢</param>
-/// <param name="qq_id">¶ÔÏóqq</param>
+/// <param name="data">èŠå¤©æ¶ˆæ¯</param>
+/// <param name="qq_id">å¯¹è±¡qq</param>
 void RegCommand(std::u16string data, long long qq_id);
 /// <summary>
-/// ×÷Òµ¡¾¶ş¼¶²Ëµ¥¡¿
+/// ä½œä¸šã€äºŒçº§èœå•ã€‘
 /// </summary>
-/// <param name="data">ÁÄÌìÏûÏ¢</param>
-/// <param name="qq_id">¶ÔÏóqq</param>
+/// <param name="data">èŠå¤©æ¶ˆæ¯</param>
+/// <param name="qq_id">å¯¹è±¡qq</param>
 void HomCommand(std::u16string data, long long qq_id);
 
 /// <summary>
-/// ¼ì²âÎÄ¼ş
+/// æ£€æµ‹æ–‡ä»¶
 /// </summary>
-/// <param name="data">ÁÄÌìÏûÏ¢</param>
-/// <param name="qq_id">¶ÔÏóqq</param>
+/// <param name="data">èŠå¤©æ¶ˆæ¯</param>
+/// <param name="qq_id">å¯¹è±¡qq</param>
 void AnaFile(std::string name,std::string url, long long qq_id);
 /// <summary>
-/// ·¢ËÍÆÀ¼Û
+/// å‘é€è¯„ä»·
 /// </summary>
-/// <param name="homeworkId">Ìá½»ID</param>
-/// <return>Í¨Öª³É¹¦×´Ì¬</return>
+/// <param name="homeworkId">æäº¤ID</param>
+/// <return>é€šçŸ¥æˆåŠŸçŠ¶æ€</return>
 bool sendReview(long homeworkId);
 /// <summary>
-/// ·¢ËÍ×÷ÒµÍ¨Öª
+/// å‘é€ä½œä¸šé€šçŸ¥
 /// </summary>
-/// <param name="assignmentId">²¼ÖÃ×÷ÒµID</param>
-/// <param name="mode">Ä£Ê½£¬1£ºĞÂÔö×÷Òµ ËùÓĞÈË</param>
+/// <param name="assignmentId">å¸ƒç½®ä½œä¸šID</param>
+/// <param name="mode">æ¨¡å¼ï¼Œ1ï¼šæ–°å¢ä½œä¸š æ‰€æœ‰äºº</param>
 void sendHomeworkNotification(long long assignmentId, int mode);

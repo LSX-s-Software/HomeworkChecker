@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <filesystem>
 #include <iostream>
 #include <vector>
@@ -6,102 +6,102 @@
 #include "Analyst.h"
 
 /// <summary>
-/// ÎÄ¼ş¹ÜÀíÀà
+/// æ–‡ä»¶ç®¡ç†ç±»
 /// </summary>
 class File
 {
 private:
 	/// <summary>
-	/// µ±Ç°Ìá½»idµÄ¹¤×÷Ä¿Â¼
+	/// å½“å‰æäº¤idçš„å·¥ä½œç›®å½•
 	/// </summary>
 	std::filesystem::path workPath;
 	/// <summary>
-	/// µ±Ç°Ìá½»idµÄÏà¶ÔÂ·¾¶
+	/// å½“å‰æäº¤idçš„ç›¸å¯¹è·¯å¾„
 	/// </summary>
 	std::filesystem::path relativePath;
 	/// <summary>
-	/// µ±Ç°Ìá½»idµÄĞÅÏ¢ÎÄ¼ş
+	/// å½“å‰æäº¤idçš„ä¿¡æ¯æ–‡ä»¶
 	/// </summary>
 	std::filesystem::path infoPath;
 	/// <summary>
-	/// °à¼¶id Ñ§ºÅ ×÷Òµid ±¾´ÎÌá½»id
+	/// ç­çº§id å­¦å· ä½œä¸šid æœ¬æ¬¡æäº¤id
 	/// </summary>
 	long long classId, schoolId, homeworkId,submitId;
 	/// <summary>
-	/// ¹¤×÷Ä¿Â¼ËùÓĞÎÄ¼ş
+	/// å·¥ä½œç›®å½•æ‰€æœ‰æ–‡ä»¶
 	/// </summary>
 	std::vector<FileInfo> fileList;
 	/// <summary>
-	/// ×Ô¶¯±àºÅ
+	/// è‡ªåŠ¨ç¼–å·
 	/// </summary>
 	int autoIndex = 1;
 public:
 	/// <summary>
-	/// ÎÄ¼ş¹ÜÀí
+	/// æ–‡ä»¶ç®¡ç†
 	/// </summary>
-	/// <param name="classId">°à¼¶id</param>
-	/// <param name="schoolId">Ñ§ºÅ</param>
-	/// <param name="homeworkId">×÷Òµid</param>
-	/// <param name="submitId">µ±Ç°Ìá½»id</param>
+	/// <param name="classId">ç­çº§id</param>
+	/// <param name="schoolId">å­¦å·</param>
+	/// <param name="homeworkId">ä½œä¸šid</param>
+	/// <param name="submitId">å½“å‰æäº¤id</param>
 	File(long long classId, long long schoolId, long long homeworkId);
 	File(HomeworkInfo info);
 	/// <summary>
-	/// ´æ´¢ÎÄ×Ö£¬Ê¹ÓÃ×Ô¶¯±àºÅ
+	/// å­˜å‚¨æ–‡å­—ï¼Œä½¿ç”¨è‡ªåŠ¨ç¼–å·
 	/// </summary>
-	/// <param name="data">utf8ÎÄ×ÖĞÅÏ¢</param>
-	/// <returns>ÎÄ¼şÃû</returns>
+	/// <param name="data">utf8æ–‡å­—ä¿¡æ¯</param>
+	/// <returns>æ–‡ä»¶å</returns>
 	std::string storeText(std::string data);
 	/// <summary>
-	/// É¾³ıÎÄ¼ş
+	/// åˆ é™¤æ–‡ä»¶
 	/// </summary>
-	/// <param name="fileName">ÎÄ¼şÃû</param>
+	/// <param name="fileName">æ–‡ä»¶å</param>
 	std::string delFile(std::filesystem::path fileName);
 	/// <summary>
-	/// ÏÂÔØÎÄ¼ş
+	/// ä¸‹è½½æ–‡ä»¶
 	/// </summary>
-	/// <param name="url">ÏÂÔØµØÖ·</param>
-	/// <param name="fileName">±£´æÎÄ¼şÃû</param>
-	/// <returns>ÎÄ¼şÃû</returns>
+	/// <param name="url">ä¸‹è½½åœ°å€</param>
+	/// <param name="fileName">ä¿å­˜æ–‡ä»¶å</param>
+	/// <returns>æ–‡ä»¶å</returns>
 	std::string downFile(std::string url, std::filesystem::path fileName);
 	/// <summary>
-	/// ´æ´¢Í¼Æ¬£¬Ê¹ÓÃ×Ô¶¯±àºÅ
+	/// å­˜å‚¨å›¾ç‰‡ï¼Œä½¿ç”¨è‡ªåŠ¨ç¼–å·
 	/// </summary>
-	/// <param name="url">ÏÂÔØµØÖ·</param>
-	/// <returns>ÎÄ¼şÃû</returns>
+	/// <param name="url">ä¸‹è½½åœ°å€</param>
+	/// <returns>æ–‡ä»¶å</returns>
 	std::string storePic(std::string url);
 	/// <summary>
-	/// ±¾µØ±£´æÎÄ¼ş
+	/// æœ¬åœ°ä¿å­˜æ–‡ä»¶
 	/// </summary>
-	/// <returns>±£´æ½á¹û</returns>
+	/// <returns>ä¿å­˜ç»“æœ</returns>
 	bool save(long long submitId);
 	/// <summary>
-	/// »ñÈ¡µ±Ç°ÎÄ¼ş¼ĞÏÂËùÓĞÎÄ¼ş
+	/// è·å–å½“å‰æ–‡ä»¶å¤¹ä¸‹æ‰€æœ‰æ–‡ä»¶
 	/// </summary>
-	/// <returns>ÀàĞÍ+ÎÄ¼şÃû</returns>
+	/// <returns>ç±»å‹+æ–‡ä»¶å</returns>
 	std::string getFileList();
 	/// <summary>
-	/// »ñÈ¡Ä³¸öÎÄ¼ş
+	/// è·å–æŸä¸ªæ–‡ä»¶
 	/// </summary>
 	/// <param name="fileName"></param>
 	/// <returns></returns>
 	std::string getFile(std::filesystem::path fileName);
 	/// <summary>
-	/// »ñÈ¡±¾µØ´æ´¢µÄSubmitId
+	/// è·å–æœ¬åœ°å­˜å‚¨çš„SubmitId
 	/// </summary>
 	/// <returns></returns>
 	long long getSubmitId();
 	/// <summary>
-	/// »ñÈ¡ÕıÎÄÎÄ¼şÃû | ·Ö¸ô
+	/// è·å–æ­£æ–‡æ–‡ä»¶å | åˆ†éš”
 	/// </summary>
 	/// <returns></returns>
 	std::string getContentFile();
 	/// <summary>
-	/// »ñÈ¡¸½¼şÎÄ¼şÃû | ·Ö¸ô
+	/// è·å–é™„ä»¶æ–‡ä»¶å | åˆ†éš”
 	/// </summary>
 	/// <returns></returns>
 	std::string getAttachmentFile();
 	/// <summary>
-	/// Çå¿ÕÎÄ¼ş
+	/// æ¸…ç©ºæ–‡ä»¶
 	/// </summary>
 	void delAll();
 	std::filesystem::path getFilePath(std::filesystem::path fileName);

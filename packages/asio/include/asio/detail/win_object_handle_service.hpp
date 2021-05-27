@@ -1,4 +1,4 @@
-//
+﻿//
 // detail/win_object_handle_service.hpp
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //
