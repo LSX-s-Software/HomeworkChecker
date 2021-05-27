@@ -20,7 +20,6 @@ Rectangle {
             width: 983
             height: 61
             color: "#f5f5f5"
-
             Text {
                 id: nameAndNumber
                 text: name+"("+number+")"

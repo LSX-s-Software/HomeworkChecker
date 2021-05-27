@@ -862,7 +862,7 @@ DMErrorType Assignment::setDeadline(long time) {
 std::vector<Assignment> getAssignmentList(unsigned int teacherId) noexcept(false) {
     std::vector<Assignment> result;
     if (teacherId > 0 && DBManager::connectDatabase()) {
-        if (!DBManager::select("assignments", "*", "teacher_id=" + std::to_string(teacherId))) {
+        if (!DBManager::select("assignments", "id,teacher_id,title,description,unix_timestamp(start_date),unix_timestamp(deadline),class_id", "teacher_id=" + std::to_string(teacherId))) {
             if (DBManager::numRows() > 0) {
                 MYSQL_ROW row;
                 while ((row = DBManager::fetchRow())) {

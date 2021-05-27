@@ -298,7 +298,7 @@ void AnaText(std::u16string data, long long qq_id)
 				getStuInfo.erase(qq_id);
 				PrivateMessageSender sender(qq_id, u8"[Demo Mode] Refresh account.");
 				sender.send();
-				status[qq_id] == PeerStatus::UNREG;
+				status[qq_id] = PeerStatus::UNREG;
 				return;
 			}
 		}

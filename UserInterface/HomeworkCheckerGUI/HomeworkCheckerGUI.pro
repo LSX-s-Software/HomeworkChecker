@@ -13,7 +13,8 @@ SOURCES += \
         classviewcontroller.cpp \
         generalviewcontroller.cpp \
         main.cpp \
-        settingpage.cpp
+        settingpage.cpp \
+        taskpage.cpp
 
 RESOURCES += qml.qrc
 
@@ -34,7 +35,8 @@ HEADERS += \
     account.h \
     classviewcontroller.h \
     generalviewcontroller.h \
-    settingpage.h
+    settingpage.h \
+    taskpage.h
 
 INCLUDEPATH += /usr/local/Cellar/mysql/8.0.23_1/include/mysql
 

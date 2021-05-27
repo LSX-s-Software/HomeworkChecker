@@ -1,13 +1,43 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
+import AssignmentVC 1.0
+
 
 StackView {
     width: 1046
     height: 768
     clip: true
     id: taskPage
+    AssignmentVC {
+        id:assignmentVC
+    }
+
+
+    ListModel {
+    id: assignmentListModel
+    }
+
+    ListModel {
+    id: assignmentFinishListModel
+    }
+
+    function refresh() {
+    assignmentListModel.clear()
+    assignmentFinishListModel.clear()
+    assignmentVC.refresh()
+    //assignmentListModel.remove(0,3)
+    assignmentVC.assignmentList.forEach(ele => {
+                                            if (ele.notSubmitted==="0")
+                                                assignmentFinishListModel.append(ele)
+                                            else
+                                                assignmentListModel.append(ele)
+                              })
+    }
+
+
     initialItem: Rectangle {
+
         width: taskPage.width
         height: taskPage.height
 
@@ -50,6 +80,11 @@ StackView {
             MouseArea {
                 id: mouseArea4
                 anchors.fill: parent
+                onClicked: {
+                    element4.color="#0098f7"
+                    element5.color="#707070"
+                    listView.model=assignmentListModel
+                }
             }
         }
 
@@ -78,6 +113,11 @@ StackView {
             MouseArea {
                 id: mouseArea5
                 anchors.fill: parent
+                onClicked: {
+                    element4.color="#707070"
+                    element5.color="#0098f7"
+                    listView.model=assignmentFinishListModel
+                }
             }
         }
 
@@ -107,7 +147,7 @@ StackView {
                     y: 45
                     height: 27
                     color: "#8f8f8f"
-                    text: "截止于" + deadline + "·已提交 " + submitted + "·未提交 " + notSubmitted
+                    text: "截止于" + deadline+ "·已提交 " + submitted + "·未提交 " + notSubmitted
                     horizontalAlignment: Text.AlignHCenter
                     font.pixelSize: 20
                     verticalAlignment: Text.AlignVCenter
@@ -119,6 +159,7 @@ StackView {
                     anchors.fill: parent
                     hoverEnabled: true
                     onClicked: {
+                        info.assignmentId=id;
                         taskPage.push(info)
                     }
                 }
@@ -139,26 +180,7 @@ StackView {
             anchors.rightMargin: 32
             anchors.leftMargin: 32
             delegate: homeworkListItem
-            model: ListModel {
-                ListElement {
-                    name: "第六章作业"
-                    deadline: "2021年6月6日"
-                    submitted: 25
-                    notSubmitted: 5
-                }
-                ListElement {
-                    name: "第六章作业"
-                    deadline: "2021年6月6日"
-                    submitted: 25
-                    notSubmitted: 5
-                }
-                ListElement {
-                    name: "第六章作业"
-                    deadline: "2021年6月6日"
-                    submitted: 25
-                    notSubmitted: 5
-                }
-            }
+            model: assignmentListModel
         }
 
         Image {
@@ -176,8 +198,6 @@ StackView {
                 id: mouseArea16
                 hoverEnabled: true
                 anchors.fill: parent
-                onClicked:
-                    newAssignmentPopup.open()
             }
         }
 
@@ -188,6 +208,7 @@ StackView {
 
         Popup {
             id: newAssignmentPopup
+            property string assignmentId: "-1"
             modal: true
             closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
             width: 922

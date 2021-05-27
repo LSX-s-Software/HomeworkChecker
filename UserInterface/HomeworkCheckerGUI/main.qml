@@ -240,6 +240,7 @@ Window {
                         markPage.visible=false;
                         settingPage.visible=false;
 
+                        taskPage.refresh()
                         naviList.index = 2;
                     }
                 }
