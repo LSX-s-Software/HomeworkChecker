@@ -11,7 +11,8 @@ CONFIG += c++11
 SOURCES += \
         account.cpp \
         generalviewcontroller.cpp \
-        main.cpp
+        main.cpp \
+        settingpage.cpp
 
 RESOURCES += qml.qrc
 
@@ -30,13 +31,14 @@ INCLUDEPATH += "../../DataManager/DataManager"
 
 HEADERS += \
     account.h \
-    generalviewcontroller.h
+    generalviewcontroller.h \
+    settingpage.h
 
 INCLUDEPATH += /usr/local/Cellar/mysql/8.0.23_1/include/mysql
 
-macx: LIBS += -L/usr/local/mysql-connector-c++-8.0.25/lib64/ -lcrypto
+#macx: LIBS += -L/usr/local/mysql-connector-c++-8.0.25/lib64/ -lcrypto
 
-macx: LIBS += -L/usr/local/mysql-connector-c++-8.0.25/lib64/ -lssl
+#macx: LIBS += -L/usr/local/mysql-connector-c++-8.0.25/lib64/ -lssl
 
 macx: LIBS += -L/usr/local/mysql-connector-c++-8.0.25/lib64/ -lmysqlcppconn
 
@@ -49,3 +51,22 @@ macx: PRE_TARGETDEPS += ../../DataManager/build/Debug/libDataManager.a
 
 INCLUDEPATH += ../../DataManager/build/Debug
 DEPENDPATH += ../../DataManager/build/Debug
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../packages/mysql/lib/ -llibmysql
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../packages/mysql/lib/ -llibmysql
+
+INCLUDEPATH += $$PWD/../../packages/mysql/include
+DEPENDPATH += $$PWD/../../packages/mysql/include
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../packages/mysql/lib/liblibmysql.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../packages/mysql/lib/liblibmysql.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../packages/mysql/lib/libmysql.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../packages/mysql/lib/libmysql.lib
+
+win32: LIBS += -L$$PWD/../../lib/ -lDataManager
+
+INCLUDEPATH += $$PWD/../../DataManager/DataManager
+DEPENDPATH += $$PWD/../../DataManager/DataManager
+
+win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../../lib/DataManager.lib
+else:win32-g++: PRE_TARGETDEPS += $$PWD/../../lib/libDataManager.a

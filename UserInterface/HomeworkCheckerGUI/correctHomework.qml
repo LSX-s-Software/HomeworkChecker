@@ -40,6 +40,7 @@ Rectangle {
         width: 160
         height: 40
         text: qsTr("批改作业")
+        font.weight: Font.Medium
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
         anchors.top: parent.top
@@ -62,6 +63,7 @@ Rectangle {
             id: element2
             color: "#0098f7"
             text: qsTr("返回")
+            font.weight: Font.Medium
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignRight
             anchors.fill: parent
@@ -93,7 +95,8 @@ Rectangle {
         width: 56
         height: 28
         text: qsTr("附件")
-        font.weight: Font.Bold
+        font.bold: false
+        font.weight: Font.Medium
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: 28
@@ -138,6 +141,7 @@ Rectangle {
             id: element5
             color: "#0098f7"
             text: qsTr("上一个")
+            font.weight: Font.Medium
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             anchors.fill: parent
@@ -163,6 +167,7 @@ Rectangle {
             id: element6
             color: "#0098f7"
             text: qsTr("下一个")
+            font.weight: Font.Medium
             verticalAlignment: Text.AlignVCenter
             anchors.fill: parent
             horizontalAlignment: Text.AlignHCenter
@@ -188,7 +193,7 @@ Rectangle {
             id: element7
             color: "#ffffff"
             text: qsTr("打分")
-            font.weight: Font.Bold
+            font.weight: Font.Medium
             anchors.fill: parent
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter

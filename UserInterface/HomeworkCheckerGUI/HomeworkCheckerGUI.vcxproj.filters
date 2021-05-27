@@ -46,12 +46,18 @@
     <ClCompile Include="account.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="settingpage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="generalviewcontroller.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="account.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="settingpage.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

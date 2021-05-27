@@ -179,6 +179,7 @@ Rectangle {
             height: 32
             color: "#ffffff"
             text: qsTr("结课")
+            font.weight: Font.Medium
             verticalAlignment: Text.AlignVCenter
             anchors.horizontalCenter: parent.horizontalCenter
             horizontalAlignment: Text.AlignHCenter
@@ -263,6 +264,7 @@ Rectangle {
             id: element
             color: "#0098f7"
             text: qsTr("编辑信息")
+            font.weight: Font.Medium
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             anchors.fill: parent
@@ -288,6 +290,7 @@ Rectangle {
             id: element1
             color: "#0098f7"
             text: qsTr("查看成绩")
+            font.weight: Font.Medium
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             anchors.fill: parent
