@@ -1,4 +1,4 @@
-#include "classviewcontroller.h"
+﻿#include "classviewcontroller.h"
 
 ClassViewController::ClassViewController(QObject *parent) : QObject(parent) {}
 

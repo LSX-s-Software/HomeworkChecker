@@ -277,20 +277,30 @@ void AnaText(std::u16string data, long long qq_id)
 		//查询个人信息
 		if (data==u"查询个人信息"|| data == u"获取个人信息" || data == u"getinfo" || data == u"Getinfo")
 		{
-			DataManager::Student st((int)getStuInfo[qq_id].studentId);
-			DataManager::Class cl(st.getClassId());
-			std::string send = u8"您的个人信息如下\n\n姓名：" + st.getName() + u8"\n学号：" + st.getSchoolNum() + u8"\n班级：" + cl.getName(); 
-			if (cl.getLocation() != u8"")
-			{
-				send += (u8"\n上课地点：" + cl.getLocation());
+			try {
+				DataManager::Student st((int)getStuInfo[qq_id].studentId);
+				DataManager::Class cl(st.getClassId());
+				std::string send = u8"您的个人信息如下\n\n姓名：" + st.getName() + u8"\n学号：" + st.getSchoolNum() + u8"\n班级：" + cl.getName();
+				if (cl.getLocation() != u8"")
+				{
+					send += (u8"\n上课地点：" + cl.getLocation());
+				}
+				if (cl.getTime() != u8"")
+				{
+					send += (u8"\n上课时间：" + cl.getTime());
+				}
+				PrivateMessageSender sender(qq_id, send);
+				sender.send();
+				return;
 			}
-			if (cl.getTime() != u8"")
+			catch (DataManager::DMException::TARGET_NOT_FOUND)
 			{
-				send += (u8"\n上课时间：" + cl.getTime());
+				getStuInfo.erase(qq_id);
+				PrivateMessageSender sender(qq_id, u8"[Demo Mode] Refresh account.");
+				sender.send();
+				status[qq_id] == PeerStatus::UNREG;
+				return;
 			}
-			PrivateMessageSender sender(qq_id, send);
-			sender.send();
-			return;
 		}
 
 		//查询作业（列表）
