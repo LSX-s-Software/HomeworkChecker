@@ -2,7 +2,7 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.14
 import Qt.labs.platform 1.0
-import mySettingPage 1.0
+import MySettingPage 1.0
 
 Rectangle {
     id: settingPage
@@ -10,8 +10,9 @@ Rectangle {
     height: 768
     color: "#ffffff"
 
-    MySettingPage {
-        id:setting
+    MySettingPage
+    {
+        id:sp
     }
 
     Text {
@@ -31,7 +32,7 @@ Rectangle {
     }
 
     Rectangle {
-        id: rectangle11
+        id: rectangleDownload
         width: 160
         height: 43
         color: "#ffffff"
@@ -41,49 +42,49 @@ Rectangle {
         anchors.leftMargin: 32
         anchors.topMargin: 28
         Text {
-            id: element24
+            id: textDownload
             text: "下载文件夹"
             font.weight: Font.Medium
             topPadding: -3
             font.family: "Source Han Sans CN"
             anchors.fill: parent
-            horizontalAlignment: Text.AlignHCenter
+            horizontalAlignment: Text.AlignHLeft
             font.pixelSize: 30
             verticalAlignment: Text.AlignVCenter
         }
 
         MouseArea {
-            id: mouseArea11
+            id: mouseAreaDownload
             anchors.fill: parent
         }
     }
 
     Rectangle {
-        id: rectangle13
+        id: rectangleDownloadFolder
         height: 80
         color: "#f5f5f5"
         radius: 10
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.top: rectangle11.bottom
+        anchors.top: rectangleDownload.bottom
         anchors.rightMargin: 32
         anchors.leftMargin: 32
         anchors.topMargin: 20
         Text {
-            id: element22
+            id: textDownloadFolder
             x: 16
             y: 9
             width: 168
             height: 37
             text: qsTr("附件下载目录")
-            horizontalAlignment: Text.AlignHCenter
+            horizontalAlignment: Text.AlignHLeft
             font.pixelSize: 25
             verticalAlignment: Text.AlignVCenter
             font.family: "Source Han Sans CN"
         }
 
         Text {
-            id: element23
+            id: textFolderPath
             x: 16
             y: 44
             width: 166
@@ -91,7 +92,7 @@ Rectangle {
             text:folderDialog.folder
             activeFocusOnTab:true
             //selectByMouse: true //是否可以选择文本
-            horizontalAlignment: Text.AlignHCenter
+            horizontalAlignment: Text.AlignHLeft
             font.pixelSize: 18
             verticalAlignment: Text.AlignVCenter
             font.family: "Source Han Sans CN"
@@ -106,27 +107,92 @@ Rectangle {
 
         FolderDialog {
             id: folderDialog
-            folder: "file:tmp"
+            folder: sp.getWorkPath()
             }
     }
 
     Rectangle {
-        id: rectangle14
+        id: rectangleServer
+        width: 160
+        height: 43
+        color: "#ffffff"
+        radius: 10
+        anchors.left: parent.left
+        anchors.top: rectangleDownloadFolder.bottom
+        anchors.leftMargin: 32
+        anchors.topMargin: 28
+        Text {
+            id: textServer
+            text: "服务器设置"
+            font.weight: Font.Medium
+            topPadding: -3
+            font.family: "Source Han Sans CN"
+            anchors.fill: parent
+            horizontalAlignment: Text.AlignHLeft
+            font.pixelSize: 30
+            verticalAlignment: Text.AlignVCenter
+        }
+    }
+
+    Rectangle {
+        id: rectangleServerSetting
+        height: 80
+        color: "#f5f5f5"
+        radius: 10
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: rectangleServer.bottom
+        anchors.rightMargin: 32
+        anchors.leftMargin: 32
+        anchors.topMargin: 20
+
+        Text {
+            id: serverText
+            x: 16
+            y: 9
+            width: 168
+            height: 37
+            text: qsTr("Websocket服务器地址")
+            horizontalAlignment: Text.AlignHLeft
+            font.pixelSize: 25
+            verticalAlignment: Text.AlignVCenter
+            font.family: "Source Han Sans CN"
+        }
+
+        TextInput {
+            id: serverURL
+            x: 16
+            y: 44
+            width: 166
+            height: 27
+            text:sp.getWsClientUrl()
+            activeFocusOnTab:true
+            selectByMouse: true //是否可以选择文本
+            focus:true
+            horizontalAlignment: Text.AlignHLeft
+            font.pixelSize: 18
+            verticalAlignment: Text.AlignVCenter
+            font.family: "Source Han Sans CN"
+        }
+    }
+
+    Rectangle {
+        id: rectangleConfirm
         width: 218
         height: 56
         color: "#f5f5f5"
         radius: 10
         anchors.left: parent.left
-        anchors.top: rectangle13.bottom
+        anchors.top: rectangleServerSetting.bottom
         anchors.leftMargin: 32
         anchors.topMargin: 16
 
 
 
         Text {
-            id: element26
+            id: textConfirm
             color: "#0098f7"
-            text: qsTr("修改")
+            text: qsTr("保存")
             verticalAlignment: Text.AlignVCenter
             font.weight: Font.Medium
             font.family: "Source Han Sans CN"
@@ -143,25 +209,28 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                setting.setWorkPath(element23.text)
+                //console.log("123444")
+                sp.setWorkPath(textFolderPath.text)
+                sp.setWsClientUrl(serverURL.text)
+                sp.saveToFile()
             }
         }
     }
 
     Rectangle {
-        id: rectangle15
+        id: rectangleCancel
         width: 218
         height: 56
         color: "#f5f5f5"
         radius: 10
-        anchors.left: rectangle14.right
-        anchors.top: rectangle13.bottom
+        anchors.left: rectangleConfirm.right
+        anchors.top: rectangleServerSetting.bottom
         anchors.leftMargin: 16
         anchors.topMargin: 16
         Text {
-            id: element27
+            id: textCancel
             color: "#fa5151"
-            text: qsTr("清空")
+            text: qsTr("取消")
             anchors.fill: parent
             horizontalAlignment: Text.AlignHCenter
             font.pointSize: 24
@@ -171,8 +240,12 @@ Rectangle {
         }
 
         MouseArea {
-            id: mouseArea15
             anchors.fill: parent
+            onClicked: {
+                sp.loadFromFile()
+                textFolderPath.text=sp.getWorkPath()
+                serverURL.text=sp.getWsClientUrl()
+            }
         }
     }
 }

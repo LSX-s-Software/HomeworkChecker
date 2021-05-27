@@ -1,12 +1,11 @@
 ﻿#include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
 
 //自定义CPP模块头文件
 #include "generalviewcontroller.h"
 #include "account.h"
 #include "settingpage.h"
-
-std::string workPath="tmp";
 
 int main(int argc, char *argv[])
 {
@@ -19,9 +18,10 @@ int main(int argc, char *argv[])
     //自定义CPP模块
     qmlRegisterType<GeneralViewController>("GeneralVC",1,0,"GeneralVC");
     qmlRegisterType<Account>("Account",1,0,"Account");
-    qmlRegisterType<SettingPage>("mySettingPage", 1, 0, "MySettingPage");
+    qmlRegisterType<SettingPage>("MySettingPage", 1, 0, "MySettingPage");
 
     QQmlApplicationEngine engine;
+    //engine.rootContext()->setContextProperty("settingPage", new SettingPage(qApp));
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {

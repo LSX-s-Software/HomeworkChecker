@@ -1,6 +1,6 @@
 QT += quick
 
-CONFIG += c++11
+CONFIG += c++17
 
 # CONFIG += no_autoqmake
 
@@ -70,3 +70,6 @@ DEPENDPATH += $$PWD/../../DataManager/DataManager
 
 win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../../lib/DataManager.lib
 else:win32-g++: PRE_TARGETDEPS += $$PWD/../../lib/libDataManager.a
+
+INCLUDEPATH += $$PWD/../../packages/json
+DEPENDPATH += $$PWD/../../packages/json

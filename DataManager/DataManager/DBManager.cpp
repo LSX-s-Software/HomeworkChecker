@@ -44,7 +44,7 @@ bool connectDatabase(DBAccount account) {
 
 bool connectDatabase() {
     DBManager::DBAccount remote;
-    remote.host = "vps.coyangjr.cn";
+    remote.host = "coyangjr.cn";
     remote.username = "root";
     remote.password = "Whu2020";
     
