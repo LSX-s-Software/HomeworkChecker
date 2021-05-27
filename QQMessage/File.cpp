@@ -167,7 +167,7 @@ std::string File::downFile(std::string url, std::filesystem::path fileName)
 		URLDownloadToFile(NULL, stringToLPCWSTR(url), stringToLPCWSTR((workPath / fileName).string()), 0, NULL);
 #else
 		std::string file=(workPath / fileName).string();
-		std::string comm="curl \""+url+"\" --create-dirs -o "+file;
+		std::string comm="curl \""+url+"\" --create-dirs -o \""+file+"\"";
 		std::cout << comm<<std::endl;
 		system(comm.c_str());
 #endif

@@ -2,6 +2,7 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
+import GeneralVC 1.0
 
 Window {
     id: window
@@ -10,6 +11,10 @@ Window {
     minimumWidth: 960
     visible: true
     title: qsTr("Homework Checker")
+
+    GeneralVC {
+        id: vc
+    }
 
     Popup {
         id: logInPopup
@@ -75,7 +80,7 @@ Window {
                 text: "导航"
                 font.family: "Source Han Sans CN"
                 font.weight: Font.Medium
-                font.pointSize: 40
+                font.pixelSize: 40
                 textFormat: Text.PlainText
             }
 
@@ -99,7 +104,7 @@ Window {
                     verticalAlignment: Text.AlignVCenter
                     font.weight: Font.Medium
                     font.family: "Source Han Sans CN"
-                    font.pointSize: 24
+                    font.pixelSize: 24
                 }
 
                 MouseArea {
@@ -150,7 +155,7 @@ Window {
                     font.weight: Font.Medium
                     textFormat: Text.PlainText
                     font.family: "Source Han Sans CN"
-                    font.pointSize: 24
+                    font.pixelSize: 24
                     color: "black"
                 }
 
@@ -202,7 +207,7 @@ Window {
                     font.weight: Font.Medium
                     textFormat: Text.PlainText
                     font.family: "Source Han Sans CN"
-                    font.pointSize: 24
+                    font.pixelSize: 24
                     color: "black"
                 }
 
@@ -255,7 +260,7 @@ Window {
                     font.weight: Font.Medium
                     textFormat: Text.PlainText
                     font.family: "Source Han Sans CN"
-                    font.pointSize: 24
+                    font.pixelSize: 24
                     color: "black"
                 }
 
@@ -307,7 +312,7 @@ Window {
                     font.weight: Font.Medium
                     textFormat: Text.PlainText
                     font.family: "Source Han Sans CN"
-                    font.pointSize: 24
+                    font.pixelSize: 24
                     color: "black"
                 }
 

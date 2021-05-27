@@ -1,15 +1,10 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
-import GeneralVC 1.0
 
 Rectangle {
     id: generalPage
     width: 1046
     height: 768
-
-    GeneralVC {
-        id: vc
-    }
 
     function getTimePeriod() {
         var now = new Date()
@@ -118,7 +113,7 @@ Rectangle {
             anchors.topMargin: 24
             font.family: "Source Han Sans CN"
             horizontalAlignment: Text.AlignHCenter
-            font.pointSize: 32
+            font.pixelSize: 32
         }
 
         Text {
@@ -134,7 +129,7 @@ Rectangle {
             anchors.bottomMargin: 20
             font.family: "Source Han Sans CN"
             horizontalAlignment: Text.AlignHCenter
-            font.pointSize: 20
+            font.pixelSize: 20
         }
 
         Text {
@@ -150,7 +145,7 @@ Rectangle {
             anchors.rightMargin: 20
             anchors.bottomMargin: 20
             font.family: "Source Han Sans CN"
-            font.pointSize: 20
+            font.pixelSize: 20
         }
     }
 
@@ -179,7 +174,7 @@ Rectangle {
             anchors.left: image1.right
             anchors.top: parent.top
             horizontalAlignment: Text.AlignHCenter
-            font.pointSize: 32
+            font.pixelSize: 32
             verticalAlignment: Text.AlignVCenter
             font.weight: Font.Medium
             anchors.leftMargin: 12
@@ -195,7 +190,7 @@ Rectangle {
             text: qsTr("已批改/总数")
             anchors.bottom: parent.bottom
             horizontalAlignment: Text.AlignHCenter
-            font.pointSize: 20
+            font.pixelSize: 20
             verticalAlignment: Text.AlignVCenter
             anchors.bottomMargin: 20
             anchors.horizontalCenter: parent.horizontalCenter
@@ -238,7 +233,7 @@ Rectangle {
         font.weight: Font.Medium
         font.family: "Source Han Sans CN"
         horizontalAlignment: Text.AlignHCenter
-        font.pointSize: 36
+        font.pixelSize: 36
     }
 
 

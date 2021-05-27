@@ -162,6 +162,14 @@ public:
 	/// <param name="assignmentId">作业布置ID</param>
 	void sendNewHomeworkNotification(long assignmentId);
 
+#ifdef _WIN32
+	static std::string GbkToUtf8(const char* src_str);
+	static std::string Utf8ToGbk(const char* src_str);
+#else
+	static int GbkToUtf8(char* str_str, size_t src_len, char* dst_str, size_t dst_len);
+	static int Utf8ToGbk(char* src_str, size_t src_len, char* dst_str, size_t dst_len);
+#endif
+
 private:
 
 	bool enableSendHeartbeat;

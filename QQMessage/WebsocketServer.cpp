@@ -116,7 +116,7 @@ void WebsocketServer::OnMessage(server* s, WebsocketServer* pWebSocket, websocke
                 File file(st.getClassId(), st.getId(), as.getId());
                 std::string fileName = decode.at("file_name");
                 std::vector<std::string> fileContent;
-                const int BUFFER_SIZE = 1024 * 1024; //1M
+                const int BUFFER_SIZE = 1024 * 10; //10K
                 std::ifstream ifs(file.getFilePath(fileName), std::ios::binary);
                 ifs.seekg(0, ifs.end);
                 int length = (int)ifs.tellg();
