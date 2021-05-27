@@ -20,7 +20,7 @@ Rectangle {
         font.family: "Source Han Sans CN"
         horizontalAlignment: Text.AlignHCenter
         anchors.horizontalCenter: parent.horizontalCenter
-        font.pointSize: 32
+        font.pixelSize: 32
     }
 
     Rectangle {
@@ -44,7 +44,7 @@ Rectangle {
             anchors.leftMargin: 0
             font.family: "Source Han Sans CN"
             horizontalAlignment: Text.AlignHCenter
-            font.pointSize: 24
+            font.pixelSize: 24
         }
 
         TextField {
@@ -86,7 +86,7 @@ Rectangle {
             font.weight: Font.Medium
             anchors.leftMargin: 0
             font.family: "Source Han Sans CN"
-            font.pointSize: 24
+            font.pixelSize: 24
         }
 
         TextField {
@@ -127,7 +127,7 @@ Rectangle {
             font.weight: Font.Medium
             anchors.leftMargin: 0
             font.family: "Source Han Sans CN"
-            font.pointSize: 24
+            font.pixelSize: 24
         }
 
         TextField {
@@ -170,7 +170,7 @@ Rectangle {
             font.weight: Font.Medium
             font.family: "Source Han Sans CN"
             horizontalAlignment: Text.AlignHCenter
-            font.pointSize: 28
+            font.pixelSize: 28
         }
 
         TextField {
@@ -215,7 +215,7 @@ Rectangle {
             verticalAlignment: Text.AlignVCenter
             font.family: "Source Han Sans CN"
             horizontalAlignment: Text.AlignHCenter
-            font.pointSize: 24
+            font.pixelSize: 24
         }
 
         MouseArea {

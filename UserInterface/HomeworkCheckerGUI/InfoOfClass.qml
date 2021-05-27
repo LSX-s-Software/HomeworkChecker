@@ -242,6 +242,7 @@ Rectangle {
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
+                element37.text = "结课"
                 classInfoPopup.close()
             }
         }

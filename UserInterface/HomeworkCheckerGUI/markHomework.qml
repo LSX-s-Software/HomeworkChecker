@@ -158,7 +158,7 @@ Rectangle {
         TextField {
             id: textField
             text: qsTr("")
-            font.pointSize: 28
+            font.pixelSize: 28
             anchors.fill: parent
             placeholderText: "评语"
         }
@@ -182,7 +182,7 @@ Rectangle {
             text: qsTr("100")
             font.weight: Font.Medium
             placeholderText: ""
-            font.pointSize: 28
+            font.pixelSize: 28
             horizontalAlignment: Text.AlignHCenter
             anchors.fill: parent
         }
