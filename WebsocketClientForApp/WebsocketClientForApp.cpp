@@ -3,6 +3,81 @@
 #include <json.hpp>
 #include <thread>
 
+#ifdef _WIN32
+#include <windows.h>
+using namespace std;
+string WebsocketClientForApp::GbkToUtf8(const char* src_str)
+{
+	int len = MultiByteToWideChar(CP_ACP, 0, src_str, -1, NULL, 0);
+	wchar_t* wstr = new wchar_t[len + 1];
+	memset(wstr, 0, len + 1);
+	MultiByteToWideChar(CP_ACP, 0, src_str, -1, wstr, len);
+	len = WideCharToMultiByte(CP_UTF8, 0, wstr, -1, NULL, 0, NULL, NULL);
+	char* str = new char[len + 1];
+	memset(str, 0, len + 1);
+	WideCharToMultiByte(CP_UTF8, 0, wstr, -1, str, len, NULL, NULL);
+	string strTemp = str;
+	if (wstr) delete[] wstr;
+	if (str) delete[] str;
+	return strTemp;
+}
+
+string WebsocketClientForApp::Utf8ToGbk(const char* src_str)
+{
+	int len = MultiByteToWideChar(CP_UTF8, 0, src_str, -1, NULL, 0);
+	wchar_t* wszGBK = new wchar_t[len + 1];
+	memset(wszGBK, 0, len * 2 + 2);
+	MultiByteToWideChar(CP_UTF8, 0, src_str, -1, wszGBK, len);
+	len = WideCharToMultiByte(CP_ACP, 0, wszGBK, -1, NULL, 0, NULL, NULL);
+	char* szGBK = new char[len + 1];
+	memset(szGBK, 0, len + 1);
+	WideCharToMultiByte(CP_ACP, 0, wszGBK, -1, szGBK, len, NULL, NULL);
+	string strTemp(szGBK);
+	if (wszGBK) delete[] wszGBK;
+	if (szGBK) delete[] szGBK;
+	return strTemp;
+}
+#else
+#include <iconv.h>
+
+int WebsocketClientForApp::GbkToUtf8(char* str_str, size_t src_len, char* dst_str, size_t dst_len)
+{
+	iconv_t cd;
+	char** pin = &str_str;
+	char** pout = &dst_str;
+
+	cd = iconv_open("utf8", "gbk");
+	if (cd == 0)
+		return -1;
+	memset(dst_str, 0, dst_len);
+	if (iconv(cd, pin, &src_len, pout, &dst_len) == -1)
+		return -1;
+	iconv_close(cd);
+	*pout = '\0';
+
+	return 0;
+}
+
+int WebsocketClientForApp::Utf8ToGbk(char* src_str, size_t src_len, char* dst_str, size_t dst_len)
+{
+	iconv_t cd;
+	char** pin = &src_str;
+	char** pout = &dst_str;
+
+	cd = iconv_open("gbk", "utf8");
+	if (cd == 0)
+		return -1;
+	memset(dst_str, 0, dst_len);
+	if (iconv(cd, pin, &src_len, pout, &dst_len) == -1)
+		return -1;
+	iconv_close(cd);
+	*pout = '\0';
+
+	return 0;
+}
+
+
+#endif
 
 bool completeFileTransfer = false;//捕获是否下载完成
 
@@ -231,7 +306,8 @@ void WebsocketClientForApp::OnMessage(websocketpp::connection_hdl, client::messa
 					_WSCFA_::part_size = std::atoll(std::string(decode.at("part_size")).c_str());
 					_WSCFA_::size = std::atoll(std::string(decode.at("size")).c_str());
 					_WSCFA_::name = decode.at("name");
-					
+					_WSCFA_::name = Utf8ToGbk(_WSCFA_::name.c_str());
+
 					_WSCFA_::filePath = rootPath;
 					_WSCFA_::filePath.append(std::string(decode.at("class_id"))).append(std::string(decode.at("student_id"))).append(std::string(decode.at("homework_id")));
 					_WSCFA_::workPath = _WSCFA_::filePath;
@@ -298,7 +374,7 @@ void WebsocketClientForApp::getFile(long homeworkId, std::filesystem::path fileN
 {
 	completeFileTransfer = false;
 	std::string msg = "{\"action\":\"get_file\",\"homework_id\":\"" + std::to_string(homeworkId) + "\",\"file_name\":\"" + fileName.string() + "\"}";
-	Send(msg);
+	Send(GbkToUtf8(msg.c_str()));
 	while (true)
 	{
 		Sleep(1);

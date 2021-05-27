@@ -1006,6 +1006,7 @@ void HomCommand(std::u16string data, long long qq_id)
 			File fl(getHomeworkInfo[qq_id]);
 			std::string fileName = fl.storePic(posURL->str());
 			msg.replace(msg.find(posCQ->str()), posCQ->str().length(), fileName);
+			//msg.replace(msg.find(posCQ->str()), posCQ->str().length(), fileName);
 			PrivateMessageSender sender(qq_id, u8"图片：" + fileName + u8" 已保存");
 			sender.send();
 		}
