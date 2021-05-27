@@ -152,7 +152,7 @@ Rectangle {
             font.family: "Source Han Sans CN"
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
-            font.pointSize: 24
+            font.pixelSize: 24
             font.weight: Font.Medium
         }
 
@@ -165,7 +165,7 @@ Rectangle {
             verticalAlignment: Text.AlignVCenter
             anchors.right: parent.right
             horizontalAlignment: Text.AlignHCenter
-            font.pointSize: 24
+            font.pixelSize: 24
             anchors.top: parent.top
         }
        // anchors.top: element28.bottom
@@ -226,7 +226,7 @@ Rectangle {
             font.family: "Source Han Sans CN"
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignLeft
-            font.pointSize: 24
+            font.pixelSize: 24
             font.weight: Font.Medium
         }
 
@@ -239,7 +239,7 @@ Rectangle {
             font.family: "Source Han Sans CN"
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignRight
-            font.pointSize: 24
+            font.pixelSize: 24
             anchors.top: parent.top
         }
        // anchors.top: element28.bottom
