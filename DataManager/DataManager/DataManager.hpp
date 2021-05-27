@@ -32,6 +32,9 @@ public:
     DMErrorType login(std::string email, std::string password);
     DMErrorType reg(std::string email, std::string password);
     
+    int getId() {
+        return id;
+    }
     std::string getName() {
         return name;
     }
@@ -186,6 +189,10 @@ public:
 /// 获取班级列表
 /// @param teacherId 教师ID
 std::vector<Class> getClassList(int teacherId) noexcept(false);
+
+/// 获取总学生人数
+/// @param teacherId 教师ID
+long getTotalClassSize(int teacherId) noexcept(false);
 
 /// 删除班级
 /// @param id 班级ID

@@ -74,6 +74,7 @@ Rectangle {
             id: element3
             color: "#0098f7"
             text: qsTr("返回")
+            font.weight: Font.Medium
             font.pixelSize: 28
             verticalAlignment: Text.AlignVCenter
             font.family: "Source Han Sans CN"
@@ -125,6 +126,7 @@ Rectangle {
             id: element
             color: "#ffffff"
             text: qsTr("导出成绩")
+            font.weight: Font.Medium
             font.bold: true
             verticalAlignment: Text.AlignVCenter
             font.family: "Source Han Sans CN"

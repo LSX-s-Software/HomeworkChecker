@@ -5,9 +5,11 @@ import QtQuick.Controls 2.12
 
 
 Rectangle {
-    id: arrangement
+    id: newAssignment
     width: 922
     height: 640
+    radius: 20
+    clip: true
     color: "#ffffff"
 
     Text {
@@ -15,8 +17,9 @@ Rectangle {
         width: 128
         height: 32
         text: qsTr("布置作业")
-        font.bold: true
         verticalAlignment: Text.AlignVCenter
+        font.weight: Font.Medium
+        font.family: "Source Han Sans CN"
         horizontalAlignment: Text.AlignHCenter
         anchors.top: parent.top
         anchors.topMargin: 27
@@ -26,12 +29,10 @@ Rectangle {
 
     Rectangle {
         id: title
-        x: 53
-        y: 98
         width: 400
         height: 33
         anchors.leftMargin: 52
-        anchors.top: element28.bottom
+        anchors.top: element.bottom
         Text {
             id: element29
             width: 48
@@ -65,11 +66,12 @@ Rectangle {
 
     Rectangle {
         id: targetClass
-        x: 470
-        y: 98
         width: 400
         height: 33
-        anchors.top: element28.bottom
+        anchors.top: element.bottom
+        anchors.right: parent.right
+        anchors.topMargin: 24
+        anchors.rightMargin: 52
         Text {
             id: element31
             width: 48
@@ -97,19 +99,18 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             font.family: "Source Han Sans CN"
         }
-        anchors.topMargin: 24
     }
 
     Rectangle {
         id: deadline
-        x: 53
-        y: 151
         width: 817
         height: 33
-        anchors.top: element28.bottom
+        anchors.top: title.bottom
+        anchors.left: parent.left
+        anchors.topMargin: 24
+        anchors.leftMargin: 52
         Text {
             id: element33
-            width: 48
             height: 32
             text: qsTr("截止时间")
             font.italic: false
@@ -125,14 +126,12 @@ Rectangle {
 
         TextInput {
             id: textInput
-            width: 252
             height: 32
             text: qsTr("2021年6月1日 23:59:59")
             anchors.right: parent.right
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: 24
         }
-        anchors.topMargin: 24
     }
 
     Rectangle {
@@ -147,11 +146,11 @@ Rectangle {
             id: element1
             x: 0
             width: 96
-            height: 24
             text: qsTr("作业描述")
             anchors.top: parent.top
-            font.bold: true
             horizontalAlignment: Text.AlignHCenter
+            font.family: "Source Han Sans CN"
+            font.weight: Font.Medium
             font.pixelSize: 24
         }
 
@@ -160,12 +159,16 @@ Rectangle {
             x: 116
             width: 702
             height: 329
-            color: "#ffffff"
+            radius: 5
+            clip: true
 
             TextArea {
                 id: textArea
-                text: qsTr("Text Area")
+                text: qsTr("")
                 anchors.fill: parent
+                placeholderText: "输入作业描述"
+                font.family: "Source Han Sans CN"
+                selectByMouse: true
             }
         }
     }
@@ -199,10 +202,8 @@ Rectangle {
 
     Image {
         id: close
-        x: 6
-        y: 5
-        width: 45
-        height: 45
+        width: 32
+        height: 32
         anchors.rightMargin: 20
         anchors.topMargin: 20
         anchors.right: parent.right
@@ -210,7 +211,7 @@ Rectangle {
             id: mouseArea17
             hoverEnabled: true
             anchors.fill: parent
-            onClicked: taskPage.pop()
+            onClicked: newAssignmentPopup.close()
         }
         source: "images/close.png"
         anchors.top: parent.top
@@ -225,8 +226,4 @@ Rectangle {
 
 
 
-/*##^## Designer {
-    D{i:12;anchors_y:30}D{i:14;anchors_height:329;anchors_width:702;anchors_x:39;anchors_y:0}
-D{i:17;anchors_height:100;anchors_width:100}
-}
- ##^##*/
+

@@ -235,32 +235,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			name = "Compile Sources";
 		};
-		E138156945204AC185C9BDEE = {
-			isa = PBXFileReference;
-			name = "crypto";
-			path = "/usr/local/mysql-connector-c++-8.0.25/lib64/libcrypto.dylib";
-			refType = 0;
-			sourceTree = "<absolute>";
-		};
-		6381E6615ADE9B1620D96630 = {
-			fileRef = "E138156945204AC185C9BDEE";
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		8564BB4F29A85BA62A6E94AD = {
-			isa = PBXFileReference;
-			name = "ssl";
-			path = "/usr/local/mysql-connector-c++-8.0.25/lib64/libssl.dylib";
-			refType = 0;
-			sourceTree = "<absolute>";
-		};
-		A80567DCDE82A6364BC90F76 = {
-			fileRef = "8564BB4F29A85BA62A6E94AD";
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		157F52760CC6554154020155 = {
 			isa = PBXFileReference;
 			name = "mysqlcppconn";
@@ -485,8 +459,6 @@
 		};
 		AF39DD055C3EF8226FBE929D = {
 			children = (
-				"E138156945204AC185C9BDEE",
-				"8564BB4F29A85BA62A6E94AD",
 				"157F52760CC6554154020155",
 				"4FF0BA158467D67F6F29534B",
 				"F00B4EB1C52BEF010ADF53FD",
@@ -510,8 +482,6 @@
 		D1C883685E82D5676953459A = {
 			buildActionMask = 2147483647;
 			files = (
-				"6381E6615ADE9B1620D96630",
-				"A80567DCDE82A6364BC90F76",
 				"EE5FA325663BBF0F726508C3",
 				"257A8203C78A668D19146CAA",
 				"D3E047EA57DAAE1DAA003AB3",

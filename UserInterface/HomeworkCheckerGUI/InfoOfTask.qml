@@ -76,6 +76,7 @@ Rectangle {
         x: 308
         y: 70
         text: qsTr("第六章作业")
+        font.weight: Font.Medium
         anchors.horizontalCenter: parent.horizontalCenter
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
@@ -147,7 +148,7 @@ Rectangle {
             height: 32
             text: qsTr("班级")
             anchors.leftMargin: 0
-            font.bold: true
+            font.bold: false
             anchors.left: parent.left
             font.family: "Source Han Sans CN"
             verticalAlignment: Text.AlignVCenter
@@ -194,7 +195,8 @@ Rectangle {
             id: element1
             color: "#ffffff"
             text: qsTr("删除")
-            font.bold: true
+            font.weight: Font.Medium
+            font.bold: false
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             anchors.fill: parent
@@ -220,7 +222,7 @@ Rectangle {
             height: 32
             text: qsTr("截止时间")
             anchors.leftMargin: 0
-            font.bold: true
+            font.bold: false
             anchors.left: parent.left
             font.family: "Source Han Sans CN"
             verticalAlignment: Text.AlignVCenter
@@ -256,8 +258,9 @@ Rectangle {
             id: element2
             color: "#ffffff"
             text: "继续批改"
+            font.weight: Font.Medium
             font.pixelSize: 24
-            font.bold: true
+            font.bold: false
             verticalAlignment: Text.AlignVCenter
             anchors.fill: parent
             horizontalAlignment: Text.AlignHCenter
@@ -283,6 +286,7 @@ Rectangle {
             id: element3
             color: "#0098f7"
             text: qsTr("返回")
+            font.weight: Font.Medium
             font.pixelSize: 28
             verticalAlignment: Text.AlignVCenter
             anchors.fill: parent
