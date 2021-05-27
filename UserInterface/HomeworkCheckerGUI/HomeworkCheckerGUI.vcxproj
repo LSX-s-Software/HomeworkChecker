@@ -57,7 +57,7 @@
     <IntDir>debug\</IntDir>
     <TargetName>HomeworkCheckerGUI</TargetName>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
-    <IncludePath>..\DataManager\DataManager;..\WebsocketClientForApp;D:\Qt\5.15.2\msvc2019_64\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\DataManager\DataManager;..\WebsocketClientForApp;D:\Qt\5.15.2\msvc2019_64\include;D:\Work\HomeworkChecker\packages\json;$(IncludePath)</IncludePath>
     <LibraryPath>..\lib;..\packages\mysql\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -155,6 +155,7 @@
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <WarningLevel>Level3</WarningLevel>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(QTDIR)\lib\Qt5QmlModelsd.lib;shell32.lib;D:\Work\HomeworkChecker\packages\mysql\lib\libmysql.lib;D:\Work\HomeworkChecker\lib\DataManager.lib;%(AdditionalDependencies)</AdditionalDependencies>

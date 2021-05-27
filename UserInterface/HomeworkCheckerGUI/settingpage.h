@@ -10,7 +10,16 @@ class SettingPage :
     QML_ELEMENT
 public:
     explicit SettingPage(QObject* parent = nullptr);
-    Q_INVOKABLE QString getWorkPath();
-    Q_INVOKABLE void setWorkPath(const QString& path);
+    Q_INVOKABLE static QString getWorkPath();
+    Q_INVOKABLE static void setWorkPath(const QString& path);
+    Q_INVOKABLE static QString getWsClientUrl();
+    Q_INVOKABLE static void setWsClientUrl(const QString& url);
+    Q_INVOKABLE static void loadFromFile();
+    Q_INVOKABLE static void saveToFile();
+    
+private:
+    static std::string wsClientUrl;
+    static std::string workPath;
+    static void restoreFile();
 };
 
