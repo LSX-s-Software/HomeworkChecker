@@ -3,8 +3,11 @@
 ClassViewController::ClassViewController(QObject *parent) : QObject(parent) {}
 
 void ClassViewController::refresh() {
-    for (int i = 0; i < classList.size(); i++) {
+    /*for (int i = 0; i < classList.size(); i++) {
         classList.removeAt(i);
+    }*/
+    while (classList.count()) {
+        classList.pop_back();
     }
     try {
         std::vector<DataManager::Class> list = DataManager::getClassList(Account::getId());

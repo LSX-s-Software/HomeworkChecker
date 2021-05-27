@@ -199,6 +199,7 @@
     <ClCompile Include="generalviewcontroller.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="settingpage.cpp" />
+    <ClCompile Include="taskpage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="generalviewcontroller.h">
@@ -272,6 +273,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="classviewcontroller.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="taskpage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
