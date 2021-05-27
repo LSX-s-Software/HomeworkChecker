@@ -48,7 +48,7 @@ Rectangle {
             topPadding: -3
             font.family: "Source Han Sans CN"
             anchors.fill: parent
-            horizontalAlignment: Text.AlignHLeft
+            horizontalAlignment: Text.AlignLeft
             font.pixelSize: 30
             verticalAlignment: Text.AlignVCenter
         }
@@ -77,7 +77,7 @@ Rectangle {
             width: 168
             height: 37
             text: qsTr("附件下载目录")
-            horizontalAlignment: Text.AlignHLeft
+            horizontalAlignment: Text.AlignLeft
             font.pixelSize: 25
             verticalAlignment: Text.AlignVCenter
             font.family: "Source Han Sans CN"
@@ -128,7 +128,7 @@ Rectangle {
             topPadding: -3
             font.family: "Source Han Sans CN"
             anchors.fill: parent
-            horizontalAlignment: Text.AlignHLeft
+            horizontalAlignment: Text.AlignLeft
             font.pixelSize: 30
             verticalAlignment: Text.AlignVCenter
         }
@@ -150,7 +150,6 @@ Rectangle {
             id: serverText
             x: 16
             y: 9
-            width: 168
             height: 37
             text: qsTr("Websocket服务器地址")
             horizontalAlignment: Text.AlignHLeft
@@ -163,7 +162,6 @@ Rectangle {
             id: serverURL
             x: 16
             y: 44
-            width: 166
             height: 27
             text:sp.getWsClientUrl()
             activeFocusOnTab:true
@@ -193,16 +191,15 @@ Rectangle {
             id: textConfirm
             color: "#0098f7"
             text: qsTr("保存")
+            anchors.fill: parent
             verticalAlignment: Text.AlignVCenter
             font.weight: Font.Medium
             font.family: "Source Han Sans CN"
             horizontalAlignment: Text.AlignHCenter
-            anchors.fill: parent
             font.pixelSize: 24
             anchors{
                 verticalCenter: Text.verticalCenter
                 left: Text.right
-                leftMargin: 20
             }
         }
 
