@@ -41,7 +41,7 @@ Rectangle {
             font.bold: true
             verticalAlignment: Text.AlignVCenter
             anchors.leftMargin: 0
-            font.pointSize: 24
+            font.pixelSize: 24
             font.weight: Font.Medium
             horizontalAlignment: Text.AlignHCenter
             anchors.left: parent.left
@@ -55,7 +55,7 @@ Rectangle {
             text: qsTr("第七章作业")
             anchors.right: parent.right
             verticalAlignment: Text.AlignVCenter
-            font.pointSize: 24
+            font.pixelSize: 24
             anchors.top: parent.top
             horizontalAlignment: Text.AlignHCenter
             font.family: "Source Han Sans CN"
@@ -79,7 +79,7 @@ Rectangle {
             text: qsTr("目标班级")
             anchors.leftMargin: 0
             verticalAlignment: Text.AlignVCenter
-            font.pointSize: 24
+            font.pixelSize: 24
             font.weight: Font.Bold
             horizontalAlignment: Text.AlignLeft
             anchors.left: parent.left
@@ -93,7 +93,7 @@ Rectangle {
             height: 32
             text: qsTr("第七章作业")
             verticalAlignment: Text.AlignVCenter
-            font.pointSize: 24
+            font.pixelSize: 24
             anchors.right: parent.right
             anchors.top: parent.top
             horizontalAlignment: Text.AlignHCenter
@@ -116,7 +116,7 @@ Rectangle {
             font.italic: false
             anchors.leftMargin: 0
             verticalAlignment: Text.AlignVCenter
-            font.pointSize: 24
+            font.pixelSize: 24
             font.weight: Font.Medium
             horizontalAlignment: Text.AlignLeft
             anchors.left: parent.left

@@ -21,7 +21,7 @@ StackView {
             verticalAlignment: Text.AlignVCenter
             anchors.topMargin: 32
             font.family: "Source Han Sans CN"
-            font.pointSize: 40
+            font.pixelSize: 40
             font.weight: Font.Medium
             anchors.horizontalCenter: parent.horizontalCenter
         }
@@ -43,7 +43,7 @@ StackView {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 font.family: "Source Han Sans CN"
-                font.pointSize: 32
+                font.pixelSize: 32
                 font.weight: Font.Medium
             }
 
@@ -70,7 +70,7 @@ StackView {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 font.family: "Source Han Sans CN"
-                font.pointSize: 32
+                font.pixelSize: 32
                 font.weight: Font.Medium
             }
 
@@ -98,7 +98,7 @@ StackView {
                     verticalAlignment: Text.AlignVCenter
                     font.family: "Source Han Sans CN"
                     horizontalAlignment: Text.AlignHCenter
-                    font.pointSize: 28
+                    font.pixelSize: 28
                 }
 
                 Text {
@@ -111,7 +111,7 @@ StackView {
                     verticalAlignment: Text.AlignVCenter
                     font.family: "Source Han Sans CN"
                     horizontalAlignment: Text.AlignHCenter
-                    font.pointSize: 20
+                    font.pixelSize: 20
                 }
 
                 MouseArea {
