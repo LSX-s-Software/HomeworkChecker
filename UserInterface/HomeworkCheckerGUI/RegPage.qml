@@ -146,7 +146,7 @@ Rectangle {
             id: emailField
             x: 46
             width: 290
-            height: 30
+            height: 40
             verticalAlignment: "AlignVCenter"
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
@@ -191,7 +191,7 @@ Rectangle {
             id: passwordField
             x: 46
             width: 290
-            height: 24
+            height: 40
             text: ""
             font.family: "Source Han Sans CN"
             background: Rectangle {
@@ -237,7 +237,7 @@ Rectangle {
             id: passwordConfirm
             x: 46
             width: 290
-            height: 24
+            height: 40
             font.family: "Source Han Sans CN"
             background: Rectangle {
                 color: "#f5f5f5"
@@ -282,7 +282,7 @@ Rectangle {
             id: nameField
             x: 46
             width: 290
-            height: 30
+            height: 40
             verticalAlignment: "AlignVCenter"
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right

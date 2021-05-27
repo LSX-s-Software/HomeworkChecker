@@ -23,7 +23,7 @@ Rectangle {
         text: qsTr("设置")
         anchors.top: parent.top
         horizontalAlignment: Text.AlignHCenter
-        font.pointSize: 40
+        font.pixelSize: 40
         verticalAlignment: Text.AlignVCenter
         font.family: "Source Han Sans CN"
         font.weight: Font.Medium
@@ -198,7 +198,7 @@ Rectangle {
             font.family: "Source Han Sans CN"
             horizontalAlignment: Text.AlignHCenter
             anchors.fill: parent
-            font.pointSize: 24
+            font.pixelSize: 24
             anchors{
                 verticalCenter: Text.verticalCenter
                 left: Text.right
@@ -233,7 +233,7 @@ Rectangle {
             text: qsTr("取消")
             anchors.fill: parent
             horizontalAlignment: Text.AlignHCenter
-            font.pointSize: 24
+            font.pixelSize: 24
             verticalAlignment: Text.AlignVCenter
             font.weight: Font.Medium
             font.family: "Source Han Sans CN"

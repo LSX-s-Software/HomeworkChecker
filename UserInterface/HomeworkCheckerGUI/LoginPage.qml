@@ -58,7 +58,7 @@ Rectangle {
             id: emailField
             x: 46
             width: 290
-            height: 30
+            height: 40
             verticalAlignment: "AlignVCenter"
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
@@ -100,7 +100,7 @@ Rectangle {
             id: passwordField
             x: 46
             width: 290
-            height: 30
+            height: 40
             verticalAlignment: "AlignVCenter"
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
