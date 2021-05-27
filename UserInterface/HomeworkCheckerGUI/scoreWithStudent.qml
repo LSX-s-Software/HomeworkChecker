@@ -72,6 +72,7 @@ Rectangle {
             id: element3
             color: "#0098f7"
             text: qsTr("返回")
+            font.weight: Font.Medium
             font.pixelSize: 28
             verticalAlignment: Text.AlignVCenter
             anchors.fill: parent

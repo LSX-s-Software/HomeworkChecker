@@ -1,4 +1,7 @@
-import QtQuick 2.0
+import QtQuick 2.12
+import QtQuick.Window 2.12
+import QtQuick.Layouts 1.12
+import QtQuick.Controls 2.12
 
 Rectangle {
     id: correctHomework
@@ -32,6 +35,7 @@ Rectangle {
         width: 160
         height: 40
         text: qsTr("批改作业")
+        font.weight: Font.Medium
         verticalAlignment: Text.AlignVCenter
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
@@ -51,6 +55,7 @@ Rectangle {
             id: element2
             color: "#0098f7"
             text: qsTr("返回")
+            font.weight: Font.Medium
             verticalAlignment: Text.AlignVCenter
             anchors.fill: parent
             horizontalAlignment: Text.AlignRight
@@ -84,7 +89,7 @@ Rectangle {
         height: 28
         text: qsTr("附件")
         verticalAlignment: Text.AlignVCenter
-        font.weight: Font.Bold
+        font.weight: Font.Medium
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: 28
     }
@@ -126,7 +131,7 @@ Rectangle {
             text: qsTr("打分")
             verticalAlignment: Text.AlignVCenter
             anchors.fill: parent
-            font.weight: Font.Bold
+            font.weight: Font.Medium
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: 24
         }
@@ -145,18 +150,17 @@ Rectangle {
         height: 48
         color: "#f5f5f5"
 
-        TextInput {
-            id: textInput
-            text: qsTr("评语")
-
-            horizontalAlignment: Text.AlignLeft
-            anchors.fill: parent
-            font.pixelSize: 28
-        }
-
         MouseArea {
             id: mouseArea2
             anchors.fill: parent
+        }
+
+        TextField {
+            id: textField
+            text: qsTr("")
+            font.pointSize: 28
+            anchors.fill: parent
+            placeholderText: "评语"
         }
     }
 
@@ -168,17 +172,18 @@ Rectangle {
         height: 48
         color: "#f5f5f5"
 
-        TextInput {
-            id: textInput1
-            text: qsTr("100")
-            font.bold: true
-            horizontalAlignment: Text.AlignHCenter
-            anchors.fill: parent
-            font.pixelSize: 28
-        }
-
         MouseArea {
             id: mouseArea3
+            anchors.fill: parent
+        }
+
+        TextField {
+            id: textField1
+            text: qsTr("100")
+            font.weight: Font.Medium
+            placeholderText: ""
+            font.pointSize: 28
+            horizontalAlignment: Text.AlignHCenter
             anchors.fill: parent
         }
     }

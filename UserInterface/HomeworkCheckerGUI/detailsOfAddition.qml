@@ -16,7 +16,8 @@ Rectangle {
         width: 160
         height: 40
         text: qsTr("批改作业")
-        font.bold: true
+        font.weight: Font.Medium
+        font.bold: false
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
         anchors.top: parent.top
@@ -54,7 +55,8 @@ Rectangle {
         width: 112
         height: 28
         text: qsTr("附件内容")
-        font.bold: true
+        font.weight: Font.Medium
+        font.bold: false
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: 28
@@ -67,11 +69,13 @@ Rectangle {
         width: 218
         height: 56
         color: "#f5f5f5"
+        radius: 10
 
         Text {
             id: element2
             color: "#0098f7"
             text: qsTr("返回")
+            font.weight: Font.Medium
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             anchors.fill: parent
@@ -93,11 +97,13 @@ Rectangle {
         width: 218
         height: 56
         color: "#0098f7"
+        radius: 10
         Text {
             id: element3
             color: "#ffffff"
             text: qsTr("编译并运行")
-            font.bold: true
+            font.weight: Font.Medium
+            font.bold: false
             verticalAlignment: Text.AlignVCenter
             anchors.fill: parent
             horizontalAlignment: Text.AlignHCenter
@@ -117,15 +123,17 @@ Rectangle {
         width: 218
         height: 56
         color: "#0098f7"
+        radius: 10
         Text {
             id: element4
             color: "#ffffff"
             text: qsTr("打分")
+            font.weight: Font.Medium
             verticalAlignment: Text.AlignVCenter
             anchors.fill: parent
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: 24
-            font.bold: true
+            font.bold: false
         }
 
         MouseArea {

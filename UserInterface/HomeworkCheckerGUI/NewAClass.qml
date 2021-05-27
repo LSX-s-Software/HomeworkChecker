@@ -138,6 +138,7 @@ Rectangle {
         anchors.top: location.bottom
         anchors.topMargin: 32
         anchors.horizontalCenter: parent.horizontalCenter
+        radius: 10
 
         Text {
             id: element35
@@ -182,6 +183,7 @@ Rectangle {
             height: 32
             color: "#ffffff"
             text: qsTr("创建")
+            font.weight: Font.Medium
             anchors.horizontalCenter: parent.horizontalCenter
             verticalAlignment: Text.AlignVCenter
             font.family: "Source Han Sans CN"
