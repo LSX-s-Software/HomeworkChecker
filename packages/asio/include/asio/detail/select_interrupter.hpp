@@ -1,4 +1,4 @@
-//
+﻿//
 // detail/select_interrupter.hpp
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //

@@ -1,4 +1,4 @@
-//
+﻿//
 // detail/conditionally_enabled_mutex.hpp
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //

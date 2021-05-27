@@ -1,4 +1,4 @@
-#include "WebsocketServer.h"
+ï»¿#include "WebsocketServer.h"
 #include <string>
 #include <iostream>
 #include <json.hpp>
@@ -69,18 +69,18 @@ void WebsocketServer::OnMessage(server* s, WebsocketServer* pWebSocket, websocke
 
     try
     {
-        //s->send(hdl, msg->get_payload(), msg->get_opcode());//½ÓÊÕµ½µÄÊı¾İÔ­Â··µ»Ø
+        //s->send(hdl, msg->get_payload(), msg->get_opcode());//æ¥æ”¶åˆ°çš„æ•°æ®åŸè·¯è¿”å›
         std::string message=msg->get_payload();
         
-        auto decode = nlohmann::json::parse(message);//½âÎöjson
-        if (decode.contains("action"))//ÅĞ¶Ï´æÔÚaction
+        auto decode = nlohmann::json::parse(message);//è§£æjson
+        if (decode.contains("action"))//åˆ¤æ–­å­˜åœ¨action
         {
-            if (decode.at("action") == "heartbeat") //ÊÕµ½ĞÄÌø°ü
+            if (decode.at("action") == "heartbeat") //æ”¶åˆ°å¿ƒè·³åŒ…
             {
                 std::cerr << "Get Heartbeat Package!" << std::endl;
                 return;
             }
-            if (decode.at("action") == "send_review") //·¢ËÍreview
+            if (decode.at("action") == "send_review") //å‘é€review
             {
                 std::string homeworkId_str = decode.at("homework_id");
                 if (sendReview(atol(homeworkId_str.c_str())))
@@ -139,7 +139,12 @@ void WebsocketServer::OnMessage(server* s, WebsocketServer* pWebSocket, websocke
                 std::string msgInit = "{\"action\":\"send_file\",\"transfer_id\":\"" + transferId + "\",\"homework_id\":\"" + std::to_string(hm.getId()) + "\",\"name\":\"" + fileName + "\",\"totol_part\":\"" + std::to_string(fileContent.size()) + "\",\"part_size\":\"" + std::to_string(BUFFER_SIZE) + "\",\"" + "size" + "\":\"" + std::to_string(length) + "\",\"class_id\":\"" + std::to_string(st.getClassId()) + "\",\"student_id\":\"" + std::to_string(st.getId()) + "\",\"homework_id\":\"" + std::to_string(as.getId()) + "\",\"status\":\"start\"}";
                 //std::string msgInit = "{\"action\":\"send_file\",\"transfer_id\":\"" + transferId + "\",\"homework_id\":\"" + std::to_string(hm.getId()) + "\",\"file_name\":\"" + fileName + "\",\"status\":\"start\"}";
                 s->send(hdl, msgInit, websocketpp::frame::opcode::text);
-                Sleep(100);
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
+				Sleep(100);
+#else
+				usleep(100000);
+#endif
+                
                 //s->send(hdl, "12345", websocketpp::frame::opcode::text);
                 //send file
                 std::string msgFile;

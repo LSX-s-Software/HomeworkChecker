@@ -1,33 +1,33 @@
-#pragma once
+ï»¿#pragma once
 #include <string>
 /// <summary>
-/// Ë½ÁÄÏûÏ¢·¢ËÍ
+/// ç§èŠæ¶ˆæ¯å‘é€
 /// </summary>
 class PrivateMessageSender
 {
 private:
 	/// <summary>
-	/// ·¢ËÍµÄĞÅÏ¢
+	/// å‘é€çš„ä¿¡æ¯
 	/// </summary>
 	std::string data;
 	/// <summary>
-	/// ½ÓÊÕÕßqq
+	/// æ¥æ”¶è€…qq
 	/// </summary>
 	long long targetId;
 public:
 	/// <summary>
-	/// ³õÊ¼»¯ÏûÏ¢·¢ËÍ
+	/// åˆå§‹åŒ–æ¶ˆæ¯å‘é€
 	/// </summary>
-	/// <param name="targetId">½ÓÊÕÕßqq</param>
-	/// <param name="data">ÄÚÈİ</param>
+	/// <param name="targetId">æ¥æ”¶è€…qq</param>
+	/// <param name="data">å†…å®¹</param>
 	PrivateMessageSender(long long targetId, std::string data);
 	/// <summary>
-	/// ÉèÖÃ·¢ËÍµÄÏûÏ¢
+	/// è®¾ç½®å‘é€çš„æ¶ˆæ¯
 	/// </summary>
-	/// <param name="data">ÄÚÈİ</param>
+	/// <param name="data">å†…å®¹</param>
 	void setContent(std::string data);
 	/// <summary>
-	/// ·¢ËÍ
+	/// å‘é€
 	/// </summary>
 	void send();
 };

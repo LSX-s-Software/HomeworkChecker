@@ -1,21 +1,21 @@
-#include "WebsocketClientForApp.h"
+ï»¿#include "WebsocketClientForApp.h"
 #include <fstream>
 #include <json.hpp>
 #include <thread>
 
 
-bool completeFileTransfer = false;//²¶»ñÊÇ·ñÏÂÔØÍê³É
+bool completeFileTransfer = false;//æ•è·æ˜¯å¦ä¸‹è½½å®Œæˆ
 
 WebsocketClientForApp::WebsocketClientForApp()
 {
 	enableSendHeartbeat = false;
-	m_WebsocketClient.clear_access_channels(websocketpp::log::alevel::all);  // ¿ªÆôÈ«²¿½ÓÈëÈÕÖ¾¼¶±ğ
-	m_WebsocketClient.clear_error_channels(websocketpp::log::elevel::all);   // ¿ªÆôÈ«²¿´íÎóÈÕÖ¾¼¶±ğ
+	m_WebsocketClient.clear_access_channels(websocketpp::log::alevel::all);  // å¼€å¯å…¨éƒ¨æ¥å…¥æ—¥å¿—çº§åˆ«
+	m_WebsocketClient.clear_error_channels(websocketpp::log::elevel::all);   // å¼€å¯å…¨éƒ¨é”™è¯¯æ—¥å¿—çº§åˆ«
 
-	m_WebsocketClient.init_asio();       // ³õÊ¼»¯asio
-	m_WebsocketClient.start_perpetual(); // ±ÜÃâÇëÇóÎª¿ÕÊ±ÍË³ö£¬Êµ¼ÊÉÏ£¬Ò²ÊÇ±ÜÃâasioÍË³ö
+	m_WebsocketClient.init_asio();       // åˆå§‹åŒ–asio
+	m_WebsocketClient.start_perpetual(); // é¿å…è¯·æ±‚ä¸ºç©ºæ—¶é€€å‡ºï¼Œå®é™…ä¸Šï¼Œä¹Ÿæ˜¯é¿å…asioé€€å‡º
 
-	// ¶ÀÁ¢ÔËĞĞclient::run()µÄÏß³Ì£¬Ö÷ÒªÊÇ±ÜÃâ×èÈû
+	// ç‹¬ç«‹è¿è¡Œclient::run()çš„çº¿ç¨‹ï¼Œä¸»è¦æ˜¯é¿å…é˜»å¡
 	m_Thread = websocketpp::lib::make_shared<websocketpp::lib::thread>(&client::run, &m_WebsocketClient);
 
 	m_OnOpenFunc = nullptr;
@@ -31,7 +31,7 @@ WebsocketClientForApp::~WebsocketClientForApp()
 	if (m_ConnectionMetadataPtr != nullptr && m_ConnectionMetadataPtr->get_status() == "Open")
 	{
 		websocketpp::lib::error_code ec;
-		m_WebsocketClient.close(m_ConnectionMetadataPtr->get_hdl(), websocketpp::close::status::going_away, "", ec); // ¹Ø±ÕÁ¬½Ó
+		m_WebsocketClient.close(m_ConnectionMetadataPtr->get_hdl(), websocketpp::close::status::going_away, "", ec); // å…³é—­è¿æ¥
 
 		if (ec) {
 			std::cout << "> Error initiating close: " << ec.message() << std::endl;
@@ -44,21 +44,22 @@ WebsocketClientForApp::~WebsocketClientForApp()
 
 bool WebsocketClientForApp::Connect(std::string const& url)
 {
+	if (url != "") lastURL = url;
 	websocketpp::lib::error_code ec;
 
-	// ´´½¨connectµÄ¹²ÏíÖ¸Õë£¬×¢Òâ£¬´ËÊ±´´½¨²¢Ã»ÓĞÊµ¼Ê½¨Á¢
-	client::connection_ptr con = m_WebsocketClient.get_connection(url, ec);
+	// åˆ›å»ºconnectçš„å…±äº«æŒ‡é’ˆï¼Œæ³¨æ„ï¼Œæ­¤æ—¶åˆ›å»ºå¹¶æ²¡æœ‰å®é™…å»ºç«‹
+	client::connection_ptr con = m_WebsocketClient.get_connection(lastURL, ec);
 
 	if (ec) {
 		std::cout << "> Connect initialization error: " << ec.message() << std::endl;
 		return false;
 	}
 
-	// ´´½¨Á¬½ÓµÄmetadataĞÅÏ¢£¬²¢±£´æ
-	connection_metadata_app::ptr metadata_ptr = websocketpp::lib::make_shared<connection_metadata_app>(con->get_handle(), url);
+	// åˆ›å»ºè¿æ¥çš„metadataä¿¡æ¯ï¼Œå¹¶ä¿å­˜
+	connection_metadata_app::ptr metadata_ptr = websocketpp::lib::make_shared<connection_metadata_app>(con->get_handle(), lastURL);
 	m_ConnectionMetadataPtr = metadata_ptr;
 
-	// ×¢²áÁ¬½Ó´ò¿ªµÄHandler
+	// æ³¨å†Œè¿æ¥æ‰“å¼€çš„Handler
 	//con->set_open_handler(websocketpp::lib::bind(
 	//	&connection_metadata_app::on_open,
 	//	metadata_ptr,
@@ -72,7 +73,7 @@ bool WebsocketClientForApp::Connect(std::string const& url)
 		websocketpp::lib::placeholders::_1
 	));
 
-	// ×¢²áÁ¬½ÓÊ§°ÜµÄHandler
+	// æ³¨å†Œè¿æ¥å¤±è´¥çš„Handler
 	//con->set_fail_handler(websocketpp::lib::bind(
 	//	&connection_metadata_app::on_fail,
 	//	metadata_ptr,
@@ -86,7 +87,7 @@ bool WebsocketClientForApp::Connect(std::string const& url)
 		websocketpp::lib::placeholders::_1
 	));
 
-	// ×¢²áÁ¬½Ó¹Ø±ÕµÄHandler
+	// æ³¨å†Œè¿æ¥å…³é—­çš„Handler
 	//con->set_close_handler(websocketpp::lib::bind(
 	//	&connection_metadata_app::on_close,
 	//	metadata_ptr,
@@ -100,7 +101,7 @@ bool WebsocketClientForApp::Connect(std::string const& url)
 		websocketpp::lib::placeholders::_1
 	));
 
-	// ×¢²áÁ¬½Ó½ÓÊÕÏûÏ¢µÄHandler
+	// æ³¨å†Œè¿æ¥æ¥æ”¶æ¶ˆæ¯çš„Handler
 	//con->set_message_handler(websocketpp::lib::bind(
 	//	&connection_metadata_app::on_message,
 	//	metadata_ptr,
@@ -114,13 +115,13 @@ bool WebsocketClientForApp::Connect(std::string const& url)
 		websocketpp::lib::placeholders::_2
 	));
 
-	// ½øĞĞÁ¬½Ó
+	// è¿›è¡Œè¿æ¥
 	m_WebsocketClient.connect(con);
 
-	//std::cout << "WebsocketÁ¬½Ó³É¹¦" << std::endl;
+	//std::cout << "Websocketè¿æ¥æˆåŠŸ" << std::endl;
 
-	// ×¢Òâ£¬²»ÄÜÔÚWebsocketÁ¬½ÓÍê³ÉÖ®ºóÂíÉÏ¾Í·¢ËÍÏûÏ¢£¬²»È»»á³öÏÖInvalid StateµÄ´íÎó£¬
-	// µ¼ÖÂÏûÏ¢·¢ËÍ²»³É¹¦£¬ËùÒÔÔÚÁ¬½Ó³É¹¦Ö®ºó£¬Ö÷Ïß³ÌĞİÃß1Ãë
+	// æ³¨æ„ï¼Œä¸èƒ½åœ¨Websocketè¿æ¥å®Œæˆä¹‹åé©¬ä¸Šå°±å‘é€æ¶ˆæ¯ï¼Œä¸ç„¶ä¼šå‡ºç°Invalid Stateçš„é”™è¯¯ï¼Œ
+	// å¯¼è‡´æ¶ˆæ¯å‘é€ä¸æˆåŠŸï¼Œæ‰€ä»¥åœ¨è¿æ¥æˆåŠŸä¹‹åï¼Œä¸»çº¿ç¨‹ä¼‘çœ 1ç§’
 	std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
 	enableSendHeartbeat = true;
@@ -136,13 +137,13 @@ bool WebsocketClientForApp::Close(std::string reason)
 	if (m_ConnectionMetadataPtr != nullptr)
 	{
 		int close_code = websocketpp::close::status::normal;
-		// ¹Ø±ÕÁ¬½Ó
+		// å…³é—­è¿æ¥
 		m_WebsocketClient.close(m_ConnectionMetadataPtr->get_hdl(), close_code, reason, ec);
 		if (ec) {
 			std::cerr << "> Error initiating close: " << ec.message() << std::endl;
 			return false;
 		}
-		//std::cout << "¹Ø±ÕWebsocketÁ¬½Ó³É¹¦" << std::endl;
+		//std::cout << "å…³é—­Websocketè¿æ¥æˆåŠŸ" << std::endl;
 	}
 
 	return true;
@@ -154,7 +155,7 @@ bool WebsocketClientForApp::Send(std::string message)
 
 	if (m_ConnectionMetadataPtr != nullptr)
 	{
-		// Á¬½Ó·¢ËÍÊı¾İ
+		// è¿æ¥å‘é€æ•°æ®
 		m_WebsocketClient.send(m_ConnectionMetadataPtr->get_hdl(), message, websocketpp::frame::opcode::text, ec);
 		if (ec)
 		{
@@ -162,7 +163,7 @@ bool WebsocketClientForApp::Send(std::string message)
 			std::string errorMessage = ec.message();
 			return false;
 		}
-		//std::cout << "·¢ËÍÊı¾İ³É¹¦" << std::endl;
+		//std::cout << "å‘é€æ•°æ®æˆåŠŸ" << std::endl;
 	}
 
 	return true;
@@ -183,18 +184,24 @@ void WebsocketClientForApp::OnOpen(client* c, websocketpp::connection_hdl hdl)
 
 void WebsocketClientForApp::OnFail(client* c, websocketpp::connection_hdl hdl)
 {
-	if (m_OnFailFunc != nullptr)
-	{
-		m_OnFailFunc();
-	}
+	std::cerr << "Client Connect Failed." << std::endl << "Re-connecting..." << std::endl;
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
+	Sleep(1000);
+#else
+	sleep(1);
+#endif
+	Connect("");
 }
 
 void WebsocketClientForApp::OnClose(client* c, websocketpp::connection_hdl hdl)
 {
-	if (m_OnCloseFunc != nullptr)
-	{
-		m_OnCloseFunc();
-	}
+	std::cerr << "Client Closed." << std::endl << "Re-connecting..." << std::endl;
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
+	Sleep(15000);
+#else
+	sleep(15);
+#endif
+	Connect("");
 }
 namespace _WSCFA_
 {

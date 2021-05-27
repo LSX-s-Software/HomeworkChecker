@@ -1,4 +1,4 @@
-#include <string>
+ï»¿#include <string>
 #include <iostream>
 #include <map>
 #include <json.hpp>
@@ -9,31 +9,31 @@
 #include "QQMessage.h"
 #include "Tools.h"
 /// <summary>
-/// Á¬½Óurl
+/// è¿æ¥url
 /// </summary>
 std::string connectUrl;
 /// <summary>
-/// Ò»¼¶²Ëµ¥×´Ì¬¼ÇÂ¼¡¾qqºÅ£¬×´Ì¬¡¿
+/// ä¸€çº§èœå•çŠ¶æ€è®°å½•ã€qqå·ï¼ŒçŠ¶æ€ã€‘
 /// </summary>
 std::map<long long, PeerStatus> status;
 /// <summary>
-/// ¶ş¼¶²Ëµ¥ ×¢²á ×´Ì¬¼ÇÂ¼¡¾qqºÅ£¬×¢²áĞÅÏ¢¡¿
+/// äºŒçº§èœå• æ³¨å†Œ çŠ¶æ€è®°å½•ã€qqå·ï¼Œæ³¨å†Œä¿¡æ¯ã€‘
 /// </summary>
 std::map<long long, RegInfo> regStatus;
 /// <summary>
-/// ±¾µØÑ§ÉúĞÅÏ¢£¬¿ÉÅĞ¶ÏÊÇ·ñ×¢²á¡¾qqºÅ£¬idºÅ¡¿
+/// æœ¬åœ°å­¦ç”Ÿä¿¡æ¯ï¼Œå¯åˆ¤æ–­æ˜¯å¦æ³¨å†Œã€qqå·ï¼Œidå·ã€‘
 /// </summary>
 std::map<long long, StuInfo> getStuInfo;
 /// <summary>
-/// ±¾µØ±£´æ×÷ÒµÌá½»ÏêÇé
+/// æœ¬åœ°ä¿å­˜ä½œä¸šæäº¤è¯¦æƒ…
 /// </summary>
 std::map<long long, HomeworkInfo> getHomeworkInfo;
 /// <summary>
-/// ±¾µØ±£´æ×÷ÒµÌá½»id£¬Ìá½»ºóÏú»Ù
+/// æœ¬åœ°ä¿å­˜ä½œä¸šæäº¤idï¼Œæäº¤åé”€æ¯
 /// </summary>
 std::map<long long, long long>getSubmitId;
 /// <summary>
-/// ws¿Í»§¶Ë
+/// wså®¢æˆ·ç«¯
 /// </summary>
 WebsocketClient wsClient;
 WebsocketServer wsServer;
@@ -45,27 +45,39 @@ void QQMessage::onOpen()
 }
 void QQMessage::onClose()
 {
-	std::cerr << "Client Closed." << std::endl;
+	std::cerr << "Client Closed." << std::endl << "Re-connecting..." << std::endl;
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
+	Sleep(15000);
+#else
+	sleep(15);
+#endif
+	wsClient.Connect("");
 	return;
 }
 void QQMessage::onFail()
 {
-	std::cerr << "Client Connect Failed." << std::endl;
+	std::cerr << "Client Connect Failed." << std::endl << "Re-connecting..." << std::endl;
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
+	Sleep(1000);
+#else
+	sleep(1);
+#endif
+	wsClient.Connect("");
 	return;
 }
 
 void QQMessage::readMessage(const std::string& message)
 {
-	auto decode = nlohmann::json::parse(message);//½âÎöjson
-	if (decode.contains("post_type"))//ÅĞ¶Ï´æÔÚpost_type
+	auto decode = nlohmann::json::parse(message);//è§£æjson
+	if (decode.contains("post_type"))//åˆ¤æ–­å­˜åœ¨post_type
 	{
-		if (decode.at("post_type") == "meta_event") return; //ÊÕµ½ĞÄÌø°ü
+		if (decode.at("post_type") == "meta_event") return; //æ”¶åˆ°å¿ƒè·³åŒ…
 		if (decode.at("post_type") == "message")
 		{
-			if (decode.at("message_type") == "private")//ÊÕµ½Ë½ÁÄÏûÏ¢
+			if (decode.at("message_type") == "private")//æ”¶åˆ°ç§èŠæ¶ˆæ¯
 			{
-				PrivateMessageGetter getter(decode);//»ñÈ¡ÏûÏ¢
-				AnaText(Tools::to_utf16(getter.getRawData()), getter.getSenderId());//¶ÔÏûÏ¢ÎÄ±¾·ÖÎö
+				PrivateMessageGetter getter(decode);//è·å–æ¶ˆæ¯
+				AnaText(Tools::to_utf16(getter.getRawData()), getter.getSenderId());//å¯¹æ¶ˆæ¯æ–‡æœ¬åˆ†æ
 			}
 
 		}
@@ -83,7 +95,7 @@ void QQMessage::readMessage(const std::string& message)
 void QQMessage::_InitClient(std::string url)
 {
 	connectUrl = "ws://" + url;
-	//ÉèÖÃ»Øµ÷º¯Êı
+	//è®¾ç½®å›è°ƒå‡½æ•°
 	wsClient.SetOnOpenFunc(onOpen);
 	wsClient.SetOnCloseFunc(onClose);
 	wsClient.SetOnFailFunc(onFail);

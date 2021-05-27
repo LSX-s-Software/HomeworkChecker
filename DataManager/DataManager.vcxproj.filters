@@ -37,13 +37,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="..\packages\mysql\lib\libmysql.dll">
-      <Filter>资源文件</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="..\packages\mysql\lib\libssl-1_1-x64.dll">
       <Filter>资源文件</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="..\packages\mysql\lib\libcrypto-1_1-x64.dll">
+      <Filter>资源文件</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\packages\mysql\lib\libmysql.dll">
       <Filter>资源文件</Filter>
     </CopyFileToFolders>
   </ItemGroup>

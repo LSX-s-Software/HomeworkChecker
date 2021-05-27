@@ -1,4 +1,4 @@
-//
+﻿//
 // execution/operation_state.hpp
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //
