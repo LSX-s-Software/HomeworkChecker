@@ -1,11 +1,11 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
+import QtQuick.Controls 2.12
 
 Rectangle {
     id: newAClass
     width: 720
     height: 461
-    color: "#ffffff"
     radius: 20
     clip: true
     Text {
@@ -25,7 +25,7 @@ Rectangle {
 
     Rectangle {
         id: name
-        width: 258
+        width: 280
         height: 37
         anchors.left: parent.left
         anchors.top: element28.bottom
@@ -37,6 +37,7 @@ Rectangle {
             width: 48
             height: 32
             text: qsTr("名称")
+            anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
             verticalAlignment: Text.AlignVCenter
             font.weight: Font.Medium
@@ -46,22 +47,28 @@ Rectangle {
             font.pointSize: 24
         }
 
-        Text {
-            id: element30
-            x: 129
-            height: 32
-            text: qsTr("2020级计卓")
-            anchors.top: parent.top
-            verticalAlignment: Text.AlignVCenter
+        TextField {
+            id: nameField
+            width: 210
+            height: 40
+            verticalAlignment: "AlignVCenter"
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.right: parent.right
+            font.pixelSize: 22
+            horizontalAlignment: Text.AlignRight
+            selectByMouse: true
             font.family: "Source Han Sans CN"
-            horizontalAlignment: Text.AlignHCenter
-            font.pointSize: 24
+            placeholderText: qsTr("输入班级名称")
+            background: Rectangle {
+                anchors.fill: parent
+                border.width: 0
+            }
         }
     }
 
     Rectangle {
         id: time
-        width: 258
+        width: 280
         height: 37
         anchors.right: parent.right
         anchors.top: element28.bottom
@@ -72,6 +79,7 @@ Rectangle {
             width: 96
             height: 32
             text: qsTr("上课时间")
+            anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
@@ -81,23 +89,28 @@ Rectangle {
             font.pointSize: 24
         }
 
-        Text {
-            id: element32
-            x: 129
-            height: 32
-            text: qsTr("周五下午")
+        TextField {
+            id: timeField
+            width: 160
+            height: 40
+            anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
-            anchors.top: parent.top
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
+            font.pixelSize: 22
+            horizontalAlignment: Text.AlignRight
+            verticalAlignment: "AlignVCenter"
+            placeholderText: qsTr("输入上课时间")
             font.family: "Source Han Sans CN"
-            font.pointSize: 24
+            selectByMouse: true
+            background: Rectangle {
+                border.width: 0
+                anchors.fill: parent
+            }
         }
     }
 
     Rectangle {
         id: location
-        width: 258
+        width: 280
         height: 37
         anchors.left: parent.left
         anchors.top: name.bottom
@@ -107,6 +120,7 @@ Rectangle {
             id: element33
             height: 32
             text: qsTr("上课地点")
+            anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
@@ -116,17 +130,22 @@ Rectangle {
             font.pointSize: 24
         }
 
-        Text {
-            id: element34
-            x: 129
-            height: 32
-            text: qsTr("3区1-507")
+        TextField {
+            id: locationField
+            width: 160
+            height: 40
+            anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
-            anchors.top: parent.top
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
+            font.pixelSize: 22
+            horizontalAlignment: Text.AlignRight
+            verticalAlignment: "AlignVCenter"
+            placeholderText: qsTr("输入上课地点")
             font.family: "Source Han Sans CN"
-            font.pointSize: 24
+            selectByMouse: true
+            background: Rectangle {
+                border.width: 0
+                anchors.fill: parent
+            }
         }
     }
 
@@ -154,16 +173,24 @@ Rectangle {
             font.pointSize: 28
         }
 
-        Text {
-            id: element36
-            x: 311
-            height: 53
-            text: qsTr("CDE2")
+        TextField {
+            id: codeField
+            width: 280
             anchors.verticalCenter: parent.verticalCenter
-            verticalAlignment: Text.AlignVCenter
-            font.family: "Source Han Sans CN"
+            anchors.right: parent.right
+            font.pixelSize: 40
             horizontalAlignment: Text.AlignHCenter
-            font.pointSize: 40
+            verticalAlignment: "AlignVCenter"
+            anchors.rightMargin: 130
+            placeholderText: qsTr("自选4位邀请码")
+            font.family: "Source Han Sans CN"
+            maximumLength: 4
+            selectByMouse: true
+            background: Rectangle {
+                color: "#00000000"
+                border.width: 0
+                anchors.fill: parent
+            }
         }
     }
 
@@ -178,7 +205,7 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
 
         Text {
-            id: element37
+            id: submitBtn
             y: 11
             height: 32
             color: "#ffffff"
@@ -193,9 +220,32 @@ Rectangle {
 
         MouseArea {
             id: mouseArea18
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 36
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.fill: parent
+            onClicked: {
+                if (nameField.text == "" || codeField.text == "") {
+                    return
+                } else {
+                    var code = classVC.addClass(nameField.text, locationField.text || "未填写", timeField.text || "未填写", codeField.text)
+                    switch (code) {
+                    case 0:
+                        newClass.close()
+                        classPage.refresh()
+                        break
+                    case 1:
+                        submitBtn.text = "邀请码被占用"
+                        break
+                    case 2:
+                        submitBtn.text = "存在同名班级"
+                        break
+                    case 3:
+                        submitBtn.text = "操作失败"
+                        break
+                    default:
+                        submitBtn.text = "操作失败"
+                        break
+                    }
+                }
+            }
         }
     }
 

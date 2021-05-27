@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
+import ClassVC 1.0
 
 Rectangle {
     id: classPage
@@ -8,13 +9,39 @@ Rectangle {
     height: 768
     color: "#ffffff"
 
+    ClassVC {
+        id: classVC
+    }
+
+    ListModel {
+        id: classListModel
+    }
+
+    ListModel {
+        id: endedClassListModel
+    }
+
+    property int displayType: 0
+
+    function refresh() {
+        classVC.refresh()
+        classListModel.clear()
+        endedClassListModel.clear()
+        classVC.classList.forEach(ele => {
+                                      if (ele.status === 0) {
+                                          classListModel.append(ele)
+                                      } else {
+                                          endedClassListModel.append(ele)
+                                      }
+                                  })
+    }
+
     Popup {
         id: newClass
         modal: true
         closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
         width: 720
         height: 461
-        visible: true
         focus: true
         clip: true
         anchors.centerIn: classPage
@@ -28,13 +55,12 @@ Rectangle {
     }
 
     Popup {
-        id: info
+        id: classInfoPopup
         modal: true
         closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
         focus: true
         width: 720
         height: 461
-        visible: true
         clip: true
         anchors.centerIn: classPage
         background: Rectangle {
@@ -56,7 +82,7 @@ Rectangle {
         verticalAlignment: Text.AlignVCenter
         anchors.topMargin: 32
         font.family: "Source Han Sans CN"
-        font.pointSize: 40
+        font.pixelSize: 40
         font.weight: Font.Medium
         anchors.horizontalCenter: parent.horizontalCenter
     }
@@ -65,26 +91,29 @@ Rectangle {
         id: rectangle7
         width: 64
         height: 43
-        color: "#ffffff"
         anchors.left: parent.left
         anchors.top: title.bottom
         anchors.topMargin: 28
         anchors.leftMargin: 32
         Text {
             id: element4
-            color: "#0098f7"
+            color: displayType == 0 ? "#0098f7" : "#707070"
             text: qsTr("当前")
             anchors.fill: parent
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.family: "Source Han Sans CN"
-            font.pointSize: 32
+            font.pixelSize: 32
             font.weight: Font.Medium
         }
 
         MouseArea {
             id: mouseArea4
             anchors.fill: parent
+            onClicked: {
+                displayType = 0
+                listView.model = classListModel
+            }
         }
     }
 
@@ -92,26 +121,29 @@ Rectangle {
         id: rectangle8
         width: 64
         height: 43
-        color: "#ffffff"
         anchors.left: rectangle7.right
         anchors.top: title.bottom
         anchors.topMargin: 28
         anchors.leftMargin: 32
         Text {
             id: element5
-            color: "#707070"
+            color: displayType == 1 ? "#0098f7" : "#707070"
             text: qsTr("过去")
             anchors.fill: parent
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.family: "Source Han Sans CN"
-            font.pointSize: 32
+            font.pixelSize: 32
             font.weight: Font.Medium
         }
 
         MouseArea {
             id: mouseArea5
             anchors.fill: parent
+            onClicked: {
+                displayType = 1
+                listView.model = endedClassListModel
+            }
         }
     }
 
@@ -133,7 +165,7 @@ Rectangle {
                 verticalAlignment: Text.AlignVCenter
                 font.family: "Source Han Sans CN"
                 horizontalAlignment: Text.AlignHCenter
-                font.pointSize: 28
+                font.pixelSize: 28
             }
 
             Text {
@@ -146,7 +178,7 @@ Rectangle {
                 verticalAlignment: Text.AlignVCenter
                 font.family: "Source Han Sans CN"
                 horizontalAlignment: Text.AlignHCenter
-                font.pointSize: 20
+                font.pixelSize: 20
             }
 
             MouseArea {
@@ -154,7 +186,7 @@ Rectangle {
                 anchors.fill: parent
                 hoverEnabled: true
                 onClicked: {
-                    info.open()
+                    infoOfClass.show(classVC.classList[index])
                 }
             }
         }
@@ -174,26 +206,7 @@ Rectangle {
         anchors.rightMargin: 32
         clip: true
         delegate: classListItem
-        model: ListModel {
-            ListElement {
-                name: "2020级计卓"
-                time: "周五下午"
-                location: "3区1-507"
-                count: 30
-            }
-            ListElement {
-                name: "2020级计卓"
-                time: "周五下午"
-                location: "3区1-507"
-                count: 30
-            }
-            ListElement {
-                name: "2020级计卓"
-                time: "周五下午"
-                location: "3区1-507"
-                count: 30
-            }
-        }
+        model: classListModel
     }
 
     Image {

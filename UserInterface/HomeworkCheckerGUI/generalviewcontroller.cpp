@@ -1,7 +1,6 @@
-﻿#include "generalviewcontroller.h"
+#include "generalviewcontroller.h"
 #include "account.h"
 #include <iostream>
-
 
 GeneralViewController::GeneralViewController(QObject *parent) : QObject(parent) {}
 
@@ -13,8 +12,8 @@ void GeneralViewController::refresh() {
             std::vector<DataManager::Homework> hList = DataManager::getHomeworkListByAsmId(item.getId());
             homeworkList.insert(homeworkList.begin(), hList.begin(), hList.end());
         }
-    } catch (...) {
-        std::cout << "[ERROR] [GeneralViewController] An Error Occoured" << std::endl;
+    } catch (DataManager::DMError error) {
+        qDebug() << "[ERROR] [GeneralViewController] " << error.what() << Qt::endl;
     }
 }
 

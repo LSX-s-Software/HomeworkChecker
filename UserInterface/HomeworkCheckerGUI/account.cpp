@@ -1,4 +1,4 @@
-﻿#include "account.h"
+#include "account.h"
 
 DataManager::User Account::user = DataManager::User();
 
@@ -21,5 +21,9 @@ QString Account::getName() {
 }
 
 void Account::setName(const QString &name) {
-    user.setName(name.toStdString());
+    if (name.toStdString() == user.getName()) return;
+    DataManager::DMErrorType code = user.setName(name.toStdString());
+    if (code != DataManager::DMErrorType::SUCCESS) {
+        qDebug() << DataManager::DMError(code).what() << Qt::endl;
+    }
 }

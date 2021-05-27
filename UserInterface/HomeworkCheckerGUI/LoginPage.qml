@@ -177,12 +177,20 @@ Rectangle {
             anchors.fill: parent
             onClicked: {
                 var result = account.login(emailField.text, passwordField.text);
-                if (result === 0) {
+                switch (result) {
+                case 0:
                     logInBtnText.text = "登录成功"
                     generalPage.visible = true
                     generalPage.refresh()
                     logInPopup.close()
-                } else {
+                    break
+                case 1:
+                    logInBtnText.text = "用户不存在"
+                    break
+                case 2:
+                    logInBtnText.text = "密码错误"
+                    break
+                default:
                     logInBtnText.text = "登录失败"
                 }
             }

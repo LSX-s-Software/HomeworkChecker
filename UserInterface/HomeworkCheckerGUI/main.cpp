@@ -5,6 +5,7 @@
 //自定义CPP模块头文件
 #include "generalviewcontroller.h"
 #include "account.h"
+#include "classviewcontroller.h"
 #include "settingpage.h"
 
 int main(int argc, char *argv[])
@@ -19,6 +20,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<GeneralViewController>("GeneralVC",1,0,"GeneralVC");
     qmlRegisterType<Account>("Account",1,0,"Account");
     qmlRegisterType<SettingPage>("MySettingPage", 1, 0, "MySettingPage");
+    qmlRegisterType<ClassViewController>("ClassVC", 1, 0, "ClassVC");
 
     QQmlApplicationEngine engine;
     //engine.rootContext()->setContextProperty("settingPage", new SettingPage(qApp));

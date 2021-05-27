@@ -9,6 +9,24 @@ Rectangle {
     color: "#ffffff"
     radius: 20
     clip: true
+
+    property int classId
+    property string className: "加载中"
+    property string inviteCode: "加载中"
+    property string time: "加载中"
+    property string location: "加载中"
+    property int count: 0
+
+    function show(item) {
+        classId = item.id
+        className = item.name
+        inviteCode = item.code
+        time = item.time
+        location = item.location
+        count = item.count
+        classInfoPopup.open()
+    }
+
     Text {
         id: element28
         width: 128
@@ -20,7 +38,7 @@ Rectangle {
         horizontalAlignment: Text.AlignHCenter
         font.family: "Source Han Sans CN"
         anchors.topMargin: 36
-        font.pointSize: 32
+        font.pixelSize: 32
         anchors.top: parent.top
     }
 
@@ -40,18 +58,19 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             font.family: "Source Han Sans CN"
             anchors.left: parent.left
-            font.pointSize: 24
+            font.pixelSize: 24
         }
 
         Text {
             id: element30
-            x: 129
             height: 32
-            text: qsTr("2020级计卓")
+            text: className
+            anchors.right: parent.right
             verticalAlignment: Text.AlignVCenter
-            horizontalAlignment: Text.AlignHCenter
+            anchors.rightMargin: 0
+            horizontalAlignment: Text.AlignRight
             font.family: "Source Han Sans CN"
-            font.pointSize: 24
+            font.pixelSize: 24
             anchors.top: parent.top
         }
         anchors.left: parent.left
@@ -60,7 +79,7 @@ Rectangle {
     }
 
     Rectangle {
-        id: time
+        id: countLabel
         width: 258
         height: 37
         anchors.right: parent.right
@@ -68,26 +87,26 @@ Rectangle {
             id: element31
             width: 96
             height: 32
-            text: qsTr("邀请码")
+            text: qsTr("学生人数")
             verticalAlignment: Text.AlignVCenter
             font.weight: Font.Medium
             anchors.leftMargin: 0
             horizontalAlignment: Text.AlignHCenter
             font.family: "Source Han Sans CN"
             anchors.left: parent.left
-            font.pointSize: 24
+            font.pixelSize: 24
         }
 
         Text {
             id: element32
             x: 129
             height: 32
-            text: qsTr("3CE4")
+            text: count
             verticalAlignment: Text.AlignVCenter
             anchors.right: parent.right
-            horizontalAlignment: Text.AlignHCenter
+            horizontalAlignment: Text.AlignRight
             font.family: "Source Han Sans CN"
-            font.pointSize: 24
+            font.pixelSize: 24
             anchors.top: parent.top
         }
         anchors.rightMargin: 52
@@ -96,7 +115,7 @@ Rectangle {
     }
 
     Rectangle {
-        id: location
+        id: timeLabel
         width: 258
         height: 37
         anchors.leftMargin: 52
@@ -110,19 +129,19 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             font.family: "Source Han Sans CN"
             anchors.left: parent.left
-            font.pointSize: 24
+            font.pixelSize: 24
         }
 
         Text {
             id: element34
             x: 129
             height: 32
-            text: qsTr("周五上午")
+            text: time
             verticalAlignment: Text.AlignVCenter
             anchors.right: parent.right
-            horizontalAlignment: Text.AlignHCenter
+            horizontalAlignment: Text.AlignRight
             font.family: "Source Han Sans CN"
-            font.pointSize: 24
+            font.pixelSize: 24
             anchors.top: parent.top
         }
         anchors.left: parent.left
@@ -140,28 +159,30 @@ Rectangle {
         Text {
             id: element35
             height: 37
-            text: qsTr("学生")
+            text: qsTr("邀请码")
             verticalAlignment: Text.AlignVCenter
             font.weight: Font.Medium
             anchors.leftMargin: 20
-            horizontalAlignment: Text.AlignHCenter
+            horizontalAlignment: Text.AlignLeft
             font.family: "Source Han Sans CN"
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
-            font.pointSize: 28
+            font.pixelSize: 28
         }
 
-        Image {
-            id: studentAvatar
-            x: 100
-            y: 17
-            width: 516
-            height: 66
-            source: "images/student.png"
-            fillMode: Image.PreserveAspectFit
+        Text {
+            id: inviteCodeLabel
+            x: 311
+            height: 53
+            text: inviteCode
+            anchors.verticalCenter: parent.verticalCenter
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            font.family: "Source Han Sans CN"
+            font.pixelSize: 40
         }
         anchors.topMargin: 32
-        anchors.top: location.bottom
+        anchors.top: timeLabel.bottom
     }
 
     Rectangle {
@@ -184,12 +205,25 @@ Rectangle {
             anchors.horizontalCenter: parent.horizontalCenter
             horizontalAlignment: Text.AlignHCenter
             font.family: "Source Han Sans CN"
-            font.pointSize: 24
+            font.pixelSize: 24
         }
 
         MouseArea {
             id: mouseArea18
             anchors.fill: parent
+            onClicked: {
+                if (element37.text == "结课") {
+                    element37.text = "确认结课"
+                } else {
+                    if (classVC.endClass(classId) === 0) {
+                        element37.text = "操作成功"
+                        classInfoPopup.close()
+                        classPage.refresh()
+                    } else {
+                        element37.text = "操作失败"
+                    }
+                }
+            }
         }
         anchors.bottomMargin: 36
     }
@@ -208,13 +242,13 @@ Rectangle {
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
-                info.close()
+                classInfoPopup.close()
             }
         }
     }
 
     Rectangle {
-        id: invitition
+        id: locationLabel
         x: 410
         y: 165
         width: 258
@@ -231,19 +265,19 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             font.family: "Source Han Sans CN"
             anchors.left: parent.left
-            font.pointSize: 24
+            font.pixelSize: 24
         }
 
         Text {
             id: element39
             x: 129
             height: 32
-            text: qsTr("3区1-507")
+            text: location
             verticalAlignment: Text.AlignVCenter
             anchors.right: parent.right
-            horizontalAlignment: Text.AlignHCenter
+            horizontalAlignment: Text.AlignRight
             font.family: "Source Han Sans CN"
-            font.pointSize: 24
+            font.pixelSize: 24
             anchors.top: parent.top
         }
         anchors.rightMargin: 52

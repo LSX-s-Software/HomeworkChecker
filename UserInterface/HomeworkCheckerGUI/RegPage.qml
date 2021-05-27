@@ -97,7 +97,9 @@ Rectangle {
                 } else {
                     if (passwordField.text == passwordConfirm.text) {
                         var result = account.reg(emailField.text, passwordField.text)
-                        if (result === 0) {
+                        switch (result) {
+                        case 0:
+                            account.login(emailField.text, passwordField.text)
                             account.userName = nameField.text
                             nextBtnTxt.text = "注册成功"
                             generalPage.visible = true
@@ -105,7 +107,11 @@ Rectangle {
                             setTimeout(function () {
                                 regPopup.close()
                             }, 1500)
-                        } else {
+                            break;
+                        case 1:
+                            nextBtnTxt.text = "邮箱已被占用"
+                            break;
+                        default:
                             nextBtnTxt.text = "注册失败"
                         }
                     } else {
