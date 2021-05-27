@@ -22,7 +22,7 @@ StackView {
             font.weight: Font.Medium
             font.family: "Source Han Sans CN"
             horizontalAlignment: Text.AlignHCenter
-            font.pointSize: 40
+            font.pixelSize: 40
         }
 
         Rectangle {
@@ -44,7 +44,7 @@ StackView {
                 font.family: "Source Han Sans CN"
                 horizontalAlignment: Text.AlignHCenter
                 anchors.fill: parent
-                font.pointSize: 32
+                font.pixelSize: 32
             }
 
             MouseArea {
@@ -72,7 +72,7 @@ StackView {
                 font.family: "Source Han Sans CN"
                 horizontalAlignment: Text.AlignHCenter
                 anchors.fill: parent
-                font.pointSize: 32
+                font.pixelSize: 32
             }
 
             MouseArea {
@@ -96,7 +96,7 @@ StackView {
                     height: 37
                     text: name
                     horizontalAlignment: Text.AlignHCenter
-                    font.pointSize: 28
+                    font.pixelSize: 28
                     verticalAlignment: Text.AlignVCenter
                     font.family: "Source Han Sans CN"
                 }
@@ -109,7 +109,7 @@ StackView {
                     color: "#8f8f8f"
                     text: "截止于" + deadline + "·已提交 " + submitted + "·未提交 " + notSubmitted
                     horizontalAlignment: Text.AlignHCenter
-                    font.pointSize: 20
+                    font.pixelSize: 20
                     verticalAlignment: Text.AlignVCenter
                     font.family: "Source Han Sans CN"
                 }
