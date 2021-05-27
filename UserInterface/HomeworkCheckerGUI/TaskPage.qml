@@ -11,26 +11,6 @@ StackView {
         width: taskPage.width
         height: taskPage.height
 
-        Image {
-            id: addBtn
-            width: 60
-            height: 60
-            visible: true
-            anchors.right: parent.right
-            anchors.bottom: parent.bottom
-            source: "images/add@2x.png"
-            anchors.bottomMargin: 28
-            anchors.rightMargin: 32
-
-            MouseArea {
-                id: mouseArea16
-                hoverEnabled: true
-                anchors.fill: parent
-                onClicked:
-                    taskPage.push(arrange)
-            }
-        }
-
         Text {
             id: element3
             y: 32
@@ -181,13 +161,47 @@ StackView {
             }
         }
 
+        Image {
+            id: addBtn
+            width: 60
+            height: 60
+            visible: true
+            anchors.right: parent.right
+            anchors.bottom: parent.bottom
+            source: "images/add@2x.png"
+            anchors.bottomMargin: 28
+            anchors.rightMargin: 32
+
+            MouseArea {
+                id: mouseArea16
+                hoverEnabled: true
+                anchors.fill: parent
+                onClicked:
+                    newAssignmentPopup.open()
+            }
+        }
+
         Component {
             id: info
             InfoOfTask {}
         }
-        Component{
-            id:arrange
-            Arrangement{}
+
+        Popup {
+            id: newAssignmentPopup
+            modal: true
+            closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
+            width: 922
+            height: 640
+            focus: true
+            clip: true
+            anchors.centerIn: Overlay.overlay
+            background: Rectangle {
+                radius: 20
+            }
+            contentItem: NewAssignment {
+                anchors.centerIn: parent
+                anchors.fill: parent
+            }
         }
 
     }

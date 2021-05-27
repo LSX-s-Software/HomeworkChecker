@@ -8,31 +8,13 @@ Rectangle {
     height: 768
     color: "#ffffff"
 
-    Image {
-        id: addBtn
-        width: 60
-        height: 60
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        source: "images/add@2x.png"
-        anchors.bottomMargin: 28
-        anchors.rightMargin: 32
-        MouseArea {
-            hoverEnabled: true
-            anchors.fill: parent
-            cursorShape: Qt.PointingHandCursor
-            onClicked: {
-                newClass.open()
-            }
-        }
-    }
-
     Popup {
         id: newClass
         modal: true
         closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
         width: 720
         height: 461
+        visible: true
         focus: true
         clip: true
         anchors.centerIn: classPage
@@ -52,6 +34,7 @@ Rectangle {
         focus: true
         width: 720
         height: 461
+        visible: true
         clip: true
         anchors.centerIn: classPage
         background: Rectangle {
@@ -179,6 +162,7 @@ Rectangle {
 
     ListView {
         id: listView
+        visible: true
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: rectangle7.bottom
@@ -208,6 +192,25 @@ Rectangle {
                 time: "周五下午"
                 location: "3区1-507"
                 count: 30
+            }
+        }
+    }
+
+    Image {
+        id: addBtn
+        width: 60
+        height: 60
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        source: "images/add@2x.png"
+        anchors.bottomMargin: 28
+        anchors.rightMargin: 32
+        MouseArea {
+            hoverEnabled: true
+            anchors.fill: parent
+            cursorShape: Qt.PointingHandCursor
+            onClicked: {
+                newClass.open()
             }
         }
     }

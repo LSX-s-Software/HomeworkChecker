@@ -43,6 +43,7 @@ Rectangle {
         Text {
             id: element24
             text: "下载文件夹"
+            font.weight: Font.Medium
             topPadding: -3
             font.family: "Source Han Sans CN"
             anchors.fill: parent
