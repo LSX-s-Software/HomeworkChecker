@@ -1,29 +1,36 @@
 #include "taskpage.h"
 
-std::string TaskPage::time_t2string(const time_t time_t_time)
+//std::string TaskPage::time_t2string(const time_t time_t_time)
+//{
+//    char szTime[100] = { '\0' };
+//
+//    tm* pTm = new tm;
+//    localtime_s(pTm, &time_t_time);
+//    //pTm = localtime(&time_t_time);
+//    pTm->tm_year += 1900;
+//    pTm->tm_mon += 1;
+//
+//    sprintf_s(szTime, u8"%04d年%02d月%02d日 %02d:%02d:%02d",
+//        pTm->tm_year,
+//        pTm->tm_mon,
+//        pTm->tm_mday,
+//        pTm->tm_hour,
+//        pTm->tm_min,
+//        pTm->tm_sec);
+//
+//    std::string strTime = szTime;
+//
+//    delete pTm;
+//    pTm = NULL;
+//
+//    return strTime;
+//}
+
+std::string TaskPage::time_t2string(const time_t timep)
 {
-    char szTime[100] = { '\0' };
-
-    tm* pTm = new tm;
-    localtime_s(pTm, &time_t_time);
-    //pTm = localtime(&time_t_time);
-    pTm->tm_year += 1900;
-    pTm->tm_mon += 1;
-
-    sprintf_s(szTime, u8"%04d年%02d月%02d日 %02d:%02d:%02d",
-        pTm->tm_year,
-        pTm->tm_mon,
-        pTm->tm_mday,
-        pTm->tm_hour,
-        pTm->tm_min,
-        pTm->tm_sec);
-
-    std::string strTime = szTime;
-
-    delete pTm;
-    pTm = NULL;
-
-    return strTime;
+    char tmp[64];
+    strftime(tmp, sizeof(tmp), "%Y-%m-%d %H:%M:%S", localtime(&timep));
+    return tmp;
 }
 
 void TaskPage::refresh()
@@ -33,19 +40,23 @@ void TaskPage::refresh()
     }
     try {
         auto list = DataManager::getAssignmentList(Account::getId());
-        auto studentList = DataManager::getStudentList(list.at(0).getClassId());
-        int totolNum = studentList.size();
-        for (auto item : list) {
-            QJsonObject obj;
-            obj.insert("id", QString::fromStdString(std::to_string(item.getId())));
-            obj.insert("name", QString::fromStdString(item.getTitle()));
-            time_t timep = item.getDeadline();
-            obj.insert("deadline", QString::fromStdString(time_t2string(timep)));
-            auto homeworkList = DataManager::getHomeworkListByAsmId(item.getId());
-            int submitNum = homeworkList.size();
-            obj.insert("submitted", QString::number(submitNum));
-            obj.insert("notSubmitted", QString::number(totolNum - submitNum));
-            assignmentList.append(obj);
+        if (list.size() > 0)
+        {
+            auto studentList = DataManager::getStudentList(list.at(0).getClassId());
+            int totolNum = studentList.size();
+            for (auto item : list)
+            {
+                QJsonObject obj;
+                obj.insert("id", QString::fromStdString(std::to_string(item.getId())));
+                obj.insert("name", QString::fromStdString(item.getTitle()));
+                time_t timep = item.getDeadline();
+                obj.insert("deadline", QString::fromStdString(time_t2string(timep)));
+                auto homeworkList = DataManager::getHomeworkListByAsmId(item.getId());
+                int submitNum = homeworkList.size();
+                obj.insert("submitted", QString::number(submitNum));
+                obj.insert("notSubmitted", QString::number(totolNum - submitNum));
+                assignmentList.append(obj);
+            }
         }
     }
     catch (DataManager::DMError error) {
