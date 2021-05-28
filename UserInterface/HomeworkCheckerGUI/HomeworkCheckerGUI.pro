@@ -38,17 +38,6 @@ HEADERS += \
     settingpage.h \
     taskpage.h
 
-INCLUDEPATH += /usr/local/Cellar/mysql/8.0.23_1/include/mysql
-
-#macx: LIBS += -L/usr/local/mysql-connector-c++-8.0.25/lib64/ -lcrypto
-
-#macx: LIBS += -L/usr/local/mysql-connector-c++-8.0.25/lib64/ -lssl
-
-macx: LIBS += -L/usr/local/mysql-connector-c++-8.0.25/lib64/ -lmysqlcppconn
-
-INCLUDEPATH += /usr/local/mysql-connector-c++-8.0.25/lib64
-DEPENDPATH += /usr/local/mysql-connector-c++-8.0.25/lib64
-
 macx: LIBS += -L../../DataManager/build/Debug/ -lDataManager
 
 macx: PRE_TARGETDEPS += ../../DataManager/build/Debug/libDataManager.a
@@ -59,21 +48,25 @@ DEPENDPATH += ../../DataManager/build/Debug
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../packages/mysql/lib/ -llibmysql
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../packages/mysql/lib/ -llibmysql
 
-INCLUDEPATH += $$PWD/../../packages/mysql/include
-DEPENDPATH += $$PWD/../../packages/mysql/include
+INCLUDEPATH += ../../packages/mysql/include
+DEPENDPATH += ../../packages/mysql/include
 
 win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../packages/mysql/lib/liblibmysql.a
 else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../packages/mysql/lib/liblibmysql.a
 else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../packages/mysql/lib/libmysql.lib
 else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../packages/mysql/lib/libmysql.lib
 
-win32: LIBS += -L$$PWD/../../lib/ -lDataManager
+win32: LIBS += -L../../lib/ -lDataManager
 
-INCLUDEPATH += $$PWD/../../DataManager/DataManager
-DEPENDPATH += $$PWD/../../DataManager/DataManager
+INCLUDEPATH += ../../DataManager/DataManager
+DEPENDPATH += ../../DataManager/DataManager
 
 win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../../lib/DataManager.lib
 else:win32-g++: PRE_TARGETDEPS += $$PWD/../../lib/libDataManager.a
 
-INCLUDEPATH += $$PWD/../../packages/json
-DEPENDPATH += $$PWD/../../packages/json
+INCLUDEPATH += ../../packages/json
+DEPENDPATH += ../../packages/json
+
+macx: LIBS += -L../../lib/ -lmysqlcppconn.9.8.0.25
+
+DEPENDPATH += ../../lib/
