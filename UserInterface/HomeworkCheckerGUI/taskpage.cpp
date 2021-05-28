@@ -10,7 +10,7 @@
 //    pTm->tm_year += 1900;
 //    pTm->tm_mon += 1;
 //
-//    sprintf_s(szTime, u8"%04dÄê%02dÔÂ%02dÈÕ %02d:%02d:%02d",
+//    sprintf_s(szTime, u8"%04dï¿½ï¿½%02dï¿½ï¿½%02dï¿½ï¿½ %02d:%02d:%02d",
 //        pTm->tm_year,
 //        pTm->tm_mon,
 //        pTm->tm_mday,
