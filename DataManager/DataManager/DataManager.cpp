@@ -7,12 +7,26 @@
 
 #include "DataManager.hpp"
 
+#include <iostream>
+
 namespace DataManager {
 
 std::hash<std::string> hashStr;
 
-bool connectDatabase(DBManager::DBAccount account) {
-    return DBManager::connectDatabase(account);
+bool connectDatabase() {
+    int conStat = DBManager::checkConnection();
+    if (conStat) {
+#ifdef DEBUG
+        if (conStat != -1)
+            std::cout << "[INFO] [DataManager] SQL Server connection lost, reconncting..." << std::endl;
+#endif
+        DBManager::DBAccount remote;
+        remote.host = "vps.coyangjr.cn";
+        remote.username = "root";
+        remote.password = "Whu2020";
+        return DBManager::connectDatabase(remote);
+    } else
+        return true;
 }
 
 void disconnectDatabase() {
@@ -23,7 +37,7 @@ void disconnectDatabase() {
 
 DMErrorType User::login(std::string email, std::string password) {
     email = DBManager::sqlInjectionCheck(email);
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         if (!DBManager::select("users", "id,password,name", "username='" + email + "'")) {
             if (DBManager::numRows() == 1) {
                 MYSQL_ROW row = DBManager::fetchRow();
@@ -51,7 +65,7 @@ DMErrorType User::login(std::string email, std::string password) {
 
 DMErrorType User::reg(std::string email, std::string password) {
     email = DBManager::sqlInjectionCheck(email);
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         if (!DBManager::select("users", "id", "username='" + email + "'")) {
             if (DBManager::numRows() == 0) {
                 if (!DBManager::insert("users", "username,password", "'" + email + "','" + std::to_string(hashStr(password)) + "'")) {
@@ -78,7 +92,7 @@ DMErrorType User::setName(std::string name) {
     name = DBManager::sqlInjectionCheck(name);
     if (id == -1)
         return OBJECT_NOT_INITED;
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         int code = DBManager::update("users", "name='" + name + "'", "id=" + std::to_string(id));
         if (!code && DBManager::affectedRowCount() > 0)
             this->name = name;
@@ -93,7 +107,7 @@ DMErrorType User::setName(std::string name) {
 //MARK: - Student类实现
 
 Student::Student(int id) noexcept(false) {
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         if (!DBManager::select("students", "*", "id=" + std::to_string(id))) {
             if (DBManager::numRows() > 0) {
                 MYSQL_ROW row = DBManager::fetchRow();
@@ -116,7 +130,7 @@ Student::Student(int id) noexcept(false) {
 }
 
 Student::Student(std::string qq) noexcept(false) {
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         if (!DBManager::select("students", "*", "qq='" + qq + "'")) {
             if (DBManager::numRows() > 0) {
                 MYSQL_ROW row = DBManager::fetchRow();
@@ -140,7 +154,7 @@ Student::Student(std::string qq) noexcept(false) {
 DMErrorType Student::setSchoolNum(std::string newNum) {
     if (id == -1)
         return OBJECT_NOT_INITED;
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         int code = DBManager::update("students", "school_num='" + newNum + "'", "id=" + std::to_string(id));
         if (!code && DBManager::affectedRowCount() > 0)
             schoolNum = newNum;
@@ -155,7 +169,7 @@ DMErrorType Student::setSchoolNum(std::string newNum) {
 DMErrorType Student::setClassId(long newClassId) {
     if (id == -1)
         return OBJECT_NOT_INITED;
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         int code = DBManager::update("students", "class_id='" + std::to_string(newClassId) + "'", "id=" + std::to_string(id));
         if (!code && DBManager::affectedRowCount() > 0) {
             classId = newClassId;
@@ -171,7 +185,7 @@ DMErrorType Student::setName(std::string newName) {
     newName = DBManager::sqlInjectionCheck(newName);
     if (id == -1)
         return OBJECT_NOT_INITED;
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         int code = DBManager::update("students", "name='" + newName + "'", "id=" + std::to_string(id));
         if (!code && DBManager::affectedRowCount() > 0) {
             name = newName;
@@ -186,7 +200,7 @@ DMErrorType Student::setName(std::string newName) {
 
 Student::Student(std::string schoolNum, std::string qq, std::string name) noexcept(false) {
     name = DBManager::sqlInjectionCheck(name);
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         int code = DBManager::select("students", "id", "school_num=" + schoolNum);
         if (!code) {
             if (DBManager::numRows() > 0)
@@ -216,7 +230,7 @@ Student::Student(std::string schoolNum, std::string qq, std::string name) noexce
 
 std::vector<Student> getStudentList(long classId) noexcept(false) {
     std::vector<Student> result;
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         if (!DBManager::select("students", "*", "class_id=" + std::to_string(classId) + "")) {
             if (DBManager::numRows() > 0) {
                 MYSQL_ROW row;
@@ -238,7 +252,7 @@ std::vector<Student> getStudentList(long classId) noexcept(false) {
 Class::Class(long id) noexcept(false) {
     if (id <= 0)
         throw DMError(INVALID_ARGUMENT);
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         if (!DBManager::select("classes", "*", "id=" + std::to_string(id))) {
             if (DBManager::numRows() > 0) {
                 MYSQL_ROW row = DBManager::fetchRow();
@@ -263,7 +277,7 @@ Class::Class(long id) noexcept(false) {
 Class::Class(std::string inviteCode) noexcept(false) {
     if (inviteCode.length() != 4)
         throw DMError(INVALID_ARGUMENT);
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         if (!DBManager::select("classes", "*", "code='" + inviteCode + "'")) {
             if (DBManager::numRows() > 0) {
                 MYSQL_ROW row = DBManager::fetchRow();
@@ -290,7 +304,7 @@ DMErrorType Class::setName(std::string newName) {
     if (id == -1)
         return OBJECT_NOT_INITED;
     DMErrorType error = SUCCESS;
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         int code = DBManager::update("classes", "name='" + newName + "'", "id=" + std::to_string(id));
         if (!code && DBManager::affectedRowCount() > 0)
             name = newName;
@@ -306,7 +320,7 @@ DMErrorType Class::setLocation(std::string newLocation) {
     newLocation = DBManager::sqlInjectionCheck(newLocation);
     if (id == -1)
         return OBJECT_NOT_INITED;
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         int code = DBManager::update("classes", "location='" + newLocation + "'", "id=" + std::to_string(id));
         if (!code && DBManager::affectedRowCount() > 0) {
             time = newLocation;
@@ -321,7 +335,7 @@ DMErrorType Class::setTime(std::string newTime) {
     newTime = DBManager::sqlInjectionCheck(newTime);
     if (id == -1)
         return OBJECT_NOT_INITED;
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         int code = DBManager::update("classes", "location='" + newTime + "'", "id=" + std::to_string(id));
         if (!code && DBManager::affectedRowCount() > 0) {
             time = newTime;
@@ -338,7 +352,7 @@ DMErrorType Class::setInviteCode(std::string newCode) {
         return OBJECT_NOT_INITED;
     if (newCode.length() != 4)
         return INVALID_ARGUMENT;
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         int code = DBManager::select("classes", "id", "code='" + newCode + "'");
         if (!code) {
             if (DBManager::numRows() > 0) {
@@ -361,7 +375,7 @@ DMErrorType Class::setInviteCode(std::string newCode) {
 DMErrorType Class::endClass() {
     if (id == -1)
         return OBJECT_NOT_INITED;
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         int code = DBManager::update("classes", "status=1", "id=" + std::to_string(id));
         if (!code && DBManager::affectedRowCount() > 0) {
             status = CLASS_ENDED;
@@ -379,7 +393,7 @@ Class::Class(int teacherId, std::string name, std::string location, std::string 
     time = DBManager::sqlInjectionCheck(time);
     if (teacherId <= 0 || name.length() == 0)
         throw DMError(INVALID_ARGUMENT);
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         int code = DBManager::select("classes", "id", "teacher_id=" + std::to_string(teacherId) + " AND name='" + name + "'");
         if (!code) {
             if (DBManager::numRows() > 0) {
@@ -411,7 +425,7 @@ std::vector<Class> getClassList(int teacherId) noexcept(false) {
     if (teacherId <= 0)
         throw DMError(INVALID_ARGUMENT);
     std::vector<Class> result;
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         if (!DBManager::select("classes", "*", "teacher_id=" + std::to_string(teacherId) + "")) {
             if (DBManager::numRows() > 0) {
                 MYSQL_ROW row;
@@ -431,7 +445,7 @@ std::vector<Class> getClassList(int teacherId) noexcept(false) {
 int Class::getSize() noexcept(false) {
     if (id <= 0)
         return 0;
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         if (!DBManager::select("students", "count(*)", "class_id=" + std::to_string(id))) {
             int result = 0;
             if (DBManager::numRows() > 0) {
@@ -451,7 +465,7 @@ long getTotalClassSize(int teacherId) noexcept(false) {
     if (teacherId <= 0)
         throw DMError(INVALID_ARGUMENT);
     long result = 0;
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         if (!DBManager::select("classes", "count(*)", "teacher_id=" + std::to_string(teacherId) + " AND status=0")) {
             if (DBManager::numRows() > 0) {
                 MYSQL_ROW row = DBManager::fetchRow();
@@ -469,7 +483,7 @@ long getTotalClassSize(int teacherId) noexcept(false) {
 DMErrorType deleteClass(long id) {
     if (id <= 0)
         return INVALID_ARGUMENT;
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         int code = DBManager::remove("classes", "id=" + std::to_string(id));
         if (code)
             return DATABASE_OPERATION_ERROR;
@@ -493,7 +507,7 @@ DMErrorType deleteClass(long id) {
 Homework::Homework(long id) noexcept(false) {
     if (id <= 0)
         throw DMError(INVALID_ARGUMENT);
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         if (!DBManager::select("homework", "*", "id=" + std::to_string(id))) {
             if (DBManager::numRows() > 0) {
                 MYSQL_ROW row = DBManager::fetchRow();
@@ -516,7 +530,7 @@ Homework::Homework(long id) noexcept(false) {
 }
 
 Homework::Homework(int studentId, long assignmentId) noexcept(false) {
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         int code = DBManager::select("homework", "id", "student_id=" + std::to_string(studentId) + " AND assignment_id=" + std::to_string(assignmentId));
         if (!code) {
             if (DBManager::numRows() > 0)
@@ -544,7 +558,7 @@ Homework::Homework(int studentId, long assignmentId) noexcept(false) {
 DMErrorType Homework::setContentURL(std::string newURL) {
     if (id == -1)
         return OBJECT_NOT_INITED;
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         int code = DBManager::update("homework", "content_url='" + newURL + "'", "id=" + std::to_string(id));
         if (!code && DBManager::affectedRowCount() > 0) {
             contentURL = newURL;
@@ -559,7 +573,7 @@ DMErrorType Homework::setContentURL(std::string newURL) {
 DMErrorType Homework::setAttachmentURL(std::string newURL) {
     if (id == -1)
         return OBJECT_NOT_INITED;
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         int code = DBManager::update("homework", "attachment_url='" + newURL + "'", "id=" + std::to_string(id));
         if (!code && DBManager::affectedRowCount() > 0) {
             attachmentURL = newURL;
@@ -574,7 +588,7 @@ DMErrorType Homework::setAttachmentURL(std::string newURL) {
 DMErrorType Homework::setScore(unsigned short newScore) {
     if (id == -1)
         return OBJECT_NOT_INITED;
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         int code = DBManager::update("homework", "score=" + std::to_string(newScore), "id=" + std::to_string(id));
         if (!code && DBManager::affectedRowCount() > 0) {
             score = newScore;
@@ -590,7 +604,7 @@ DMErrorType Homework::setComments(std::string newComments) {
     newComments = DBManager::sqlInjectionCheck(newComments);
     if (id == -1)
         return OBJECT_NOT_INITED;
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         int code = DBManager::update("homework", "comments='" + newComments + "'", "id=" + std::to_string(id));
         if (!code && DBManager::affectedRowCount() > 0) {
             comments = newComments;
@@ -605,7 +619,7 @@ DMErrorType Homework::setComments(std::string newComments) {
 DMErrorType Homework::submit(std::string contentURL, std::string attachmentURL) {
     if (id == -1)
         return OBJECT_NOT_INITED;
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         std::string updateStr = "content_url='" + contentURL + "'";
         updateStr += attachmentURL == "" ? "" : ",attachment_url='" + attachmentURL + "'";
         int code = DBManager::update("homework", updateStr, "id=" + std::to_string(id));
@@ -624,7 +638,7 @@ DMErrorType Homework::review(unsigned short score, std::string comments) {
     comments = DBManager::sqlInjectionCheck(comments);
     if (id == -1)
         return OBJECT_NOT_INITED;
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         int code = DBManager::select("homework", "id", "student_id=" + std::to_string(studentId) + " AND assignment_id=" + std::to_string(assignmentId));
         if (!code) {
             if (DBManager::numRows() == 0)
@@ -648,7 +662,7 @@ std::vector<Homework> getHomeworkListByAsmId(long assignmentId) noexcept(false) 
     if (assignmentId <= 0)
         throw DMError(INVALID_ARGUMENT);
     std::vector<Homework> result;
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         if (!DBManager::select("homework", "*", "assignment_id=" + std::to_string(assignmentId))) {
             if (DBManager::numRows() > 0) {
                 MYSQL_ROW row;
@@ -669,7 +683,7 @@ DMErrorType deleteHomework(long id) {
     if (id <= 0)
         return INVALID_ARGUMENT;
     DMErrorType error = SUCCESS;
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         int code = DBManager::remove("homework", "id=" + std::to_string(id));
         if (code)
             error = DATABASE_OPERATION_ERROR;
@@ -688,7 +702,7 @@ DMErrorType deleteHomework(long id) {
 Assignment::Assignment(unsigned int teacherId, std::string title, std::string description, long deadline, unsigned long classId) noexcept(false) {
     title = DBManager::sqlInjectionCheck(title);
     description = DBManager::sqlInjectionCheck(description);
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         int code = DBManager::insert("assignments", "teacher_id,title,description,start_time,deadline,class_id", std::to_string(teacherId) + ",'" + title + "','" + description + "',NOW()," + std::to_string(deadline) + "," + std::to_string(classId));
         if (!code && DBManager::affectedRowCount() > 0) {
             if (!DBManager::select("assignments", "id", "teacher_id=" + std::to_string(teacherId), "start_time DESC LIMIT 1") && DBManager::numRows() == 1) {
@@ -707,7 +721,7 @@ Assignment::Assignment(unsigned int teacherId, std::string title, std::string de
 Assignment::Assignment(unsigned long id) noexcept(false) {
     if (id <= 0)
         throw DMError(INVALID_ARGUMENT);
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         if (!DBManager::select("assignments", "id,teacher_id,title,description,unix_timestamp(start_date),unix_timestamp(deadline),class_id", "id=" + std::to_string(id))) {
             if (DBManager::numRows() > 0) {
                 MYSQL_ROW row = DBManager::fetchRow();
@@ -735,7 +749,7 @@ DMErrorType Assignment::setTitle(std::string title) {
         return OBJECT_NOT_INITED;
     if (title.length() > 80)
         return INVALID_ARGUMENT;
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         int code = DBManager::update("assignments", "title='" + title + "'", "id=" + std::to_string(id));
         if (!code && DBManager::affectedRowCount() > 0) {
             this->title = title;
@@ -750,7 +764,7 @@ DMErrorType Assignment::setDescription(std::string description) {
     description = DBManager::sqlInjectionCheck(description);
     if (id == 0)
         return OBJECT_NOT_INITED;
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         int code = DBManager::update("assignments", "description='" + description + "'", "id=" + std::to_string(id));
         if (!code && DBManager::affectedRowCount() > 0) {
             this->description = description;
@@ -765,7 +779,7 @@ DMErrorType Assignment::setDescription(std::string description) {
 DMErrorType Assignment::setDeadline(long time) {
     if (id == 0)
         return OBJECT_NOT_INITED;
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         int code = DBManager::update("assignments", "deadline=" + std::to_string(time), "id=" + std::to_string(id));
         if (!code && DBManager::affectedRowCount() > 0) {
             this->deadline = time;
@@ -779,7 +793,7 @@ DMErrorType Assignment::setDeadline(long time) {
 
 std::vector<Assignment> getAssignmentList(unsigned int teacherId) noexcept(false) {
     std::vector<Assignment> result;
-    if (teacherId > 0 && DBManager::connectDatabase()) {
+    if (teacherId > 0 && connectDatabase()) {
         if (!DBManager::select("assignments", "id,teacher_id,title,description,unix_timestamp(start_date),unix_timestamp(deadline),class_id", "teacher_id=" + std::to_string(teacherId))) {
             if (DBManager::numRows() > 0) {
                 MYSQL_ROW row;
@@ -798,7 +812,7 @@ std::vector<Assignment> getAssignmentList(unsigned int teacherId) noexcept(false
 }
 
 DMErrorType deleteAssignment(unsigned long id, bool (* handler)(std::vector<Homework>)) {
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         int code = DBManager::remove("assignments", "id=" + std::to_string(id));
         if (code || DBManager::affectedRowCount() == 0)
             return DATABASE_OPERATION_ERROR;
@@ -827,7 +841,7 @@ std::vector<CompleteHomeworkList> getHomeworkListByStuId(int studentId, long cla
     if (studentId <= 0 || classId <= 0)
         throw DMError(INVALID_ARGUMENT);
     std::vector<CompleteHomeworkList> result;
-    if (DBManager::connectDatabase()) {
+    if (connectDatabase()) {
         std::string queryStr = "SELECT * FROM (SELECT id,teacher_id,title,description,unix_timestamp(start_date),unix_timestamp(deadline),class_id FROM assignments WHERE class_id=" + std::to_string(classId) + ") AS ass_list LEFT JOIN homework ON homework.student_id=" + std::to_string(studentId) + " AND homework.assignment_id=ass_list.id";
         if (!DBManager::query(queryStr)) {
             if (DBManager::numRows() > 0) {

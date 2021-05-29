@@ -35,11 +35,7 @@ int main(int argc, char *argv[])
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
     
-    DBManager::DBAccount remote;
-    remote.host = "vps.coyangjr.cn";
-    remote.username = "root";
-    remote.password = "Whu2020";
-    DataManager::connectDatabase(remote);
+    DataManager::connectDatabase();
     QObject::connect(qApp, &QGuiApplication::aboutToQuit, [&]{
         //退出 事件循环 前，保存数据
         DataManager::disconnectDatabase();

@@ -1,4 +1,4 @@
-﻿//
+//
 //  DBManager.hpp
 //  DataManager
 //
@@ -12,6 +12,18 @@
 #include <string>
 
 #include "mysql.h"
+
+/*
+ 定义DEBUG宏可让DBManager将错误输出至控制台
+ 定义VERBOSE宏可让DBManager将完整的调试数据输出至控制台
+ */
+
+#ifndef DEBUG
+#define DEBUG
+#endif
+//#ifndef VERBOSE
+//#define VERBOSE
+//#endif
 
 namespace DBManager {
 
@@ -30,15 +42,15 @@ typedef enum DBActionType {
     DEL
 } DBActionType;
 
-/// 使用默认账号密码连接数据库
-bool connectDatabase();
-
 /// 连接数据库
 /// @param account 数据库帐号
 bool connectDatabase(DBAccount account);
 
 /// 关闭数据库连接并释放查询结果使用的内存
 void closeConnection();
+
+/// 检查数据库连接是否仍然可用，如果可用，返回0
+int checkConnection();
 
 /// 查询数据库
 /// @param queryString SQL语句

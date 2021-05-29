@@ -15,7 +15,7 @@
 
 namespace DataManager {
 
-bool connectDatabase(DBManager::DBAccount account);
+bool connectDatabase();
 void disconnectDatabase();
 
 //MARK: - User类定义

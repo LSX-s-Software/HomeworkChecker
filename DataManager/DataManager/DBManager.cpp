@@ -10,13 +10,6 @@
 #include <string>
 #pragma comment(lib, "libmysql.lib")
 
-#ifndef DEBUG
-#define DEBUG
-#endif
-//#ifndef VERBOSE
-//#define VERBOSE
-//#endif
-
 namespace DBManager {
 
 MYSQL* mysql = NULL;
@@ -24,8 +17,6 @@ MYSQL_RES* queryResult = NULL;
 std::string errMsg = "";
 
 bool connectDatabase(DBAccount account) {
-    if (mysql != NULL)
-        return true;
     mysql = mysql_init(NULL); //初始化连接
     mysql = mysql_real_connect(mysql, account.host.c_str(), account.username.c_str(), account.password.c_str(), "homework_checker", account.port, NULL, 0);
     if (mysql) {
@@ -44,15 +35,6 @@ bool connectDatabase(DBAccount account) {
     }
 }
 
-bool connectDatabase() {
-    DBManager::DBAccount remote;
-    remote.host = "vps.coyangjr.cn";
-    remote.username = "root";
-    remote.password = "Whu2020";
-    
-    return connectDatabase(remote);
-}
-
 void closeConnection() {
     if (queryResult != NULL)
         mysql_free_result(queryResult);  //释放一个结果集合使用的内存
@@ -64,6 +46,13 @@ void closeConnection() {
 #endif
 }
 
+int checkConnection() {
+    if (mysql == NULL)
+        return -1;
+    else
+        return mysql_ping(mysql);
+}
+
 int query(std::string queryString) {
     if (!mysql) {
 #ifdef DEBUG
@@ -71,7 +60,7 @@ int query(std::string queryString) {
 #endif
         return -1;
     }
-#ifdef DEBUG
+#ifdef VERBOSE
     std::cout << "[LOG] [DBManager] queryStr: \"" << queryString << "\"" << std::endl;
 #endif
     if (queryResult != NULL) {
@@ -98,7 +87,7 @@ int query(std::string queryString, DBActionType actionType) {
 #endif
         return -1;
     }
-#ifdef DEBUG
+#ifdef VERBOSE
     std::cout << "[LOG] [DBManager] queryStr: \"" << queryString << "\"" << std::endl;
 #endif
     if (queryResult != NULL) {
