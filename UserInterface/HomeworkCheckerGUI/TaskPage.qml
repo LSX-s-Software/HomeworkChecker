@@ -159,8 +159,10 @@ StackView {
                     anchors.fill: parent
                     hoverEnabled: true
                     onClicked: {
-                        info.assignmentId=id;
-                        taskPage.push(info)
+                        window.assignmentId=id;
+                        //console.log(window.assignmentId)
+                        var item=taskPage.push(info)
+                        item.refresh()
                     }
                 }
             }

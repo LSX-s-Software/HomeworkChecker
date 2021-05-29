@@ -44,7 +44,7 @@ void TaskPage::refresh()
         {
             auto studentList = DataManager::getStudentList(list.at(0).getClassId());
             int totolNum = studentList.size();
-            for (auto item : list)
+            for (auto& item : list)
             {
                 QJsonObject obj;
                 obj.insert("id", QString::fromStdString(std::to_string(item.getId())));

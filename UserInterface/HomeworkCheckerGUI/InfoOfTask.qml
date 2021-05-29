@@ -2,12 +2,41 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
+import HomeworkVC 1.0
 
 Rectangle {
     id: infoOfTask
     width: 1046
     height: 768
     color: "#ffffff"
+
+    HomeworkVC {
+        id:homeworkVC
+    }
+
+    ListModel {
+    id: homeworkListModel
+    }
+
+    property int uncheckNum: 0
+    property int finishNum: 0
+    property string assignmentName: ""
+    property string deadline: ""
+    property string className: ""
+
+    function refresh() {
+        homeworkVC.setAssignmentId(window.assignmentId)
+        homeworkListModel.clear()
+        infoOfTask.deadline=homeworkVC.getDeadline()
+        infoOfTask.assignmentName=homeworkVC.getClassName()
+        infoOfTask.className=homeworkVC.getClassName()
+        homeworkVC.refresh()
+        uncheckNum=homeworkVC.getUncheckNum()
+        finishNum=homeworkVC.getFinishNum()
+        homeworkVC.homeworkList.forEach(ele => {
+                                          homeworkListModel.append(ele)
+                                  })
+    }
 
     //ComponentBegein
     Component{
@@ -22,12 +51,13 @@ Rectangle {
             color: "#f5f5f5"
             Text {
                 id: nameAndNumber
-                text: name+"("+number+")"
+                text: name+"("+studentNum+")"
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.left: parent.left
                 anchors.leftMargin: 0
                 font.bold: true
                 verticalAlignment: Text.AlignVCenter
+                font.family: "Source Han Sans CN"
                 font.pixelSize: 28
             }
 
@@ -49,7 +79,7 @@ Rectangle {
                 anchors.right: parent.right
                 anchors.rightMargin: 45
                 horizontalAlignment: Text.AlignLeft
-
+                font.family: "Source Han Sans CN"
                 anchors.verticalCenter: parent.verticalCenter
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: 28
@@ -74,8 +104,9 @@ Rectangle {
         id: element
         x: 308
         y: 70
-        text: qsTr("第六章作业")
+        text: assignmentName
         font.weight: Font.Medium
+        font.family: "Source Han Sans CN"
         anchors.horizontalCenter: parent.horizontalCenter
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
@@ -93,43 +124,7 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         delegate: studentListItem
-        model: ListModel {
-            ListElement {
-                name: "李四"
-                number:"2020302111000"
-                score: "90"
-            }
-            ListElement {
-                name: "李四"
-                number:"2020302111000"
-                score: "90"
-            }
-            ListElement {
-                name: "李四"
-                number:"2020302111000"
-                score: "90"
-            }
-            ListElement {
-                name: "李四"
-                number: "2020302111000"
-                score: "90"
-            }
-            ListElement {
-                name: "李四"
-                number:"2020302111000"
-                score: "90"
-            }
-            ListElement {
-                name: "李四"
-                number:"2020302111000"
-                score: "90"
-            }
-            ListElement {
-                name: "李四"
-                number:"2020302111000"
-                score: "90"
-            }
-        }
+        model: homeworkListModel
     }
 
     Rectangle {
@@ -160,7 +155,7 @@ Rectangle {
             id: element30
             x: 129
             height: 32
-            text: qsTr("2020级计卓")
+            text: className
             font.family: "Source Han Sans CN"
             verticalAlignment: Text.AlignVCenter
             anchors.right: parent.right
@@ -234,7 +229,7 @@ Rectangle {
             id: element32
             x: 129
             height: 32
-            text: qsTr("2021年5月15日 23:59:59")
+            text: deadline
             anchors.right: parent.right
             font.family: "Source Han Sans CN"
             verticalAlignment: Text.AlignVCenter

@@ -197,6 +197,7 @@
     <ClCompile Include="account.cpp" />
     <ClCompile Include="classviewcontroller.cpp" />
     <ClCompile Include="generalviewcontroller.cpp" />
+    <ClCompile Include="infooftask.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="settingpage.cpp" />
     <ClCompile Include="taskpage.cpp" />
@@ -276,6 +277,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="taskpage.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="infooftask.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

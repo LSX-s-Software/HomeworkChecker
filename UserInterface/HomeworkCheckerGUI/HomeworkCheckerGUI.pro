@@ -12,6 +12,7 @@ SOURCES += \
         account.cpp \
         classviewcontroller.cpp \
         generalviewcontroller.cpp \
+        infooftask.cpp \
         main.cpp \
         settingpage.cpp \
         taskpage.cpp
@@ -35,6 +36,7 @@ HEADERS += \
     account.h \
     classviewcontroller.h \
     generalviewcontroller.h \
+    infooftask.h \
     settingpage.h \
     taskpage.h
 

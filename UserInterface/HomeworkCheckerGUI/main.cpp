@@ -9,6 +9,7 @@
 #include "classviewcontroller.h"
 #include "settingpage.h"
 #include "taskpage.h"
+#include "infooftask.h"
 
 int main(int argc, char *argv[])
 {
@@ -24,7 +25,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<SettingPage>("MySettingPage", 1, 0, "MySettingPage");
     qmlRegisterType<ClassViewController>("ClassVC", 1, 0, "ClassVC");
     qmlRegisterType<TaskPage>("AssignmentVC", 1, 0, "AssignmentVC");
-
+    qmlRegisterType<InfoOfTask>("HomeworkVC", 1, 0, "HomeworkVC");
 
     QQmlApplicationEngine engine;
     //engine.rootContext()->setContextProperty("settingPage", new SettingPage(qApp));

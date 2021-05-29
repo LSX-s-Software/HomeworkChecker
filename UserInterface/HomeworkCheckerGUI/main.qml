@@ -11,7 +11,7 @@ Window {
     minimumWidth: 960
     visible: true
     title: qsTr("Homework Checker")
-
+    property string assignmentId: ""
     GeneralVC {
         id: vc
     }

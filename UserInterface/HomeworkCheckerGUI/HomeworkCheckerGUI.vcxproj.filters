@@ -55,6 +55,9 @@
     <ClCompile Include="taskpage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="infooftask.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="generalviewcontroller.h">
@@ -71,6 +74,9 @@
     </QtMoc>
     <QtMoc Include="taskpage.h">
       <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="infooftask.h">
+      <Filter>Generated Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
