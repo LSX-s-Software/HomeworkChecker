@@ -1,7 +1,8 @@
-﻿#include <QGuiApplication>
+#include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
+#include "../../DataManager/DataManager/DataManager.hpp"
 //自定义CPP模块头文件
 #include "generalviewcontroller.h"
 #include "account.h"
@@ -33,6 +34,16 @@ int main(int argc, char *argv[])
         if (!obj && url == objUrl)
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
+    
+    DBManager::DBAccount remote;
+    remote.host = "vps.coyangjr.cn";
+    remote.username = "root";
+    remote.password = "Whu2020";
+    DataManager::connectDatabase(remote);
+    QObject::connect(qApp, &QGuiApplication::aboutToQuit, [&]{
+        //退出 事件循环 前，保存数据
+        DataManager::disconnectDatabase();
+    });
     engine.load(url);
 
     return app.exec();

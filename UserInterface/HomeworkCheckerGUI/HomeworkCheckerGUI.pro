@@ -68,5 +68,7 @@ INCLUDEPATH += ../../packages/json
 DEPENDPATH += ../../packages/json
 
 macx: LIBS += -L../../lib/ -lmysqlcppconn.9.8.0.25
+macx: LIBS += -L../../lib/ -lssl.1.1
+macx: LIBS += -L../../lib/ -lcrypto.1.1
 
 DEPENDPATH += ../../lib/
