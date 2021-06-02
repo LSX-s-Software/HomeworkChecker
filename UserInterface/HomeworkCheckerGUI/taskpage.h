@@ -15,7 +15,7 @@ class TaskPage :
     Q_PROPERTY(QJsonArray assignmentList READ getAssignmentList CONSTANT)
     QML_ELEMENT
 public:
-    explicit TaskPage(QObject* parent = nullptr) {}
+    explicit TaskPage(QObject* parent = nullptr): QObject(parent) {}
 
     Q_INVOKABLE void refresh();
     QJsonArray getAssignmentList();

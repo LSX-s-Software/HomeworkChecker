@@ -12,6 +12,18 @@
 #include "DBManager.hpp"
 #include "DMError.hpp"
 #include <vector>
+#include <iostream>
+#include <iomanip>
+#include <sstream>
+
+namespace DMUtils {
+
+/// BKDR Hash Function
+unsigned int BKDRHash(char *str);
+
+std::string double2FixedStr(double num, unsigned fix);
+
+}
 
 namespace DataManager {
 
@@ -201,6 +213,17 @@ long getTotalClassSize(int teacherId) noexcept(false);
 /// 删除班级
 /// @param id 班级ID
 DMErrorType deleteClass(long id);
+
+typedef struct {
+    int stuId;
+    std::string name;
+    std::string schoolNum;
+    float score;
+} ScoreListItem;
+
+/// 获取班级的分数列表
+/// @param classId 班级ID
+std::vector<ScoreListItem> getScoreList(long classId) noexcept(false);
 
 //MARK: - Homework类定义
 

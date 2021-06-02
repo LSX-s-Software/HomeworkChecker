@@ -15,7 +15,7 @@ class InfoOfTask :
         Q_PROPERTY(QJsonArray homeworkList READ getHomeworkList CONSTANT)
         QML_ELEMENT
 public:
-    explicit InfoOfTask(QObject* parent = nullptr) {}
+    explicit InfoOfTask(QObject* parent = nullptr): QObject(parent) {}
 
     Q_INVOKABLE void refresh();
     Q_INVOKABLE void setAssignmentId(QString assignment);

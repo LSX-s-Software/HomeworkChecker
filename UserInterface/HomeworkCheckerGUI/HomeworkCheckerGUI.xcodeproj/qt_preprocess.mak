@@ -32,8 +32,9 @@ check: first
 
 benchmark: first
 
-compilers: qrc_qml.cpp moc_predefs.h moc_account.cpp moc_classviewcontroller.cpp moc_generalviewcontroller.cpp\
-	 moc_settingpage.cpp moc_taskpage.cpp
+compilers: qrc_qml.cpp moc_predefs.h moc_account.cpp moc_classscoreviewcontroller.cpp moc_classviewcontroller.cpp\
+	 moc_generalviewcontroller.cpp moc_infooftask.cpp moc_settingpage.cpp\
+	 moc_studentscoreviewcontroller.cpp moc_taskpage.cpp
 compiler_rcc_make_all: qrc_qml.cpp
 compiler_rcc_clean:
 	-$(DEL_FILE) qrc_qml.cpp
@@ -75,59 +76,223 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../../Qt/6.1.0/clang_64/mkspecs/features/data/dummy.cpp
 	/Library/Developer/CommandLineTools/usr/bin/clang++ -pipe -stdlib=libc++ -O2 -std=gnu++1z -Wall -Wextra -dM -E -o moc_predefs.h ../../../Qt/6.1.0/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_account.cpp moc_classviewcontroller.cpp moc_generalviewcontroller.cpp moc_settingpage.cpp moc_taskpage.cpp
+compiler_moc_header_make_all: moc_account.cpp moc_classscoreviewcontroller.cpp moc_classviewcontroller.cpp moc_generalviewcontroller.cpp moc_infooftask.cpp moc_settingpage.cpp moc_studentscoreviewcontroller.cpp moc_taskpage.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_account.cpp moc_classviewcontroller.cpp moc_generalviewcontroller.cpp moc_settingpage.cpp moc_taskpage.cpp
+	-$(DEL_FILE) moc_account.cpp moc_classscoreviewcontroller.cpp moc_classviewcontroller.cpp moc_generalviewcontroller.cpp moc_infooftask.cpp moc_settingpage.cpp moc_studentscoreviewcontroller.cpp moc_taskpage.cpp
 moc_account.cpp: account.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../Qt/6.1.0/clang_64/lib/QtQml.framework/Headers/qqml.h \
 		../../DataManager/DataManager/DataManager.hpp \
+		../../DataManager/DataManager/DBManager.hpp \
+		../../packages/mysql/include/mysql.h \
+		../../packages/mysql/include/field_types.h \
+		../../packages/mysql/include/my_list.h \
+		../../packages/mysql/include/mysql_com.h \
+		../../packages/mysql/include/my_command.h \
+		../../packages/mysql/include/my_compress.h \
+		../../packages/mysql/include/mysql/udf_registration_types.h \
+		../../packages/mysql/include/mysql/client_plugin.h \
+		../../packages/mysql/include/mysql/plugin_auth_common.h \
+		../../packages/mysql/include/mysql_version.h \
+		../../packages/mysql/include/mysql_time.h \
+		../../packages/mysql/include/errmsg.h \
+		../../DataManager/DataManager/DMError.hpp \
 		moc_predefs.h \
 		../../../Qt/6.1.0/clang_64/libexec/moc
 	/Users/linsixing/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_predefs.h -I/Users/linsixing/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/DataManager/build/Debug -I/Users/linsixing/HomeworkChecker/packages/mysql/include -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/packages/json -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQuick.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtOpenGL.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQmlModels.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQml.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtNetwork.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/linsixing/Qt/6.1.0/clang_64/lib account.h -o moc_account.cpp
 
-moc_classviewcontroller.cpp: classviewcontroller.h \
+moc_classscoreviewcontroller.cpp: classscoreviewcontroller.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QJsonArray \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qjsonarray.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QJsonObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qjsonobject.h \
 		../../../Qt/6.1.0/clang_64/lib/QtQml.framework/Headers/qqml.h \
 		../../DataManager/DataManager/DataManager.hpp \
+		../../DataManager/DataManager/DBManager.hpp \
+		../../packages/mysql/include/mysql.h \
+		../../packages/mysql/include/field_types.h \
+		../../packages/mysql/include/my_list.h \
+		../../packages/mysql/include/mysql_com.h \
+		../../packages/mysql/include/my_command.h \
+		../../packages/mysql/include/my_compress.h \
+		../../packages/mysql/include/mysql/udf_registration_types.h \
+		../../packages/mysql/include/mysql/client_plugin.h \
+		../../packages/mysql/include/mysql/plugin_auth_common.h \
+		../../packages/mysql/include/mysql_version.h \
+		../../packages/mysql/include/mysql_time.h \
+		../../packages/mysql/include/errmsg.h \
+		../../DataManager/DataManager/DMError.hpp \
+		moc_predefs.h \
+		../../../Qt/6.1.0/clang_64/libexec/moc
+	/Users/linsixing/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_predefs.h -I/Users/linsixing/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/DataManager/build/Debug -I/Users/linsixing/HomeworkChecker/packages/mysql/include -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/packages/json -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQuick.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtOpenGL.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQmlModels.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQml.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtNetwork.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/linsixing/Qt/6.1.0/clang_64/lib classscoreviewcontroller.h -o moc_classscoreviewcontroller.cpp
+
+moc_classviewcontroller.cpp: classviewcontroller.h \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QJsonArray \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qjsonarray.h \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QJsonObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qjsonobject.h \
+		../../../Qt/6.1.0/clang_64/lib/QtQml.framework/Headers/qqml.h \
+		../../DataManager/DataManager/DataManager.hpp \
+		../../DataManager/DataManager/DBManager.hpp \
+		../../packages/mysql/include/mysql.h \
+		../../packages/mysql/include/field_types.h \
+		../../packages/mysql/include/my_list.h \
+		../../packages/mysql/include/mysql_com.h \
+		../../packages/mysql/include/my_command.h \
+		../../packages/mysql/include/my_compress.h \
+		../../packages/mysql/include/mysql/udf_registration_types.h \
+		../../packages/mysql/include/mysql/client_plugin.h \
+		../../packages/mysql/include/mysql/plugin_auth_common.h \
+		../../packages/mysql/include/mysql_version.h \
+		../../packages/mysql/include/mysql_time.h \
+		../../packages/mysql/include/errmsg.h \
+		../../DataManager/DataManager/DMError.hpp \
 		account.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		moc_predefs.h \
 		../../../Qt/6.1.0/clang_64/libexec/moc
 	/Users/linsixing/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_predefs.h -I/Users/linsixing/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/DataManager/build/Debug -I/Users/linsixing/HomeworkChecker/packages/mysql/include -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/packages/json -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQuick.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtOpenGL.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQmlModels.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQml.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtNetwork.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/linsixing/Qt/6.1.0/clang_64/lib classviewcontroller.h -o moc_classviewcontroller.cpp
 
 moc_generalviewcontroller.cpp: generalviewcontroller.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../Qt/6.1.0/clang_64/lib/QtQml.framework/Headers/qqml.h \
 		../../DataManager/DataManager/DataManager.hpp \
+		../../DataManager/DataManager/DBManager.hpp \
+		../../packages/mysql/include/mysql.h \
+		../../packages/mysql/include/field_types.h \
+		../../packages/mysql/include/my_list.h \
+		../../packages/mysql/include/mysql_com.h \
+		../../packages/mysql/include/my_command.h \
+		../../packages/mysql/include/my_compress.h \
+		../../packages/mysql/include/mysql/udf_registration_types.h \
+		../../packages/mysql/include/mysql/client_plugin.h \
+		../../packages/mysql/include/mysql/plugin_auth_common.h \
+		../../packages/mysql/include/mysql_version.h \
+		../../packages/mysql/include/mysql_time.h \
+		../../packages/mysql/include/errmsg.h \
+		../../DataManager/DataManager/DMError.hpp \
 		moc_predefs.h \
 		../../../Qt/6.1.0/clang_64/libexec/moc
 	/Users/linsixing/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_predefs.h -I/Users/linsixing/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/DataManager/build/Debug -I/Users/linsixing/HomeworkChecker/packages/mysql/include -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/packages/json -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQuick.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtOpenGL.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQmlModels.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQml.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtNetwork.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/linsixing/Qt/6.1.0/clang_64/lib generalviewcontroller.h -o moc_generalviewcontroller.cpp
 
+moc_infooftask.cpp: infooftask.h \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QJsonArray \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qjsonarray.h \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QJsonObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qjsonobject.h \
+		../../../Qt/6.1.0/clang_64/lib/QtQml.framework/Headers/qqml.h \
+		../../DataManager/DataManager/DataManager.hpp \
+		../../DataManager/DataManager/DBManager.hpp \
+		../../packages/mysql/include/mysql.h \
+		../../packages/mysql/include/field_types.h \
+		../../packages/mysql/include/my_list.h \
+		../../packages/mysql/include/mysql_com.h \
+		../../packages/mysql/include/my_command.h \
+		../../packages/mysql/include/my_compress.h \
+		../../packages/mysql/include/mysql/udf_registration_types.h \
+		../../packages/mysql/include/mysql/client_plugin.h \
+		../../packages/mysql/include/mysql/plugin_auth_common.h \
+		../../packages/mysql/include/mysql_version.h \
+		../../packages/mysql/include/mysql_time.h \
+		../../packages/mysql/include/errmsg.h \
+		../../DataManager/DataManager/DMError.hpp \
+		account.h \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		moc_predefs.h \
+		../../../Qt/6.1.0/clang_64/libexec/moc
+	/Users/linsixing/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_predefs.h -I/Users/linsixing/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/DataManager/build/Debug -I/Users/linsixing/HomeworkChecker/packages/mysql/include -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/packages/json -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQuick.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtOpenGL.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQmlModels.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQml.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtNetwork.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/linsixing/Qt/6.1.0/clang_64/lib infooftask.h -o moc_infooftask.cpp
+
 moc_settingpage.cpp: settingpage.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		../../../Qt/6.1.0/clang_64/lib/QtQml.framework/Headers/qqml.h \
 		moc_predefs.h \
 		../../../Qt/6.1.0/clang_64/libexec/moc
 	/Users/linsixing/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_predefs.h -I/Users/linsixing/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/DataManager/build/Debug -I/Users/linsixing/HomeworkChecker/packages/mysql/include -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/packages/json -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQuick.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtOpenGL.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQmlModels.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQml.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtNetwork.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/linsixing/Qt/6.1.0/clang_64/lib settingpage.h -o moc_settingpage.cpp
 
-moc_taskpage.cpp: taskpage.h \
+moc_studentscoreviewcontroller.cpp: studentscoreviewcontroller.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QJsonArray \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qjsonarray.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QJsonObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qjsonobject.h \
 		../../../Qt/6.1.0/clang_64/lib/QtQml.framework/Headers/qqml.h \
 		../../DataManager/DataManager/DataManager.hpp \
+		../../DataManager/DataManager/DBManager.hpp \
+		../../packages/mysql/include/mysql.h \
+		../../packages/mysql/include/field_types.h \
+		../../packages/mysql/include/my_list.h \
+		../../packages/mysql/include/mysql_com.h \
+		../../packages/mysql/include/my_command.h \
+		../../packages/mysql/include/my_compress.h \
+		../../packages/mysql/include/mysql/udf_registration_types.h \
+		../../packages/mysql/include/mysql/client_plugin.h \
+		../../packages/mysql/include/mysql/plugin_auth_common.h \
+		../../packages/mysql/include/mysql_version.h \
+		../../packages/mysql/include/mysql_time.h \
+		../../packages/mysql/include/errmsg.h \
+		../../DataManager/DataManager/DMError.hpp \
+		moc_predefs.h \
+		../../../Qt/6.1.0/clang_64/libexec/moc
+	/Users/linsixing/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_predefs.h -I/Users/linsixing/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/DataManager/build/Debug -I/Users/linsixing/HomeworkChecker/packages/mysql/include -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/packages/json -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQuick.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtOpenGL.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQmlModels.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQml.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtNetwork.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/linsixing/Qt/6.1.0/clang_64/lib studentscoreviewcontroller.h -o moc_studentscoreviewcontroller.cpp
+
+moc_taskpage.cpp: taskpage.h \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QJsonArray \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qjsonarray.h \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QJsonObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qjsonobject.h \
+		../../../Qt/6.1.0/clang_64/lib/QtQml.framework/Headers/qqml.h \
+		../../DataManager/DataManager/DataManager.hpp \
+		../../DataManager/DataManager/DBManager.hpp \
+		../../packages/mysql/include/mysql.h \
+		../../packages/mysql/include/field_types.h \
+		../../packages/mysql/include/my_list.h \
+		../../packages/mysql/include/mysql_com.h \
+		../../packages/mysql/include/my_command.h \
+		../../packages/mysql/include/my_compress.h \
+		../../packages/mysql/include/mysql/udf_registration_types.h \
+		../../packages/mysql/include/mysql/client_plugin.h \
+		../../packages/mysql/include/mysql/plugin_auth_common.h \
+		../../packages/mysql/include/mysql_version.h \
+		../../packages/mysql/include/mysql_time.h \
+		../../packages/mysql/include/errmsg.h \
+		../../DataManager/DataManager/DMError.hpp \
 		account.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		moc_predefs.h \
 		../../../Qt/6.1.0/clang_64/libexec/moc
 	/Users/linsixing/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_predefs.h -I/Users/linsixing/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/DataManager/build/Debug -I/Users/linsixing/HomeworkChecker/packages/mysql/include -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/packages/json -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQuick.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtOpenGL.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQmlModels.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQml.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtNetwork.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/linsixing/Qt/6.1.0/clang_64/lib taskpage.h -o moc_taskpage.cpp

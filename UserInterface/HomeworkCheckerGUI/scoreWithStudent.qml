@@ -2,11 +2,33 @@ import QtQuick 2.0
 import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
+import StudentScoreVC 1.0
+
 Rectangle {
     id: rectangle
     width: 1046
     height: 768
     color: "#ffffff"
+
+    property string stuName: "加载中"
+    property int stuId: -1
+    property int classId: -1
+
+    StudentScoreVC {
+        id: studentScoreVC
+    }
+
+    ListModel {
+        id: homeworkListModel
+    }
+
+    function loadData() {
+        studentScoreVC.loadData(stuId, classId)
+        homeworkListModel.clear()
+        studentScoreVC.scoreList.forEach(ele => {
+                                      homeworkListModel.append(ele)
+                                  })
+    }
 
     //Component
     Component{
@@ -19,7 +41,7 @@ Rectangle {
 
             Text {
                 id: numberOfHomework
-                text: "第"+number+"章作业"
+                text: name
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.left: parent.left
                 anchors.leftMargin: 16
@@ -37,22 +59,11 @@ Rectangle {
                 width: 45
                 text: score
                 anchors.right: parent.right
-                anchors.rightMargin: 45
-                horizontalAlignment: Text.AlignLeft
+                anchors.rightMargin: 20
+                horizontalAlignment: Text.AlignRight
                 anchors.verticalCenter: parent.verticalCenter
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: 28
-            }
-
-            Image {
-                id: image
-                width: 9
-                height: 28
-                anchors.rightMargin: 20
-                anchors.right: parent.right
-                anchors.verticalCenter: parent.verticalCenter
-                fillMode: Image.PreserveAspectFit
-                source: "images/more.png"
             }
         }
     }
@@ -82,8 +93,12 @@ Rectangle {
         MouseArea {
             id: mouseArea1
             anchors.fill: parent
-            onClicked:
+            onClicked: {
+                stuName = "加载中"
+                stuId = -1
+                classId = -1
                 markPage.pop()
+            }
         }
 
         Image {
@@ -100,7 +115,7 @@ Rectangle {
     Text {
         id: element
         height: 40
-        text: qsTr("李四的各次成绩")
+        text: stuName + "的各次成绩"
         verticalAlignment: Text.AlignVCenter
         font.family: "Source Han Sans CN"
         font.weight: Font.Medium
@@ -124,28 +139,7 @@ Rectangle {
         clip: true
         anchors.topMargin: 40
         delegate: homeworkListItem
-        model: ListModel {
-            ListElement {
-                number:"一"
-                score:"89"
-            }
-
-            ListElement {
-                number:"二"
-                score:"89"
-            }
-
-            ListElement {
-                number:"三"
-                score:"89"
-            }
-
-            ListElement {
-                number:"四"
-                score:"89"
-            }
-        }
-
+        model: homeworkListModel
     }
 }
 
@@ -153,6 +147,6 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.66}D{i:12}
+    D{i:0;formeditorZoom:0.66}
 }
 ##^##*/

@@ -22,6 +22,7 @@ Rectangle {
     }
 
     property int displayType: 0
+    property int classId: -1
 
     function refresh() {
         classVC.refresh()
@@ -76,7 +77,7 @@ Rectangle {
         id: title
         width: 240
         height: 53
-        text: qsTr("已创建的班级")
+        text: displayType <= 1 ? qsTr("已创建的班级") : qsTr("选择班级")
         anchors.top: parent.top
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
@@ -97,7 +98,7 @@ Rectangle {
         anchors.leftMargin: 32
         Text {
             id: element4
-            color: displayType == 0 ? "#0098f7" : "#707070"
+            color: displayType % 2 == 0 ? "#0098f7" : "#707070"
             text: qsTr("当前")
             anchors.fill: parent
             horizontalAlignment: Text.AlignHCenter
@@ -111,7 +112,11 @@ Rectangle {
             id: mouseArea4
             anchors.fill: parent
             onClicked: {
-                displayType = 0
+                if (displayType == 1) {
+                    displayType = 0
+                } else if (displayType == 3) {
+                    displayType = 2
+                }
                 listView.model = classListModel
             }
         }
@@ -127,7 +132,7 @@ Rectangle {
         anchors.leftMargin: 32
         Text {
             id: element5
-            color: displayType == 1 ? "#0098f7" : "#707070"
+            color: displayType % 2 == 1 ? "#0098f7" : "#707070"
             text: qsTr("过去")
             anchors.fill: parent
             horizontalAlignment: Text.AlignHCenter
@@ -141,7 +146,11 @@ Rectangle {
             id: mouseArea5
             anchors.fill: parent
             onClicked: {
-                displayType = 1
+                if (displayType == 0) {
+                    displayType = 1
+                } else if (displayType == 2) {
+                    displayType = 3
+                }
                 listView.model = endedClassListModel
             }
         }
@@ -186,7 +195,14 @@ Rectangle {
                 anchors.fill: parent
                 hoverEnabled: true
                 onClicked: {
-                    infoOfClass.show(classVC.classList[index])
+                    if (displayType == 0) {
+                        infoOfClass.show(classVC.classList[index])
+                    } else if (displayType >= 2) {
+                        var scorePage = markPage.push(scoreOfClass)
+                        scorePage.classId = classVC.classList[index].id
+                        scorePage.className = classVC.classList[index].name
+                        scorePage.loadData()
+                    }
                 }
             }
         }
@@ -211,6 +227,7 @@ Rectangle {
 
     Image {
         id: addBtn
+        visible: displayType <= 1
         width: 60
         height: 60
         anchors.right: parent.right
@@ -225,6 +242,15 @@ Rectangle {
             onClicked: {
                 newClass.open()
             }
+        }
+    }
+
+    Component{
+        id:scoreOfClass
+        ScoreWithClass {
+            id: scoreWithClass
+            width: markPage.width
+            height: markPage.height
         }
     }
 }

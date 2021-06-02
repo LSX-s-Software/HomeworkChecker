@@ -1,4 +1,4 @@
-﻿#include "generalviewcontroller.h"
+#include "generalviewcontroller.h"
 #include "account.h"
 #include <iostream>
 
@@ -53,7 +53,11 @@ QString GeneralViewController::correctedProg() {
     } else if (totalClassSize == 0) {
         return u8"未创建班级";
     } else {
-        double prog = double(homeworkList.size()) / double() * 100;
-        return QString::fromStdString(std::to_string(prog) + "%");
+        int correctedCount = 0;
+        for (auto it : homeworkList) {
+            correctedCount++;
+        }
+        double prog = double(correctedCount) / double(assmList.size()) * 100;
+        return QString::fromStdString(DMUtils::double2FixedStr(prog, 2) + "%");
     }
 }

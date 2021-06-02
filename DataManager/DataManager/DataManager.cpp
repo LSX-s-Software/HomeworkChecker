@@ -7,11 +7,29 @@
 
 #include "DataManager.hpp"
 
-#include <iostream>
+namespace DMUtils {
+
+unsigned int BKDRHash(const std::string str) {
+    char *strPtr = const_cast<char *>(str.c_str());
+    unsigned int seed = 131;
+    unsigned int hash = 0;
+
+    while (*strPtr) {
+        hash = hash * seed + (*strPtr++);
+    }
+
+    return (hash & 0x7FFFFFFF);
+}
+
+std::string double2FixedStr(double num, unsigned fix) {
+    std::stringstream ss;
+    ss << std::setiosflags(std::ios::fixed) << std::setprecision(fix) << num;
+    return ss.str();
+}
+
+}
 
 namespace DataManager {
-
-std::hash<std::string> hashStr;
 
 bool connectDatabase() {
     int conStat = DBManager::checkConnection();
@@ -41,7 +59,7 @@ DMErrorType User::login(std::string email, std::string password) {
         if (!DBManager::select("users", "id,password,name", "username='" + email + "'")) {
             if (DBManager::numRows() == 1) {
                 MYSQL_ROW row = DBManager::fetchRow();
-                if (row[1] == std::to_string(hashStr(password))) {
+                if (row[1] == std::to_string(DMUtils::BKDRHash(password.c_str()))) {
                     std::string idStr = row[0];
                     this->id = atoi(idStr.c_str());
                     this->email = email;
@@ -68,7 +86,7 @@ DMErrorType User::reg(std::string email, std::string password) {
     if (connectDatabase()) {
         if (!DBManager::select("users", "id", "username='" + email + "'")) {
             if (DBManager::numRows() == 0) {
-                if (!DBManager::insert("users", "username,password", "'" + email + "','" + std::to_string(hashStr(password)) + "'")) {
+                if (!DBManager::insert("users", "username,password", "'" + email + "','" + std::to_string(DMUtils::BKDRHash(password.c_str())) + "'")) {
                     if (DBManager::affectedRowCount() > 0) {
                         return SUCCESS;
                     } else {
@@ -500,6 +518,35 @@ DMErrorType deleteClass(long id) {
     } else {
         return CONNECTION_ERROR;
     }
+}
+
+std::vector<ScoreListItem> getScoreList(long classId) noexcept(false) {
+    if (classId <= 0)
+        throw DMError(INVALID_ARGUMENT);
+    std::vector<ScoreListItem> result;
+    if (connectDatabase()) {
+        try {
+            std::vector<Student> stuList = getStudentList(classId);
+            for (auto stu : stuList) {
+                double sum = 0;
+                std::vector<CompleteHomeworkList> homeworkList = getHomeworkListByStuId(stu.getId(), classId);
+                for (auto hw : homeworkList) {
+                    if (!hw.homework.isEmpty())
+                        sum += hw.homework.getScore();
+                }
+                ScoreListItem item;
+                item.stuId = stu.getId();
+                item.name = stu.getName();
+                item.schoolNum = stu.getSchoolNum();
+                item.score = sum / homeworkList.size();
+                result.push_back(item);
+            }
+            return result;
+        } catch (...) {
+            throw DMError(DATABASE_OPERATION_ERROR);
+        }
+    } else
+        throw DMError(CONNECTION_ERROR);
 }
 
 //MARK: - Homework类实现

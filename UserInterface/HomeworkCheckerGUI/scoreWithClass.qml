@@ -2,12 +2,36 @@ import QtQuick 2.0
 import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
+import ClassScoreVC 1.0
 
 Rectangle {
-    id: rectangle
+    id: scoreWithClass
     width: 1046
     height: 768
     color: "#ffffff"
+
+    ClassScoreVC {
+        id: classScoreVC
+    }
+
+    ListModel {
+        id: scoreListModel
+    }
+
+    property int classId: -1
+    property string className: "加载中"
+
+    function loadData() {
+        classScoreVC.getData(classId)
+        scoreListModel.clear()
+        highest.text = classScoreVC.highestScore.toFixed(2)
+        average.text = classScoreVC.avgScore.toFixed(2)
+        lowest.text = classScoreVC.lowestScore.toFixed(2)
+        classScoreVC.scoreList.forEach(ele => {
+                                      scoreListModel.append(ele)
+                                  })
+    }
+
     //Component
     Component{
         id: studentListItem
@@ -18,7 +42,7 @@ Rectangle {
 
             Text {
                 id: nameAndNumber
-                text: name+"("+number+")"
+                text: name+"("+schoolNum+")"
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.left: parent.left
                 anchors.leftMargin: 16
@@ -29,8 +53,13 @@ Rectangle {
             MouseArea {
                 id: mouseArea
                 anchors.fill: parent
-                onClicked:
-                    markPage.push(scoreOfEach)
+                onClicked: {
+                    var scorePage = markPage.push(scoreOfEach)
+                    scorePage.classId = classId
+                    scorePage.stuId = classScoreVC.scoreList[index].stuId
+                    scorePage.stuName = classScoreVC.scoreList[index].name
+                    scorePage.loadData()
+                }
             }
 
             Text {
@@ -39,7 +68,7 @@ Rectangle {
                 text: score
                 anchors.right: parent.right
                 anchors.rightMargin: 45
-                horizontalAlignment: Text.AlignLeft
+                horizontalAlignment: Text.AlignRight
                 anchors.verticalCenter: parent.verticalCenter
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: 28
@@ -85,7 +114,11 @@ Rectangle {
         MouseArea {
             id: mouseArea1
             anchors.fill: parent
-            onClicked: markPage.pop()
+            onClicked: {
+                classId = -1
+                className = "加载中"
+                markPage.pop()
+            }
         }
 
         Image {
@@ -102,7 +135,7 @@ Rectangle {
     Text {
         id: title
         height: 40
-        text: qsTr("2019级计卓")
+        text: className
         verticalAlignment: Text.AlignVCenter
         font.family: "Source Han Sans CN"
         font.weight: Font.Medium
@@ -154,7 +187,7 @@ Rectangle {
         Text {
             id: average
             height: 40
-            text: qsTr("89")
+            text: "加载中"
             anchors.horizontalCenter: parent.horizontalCenter
             verticalAlignment: Text.AlignVCenter
             font.family: "Source Han Sans CN"
@@ -188,7 +221,7 @@ Rectangle {
         Text {
             id: highest
             height: 40
-            text: qsTr("89")
+            text: "加载中"
             anchors.topMargin: 0
             font.pixelSize: 40
             anchors.horizontalCenter: parent.horizontalCenter
@@ -219,50 +252,7 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         delegate: studentListItem
         clip: true
-        model: ListModel {
-            ListElement {
-                name: "李四"
-                number:"2020302111000"
-                score:"89"
-            }
-
-            ListElement {
-                name: "李四"
-                number:"2020302111000"
-                score:"89"
-            }
-
-            ListElement {
-                name: "李四"
-                number:"2020302111000"
-                score:"89"
-            }
-
-            ListElement {
-                name: "李四"
-                number:"2020302111000"
-                score:"89"
-            }
-
-            ListElement {
-                name: "李四"
-                number:"2020302111000"
-                score:"89"
-            }
-
-            ListElement {
-                name: "李四"
-                number:"2020302111000"
-                score:"89"
-            }
-
-            ListElement {
-                name: "李四"
-                number:"2020302111000"
-                score:"89"
-            }
-        }
-
+        model: scoreListModel
     }
 
     Rectangle {
@@ -278,7 +268,7 @@ Rectangle {
         Text {
             id: lowest
             height: 40
-            text: qsTr("89")
+            text: "加载中"
             anchors.topMargin: 0
             font.pixelSize: 40
             anchors.horizontalCenter: parent.horizontalCenter
@@ -311,6 +301,6 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.66}D{i:15}D{i:18}D{i:30}
+    D{i:0;formeditorZoom:0.66}
 }
 ##^##*/

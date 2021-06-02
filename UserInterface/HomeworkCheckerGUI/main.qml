@@ -294,6 +294,7 @@ Window {
                         settingPage.visible=false;
 
                         naviList.index = 3;
+                        markPage.initialItem.refresh()
                     }
                 }
             }

@@ -10,11 +10,13 @@ CONFIG += c++17
 
 SOURCES += \
         account.cpp \
+        classscoreviewcontroller.cpp \
         classviewcontroller.cpp \
         generalviewcontroller.cpp \
         infooftask.cpp \
         main.cpp \
         settingpage.cpp \
+        studentscoreviewcontroller.cpp \
         taskpage.cpp
 
 RESOURCES += qml.qrc
@@ -34,10 +36,12 @@ INCLUDEPATH += "../../DataManager/DataManager"
 
 HEADERS += \
     account.h \
+    classscoreviewcontroller.h \
     classviewcontroller.h \
     generalviewcontroller.h \
     infooftask.h \
     settingpage.h \
+    studentscoreviewcontroller.h \
     taskpage.h
 
 macx: LIBS += -L../../DataManager/build/Debug/ -lDataManager

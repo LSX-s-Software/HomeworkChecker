@@ -24,19 +24,23 @@
 /* Begin PBXBuildFile section */
 		0E08BD879F79D5C9BC8DE3ED /* moc_generalviewcontroller.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = E8EFCF776EA34ACEF2DA2A9F /* moc_generalviewcontroller.cpp */; settings = {ATTRIBUTES = (); }; };
 		11CFF24F2F5C8393AC81A92D /* moc_settingpage.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 45944748CF86A466AE3C9828 /* moc_settingpage.cpp */; settings = {ATTRIBUTES = (); }; };
+		138DE42E469F00ECEDC56958 /* classscoreviewcontroller.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 5FEF695BF54FA381FCE778AA /* classscoreviewcontroller.cpp */; settings = {ATTRIBUTES = (); }; };
 		248840D0E04A7CAAEAD63031 /* moc_taskpage.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 72C3D689300903DEF17B388C /* moc_taskpage.cpp */; settings = {ATTRIBUTES = (); }; };
-		257A8203C78A668D19146CAA /* DataManager in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 4FF0BA158467D67F6F29534B /* DataManager */; };
 		29801961A6618F0281E009BA /* moc_account.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 5280D45F9AF689D446F61F65 /* moc_account.cpp */; settings = {ATTRIBUTES = (); }; };
 		3C6A242DA837982406446FF5 /* qrc_qml.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = C68AC075553BB1F5F3103E04 /* qrc_qml.cpp */; settings = {ATTRIBUTES = (); }; };
+		3CC4423DC9F3DF33CEEB8FD4 /* moc_infooftask.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 9CAC02FD6AAFA230D9A7DD3D /* moc_infooftask.cpp */; settings = {ATTRIBUTES = (); }; };
 		4A1598CC6B88D2B6F2B7304C /* generalviewcontroller.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = B3DB7BBDC61E122FC07C17CE /* generalviewcontroller.cpp */; settings = {ATTRIBUTES = (); }; };
 		61EEC397DC8556BF8C4E36A7 /* ImageIO.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 3A8EF9C62A8D4790CBB89CEA /* ImageIO.framework */; };
 		63E5D355FCB0491EBB8ED407 /* QtNetwork.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 917FEA168813847797F7DB25 /* QtNetwork.framework */; };
+		78B52D3C072B06A10EA341D0 /* moc_studentscoreviewcontroller.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 2AF1695061B2CEE9AE133D67 /* moc_studentscoreviewcontroller.cpp */; settings = {ATTRIBUTES = (); }; };
 		7A78E8B749F6F076BBE4E368 /* ssl.1.1 in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = CED5DDAC29376DD2745D92A0 /* ssl.1.1 */; };
 		8771A8C96E9C391044035D99 /* OpenGL.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = D4B32C2222F82AC56BADEB21 /* OpenGL.framework */; };
 		8D267F2E4776F0ECA2F49DC8 /* IOKit.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = A1A67BEAA744704B29168D39 /* IOKit.framework */; };
 		9233AB13CAF1B66800019886 /* QtCore.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = F06ECDA61940E46F5F523D46 /* QtCore.framework */; };
 		951B7177F7777F57BB0E3B8D /* QtGui.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 645234D636EE2C6AEB85D482 /* QtGui.framework */; };
+		A2613BB7306C683630726CC5 /* moc_classscoreviewcontroller.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = B33A1FFDAD9BC714FD5B2BB5 /* moc_classscoreviewcontroller.cpp */; settings = {ATTRIBUTES = (); }; };
 		A2BB5888B0F06BFA16DA3749 /* QtOpenGL.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = D0C2463FFD8EE73AC5E7DD51 /* QtOpenGL.framework */; };
+		A4BFC8537CF2230BB801A2E4 /* studentscoreviewcontroller.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 8C2FF41EE4C56C882021DB1A /* studentscoreviewcontroller.cpp */; settings = {ATTRIBUTES = (); }; };
 		A7B947DBFE8C504D44D88B26 /* crypto.1.1 in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 4A84EB2E1E696B15D3FA550F /* crypto.1.1 */; };
 		A99B2AA0F9CBBDD12BA126A4 /* DiskArbitration.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 2B774D8E4178765CE52EAAF5 /* DiskArbitration.framework */; };
 		B08FA47E4B404C74DA7ABB6D /* account.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 5AF5E90F73AD6287FA37DC1A /* account.cpp */; settings = {ATTRIBUTES = (); }; };
@@ -50,13 +54,15 @@
 		DC95D5E501B4F8E71E1857F1 /* taskpage.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = A5E4278F257F2772E079A2D0 /* taskpage.cpp */; settings = {ATTRIBUTES = (); }; };
 		E0D6D23512D16B5F4746484E /* mysqlcppconn.9.8.0.25 in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 01E9E2ED18F62093FC234DFA /* mysqlcppconn.9.8.0.25 */; };
 		E1BE909975083DE17DEDFAB9 /* dummy.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = F6158C2343D0C40C5FABEADD /* dummy.cpp */; settings = {ATTRIBUTES = (); }; };
+		E376D88A890573722A24DD03 /* infooftask.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 82790200CA3C0F0A5E1FCBCC /* infooftask.cpp */; settings = {ATTRIBUTES = (); }; };
 		E45E51A644D5FC9F942ECE55 /* AGL.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 8D9815BDB5BD9F90D2BC05C5 /* AGL.framework */; };
 		EF9CF03C5A84523D341196B1 /* QtQmlModels.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 007C2FBE4328E53CBA207AC3 /* QtQmlModels.framework */; };
 		F2A75ACAC9DF6A3F4E5711E7 /* AppKit.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 723F90793B2C195E2CCB2233 /* AppKit.framework */; };
+		F53752EC2667B8E500B760AD /* libDataManager.a in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = F53752EB2667B8E500B760AD /* libDataManager.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F59190DA2661D62800D91656 /* PBXContainerItemProxy */ = {
+		F53752EA2667B8DB00B760AD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6DB9C3763D02B1415CD9D565 /* Project object */;
 			proxyType = 1;
@@ -83,6 +89,7 @@
 		01E9E2ED18F62093FC234DFA /* mysqlcppconn.9.8.0.25 */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = mysqlcppconn.9.8.0.25; path = /Users/linsixing/HomeworkChecker/lib/libmysqlcppconn.9.8.0.25.dylib; sourceTree = "<absolute>"; };
 		0206B9D03E5F345967F760C8 /* HomeworkCheckerGUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeworkCheckerGUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B2543FCC48E9436F21C4F63 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = /System/Library/Frameworks/Metal.framework; sourceTree = "<absolute>"; };
+		2AF1695061B2CEE9AE133D67 /* moc_studentscoreviewcontroller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = moc_studentscoreviewcontroller.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_studentscoreviewcontroller.cpp; sourceTree = "<absolute>"; };
 		2B774D8E4178765CE52EAAF5 /* DiskArbitration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiskArbitration.framework; path = /System/Library/Frameworks/DiskArbitration.framework; sourceTree = "<absolute>"; };
 		331221CAC733BAFA8192CB89 /* moc_classviewcontroller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = moc_classviewcontroller.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_classviewcontroller.cpp; sourceTree = "<absolute>"; };
 		3A0DA0BA2B0E4C11596D1A3D /* settingpage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = settingpage.h; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/settingpage.h; sourceTree = "<absolute>"; };
@@ -90,23 +97,29 @@
 		45944748CF86A466AE3C9828 /* moc_settingpage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = moc_settingpage.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_settingpage.cpp; sourceTree = "<absolute>"; };
 		4730CE4FC3D7EF951CE67A84 /* HomeworkCheckerGUI.pro */ = {isa = PBXFileReference; lastKnownFileType = text; name = HomeworkCheckerGUI.pro; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/HomeworkCheckerGUI.pro; sourceTree = "<absolute>"; };
 		4A84EB2E1E696B15D3FA550F /* crypto.1.1 */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = crypto.1.1; path = /Users/linsixing/HomeworkChecker/lib/libcrypto.1.1.dylib; sourceTree = "<absolute>"; };
-		4FF0BA158467D67F6F29534B /* DataManager */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = DataManager; path = /Users/linsixing/HomeworkChecker/DataManager/build/Debug/libDataManager.a; sourceTree = "<absolute>"; };
 		5280D45F9AF689D446F61F65 /* moc_account.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = moc_account.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_account.cpp; sourceTree = "<absolute>"; };
 		5AF5E90F73AD6287FA37DC1A /* account.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = account.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/account.cpp; sourceTree = "<absolute>"; };
+		5FEF695BF54FA381FCE778AA /* classscoreviewcontroller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = classscoreviewcontroller.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/classscoreviewcontroller.cpp; sourceTree = "<absolute>"; };
 		645234D636EE2C6AEB85D482 /* QtGui.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtGui.framework; path = /Users/linsixing/Qt/6.1.0/clang_64/lib/QtGui.framework; sourceTree = "<absolute>"; };
 		64AACF74B94490AEA5B5A348 /* classviewcontroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = classviewcontroller.h; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/classviewcontroller.h; sourceTree = "<absolute>"; };
+		6DA2CC13EFD118348EA72C93 /* infooftask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = infooftask.h; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/infooftask.h; sourceTree = "<absolute>"; };
 		70E25A88A8F18CDC797D062B /* classviewcontroller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = classviewcontroller.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/classviewcontroller.cpp; sourceTree = "<absolute>"; };
 		723F90793B2C195E2CCB2233 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		72C3D689300903DEF17B388C /* moc_taskpage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = moc_taskpage.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_taskpage.cpp; sourceTree = "<absolute>"; };
 		76FF57D8A1948012D6021970 /* taskpage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = taskpage.h; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/taskpage.h; sourceTree = "<absolute>"; };
 		8169E2B09301B49ABE55738C /* qml.qrc */ = {isa = PBXFileReference; lastKnownFileType = text; name = qml.qrc; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/qml.qrc; sourceTree = "<absolute>"; };
+		82790200CA3C0F0A5E1FCBCC /* infooftask.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = infooftask.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/infooftask.cpp; sourceTree = "<absolute>"; };
 		86EF4F64F3E6D59F6DF63DDE /* .qmake.stash */ = {isa = PBXFileReference; lastKnownFileType = text; name = .qmake.stash; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/.qmake.stash; sourceTree = "<absolute>"; };
+		8C2FF41EE4C56C882021DB1A /* studentscoreviewcontroller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = studentscoreviewcontroller.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/studentscoreviewcontroller.cpp; sourceTree = "<absolute>"; };
 		8D9815BDB5BD9F90D2BC05C5 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
 		917FEA168813847797F7DB25 /* QtNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtNetwork.framework; path = /Users/linsixing/Qt/6.1.0/clang_64/lib/QtNetwork.framework; sourceTree = "<absolute>"; };
 		96942A7CCDFFE6051F408D51 /* account.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = account.h; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/account.h; sourceTree = "<absolute>"; };
+		9A337FD89781EEAA924CB2E8 /* classscoreviewcontroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = classscoreviewcontroller.h; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/classscoreviewcontroller.h; sourceTree = "<absolute>"; };
+		9CAC02FD6AAFA230D9A7DD3D /* moc_infooftask.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = moc_infooftask.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_infooftask.cpp; sourceTree = "<absolute>"; };
 		A1A67BEAA744704B29168D39 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		A5E4278F257F2772E079A2D0 /* taskpage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = taskpage.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/taskpage.cpp; sourceTree = "<absolute>"; };
 		B19A04C9AC70374AFB7D5395 /* generalviewcontroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = generalviewcontroller.h; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/generalviewcontroller.h; sourceTree = "<absolute>"; };
+		B33A1FFDAD9BC714FD5B2BB5 /* moc_classscoreviewcontroller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = moc_classscoreviewcontroller.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_classscoreviewcontroller.cpp; sourceTree = "<absolute>"; };
 		B3DB7BBDC61E122FC07C17CE /* generalviewcontroller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = generalviewcontroller.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/generalviewcontroller.cpp; sourceTree = "<absolute>"; };
 		C68AC075553BB1F5F3103E04 /* qrc_qml.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = qrc_qml.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/qrc_qml.cpp; sourceTree = "<absolute>"; };
 		C778D5A150541001C855D0A3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/main.cpp; sourceTree = "<absolute>"; };
@@ -114,10 +127,12 @@
 		CED5DDAC29376DD2745D92A0 /* ssl.1.1 */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = ssl.1.1; path = /Users/linsixing/HomeworkChecker/lib/libssl.1.1.dylib; sourceTree = "<absolute>"; };
 		D0C2463FFD8EE73AC5E7DD51 /* QtOpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtOpenGL.framework; path = /Users/linsixing/Qt/6.1.0/clang_64/lib/QtOpenGL.framework; sourceTree = "<absolute>"; };
 		D4B32C2222F82AC56BADEB21 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+		D775F8655D37FD477DD727C8 /* studentscoreviewcontroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = studentscoreviewcontroller.h; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/studentscoreviewcontroller.h; sourceTree = "<absolute>"; };
 		E8EFCF776EA34ACEF2DA2A9F /* moc_generalviewcontroller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = moc_generalviewcontroller.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_generalviewcontroller.cpp; sourceTree = "<absolute>"; };
 		F00B4EB1C52BEF010ADF53FD /* QtQuick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtQuick.framework; path = /Users/linsixing/Qt/6.1.0/clang_64/lib/QtQuick.framework; sourceTree = "<absolute>"; };
 		F06ECDA61940E46F5F523D46 /* QtCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtCore.framework; path = /Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework; sourceTree = "<absolute>"; };
 		F3620E33FAFF3DCF4DB0E441 /* QtQml.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtQml.framework; path = /Users/linsixing/Qt/6.1.0/clang_64/lib/QtQml.framework; sourceTree = "<absolute>"; };
+		F53752EB2667B8E500B760AD /* libDataManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libDataManager.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6158C2343D0C40C5FABEADD /* dummy.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = dummy.cpp; path = /Users/linsixing/Qt/6.1.0/clang_64/mkspecs/features/data/dummy.cpp; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -126,7 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				257A8203C78A668D19146CAA /* DataManager in Link Binary With Libraries */,
+				F53752EC2667B8E500B760AD /* libDataManager.a in Link Binary With Libraries */,
 				E0D6D23512D16B5F4746484E /* mysqlcppconn.9.8.0.25 in Link Binary With Libraries */,
 				7A78E8B749F6F076BBE4E368 /* ssl.1.1 in Link Binary With Libraries */,
 				A7B947DBFE8C504D44D88B26 /* crypto.1.1 in Link Binary With Libraries */,
@@ -156,9 +171,12 @@
 			children = (
 				C68AC075553BB1F5F3103E04 /* qrc_qml.cpp */,
 				5280D45F9AF689D446F61F65 /* moc_account.cpp */,
+				B33A1FFDAD9BC714FD5B2BB5 /* moc_classscoreviewcontroller.cpp */,
 				331221CAC733BAFA8192CB89 /* moc_classviewcontroller.cpp */,
 				E8EFCF776EA34ACEF2DA2A9F /* moc_generalviewcontroller.cpp */,
+				9CAC02FD6AAFA230D9A7DD3D /* moc_infooftask.cpp */,
 				45944748CF86A466AE3C9828 /* moc_settingpage.cpp */,
+				2AF1695061B2CEE9AE133D67 /* moc_studentscoreviewcontroller.cpp */,
 				72C3D689300903DEF17B388C /* moc_taskpage.cpp */,
 			);
 			name = "Generated Sources";
@@ -168,15 +186,21 @@
 			isa = PBXGroup;
 			children = (
 				5AF5E90F73AD6287FA37DC1A /* account.cpp */,
+				5FEF695BF54FA381FCE778AA /* classscoreviewcontroller.cpp */,
 				70E25A88A8F18CDC797D062B /* classviewcontroller.cpp */,
 				B3DB7BBDC61E122FC07C17CE /* generalviewcontroller.cpp */,
+				82790200CA3C0F0A5E1FCBCC /* infooftask.cpp */,
 				C778D5A150541001C855D0A3 /* main.cpp */,
 				C91C12F93A1A484170A6F5F7 /* settingpage.cpp */,
+				8C2FF41EE4C56C882021DB1A /* studentscoreviewcontroller.cpp */,
 				A5E4278F257F2772E079A2D0 /* taskpage.cpp */,
 				96942A7CCDFFE6051F408D51 /* account.h */,
+				9A337FD89781EEAA924CB2E8 /* classscoreviewcontroller.h */,
 				64AACF74B94490AEA5B5A348 /* classviewcontroller.h */,
 				B19A04C9AC70374AFB7D5395 /* generalviewcontroller.h */,
+				6DA2CC13EFD118348EA72C93 /* infooftask.h */,
 				3A0DA0BA2B0E4C11596D1A3D /* settingpage.h */,
+				D775F8655D37FD477DD727C8 /* studentscoreviewcontroller.h */,
 				76FF57D8A1948012D6021970 /* taskpage.h */,
 			);
 			name = Sources;
@@ -202,7 +226,7 @@
 		AF39DD055C3EF8226FBE929D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4FF0BA158467D67F6F29534B /* DataManager */,
+				F53752EB2667B8E500B760AD /* libDataManager.a */,
 				01E9E2ED18F62093FC234DFA /* mysqlcppconn.9.8.0.25 */,
 				CED5DDAC29376DD2745D92A0 /* ssl.1.1 */,
 				4A84EB2E1E696B15D3FA550F /* crypto.1.1 */,
@@ -343,9 +367,12 @@
 				qrc_qml.cpp,
 				moc_predefs.h,
 				moc_account.cpp,
+				moc_classscoreviewcontroller.cpp,
 				moc_classviewcontroller.cpp,
 				moc_generalviewcontroller.cpp,
+				moc_infooftask.cpp,
 				moc_settingpage.cpp,
+				moc_studentscoreviewcontroller.cpp,
 				moc_taskpage.cpp,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,16 +388,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				B08FA47E4B404C74DA7ABB6D /* account.cpp in Compile Sources */,
+				138DE42E469F00ECEDC56958 /* classscoreviewcontroller.cpp in Compile Sources */,
 				C3B1CC14C9DBB9A6845BBB49 /* classviewcontroller.cpp in Compile Sources */,
 				4A1598CC6B88D2B6F2B7304C /* generalviewcontroller.cpp in Compile Sources */,
+				E376D88A890573722A24DD03 /* infooftask.cpp in Compile Sources */,
 				BA842B4AE21321C0DDDECAF9 /* main.cpp in Compile Sources */,
 				BDEFF686E84CD710F92A92C7 /* settingpage.cpp in Compile Sources */,
+				A4BFC8537CF2230BB801A2E4 /* studentscoreviewcontroller.cpp in Compile Sources */,
 				DC95D5E501B4F8E71E1857F1 /* taskpage.cpp in Compile Sources */,
 				3C6A242DA837982406446FF5 /* qrc_qml.cpp in Compile Sources */,
 				29801961A6618F0281E009BA /* moc_account.cpp in Compile Sources */,
+				A2613BB7306C683630726CC5 /* moc_classscoreviewcontroller.cpp in Compile Sources */,
 				BDE311FC561F39D9096C4E05 /* moc_classviewcontroller.cpp in Compile Sources */,
 				0E08BD879F79D5C9BC8DE3ED /* moc_generalviewcontroller.cpp in Compile Sources */,
+				3CC4423DC9F3DF33CEEB8FD4 /* moc_infooftask.cpp in Compile Sources */,
 				11CFF24F2F5C8393AC81A92D /* moc_settingpage.cpp in Compile Sources */,
+				78B52D3C072B06A10EA341D0 /* moc_studentscoreviewcontroller.cpp in Compile Sources */,
 				248840D0E04A7CAAEAD63031 /* moc_taskpage.cpp in Compile Sources */,
 				E1BE909975083DE17DEDFAB9 /* dummy.cpp in Compile Sources */,
 			);
@@ -383,7 +416,7 @@
 		268D6FDCDC3B8DB9966C94E2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D8DEA599D58B29371C2B9F9D /* Qt Preprocess */;
-			targetProxy = F59190DA2661D62800D91656 /* PBXContainerItemProxy */;
+			targetProxy = F53752EA2667B8DB00B760AD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -431,7 +464,6 @@
 				LDPLUSPLUS = "/Library/Developer/CommandLineTools/usr/bin/clang++";
 				LIBRARY_SEARCH_PATHS = (
 					../../DataManager/build/Debug/,
-					/Users/linsixing/HomeworkChecker/DataManager/build/Debug/,
 					../../lib/,
 					/Users/linsixing/HomeworkChecker/lib/,
 					/Users/linsixing/Qt/6.1.0/clang_64/lib,
@@ -477,6 +509,7 @@
 					"-Wl,-rpath,/Users/linsixing/Qt/6.1.0/clang_64/lib",
 					"-F/Users/linsixing/Qt/6.1.0/clang_64/lib",
 					"-L../../DataManager/build/Debug/",
+					"-lDataManager",
 					"-L../../lib/",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "LSX-s-Software.${PRODUCT_NAME:rfc1034identifier}";
@@ -534,7 +567,6 @@
 				LDPLUSPLUS = "/Library/Developer/CommandLineTools/usr/bin/clang++";
 				LIBRARY_SEARCH_PATHS = (
 					../../DataManager/build/Debug/,
-					/Users/linsixing/HomeworkChecker/DataManager/build/Debug/,
 					../../lib/,
 					/Users/linsixing/HomeworkChecker/lib/,
 					/Users/linsixing/Qt/6.1.0/clang_64/lib,
@@ -581,6 +613,7 @@
 					"-Wl,-rpath,/Users/linsixing/Qt/6.1.0/clang_64/lib",
 					"-F/Users/linsixing/Qt/6.1.0/clang_64/lib",
 					"-L../../DataManager/build/Debug/",
+					"-lDataManager",
 					"-L../../lib/",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "LSX-s-Software.${PRODUCT_NAME:rfc1034identifier}";
