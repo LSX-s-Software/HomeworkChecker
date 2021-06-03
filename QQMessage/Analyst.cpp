@@ -360,6 +360,7 @@ void AnaText(std::u16string data, long long qq_id)
 				if (homeworkStatus == 0)//未提交
 				{
 					message += (u8"【作业 " + std::to_string(ch.assignment.getId()) + u8"】  " + getHomeworkStatus(homeworkStatus))+ u8"\r\n";
+					message += (u8"【作业标题】 " + ch.assignment.getTitle() + "\r\n");
 					message += (u8"【作业内容】\r\n" + ch.assignment.getDescription() + u8"\r\n");
 					message += (u8"【截止时间】  " + TimeConvert(ch.assignment.getDeadline()) + u8"\r\n");
 					PrivateMessageSender sender(qq_id, message);
@@ -369,6 +370,7 @@ void AnaText(std::u16string data, long long qq_id)
 				if (homeworkStatus == 1)//已提交
 				{
 					message += (u8"【作业 " + std::to_string(ch.assignment.getId()) + u8"】  " + getHomeworkStatus(homeworkStatus)) + u8"\n\n";
+					message += (u8"【作业标题】 " + ch.assignment.getTitle() + "\r\n");
 					message += (u8"【作业内容】\r\n" + ch.assignment.getDescription() + u8"\r\n");
 					message += (u8"【截止时间】  " + TimeConvert(ch.assignment.getDeadline()) + u8"\n\n");
 					message += (u8"【作业正文列表】\r\n" + getHomeworkFilename(ch.homework.getContentURL())+u8"\r\n");
@@ -380,6 +382,7 @@ void AnaText(std::u16string data, long long qq_id)
 				if (homeworkStatus == 2)//已批改
 				{
 					message += (u8"【作业 " + std::to_string(ch.assignment.getId()) + u8"】  " + getHomeworkStatus(homeworkStatus)) + u8"\n\n";
+					message += (u8"【作业标题】 " + ch.assignment.getTitle() + "\r\n");
 					message += (u8"【作业内容】\r\n" + ch.assignment.getDescription() + u8"\r\n");
 					message += (u8"【截止时间】  " + TimeConvert(ch.assignment.getDeadline()) + u8"\n\n");
 					message += (u8"【分数】 " + std::to_string(ch.homework.getScore()) + u8"\r\n");
@@ -461,6 +464,7 @@ void AnaText(std::u16string data, long long qq_id)
 				if (homeworkStatus == 0)//未提交
 				{
 					message += (u8"【作业 " + std::to_string(ch.assignment.getId()) + u8"】  " + getHomeworkStatus(homeworkStatus)) + u8"\r\n";
+					message += (u8"【作业标题】 " + ch.assignment.getTitle() + "\r\n");
 					message += (u8"【作业内容】\r\n" + ch.assignment.getDescription() + u8"\r\n");
 					message += (u8"【截止时间】  " + TimeConvert(ch.assignment.getDeadline()) + u8"\r\n");
 					PrivateMessageSender sender(qq_id, message);
@@ -470,6 +474,7 @@ void AnaText(std::u16string data, long long qq_id)
 				if (homeworkStatus == 1)//已提交
 				{
 					message += (u8"【作业 " + std::to_string(ch.assignment.getId()) + u8"】  " + getHomeworkStatus(homeworkStatus)) + u8"\n\n";
+					message += (u8"【作业标题】 " + ch.assignment.getTitle() + "\r\n");
 					message += (u8"【作业内容】\r\n" + ch.assignment.getDescription() + u8"\r\n");
 					message += (u8"【截止时间】  " + TimeConvert(ch.assignment.getDeadline()) + u8"\n\n");
 					message += (u8"【作业正文列表】\r\n" + getHomeworkFilename(ch.homework.getContentURL()) + u8"\r\n");
@@ -481,6 +486,7 @@ void AnaText(std::u16string data, long long qq_id)
 				if (homeworkStatus == 2)//已批改
 				{
 					message += (u8"【作业 " + std::to_string(ch.assignment.getId()) + u8"】  " + getHomeworkStatus(homeworkStatus)) + u8"\n\n";
+					message += (u8"【作业标题】 " + ch.assignment.getTitle() + "\r\n");
 					message += (u8"【作业内容】\r\n" + ch.assignment.getDescription() + u8"\r\n");
 					message += (u8"【截止时间】  " + TimeConvert(ch.assignment.getDeadline()) + u8"\n\n");
 					message += (u8"【分数】 " + std::to_string(ch.homework.getScore()) + u8"\r\n");
@@ -562,6 +568,7 @@ void AnaText(std::u16string data, long long qq_id)
 				if (homeworkStatus == 0)//未提交
 				{
 					message += (u8"【作业 " + std::to_string(ch.assignment.getId()) + u8"】  " + getHomeworkStatus(homeworkStatus)) + u8"\r\n";
+					message += (u8"【作业标题】 " + ch.assignment.getTitle() + "\r\n");
 					message += (u8"【作业内容】\r\n" + ch.assignment.getDescription() + u8"\r\n");
 					message += (u8"【截止时间】  " + TimeConvert(ch.assignment.getDeadline()) + u8"\r\n");
 					PrivateMessageSender sender(qq_id, message);
@@ -571,6 +578,7 @@ void AnaText(std::u16string data, long long qq_id)
 				if (homeworkStatus == 1)//已提交
 				{
 					message += (u8"【作业 " + std::to_string(ch.assignment.getId()) + u8"】  " + getHomeworkStatus(homeworkStatus)) + u8"\n\n";
+					message += (u8"【作业标题】 " + ch.assignment.getTitle() + "\r\n");
 					message += (u8"【作业内容】\r\n" + ch.assignment.getDescription() + u8"\r\n");
 					message += (u8"【截止时间】  " + TimeConvert(ch.assignment.getDeadline()) + u8"\n\n");
 					message += (u8"【作业正文列表】\r\n" + getHomeworkFilename(ch.homework.getContentURL()) + u8"\r\n");
@@ -582,6 +590,7 @@ void AnaText(std::u16string data, long long qq_id)
 				if (homeworkStatus == 2)//已批改
 				{
 					message += (u8"【作业 " + std::to_string(ch.assignment.getId()) + u8"】  " + getHomeworkStatus(homeworkStatus)) + u8"\n\n";
+					message += (u8"【作业标题】 " + ch.assignment.getTitle() + "\r\n");
 					message += (u8"【作业内容】\r\n" + ch.assignment.getDescription() + u8"\r\n");
 					message += (u8"【截止时间】  " + TimeConvert(ch.assignment.getDeadline()) + u8"\n\n");
 					message += (u8"【分数】 " + std::to_string(ch.homework.getScore()) + u8"\r\n");
