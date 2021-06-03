@@ -57,7 +57,7 @@
     <IntDir>debug\</IntDir>
     <TargetName>HomeworkCheckerGUI</TargetName>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
-    <IncludePath>..\..\packages\asio\include;..\..\packages\json;..\..\packages\websocketpp\include;..\DataManager\DataManager;D:\Qt\5.15.2\msvc2019_64\include;$(IncludePath)</IncludePath>
+    <IncludePath>D:\Qt\5.15.2\msvc2019_64\include;..\..\packages\asio\include;..\..\packages\json;..\..\packages\websocketpp\include;..\DataManager\DataManager;$(IncludePath)</IncludePath>
     <LibraryPath>..\lib;..\packages\mysql\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -162,7 +162,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>$(QTDIR)\lib\Qt5QmlModelsd.lib;shell32.lib;D:\Work\HomeworkChecker\lib\DataManager.lib;%(AdditionalDependencies);D:\Work\HomeworkChecker\packages\mysql\lib\libmysql.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(QTDIR)\lib\Qt5QmlModelsd.lib;shell32.lib;..\..\lib\DataManager.lib;%(AdditionalDependencies);..\..\packages\mysql\lib\libmysql.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\openssl\lib;C:\Utils\my_sql\mysql-5.7.25-winx64\lib;C:\Utils\postgresql\pgsql\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
       <DataExecutionPrevention>true</DataExecutionPrevention>
