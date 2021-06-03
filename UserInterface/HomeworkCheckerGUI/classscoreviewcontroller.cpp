@@ -1,4 +1,4 @@
-#include "classscoreviewcontroller.h"
+﻿#include "classscoreviewcontroller.h"
 
 ClassScoreViewController::ClassScoreViewController(QObject *parent) : QObject(parent) {
     highestScore = 0;
@@ -14,7 +14,7 @@ void ClassScoreViewController::getData(long classId) {
         std::vector<DataManager::ScoreListItem> list = DataManager::getScoreList(classId);
         if (list.size() == 0)
             return;
-        double min = std::numeric_limits<double>::max(), max = 0, sum = 0;
+        double min = (std::numeric_limits<double>::max)(), max = 0, sum = 0;
         for (auto item : list) {
             if (item.score > max) {
                 max = item.score;

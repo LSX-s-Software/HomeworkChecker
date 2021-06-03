@@ -57,7 +57,7 @@
     <IntDir>debug\</IntDir>
     <TargetName>HomeworkCheckerGUI</TargetName>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
-    <IncludePath>..\DataManager\DataManager;..\WebsocketClientForApp;D:\Qt\5.15.2\msvc2019_64\include;D:\Work\HomeworkChecker\packages\json;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\packages\asio\include;..\..\packages\json;..\..\packages\websocketpp\include;..\DataManager\DataManager;D:\Qt\5.15.2\msvc2019_64\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\lib;..\packages\mysql\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -66,6 +66,8 @@
     <TargetName>HomeworkCheckerGUI</TargetName>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>..\..\packages\asio\include;..\..\packages\json;..\..\packages\websocketpp\include;..\DataManager\DataManager;D:\Qt\5.15.2\msvc2019_64\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\lib;..\packages\mysql\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <QtInstall>5.15.2_64</QtInstall>
@@ -81,16 +83,16 @@
   </ImportGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>GeneratedFiles\$(ConfigurationName);GeneratedFiles;.;..\..\DataManager\DataManager;..\..\packages\mysql\include;release;/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>GeneratedFiles\$(ConfigurationName);GeneratedFiles;.;..\..\DataManager\DataManager;..\..\packages\mysql\include;debug;/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
       <AssemblerListingLocation>release\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>
       <DebugInformationFormat>None</DebugInformationFormat>
-      <DisableSpecificWarnings>4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4068;4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
       <ObjectFileName>release\</ObjectFileName>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;NDEBUG;QT_NO_DEBUG;QT_QMLMODELS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;NDEBUG;QT_NO_DEBUG;QT_QMLMODELS_LIB;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessToFile>false</PreprocessToFile>
       <ProgramDataBaseFileName>
       </ProgramDataBaseFileName>
@@ -99,9 +101,10 @@
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <WarningLevel>Level3</WarningLevel>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>..\..\packages\mysql\lib;$(QTDIR)\lib\Qt5QmlModels.lib;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(QTDIR)\lib\Qt5QmlModels.lib;shell32.lib;%(AdditionalDependencies);D:\Work\HomeworkChecker\lib\DataManager.lib;D:\Work\HomeworkChecker\packages\mysql\lib\libmysql.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\openssl\lib;C:\Utils\my_sql\mysql-5.7.25-winx64\lib;C:\Utils\postgresql\pgsql\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
       <DataExecutionPrevention>true</DataExecutionPrevention>
@@ -149,7 +152,7 @@
       <ExceptionHandling>Sync</ExceptionHandling>
       <ObjectFileName>debug\</ObjectFileName>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_QMLMODELS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_QMLMODELS_LIB;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessToFile>false</PreprocessToFile>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -159,7 +162,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>$(QTDIR)\lib\Qt5QmlModelsd.lib;shell32.lib;D:\Work\HomeworkChecker\packages\mysql\lib\libmysql.lib;D:\Work\HomeworkChecker\lib\DataManager.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(QTDIR)\lib\Qt5QmlModelsd.lib;shell32.lib;D:\Work\HomeworkChecker\lib\DataManager.lib;%(AdditionalDependencies);D:\Work\HomeworkChecker\packages\mysql\lib\libmysql.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\openssl\lib;C:\Utils\my_sql\mysql-5.7.25-winx64\lib;C:\Utils\postgresql\pgsql\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
       <DataExecutionPrevention>true</DataExecutionPrevention>
@@ -196,12 +199,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="account.cpp" />
+    <ClCompile Include="classscoreviewcontroller.cpp" />
     <ClCompile Include="classviewcontroller.cpp" />
+    <ClCompile Include="correcthomework.cpp" />
     <ClCompile Include="generalviewcontroller.cpp" />
     <ClCompile Include="infooftask.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="settingpage.cpp" />
+    <ClCompile Include="studentscoreviewcontroller.cpp" />
     <ClCompile Include="taskpage.cpp" />
+    <ClCompile Include="WebsocketClientForApp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="generalviewcontroller.h">
@@ -281,6 +288,18 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="infooftask.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="classscoreviewcontroller.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="studentscoreviewcontroller.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="correcthomework.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="WebsocketClientForApp.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

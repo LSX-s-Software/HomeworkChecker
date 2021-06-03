@@ -46,15 +46,21 @@ Rectangle {
             id: rectangle1
             x: 32
             y: 248
-            width: 983
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.rightMargin: 8
+            anchors.leftMargin: 16
             height: 61
-            color: "#f5f5f5"
+            radius: 10;
+            color:      (status === 1
+                        ? "#71c5fb"
+                        : "#f5f5f5")
             Text {
                 id: nameAndNumber
                 text: name+"("+studentNum+")"
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.left: parent.left
-                anchors.leftMargin: 0
+                anchors.leftMargin: 16
                 font.bold: true
                 verticalAlignment: Text.AlignVCenter
                 font.family: "Source Han Sans CN"
@@ -66,7 +72,11 @@ Rectangle {
                 anchors.fill: parent
                 hoverEnabled: true
                 onClicked:
-                    taskPage.push(correctHomework)
+                {
+                    var item=taskPage.push(correctHomework)
+                    item.homeworkId=id
+                    item.refresh()
+                }
 
             }
 
@@ -75,10 +85,13 @@ Rectangle {
                 x: 938
                 y: 17
                 width: 45
-                text: score
+
+                text: (status === 1
+                       ? "未批改"
+                       : score)
                 anchors.right: parent.right
                 anchors.rightMargin: 45
-                horizontalAlignment: Text.AlignLeft
+                horizontalAlignment: Text.AlignRight
                 font.family: "Source Han Sans CN"
                 anchors.verticalCenter: parent.verticalCenter
                 verticalAlignment: Text.AlignVCenter
@@ -117,12 +130,18 @@ Rectangle {
         id: listView
         x: 0
         y: 0
-        width: 982
-        height: 456
+        //width: 982
+        //height: 456
         clip: true
+        spacing: 12
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: classHere.bottom
+        anchors.topMargin: 24
+        anchors.rightMargin: 32
+        anchors.leftMargin: 32
         anchors.bottomMargin: 140
         anchors.bottom: parent.bottom
-        anchors.horizontalCenter: parent.horizontalCenter
         delegate: studentListItem
         model: homeworkListModel
     }
@@ -170,7 +189,7 @@ Rectangle {
         id: progressBar
         width: 982
         height: 24
-        value: 0.5
+        value: finishNum/(uncheckNum+finishNum)
         anchors.bottomMargin: 96
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter

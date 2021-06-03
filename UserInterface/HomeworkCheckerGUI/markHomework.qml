@@ -2,9 +2,10 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
+import HomeworkVC 1.0
 
 Rectangle {
-    id: correctHomework
+    id: markHomework
     x: 0
     y: 0
     width: 1046
@@ -20,12 +21,14 @@ Rectangle {
         radius: 1
         anchors.leftMargin: 40
         anchors.verticalCenter: parent.verticalCenter
-        Text {
-            id: element
-            text: qsTr("homework")
-            anchors.fill: parent
-            font.pixelSize: 20
-        }
+        TextArea {
+                    id: textArea
+                    text: correctHomework.contentText
+                    anchors.fill: parent
+                    font.weight: Font.Medium
+                    font.family: "Source Han Sans CN"
+                    font.pixelSize: 20
+                }
         anchors.left: parent.left
         border.width: 1
     }
@@ -82,40 +85,101 @@ Rectangle {
     }
 
     Text {
-        id: element3
-        x: 808
-        y: 114
-        width: 56
-        height: 28
-        text: qsTr("附件")
-        verticalAlignment: Text.AlignVCenter
-        font.weight: Font.Medium
-        horizontalAlignment: Text.AlignHCenter
-        font.pixelSize: 28
-    }
-
-    Rectangle {
-        id: addition
-        x: 808
-        y: 163
-        width: 198
-        height: 70
-        color: "#f5f5f5"
-        radius: 10
-        Text {
-            id: element4
-            text: qsTr("6-28.cpp")
+            id: element3
+            x: 808
+            y: 114
+            width: 56
+            height: 28
+            text: qsTr("附件")
+            font.bold: false
+            font.weight: Font.Medium
             verticalAlignment: Text.AlignVCenter
-            anchors.fill: parent
-            horizontalAlignment: Text.AlignLeft
+            horizontalAlignment: Text.AlignHCenter
             font.pixelSize: 28
         }
 
-        MouseArea {
-            id: mouseArea1
-            anchors.fill: parent
+        ListView {
+                id: listView
+                x: 0
+                y: 148
+                height: 506
+                //width: 982
+                //height: 456
+                clip: true
+                spacing: 8
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.top: classHere.bottom
+                anchors.topMargin: 24
+                anchors.rightMargin: 40
+                anchors.leftMargin: 794
+                anchors.bottomMargin: 114
+                anchors.bottom: parent.bottom
+                delegate: attachmentListItem
+                model: attachmentModel
+            }
+
+       /*
+        Rectangle {
+            id: addition
+            x: 808
+            y: 163
+            width: 198
+            height: 70
+            color: "#f5f5f5"
+            radius: 10
+
+            Text {
+                id: element4
+                text: qsTr("6-28.cpp")
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignLeft
+                anchors.fill: parent
+                font.pixelSize: 28
+            }
+
+            MouseArea {
+                id: mouseArea1
+                anchors.fill: parent
+                onClicked:
+                    taskPage.push(detailOfAddition)
+            }
         }
-    }
+        */
+        //ComponentBegein
+           Component{
+
+               id: attachmentListItem
+               Rectangle {
+                   id: rectangle1
+                   //x: 808
+                   //y: 163
+                   width: 198
+                   height: 50
+                   color: "#f5f5f5"
+                   radius: 10
+
+                   Text {
+                       id: element4
+                       text: fileName
+                       verticalAlignment: Text.AlignVCenter
+                       anchors.fill: parent
+                       anchors.verticalCenter: parent.verticalCenter
+                       anchors.left: parent.left
+                       anchors.leftMargin: 8
+                       font.bold: false
+                       font.family: "Source Han Sans CN"
+                       font.pixelSize: 20
+                   }
+
+                   MouseArea {
+                       id: mouseArea1
+                       anchors.fill: parent
+                   }
+               }
+
+           }
+           //endComponent
 
     Rectangle {
         id: markBtn
@@ -139,6 +203,12 @@ Rectangle {
         MouseArea {
             id: mouseArea4
             anchors.fill: parent
+            onClicked:
+            {
+                correctHomework.comment=textField.text
+                correctHomework.score=textField1.text
+                correctHomework.submit()
+            }
         }
     }
 
@@ -202,6 +272,6 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.75}D{i:16}D{i:17}D{i:15}D{i:19}D{i:20}
+    D{i:0;formeditorZoom:0.75}
 }
 ##^##*/

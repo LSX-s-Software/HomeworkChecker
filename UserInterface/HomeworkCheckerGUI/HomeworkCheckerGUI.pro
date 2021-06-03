@@ -1,7 +1,7 @@
 QT += quick
 
 CONFIG += c++17
-
+DEFINES += WIN32_LEAN_AND_MEAN
 # CONFIG += no_autoqmake
 
 # You can make your code fail to compile if it uses deprecated APIs.
@@ -9,9 +9,11 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        WebsocketClientForApp.cpp \
         account.cpp \
         classscoreviewcontroller.cpp \
         classviewcontroller.cpp \
+        correcthomework.cpp \
         generalviewcontroller.cpp \
         infooftask.cpp \
         main.cpp \
@@ -35,9 +37,11 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 INCLUDEPATH += "../../DataManager/DataManager"
 
 HEADERS += \
+    WebsocketClientForApp.h \
     account.h \
     classscoreviewcontroller.h \
     classviewcontroller.h \
+    correcthomework.h \
     generalviewcontroller.h \
     infooftask.h \
     settingpage.h \
@@ -71,6 +75,8 @@ win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../../lib/DataManager.lib
 else:win32-g++: PRE_TARGETDEPS += $$PWD/../../lib/libDataManager.a
 
 INCLUDEPATH += ../../packages/json
+INCLUDEPATH += ../../packages/asio/include
+INCLUDEPATH += ../../packages/websocketpp/include
 DEPENDPATH += ../../packages/json
 
 macx: LIBS += -L../../lib/ -lmysqlcppconn.9.8.0.25

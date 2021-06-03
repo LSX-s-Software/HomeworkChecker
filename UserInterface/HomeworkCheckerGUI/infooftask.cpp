@@ -1,4 +1,4 @@
-#include "infooftask.h"
+﻿#include "infooftask.h"
 
 std::string InfoOfTask::time_t2string(const time_t timep)
 {

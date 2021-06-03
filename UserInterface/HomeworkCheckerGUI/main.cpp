@@ -1,4 +1,4 @@
-#include <QGuiApplication>
+﻿#include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
@@ -12,6 +12,10 @@
 #include "infooftask.h"
 #include "classscoreviewcontroller.h"
 #include "studentscoreviewcontroller.h"
+#include "WebsocketClientForApp.h"
+#include "correcthomework.h"
+
+WebsocketClientForApp websocketClient;
 
 int main(int argc, char *argv[])
 {
@@ -20,7 +24,6 @@ int main(int argc, char *argv[])
 #endif
 
     QGuiApplication app(argc, argv);
-
     //自定义CPP模块
     qmlRegisterType<GeneralViewController>("GeneralVC",1,0,"GeneralVC");
     qmlRegisterType<Account>("Account",1,0,"Account");
@@ -30,6 +33,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<InfoOfTask>("HomeworkVC", 1, 0, "HomeworkVC");
     qmlRegisterType<ClassScoreViewController>("ClassScoreVC", 1, 0, "ClassScoreVC");
     qmlRegisterType<StudentScoreViewController>("StudentScoreVC", 1, 0, "StudentScoreVC");
+    qmlRegisterType<CorrectHomework>("HomeworkInfoVC", 1, 0, "HomeworkInfoVC");
 
     QQmlApplicationEngine engine;
     //engine.rootContext()->setContextProperty("settingPage", new SettingPage(qApp));
@@ -41,11 +45,18 @@ int main(int argc, char *argv[])
     }, Qt::QueuedConnection);
     
     DataManager::connectDatabase();
+    SettingPage::loadFromFile();
+    std::string tmpPath = SettingPage::getWorkPath_str();
+    websocketClient.rootPath = tmpPath.substr(8);
+    //websocketClient.Connect("ws://" + SettingPage::getWsClientUrl_str());
+    //websocketClient.getFile(27, "1.txt");
+    //websocketClient.sendReview(27);
+    //websocketClient.sendNewHomeworkNotification(1);
     QObject::connect(qApp, &QGuiApplication::aboutToQuit, [&]{
         //退出 事件循环 前，保存数据
         DataManager::disconnectDatabase();
+        //websocketClient.Close();
     });
     engine.load(url);
-
     return app.exec();
 }

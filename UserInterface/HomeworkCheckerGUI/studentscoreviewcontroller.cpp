@@ -1,4 +1,4 @@
-#include "studentscoreviewcontroller.h"
+﻿#include "studentscoreviewcontroller.h"
 
 StudentScoreViewController::StudentScoreViewController(QObject *parent) : QObject(parent) {}
 

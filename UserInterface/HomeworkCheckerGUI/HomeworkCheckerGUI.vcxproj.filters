@@ -56,6 +56,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="infooftask.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="classscoreviewcontroller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="studentscoreviewcontroller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="correcthomework.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WebsocketClientForApp.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -76,6 +88,15 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="infooftask.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="classscoreviewcontroller.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="studentscoreviewcontroller.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="correcthomework.h">
       <Filter>Generated Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -175,5 +196,10 @@
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="..\..\packages\mysql\lib\libmysql.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="WebsocketClientForApp.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

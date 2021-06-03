@@ -112,9 +112,9 @@ WebsocketClientForApp::~WebsocketClientForApp()
 			std::cout << "> Error initiating close: " << ec.message() << std::endl;
 		}
 	}
-	m_SendHeartbeat.join();
+
+	//m_SendHeartbeat.join();
 	m_Thread->join();
-	
 }
 
 bool WebsocketClientForApp::Connect(std::string const& url)
@@ -200,7 +200,7 @@ bool WebsocketClientForApp::Connect(std::string const& url)
 	std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
 	enableSendHeartbeat = true;
-	m_SendHeartbeat = std::thread(&WebsocketClientForApp::sendHeartbeat,this);
+	//m_SendHeartbeat = std::thread(&WebsocketClientForApp::sendHeartbeat, this);
 
 	return true;
 }
@@ -220,7 +220,6 @@ bool WebsocketClientForApp::Close(std::string reason)
 		}
 		//std::cout << "关闭Websocket连接成功" << std::endl;
 	}
-
 	return true;
 }
 
@@ -382,9 +381,9 @@ void WebsocketClientForApp::getFile(long homeworkId, std::filesystem::path fileN
 
 void WebsocketClientForApp::sendHeartbeat()
 {
-	while (true&&enableSendHeartbeat)
+	while (true && enableSendHeartbeat)
 	{
-		Sleep(5000);
+        Sleep(5000);
 		std::string msg = "{\"action\":\"heartbeat\",\"time\":\"" + std::to_string(std::time(0)) + "\"}";
 		Send(msg);
 	}

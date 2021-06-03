@@ -1,4 +1,4 @@
-#include "settingpage.h"
+﻿#include "settingpage.h"
 #include <fstream>
 #include <filesystem>
 #include <sstream>
@@ -25,6 +25,11 @@ QString SettingPage::getWsClientUrl()
 	return QString::fromStdString(wsClientUrl);
 }
 
+std::string SettingPage::getWsClientUrl_str()
+{
+    return wsClientUrl;
+}
+
 void SettingPage::setWsClientUrl(const QString& url)
 {
     wsClientUrl = url.toStdString();
@@ -34,6 +39,11 @@ QString SettingPage::getWorkPath()
 {
     return QString::fromStdString(workPath);
 }
+std::string SettingPage::getWorkPath_str()
+{
+    return workPath;
+}
+
 
 void SettingPage::saveToFile()
 {

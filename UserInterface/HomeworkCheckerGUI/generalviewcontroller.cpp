@@ -1,4 +1,4 @@
-#include "generalviewcontroller.h"
+﻿#include "generalviewcontroller.h"
 #include "account.h"
 #include <iostream>
 
