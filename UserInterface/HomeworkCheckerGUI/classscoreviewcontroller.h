@@ -8,6 +8,8 @@
 #include "qqml.h"
 #include "DataManager.hpp"
 #include <limits>
+#include <iostream>
+#include <fstream>
 
 class ClassScoreViewController : public QObject
 {
@@ -25,6 +27,7 @@ public:
     double getHighestScore();
     double getAvgScore();
     double getLowestScore();
+    Q_INVOKABLE bool exportData(const QString& path);
 
 private:
     QJsonArray scoreList;

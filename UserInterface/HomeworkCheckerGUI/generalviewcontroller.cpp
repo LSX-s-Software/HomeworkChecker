@@ -8,6 +8,7 @@ void GeneralViewController::refresh() {
     try {
         totalClassSize = DataManager::getTotalClassSize(Account::getId());
         assmList = DataManager::getAssignmentList(Account::getId());
+        homeworkList.clear();
         for (auto item : assmList) {
             std::vector<DataManager::Homework> hList = DataManager::getHomeworkListByAsmId(item.getId());
             homeworkList.insert(homeworkList.begin(), hList.begin(), hList.end());

@@ -1,14 +1,19 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
+import GeneralVC 1.0
 
 Rectangle {
     id: generalPage
     width: 1046
     height: 768
 
+    GeneralVC {
+        id: vc
+    }
+
     function getTimePeriod() {
-        var now = new Date()
-        var hour = now.getHours()
+        let now = new Date()
+        let hour = now.getHours()
         if (hour < 6) { return "凌晨" }
         else if (hour < 9) { return "早上" }
         else if (hour < 12) { return "上午" }

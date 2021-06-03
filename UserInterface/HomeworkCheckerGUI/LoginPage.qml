@@ -16,6 +16,14 @@ Rectangle {
         id: account
     }
 
+    Timer {id: timer}
+    function setTimeout(cb,delayTime) {
+        timer.interval = delayTime;
+        timer.repeat = false;
+        timer.triggered.connect(cb);
+        timer.start();
+    }
+
     Text {
         id: title
         width: 80
@@ -105,7 +113,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             font.pixelSize: 20
-            passwordCharacter: "·"
+            passwordCharacter: "●"
             echoMode: TextField.Password
             selectByMouse: true
             font.family: "Source Han Sans CN"
@@ -176,7 +184,7 @@ Rectangle {
             id: mouseArea1
             anchors.fill: parent
             onClicked: {
-                var result = account.login(emailField.text, passwordField.text);
+                let result = account.login(emailField.text, passwordField.text);
                 switch (result) {
                 case 0:
                     logInBtnText.text = "登录成功"
@@ -193,6 +201,7 @@ Rectangle {
                 default:
                     logInBtnText.text = "登录失败"
                 }
+                setTimeout(() => { logInBtnText.text = "登录" }, 1500)
             }
         }
     }

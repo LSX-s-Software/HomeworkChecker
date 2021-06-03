@@ -35,7 +35,7 @@ Rectangle {
         id: homeworkListItem
         Rectangle {
             id: rectangle1
-            width: 983
+            width: listView.width
             height: 61
             color: "#f5f5f5"
 
@@ -76,8 +76,8 @@ Rectangle {
         width: 76
         height: 28
         color: "#ffffff"
+        anchors.verticalCenter: element.verticalCenter
         anchors.leftMargin: 28
-        anchors.topMargin: 46
         anchors.left: parent.left
         Text {
             id: element3
@@ -86,6 +86,7 @@ Rectangle {
             font.weight: Font.Medium
             font.pixelSize: 28
             verticalAlignment: Text.AlignVCenter
+            font.family: "Source Han Sans CN"
             anchors.fill: parent
             horizontalAlignment: Text.AlignRight
         }
@@ -109,7 +110,6 @@ Rectangle {
             fillMode: Image.PreserveAspectFit
             anchors.verticalCenter: parent.verticalCenter
         }
-        anchors.top: parent.top
     }
 
     Text {

@@ -225,7 +225,7 @@ Rectangle {
                 if (nameField.text == "" || codeField.text == "") {
                     return
                 } else {
-                    var code = classVC.addClass(nameField.text, locationField.text || "未填写", timeField.text || "未填写", codeField.text)
+                    let code = classVC.addClass(nameField.text, locationField.text || "未填写", timeField.text || "未填写", codeField.text)
                     switch (code) {
                     case 0:
                         newClass.close()
