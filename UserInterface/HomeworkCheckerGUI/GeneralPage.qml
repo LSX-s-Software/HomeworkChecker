@@ -1,10 +1,15 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
+import GeneralVC 1.0
 
 Rectangle {
     id: generalPage
     width: 1046
     height: 768
+
+    GeneralVC {
+        id: vc
+    }
 
     function getTimePeriod() {
         let now = new Date()

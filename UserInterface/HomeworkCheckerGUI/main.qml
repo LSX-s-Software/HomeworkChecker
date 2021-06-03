@@ -2,19 +2,16 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
-import GeneralVC 1.0
 
 Window {
     id: window
     width: 1366
     height: 768
     minimumWidth: 960
+    minimumHeight: 400
     visible: true
     title: qsTr("Homework Checker")
     property string assignmentId: ""
-    GeneralVC {
-        id: vc
-    }
 
     Popup {
         id: logInPopup
@@ -105,6 +102,7 @@ Window {
                     font.weight: Font.Medium
                     font.family: "Source Han Sans CN"
                     font.pixelSize: 24
+                    color: naviList.index == 0 ? "white" : "black"
                 }
 
                 MouseArea {
@@ -157,7 +155,7 @@ Window {
                     textFormat: Text.PlainText
                     font.family: "Source Han Sans CN"
                     font.pixelSize: 24
-                    color: "black"
+                    color: naviList.index == 1 ? "white" : "black"
                 }
 
                 MouseArea {
@@ -210,7 +208,7 @@ Window {
                     textFormat: Text.PlainText
                     font.family: "Source Han Sans CN"
                     font.pixelSize: 24
-                    color: "black"
+                    color: naviList.index == 2 ? "white" : "black"
                 }
 
                 MouseArea {
@@ -264,7 +262,7 @@ Window {
                     textFormat: Text.PlainText
                     font.family: "Source Han Sans CN"
                     font.pixelSize: 24
-                    color: "black"
+                    color: naviList.index == 3 ? "white" : "black"
                 }
 
                 MouseArea {
@@ -317,7 +315,7 @@ Window {
                     textFormat: Text.PlainText
                     font.family: "Source Han Sans CN"
                     font.pixelSize: 24
-                    color: "black"
+                    color: naviList.index == 4 ? "white" : "black"
                 }
 
                 MouseArea {
@@ -390,89 +388,3 @@ Window {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*##^##
-Designer {
-    D{i:0;formeditorZoom:0.66}
-}
-##^##*/

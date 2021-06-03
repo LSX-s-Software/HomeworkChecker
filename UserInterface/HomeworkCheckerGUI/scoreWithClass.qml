@@ -277,12 +277,13 @@ Rectangle {
 
     ListView {
         id: listView
-        height: 562
+        anchors.top: averageScore.bottom
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.rightMargin: 32
         anchors.leftMargin: 32
+        anchors.topMargin: 22
         delegate: studentListItem
         clip: true
         model: scoreListModel
