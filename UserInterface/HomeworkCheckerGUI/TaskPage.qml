@@ -161,7 +161,7 @@ StackView {
                     onClicked: {
                         window.assignmentId=id;
                         //console.log(window.assignmentId)
-                        var item=taskPage.push(info)
+                        let item=taskPage.push(info)
                         item.refresh()
                     }
                 }

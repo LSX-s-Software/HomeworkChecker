@@ -198,7 +198,7 @@ Rectangle {
                     if (displayType == 0) {
                         infoOfClass.show(classVC.classList[index])
                     } else if (displayType >= 2) {
-                        var scorePage = markPage.push(scoreOfClass)
+                        let scorePage = markPage.push(scoreOfClass)
                         scorePage.classId = classVC.classList[index].id
                         scorePage.className = classVC.classList[index].name
                         scorePage.loadData()

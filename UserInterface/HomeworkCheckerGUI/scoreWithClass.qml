@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
+import Qt.labs.platform 1.1
 import ClassScoreVC 1.0
 
 Rectangle {
@@ -20,6 +21,14 @@ Rectangle {
 
     property int classId: -1
     property string className: "加载中"
+
+    Timer {id: timer}
+    function setTimeout(cb,delayTime) {
+        timer.interval = delayTime;
+        timer.repeat = false;
+        timer.triggered.connect(cb);
+        timer.start();
+    }
 
     function loadData() {
         classScoreVC.getData(classId)
@@ -54,7 +63,7 @@ Rectangle {
                 id: mouseArea
                 anchors.fill: parent
                 onClicked: {
-                    var scorePage = markPage.push(scoreOfEach)
+                    let scorePage = markPage.push(scoreOfEach)
                     scorePage.classId = classId
                     scorePage.stuId = classScoreVC.scoreList[index].stuId
                     scorePage.stuName = classScoreVC.scoreList[index].name
@@ -96,8 +105,8 @@ Rectangle {
         width: 76
         height: 28
         color: "#ffffff"
+        anchors.verticalCenter: title.verticalCenter
         anchors.leftMargin: 28
-        anchors.topMargin: 46
         anchors.left: parent.left
         Text {
             id: element3
@@ -129,7 +138,6 @@ Rectangle {
             fillMode: Image.PreserveAspectFit
             anchors.verticalCenter: parent.verticalCenter
         }
-        anchors.top: parent.top
     }
 
     Text {
@@ -146,17 +154,37 @@ Rectangle {
         font.pixelSize: 40
     }
 
+    FileDialog {
+        id: fileDialog
+        currentFile: StandardPaths.writableLocation(StandardPaths.DocumentsLocation) + "/" + className + "成绩.csv"
+        folder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
+        fileMode: FileDialog.SaveFile
+        defaultSuffix: "csv"
+        onAccepted: {
+            console.log(fileDialog.file)
+            let result = classScoreVC.exportData(String(fileDialog.file).substring(7))
+            if (result) {
+                exportBtnText.text = "✓"
+            } else {
+                exportBtnText.text = "导出失败"
+            }
+            setTimeout(() => { exportBtnText.text = "导出成绩" }, 1500)
+        }
+    }
+
     Rectangle {
         id: rectangle1
-        x: 904
         y: 39
         width: 110
         height: 42
         color: "#0098f7"
         radius: 10
+        anchors.verticalCenter: title.verticalCenter
+        anchors.right: parent.right
+        anchors.rightMargin: 32
 
         Text {
-            id: element
+            id: exportBtnText
             color: "#ffffff"
             text: qsTr("导出成绩")
             font.weight: Font.Medium
@@ -171,6 +199,9 @@ Rectangle {
         MouseArea {
             id: mouseArea
             anchors.fill: parent
+            onClicked: {
+                fileDialog.open()
+            }
         }
     }
 
@@ -246,10 +277,12 @@ Rectangle {
 
     ListView {
         id: listView
-        width: 982
         height: 562
+        anchors.left: parent.left
+        anchors.right: parent.right
         anchors.bottom: parent.bottom
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.rightMargin: 32
+        anchors.leftMargin: 32
         delegate: studentListItem
         clip: true
         model: scoreListModel
@@ -292,7 +325,10 @@ Rectangle {
     }
     Component{
         id:scoreOfEach
-        ScoreWithStudent{}
+        ScoreWithStudent {
+            width: markPage.width
+            height: markPage.height
+        }
     }
 
 }
@@ -301,6 +337,6 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.66}
+    D{i:0;formeditorZoom:0.66}D{i:14}D{i:23}
 }
 ##^##*/

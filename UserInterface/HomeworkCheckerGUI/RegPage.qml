@@ -96,7 +96,7 @@ Rectangle {
                     nextBtnTxt.text = "请填写完全部内容再提交"
                 } else {
                     if (passwordField.text == passwordConfirm.text) {
-                        var result = account.reg(emailField.text, passwordField.text)
+                        let result = account.reg(emailField.text, passwordField.text)
                         switch (result) {
                         case 0:
                             account.login(emailField.text, passwordField.text)
@@ -104,7 +104,7 @@ Rectangle {
                             nextBtnTxt.text = "注册成功"
                             generalPage.visible = true
                             generalPage.refresh()
-                            setTimeout(function () {
+                            setTimeout(() => {
                                 regPopup.close()
                             }, 1500)
                             break;
@@ -118,7 +118,7 @@ Rectangle {
                         nextBtnTxt.text = "两次输入的密码不一致"
                     }
                 }
-                setTimeout(function () {
+                setTimeout(() => {
                     nextBtnTxt.text = "注册"
                 }, 1500)
             }
@@ -207,7 +207,7 @@ Rectangle {
             }
             anchors.right: parent.right
             placeholderText: qsTr("密码")
-            passwordCharacter: "·"
+            passwordCharacter: "●"
             echoMode: TextField.Password
             selectByMouse: true
             anchors.verticalCenter: parent.verticalCenter
@@ -252,7 +252,7 @@ Rectangle {
             }
             anchors.right: parent.right
             placeholderText: qsTr("确认密码")
-            passwordCharacter: "·"
+            passwordCharacter: "●"
             echoMode: TextField.Password
             selectByMouse: true
             anchors.verticalCenter: parent.verticalCenter

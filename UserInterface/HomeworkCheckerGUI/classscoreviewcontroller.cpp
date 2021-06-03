@@ -52,3 +52,20 @@ double ClassScoreViewController::getAvgScore() {
 double ClassScoreViewController::getLowestScore() {
     return lowestScore;
 }
+
+bool ClassScoreViewController::exportData(const QString& path) {
+    std::ofstream outFile;
+    outFile.open(path.toStdString(), std::ios::out);
+    if (outFile.is_open()) {
+        //表头
+        outFile << "姓名" << ',' << "学号" << ',' << "成绩" << std::endl;
+        //数据
+        for (long i = 0; i < scoreList.size(); i++) {
+            outFile << scoreList.at(i)["name"].toString().toStdString() << ',' << scoreList.at(i)["schoolNum"].toString().toStdString() << ',' << scoreList.at(i)["score"].toString().toStdString() << std::endl;
+        }
+        outFile.close();
+        return true;
+    }
+    qDebug() << "[ERROR] [ClassScoreViewController] File cannot be opened." << Qt::endl;
+    return false;
+}
