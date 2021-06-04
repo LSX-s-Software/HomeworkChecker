@@ -1,4 +1,4 @@
-﻿//
+//
 //  DataManager.hpp
 //  DataManager
 //
@@ -10,20 +10,10 @@
 #pragma GCC visibility push(default)
 
 #include "DBManager.hpp"
+#include "DMUtils.hpp"
 #include "DMError.hpp"
 #include <vector>
 #include <iostream>
-#include <iomanip>
-#include <sstream>
-
-namespace DMUtils {
-
-/// BKDR Hash Function
-unsigned int BKDRHash(char *str);
-
-std::string double2FixedStr(double num, unsigned fix);
-
-}
 
 namespace DataManager {
 

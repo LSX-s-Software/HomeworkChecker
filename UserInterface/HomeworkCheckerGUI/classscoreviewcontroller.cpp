@@ -1,4 +1,4 @@
-﻿#include "classscoreviewcontroller.h"
+#include "classscoreviewcontroller.h"
 
 ClassScoreViewController::ClassScoreViewController(QObject *parent) : QObject(parent) {
     highestScore = 0;
@@ -64,7 +64,7 @@ bool ClassScoreViewController::exportData(const QString& path) {
             outFile << scoreList.at(i)["name"].toString().toStdString() << ',' << scoreList.at(i)["schoolNum"].toString().toStdString() << ',' << scoreList.at(i)["score"].toString().toStdString() << std::endl;
         }
         outFile.close();
-        return true;
+        return !outFile.fail();
     }
     qDebug() << "[ERROR] [ClassScoreViewController] File cannot be opened." << Qt::endl;
     return false;

@@ -41,22 +41,20 @@ compiler_rcc_clean:
 qrc_qml.cpp: qml.qrc \
 		../../../Qt/6.1.0/clang_64/libexec/rcc \
 		ClassPage.qml \
-		RegPage.qml \
-		MarkHomework.qml \
-		GeneralPage.qml \
-		MarkPage.qml \
-		SettingPage.qml \
-		CorrectHomework.qml \
-		NewAClass.qml \
 		ScoreWithClass.qml \
+		RegPage.qml \
 		LoginPage.qml \
 		InfoOfClass.qml \
 		TaskPage.qml \
-		ScoreWithStudent.qml \
-		DetailsOfAddition.qml \
+		GeneralPage.qml \
+		MarkPage.qml \
+		SettingPage.qml \
 		NewAssignment.qml \
+		CorrectHomework.qml \
 		main.qml \
+		ScoreWithStudent.qml \
 		InfoOfTask.qml \
+		NewAClass.qml \
 		images/person.png \
 		images/password.png \
 		images/backBtn.png \

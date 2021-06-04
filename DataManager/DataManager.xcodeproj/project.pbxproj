@@ -13,7 +13,36 @@
 		F50A4D3A265CA3CD00A1D942 /* DBManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F50A4D36265CA3CD00A1D942 /* DBManager.cpp */; };
 		F50A4D41265CA50700A1D942 /* DataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F50A4D3F265CA50700A1D942 /* DataManager.cpp */; };
 		F50A4D42265CA50700A1D942 /* DataManager.hpp in Headers */ = {isa = PBXBuildFile; fileRef = F50A4D40265CA50700A1D942 /* DataManager.hpp */; };
+		F53752F1266A22E000B760AD /* DMUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F53752EF266A22E000B760AD /* DMUtils.cpp */; };
+		F53752F2266A22E000B760AD /* DMUtils.hpp in Headers */ = {isa = PBXBuildFile; fileRef = F53752F0266A22E000B760AD /* DMUtils.hpp */; };
+		F53752F5266A254A00B760AD /* libmysqlcppconn-static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F53752F4266A254A00B760AD /* libmysqlcppconn-static.a */; };
+		F53752FD266A264900B760AD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F53752FC266A264900B760AD /* main.cpp */; };
+		F5375301266A273300B760AD /* libDataManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F50A4D25265CA36B00A1D942 /* libDataManager.a */; };
+		F537531D266A30E200B760AD /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F537531B266A30E200B760AD /* libssl.a */; };
+		F537531E266A30E200B760AD /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F537531C266A30E200B760AD /* libcrypto.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F5375302266A273300B760AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F50A4D1D265CA36B00A1D942 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F50A4D24265CA36B00A1D942;
+			remoteInfo = DataManager;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F53752F8266A264900B760AD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		F50A4D25265CA36B00A1D942 /* libDataManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDataManager.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -23,6 +52,13 @@
 		F50A4D36265CA3CD00A1D942 /* DBManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DBManager.cpp; sourceTree = "<group>"; };
 		F50A4D3F265CA50700A1D942 /* DataManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataManager.cpp; sourceTree = "<group>"; };
 		F50A4D40265CA50700A1D942 /* DataManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DataManager.hpp; sourceTree = "<group>"; };
+		F53752EF266A22E000B760AD /* DMUtils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DMUtils.cpp; sourceTree = "<group>"; };
+		F53752F0266A22E000B760AD /* DMUtils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DMUtils.hpp; sourceTree = "<group>"; };
+		F53752F4266A254A00B760AD /* libmysqlcppconn-static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libmysqlcppconn-static.a"; path = "../packages/mysql/lib/libmysqlcppconn-static.a"; sourceTree = "<group>"; };
+		F53752FA266A264900B760AD /* DMTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DMTest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F53752FC266A264900B760AD /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		F537531B266A30E200B760AD /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = ../packages/mysql/lib/libssl.a; sourceTree = "<group>"; };
+		F537531C266A30E200B760AD /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = ../packages/mysql/lib/libcrypto.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +66,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F537531D266A30E200B760AD /* libssl.a in Frameworks */,
+				F537531E266A30E200B760AD /* libcrypto.a in Frameworks */,
+				F53752F5266A254A00B760AD /* libmysqlcppconn-static.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F53752F7266A264900B760AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5375301266A273300B760AD /* libDataManager.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,7 +87,9 @@
 			isa = PBXGroup;
 			children = (
 				F50A4D27265CA36B00A1D942 /* DataManager */,
+				F53752FB266A264900B760AD /* DMTest */,
 				F50A4D26265CA36B00A1D942 /* Products */,
+				F53752F3266A254A00B760AD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -48,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				F50A4D25265CA36B00A1D942 /* libDataManager.a */,
+				F53752FA266A264900B760AD /* DMTest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,8 +111,28 @@
 				F50A4D34265CA3CD00A1D942 /* DBManager.hpp */,
 				F50A4D33265CA3CD00A1D942 /* DMError.cpp */,
 				F50A4D35265CA3CD00A1D942 /* DMError.hpp */,
+				F53752EF266A22E000B760AD /* DMUtils.cpp */,
+				F53752F0266A22E000B760AD /* DMUtils.hpp */,
 			);
 			path = DataManager;
+			sourceTree = "<group>";
+		};
+		F53752F3266A254A00B760AD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F537531C266A30E200B760AD /* libcrypto.a */,
+				F537531B266A30E200B760AD /* libssl.a */,
+				F53752F4266A254A00B760AD /* libmysqlcppconn-static.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F53752FB266A264900B760AD /* DMTest */ = {
+			isa = PBXGroup;
+			children = (
+				F53752FC266A264900B760AD /* main.cpp */,
+			);
+			path = DMTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -75,6 +145,7 @@
 				F50A4D39265CA3CD00A1D942 /* DMError.hpp in Headers */,
 				F50A4D42265CA50700A1D942 /* DataManager.hpp in Headers */,
 				F50A4D38265CA3CD00A1D942 /* DBManager.hpp in Headers */,
+				F53752F2266A22E000B760AD /* DMUtils.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +169,24 @@
 			productReference = F50A4D25265CA36B00A1D942 /* libDataManager.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		F53752F9266A264900B760AD /* DMTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F5375300266A264900B760AD /* Build configuration list for PBXNativeTarget "DMTest" */;
+			buildPhases = (
+				F53752F6266A264900B760AD /* Sources */,
+				F53752F7266A264900B760AD /* Frameworks */,
+				F53752F8266A264900B760AD /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F5375303266A273300B760AD /* PBXTargetDependency */,
+			);
+			name = DMTest;
+			productName = DMTest;
+			productReference = F53752FA266A264900B760AD /* DMTest */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -107,6 +196,9 @@
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					F50A4D24265CA36B00A1D942 = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					F53752F9266A264900B760AD = {
 						CreatedOnToolsVersion = 12.5;
 					};
 				};
@@ -125,6 +217,7 @@
 			projectRoot = "";
 			targets = (
 				F50A4D24265CA36B00A1D942 /* DataManager */,
+				F53752F9266A264900B760AD /* DMTest */,
 			);
 		};
 /* End PBXProject section */
@@ -136,11 +229,28 @@
 			files = (
 				F50A4D3A265CA3CD00A1D942 /* DBManager.cpp in Sources */,
 				F50A4D41265CA50700A1D942 /* DataManager.cpp in Sources */,
+				F53752F1266A22E000B760AD /* DMUtils.cpp in Sources */,
 				F50A4D37265CA3CD00A1D942 /* DMError.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F53752F6266A264900B760AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F53752FD266A264900B760AD /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F5375303266A273300B760AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F50A4D24265CA36B00A1D942 /* DataManager */;
+			targetProxy = F5375302266A273300B760AD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		F50A4D2E265CA36B00A1D942 /* Debug */ = {
@@ -180,7 +290,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = "/usr/local/mysql-connector-c++-8.0.25/lib64";
+				FRAMEWORK_SEARCH_PATHS = "../packages/mysql/lib/**";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -195,17 +305,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "/usr/local/Cellar/mysql/8.0.23_1/include/**";
-				LIBRARY_SEARCH_PATHS = "/usr/local/mysql-connector-c++-8.0.25/lib64";
+				HEADER_SEARCH_PATHS = "../packages/mysql/include/**";
+				LIBRARY_SEARCH_PATHS = "../packages/mysql/lib/**";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = (
-					"-lmysqlcppconn-static",
-					"-lssl",
-					"-lcrypto",
-				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "LSX-s-Software.HomeworkChecker";
 				PRODUCT_MODULE_NAME = LSX_s_Software.HomeworkChecker;
 				PRODUCT_NAME = "LSX-s-Software.HomeworkChecker";
@@ -250,7 +356,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "/usr/local/mysql-connector-c++-8.0.25/lib64";
+				FRAMEWORK_SEARCH_PATHS = "../packages/mysql/lib/**";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -259,16 +365,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "/usr/local/Cellar/mysql/8.0.23_1/include/**";
-				LIBRARY_SEARCH_PATHS = "/usr/local/mysql-connector-c++-8.0.25/lib64";
+				HEADER_SEARCH_PATHS = "../packages/mysql/include/**";
+				LIBRARY_SEARCH_PATHS = "../packages/mysql/lib/**";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				OTHER_LDFLAGS = (
-					"-lmysqlcppconn-static",
-					"-lssl",
-					"-lcrypto",
-				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "LSX-s-Software.HomeworkChecker";
 				PRODUCT_MODULE_NAME = LSX_s_Software.HomeworkChecker;
 				PRODUCT_NAME = "LSX-s-Software.HomeworkChecker";
@@ -300,6 +402,34 @@
 			};
 			name = Release;
 		};
+		F53752FE266A264900B760AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CODE_SIGN_STYLE = Automatic;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/usr/local/mysql-connector-c++-8.0.25/lib64",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F53752FF266A264900B760AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CODE_SIGN_STYLE = Automatic;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/usr/local/mysql-connector-c++-8.0.25/lib64",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -317,6 +447,15 @@
 			buildConfigurations = (
 				F50A4D31265CA36B00A1D942 /* Debug */,
 				F50A4D32265CA36B00A1D942 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5375300266A264900B760AD /* Build configuration list for PBXNativeTarget "DMTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F53752FE266A264900B760AD /* Debug */,
+				F53752FF266A264900B760AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
