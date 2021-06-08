@@ -1,4 +1,4 @@
-﻿#include "WebsocketClientForApp.h"
+#include "WebsocketClientForApp.h"
 #include <fstream>
 #include <json.hpp>
 #include <thread>
@@ -37,46 +37,6 @@ string WebsocketClientForApp::Utf8ToGbk(const char* src_str)
 	if (szGBK) delete[] szGBK;
 	return strTemp;
 }
-#else
-#include <iconv.h>
-
-int WebsocketClientForApp::GbkToUtf8(char* str_str, size_t src_len, char* dst_str, size_t dst_len)
-{
-	iconv_t cd;
-	char** pin = &str_str;
-	char** pout = &dst_str;
-
-	cd = iconv_open("utf8", "gbk");
-	if (cd == 0)
-		return -1;
-	memset(dst_str, 0, dst_len);
-	if (iconv(cd, pin, &src_len, pout, &dst_len) == -1)
-		return -1;
-	iconv_close(cd);
-	*pout = '\0';
-
-	return 0;
-}
-
-int WebsocketClientForApp::Utf8ToGbk(char* src_str, size_t src_len, char* dst_str, size_t dst_len)
-{
-	iconv_t cd;
-	char** pin = &src_str;
-	char** pout = &dst_str;
-
-	cd = iconv_open("gbk", "utf8");
-	if (cd == 0)
-		return -1;
-	memset(dst_str, 0, dst_len);
-	if (iconv(cd, pin, &src_len, pout, &dst_len) == -1)
-		return -1;
-	iconv_close(cd);
-	*pout = '\0';
-
-	return 0;
-}
-
-
 #endif
 
 bool completeFileTransfer = false;//捕获是否下载完成
@@ -299,7 +259,9 @@ void WebsocketClientForApp::OnMessage(websocketpp::connection_hdl, client::messa
 					_WSCFA_::part_size = std::atoll(std::string(decode.at("part_size")).c_str());
 					_WSCFA_::size = std::atoll(std::string(decode.at("size")).c_str());
 					_WSCFA_::name = decode.at("name");
+#ifdef _WIN32
 					_WSCFA_::name = Utf8ToGbk(_WSCFA_::name.c_str());
+#endif
 
 					_WSCFA_::filePath = rootPath;
 					_WSCFA_::filePath.append(std::string(decode.at("class_id"))).append(std::string(decode.at("student_id"))).append(std::string(decode.at("homework_id")));
@@ -367,10 +329,18 @@ void WebsocketClientForApp::getFile(long homeworkId, std::filesystem::path fileN
 {
 	completeFileTransfer = false;
 	std::string msg = "{\"action\":\"get_file\",\"homework_id\":\"" + std::to_string(homeworkId) + "\",\"file_name\":\"" + fileName.string() + "\"}";
-	Send(GbkToUtf8(msg.c_str()));
+#ifdef _WIN32
+    Send(GbkToUtf8(msg.c_str()));
+#else
+    Send(msg.c_str());
+#endif
 	while (true)
 	{
+#ifdef _WIN32
 		Sleep(1);
+#else
+        sleep(1);
+#endif
 		if (completeFileTransfer)
 		{
 			std::cout << "file ok" << std::endl;
@@ -383,7 +353,11 @@ void WebsocketClientForApp::sendHeartbeat()
 {
 	while (true && enableSendHeartbeat)
 	{
+#ifdef _WIN32
         Sleep(5000);
+#else
+        sleep(5000);
+#endif
 		std::string msg = "{\"action\":\"heartbeat\",\"time\":\"" + std::to_string(std::time(0)) + "\"}";
 		Send(msg);
 	}

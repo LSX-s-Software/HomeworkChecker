@@ -100,8 +100,6 @@ Rectangle {
 
     Rectangle {
         id: backBtn
-        x: -4
-        y: 3
         width: 76
         height: 28
         color: "#ffffff"

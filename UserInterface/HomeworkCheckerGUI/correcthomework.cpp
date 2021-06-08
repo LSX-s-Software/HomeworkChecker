@@ -1,4 +1,4 @@
-﻿#include "correcthomework.h"
+#include "correcthomework.h"
 #include "WebsocketClientForApp.h"
 #include "settingpage.h"
 #include <filesystem>
@@ -68,7 +68,11 @@ QJsonArray CorrectHomework::getAttachmentList()
 bool CorrectHomework::downloadFile(QString fileName)
 {
 	//websocketClient.Connect("ws://" + SettingPage::getWsClientUrl_str());
+#ifdef _WIN32
 	websocketClient.getFile(homeworkId, websocketClient.Utf8ToGbk(fileName.toStdString().c_str()));
+#else
+    websocketClient.getFile(homeworkId, fileName.toStdString().c_str());
+#endif
 	//std::filesystem::path p = websocketClient.Utf8ToGbk("线性代数 第2版.pdf");
 	//websocketClient.getFile(homeworkId, p);
 	//websocketClient.Close();

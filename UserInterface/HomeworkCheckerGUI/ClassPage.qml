@@ -37,6 +37,14 @@ Rectangle {
                                   })
     }
 
+    function showMark(id, name) {
+        let scorePage = markPage.push(scoreOfClass)
+        scorePage.classId = id
+        scorePage.className = name
+        scorePage.loadData()
+        classInfoPopup.close()
+    }
+
     Popup {
         id: newClass
         modal: true
@@ -198,10 +206,7 @@ Rectangle {
                     if (displayType == 0) {
                         infoOfClass.show(classVC.classList[index])
                     } else if (displayType >= 2) {
-                        let scorePage = markPage.push(scoreOfClass)
-                        scorePage.classId = classVC.classList[index].id
-                        scorePage.className = classVC.classList[index].name
-                        scorePage.loadData()
+                        showMark(classVC.classList[index].id, classVC.classList[index].name)
                     }
                 }
             }
@@ -238,7 +243,6 @@ Rectangle {
         MouseArea {
             hoverEnabled: true
             anchors.fill: parent
-            cursorShape: Qt.PointingHandCursor
             onClicked: {
                 newClass.open()
             }

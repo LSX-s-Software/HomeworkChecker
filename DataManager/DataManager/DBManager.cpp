@@ -1,4 +1,4 @@
-﻿//
+//
 //  DBManager.cpp
 //  DataManager
 //
@@ -21,7 +21,7 @@ bool connectDatabase(DBAccount account) {
     mysql = mysql_real_connect(mysql, account.host.c_str(), account.username.c_str(), account.password.c_str(), "homework_checker", account.port, NULL, 0);
     if (mysql) {
 #ifdef VERBOSE
-        std::cout << "[INFO] [DBManager] MySQL connected." << std::endl;
+        std::clog << "[INFO] [DBManager] MySQL connected." << std::endl;
 #endif
         errMsg = "";
         return true;
@@ -61,7 +61,7 @@ int query(std::string queryString) {
         return -1;
     }
 #ifdef VERBOSE
-    std::cout << "[LOG] [DBManager] queryStr: \"" << queryString << "\"" << std::endl;
+    std::clog << "[LOG] [DBManager] queryStr: \"" << queryString << "\"" << std::endl;
 #endif
     if (queryResult != NULL) {
         mysql_free_result(queryResult);
@@ -88,7 +88,7 @@ int query(std::string queryString, DBActionType actionType) {
         return -1;
     }
 #ifdef VERBOSE
-    std::cout << "[LOG] [DBManager] queryStr: \"" << queryString << "\"" << std::endl;
+    std::clog << "[LOG] [DBManager] queryStr: \"" << queryString << "\"" << std::endl;
 #endif
     if (queryResult != NULL) {
         mysql_free_result(queryResult);

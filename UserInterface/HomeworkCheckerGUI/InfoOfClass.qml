@@ -335,6 +335,14 @@ Rectangle {
         MouseArea {
             id: mouseArea1
             anchors.fill: parent
+            onClicked: {
+                naviBtn3.color="#0098f7"
+                naviList.index = 3
+                naviBtn1.color="white"
+                classPage.visible=false
+                markPage.visible=true
+                classPage.showMark(classId, className)
+            }
         }
     }
 }

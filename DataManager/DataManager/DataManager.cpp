@@ -349,7 +349,7 @@ DMErrorType Class::setInviteCode(std::string newCode) {
     if (newCode.length() != 4)
         return INVALID_ARGUMENT;
     if (connectDatabase()) {
-        int code = DBManager::select("classes", "id", "code='" + newCode + "'");
+        int code = DBManager::select("classes", "id", "status=0 AND code='" + newCode + "'");
         if (!code) {
             if (DBManager::numRows() > 0) {
                 return TARGET_EXISTED;
@@ -372,7 +372,7 @@ DMErrorType Class::endClass() {
     if (id == -1)
         return OBJECT_NOT_INITED;
     if (connectDatabase()) {
-        int code = DBManager::update("classes", "status=1", "id=" + std::to_string(id));
+        int code = DBManager::update("classes", "status=1,code=''", "id=" + std::to_string(id));
         if (!code && DBManager::affectedRowCount() > 0) {
             status = CLASS_ENDED;
             return SUCCESS;
