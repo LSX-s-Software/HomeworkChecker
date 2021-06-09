@@ -1,4 +1,4 @@
-//
+﻿//
 //  DataManager.hpp
 //  DataManager
 //

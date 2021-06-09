@@ -48,14 +48,11 @@ int main(int argc, char *argv[])
     SettingPage::loadFromFile();
     std::string tmpPath = SettingPage::getWorkPath_str();
     websocketClient.rootPath = tmpPath.substr(8);
-    //websocketClient.Connect("ws://" + SettingPage::getWsClientUrl_str());
-    //websocketClient.getFile(27, "1.txt");
-    //websocketClient.sendReview(27);
     //websocketClient.sendNewHomeworkNotification(1);
     QObject::connect(qApp, &QGuiApplication::aboutToQuit, [&]{
         //退出 事件循环 前，保存数据
         DataManager::disconnectDatabase();
-        //websocketClient.Close();
+        websocketClient.Close();
     });
     engine.load(url);
     return app.exec();

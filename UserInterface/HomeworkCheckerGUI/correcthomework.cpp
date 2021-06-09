@@ -1,4 +1,4 @@
-#include "correcthomework.h"
+﻿#include "correcthomework.h"
 #include "WebsocketClientForApp.h"
 #include "settingpage.h"
 #include <filesystem>

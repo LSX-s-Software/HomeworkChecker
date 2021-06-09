@@ -1,4 +1,4 @@
-#include "WebsocketClientForApp.h"
+﻿#include "WebsocketClientForApp.h"
 #include <fstream>
 #include <json.hpp>
 #include <thread>

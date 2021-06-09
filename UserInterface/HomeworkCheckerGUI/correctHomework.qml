@@ -215,6 +215,10 @@ Rectangle {
         MouseArea {
             id: mouseArea3
             anchors.fill: parent
+            onClicked:
+            {
+
+            }
         }
     }
 

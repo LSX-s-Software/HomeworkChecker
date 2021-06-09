@@ -17,12 +17,12 @@ Rectangle {
     ListModel {
     id: homeworkListModel
     }
-
     property int uncheckNum: 0
     property int finishNum: 0
     property string assignmentName: ""
     property string deadline: ""
     property string className: ""
+
 
     function refresh() {
         homeworkVC.setAssignmentId(window.assignmentId)
@@ -74,6 +74,7 @@ Rectangle {
                 onClicked:
                 {
                     var item=taskPage.push(correctHomework)
+                    item.idArray=idArray
                     item.homeworkId=id
                     item.refresh()
                 }
@@ -142,6 +143,7 @@ Rectangle {
         anchors.leftMargin: 32
         anchors.bottomMargin: 140
         anchors.bottom: parent.bottom
+        property int listIndex: currentIndex
         delegate: studentListItem
         model: homeworkListModel
     }
@@ -282,6 +284,17 @@ Rectangle {
         MouseArea {
             id: mouseArea3
             anchors.fill: parent
+            onClicked:
+            {
+                if (homeworkListModel.get(0).status === 1)
+                {
+                    var item=taskPage.push(correctHomework)
+                    item.homeworkId=homeworkListModel.get(0).id
+                    item.listIndex=listView.listIndex
+                    item.homeworkListModel=homeworkListModel
+                    item.refresh()
+                }
+            }
         }
     }
 

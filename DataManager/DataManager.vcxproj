@@ -157,11 +157,13 @@
     <ClInclude Include="DataManager\DataManager.hpp" />
     <ClInclude Include="DataManager\DBManager.hpp" />
     <ClInclude Include="DataManager\DMError.hpp" />
+    <ClInclude Include="DataManager\DMUtils.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DataManager\DataManager.cpp" />
     <ClCompile Include="DataManager\DBManager.cpp" />
     <ClCompile Include="DataManager\DMError.cpp" />
+    <ClCompile Include="DataManager\DMUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="..\packages\mysql\lib\libssl-1_1-x64.dll">

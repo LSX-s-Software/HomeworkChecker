@@ -1,4 +1,4 @@
-#include "classscoreviewcontroller.h"
+﻿#include "classscoreviewcontroller.h"
 
 ClassScoreViewController::ClassScoreViewController(QObject *parent) : QObject(parent) {
     highestScore = 0;
