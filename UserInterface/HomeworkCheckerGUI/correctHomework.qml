@@ -4,6 +4,7 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 import HomeworkInfoVC 1.0
 
+
 Rectangle {
     id: correctHomework
     width: 1046
@@ -15,9 +16,10 @@ Rectangle {
 
     property string comment;
     property string score;
-
+    property string continueId;
     property bool showCommentField: false
-
+    property var continueIdList;
+    property int index:-1
     HomeworkInfoVC {
         id:homeworkInfoVC
     }
@@ -34,6 +36,9 @@ Rectangle {
         homeworkInfoVC.attachmentList.forEach(ele => {
                                           attachmentModel.append(ele)
                                   })
+        console.log(continueId)
+        correctHomework.continueIdList=continueId.split("|")
+        //correctHomework.index=-1
     }
 
     function submit() {
@@ -105,6 +110,7 @@ Rectangle {
             anchors.fill: parent
             onClicked: {
                 taskPage.pop()
+                //infoOfTask.refresh()
             }
         }
 
@@ -216,7 +222,16 @@ Rectangle {
             anchors.fill: parent
             onClicked:
             {
-
+                index++
+                if(index===continueIdList.length||continueIdList[index]==="")
+                {
+                    taskPage.pop()
+                }
+                else
+                {
+                    homeworkId=continueIdList[index]
+                    refresh()
+                }
             }
         }
     }

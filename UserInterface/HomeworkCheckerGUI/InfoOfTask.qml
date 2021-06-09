@@ -74,8 +74,19 @@ Rectangle {
                 onClicked:
                 {
                     var item=taskPage.push(correctHomework)
-                    item.idArray=idArray
                     item.homeworkId=id
+                    for (var i=index+1;i!==homeworkListModel.count;i++)
+                    {
+                        if(homeworkListModel.get(i).status===1)
+                        {
+                            item.continueId+=(homeworkListModel.get(i).id+"|")
+                        }
+                    }
+                    if(item.continueId!=="")
+                    {
+                        item.continueId=item.continueId.slice(0,-1)
+                    }
+                    //console.log(item.homeworkId+" "+item.continueId)
                     item.refresh()
                 }
 
@@ -286,8 +297,17 @@ Rectangle {
                 {
                     var item=taskPage.push(correctHomework)
                     item.homeworkId=homeworkListModel.get(0).id
-                    item.listIndex=listView.listIndex
-                    item.homeworkListModel=homeworkListModel
+                    for (var i=0+1;i!==homeworkListModel.count;i++)
+                    {
+                        if(homeworkListModel.get(i).status===1)
+                        {
+                            item.continueId+=(homeworkListModel.get(i).id+"|")
+                        }
+                    }
+                    if(item.continueId!=="")
+                    {
+                        item.continueId=item.continueId.slice(0,-1)
+                    }
                     item.refresh()
                 }
             }

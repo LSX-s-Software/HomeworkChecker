@@ -9,6 +9,7 @@
 std::string SettingPage::workPath;
 std::string SettingPage::wsClientUrl;
 
+
 QSettings settings;
 
 SettingPage::SettingPage(QObject* parent) : QObject(parent) 
