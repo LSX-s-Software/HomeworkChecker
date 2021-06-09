@@ -1,8 +1,7 @@
-import QtQuick 2.0
 import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
-
+import AssignmentVC 1.0
 
 Rectangle {
     id: newAssignment
@@ -11,6 +10,26 @@ Rectangle {
     radius: 20
     clip: true
     color: "#ffffff"
+
+    Timer {id: timer}
+    function setTimeout(cb,delayTime) {
+        timer.interval = delayTime;
+        timer.repeat = false;
+        timer.triggered.connect(cb);
+        timer.start();
+    }
+
+    ListModel {
+        id: classList
+    }
+
+    function show() {
+        classList.clear()
+        assignmentVC.classList.forEach(ele => {
+                                           classList.append(ele)
+                                       })
+        newAssignmentPopup.open()
+    }
 
     Text {
         id: element
@@ -38,7 +57,7 @@ Rectangle {
             width: 48
             height: 32
             text: qsTr("标题")
-            font.bold: true
+            anchors.verticalCenter: parent.verticalCenter
             verticalAlignment: Text.AlignVCenter
             anchors.leftMargin: 0
             font.pixelSize: 24
@@ -48,17 +67,25 @@ Rectangle {
             font.family: "Source Han Sans CN"
         }
 
-        Text {
-            id: element30
-            x: 129
-            height: 32
-            text: qsTr("第七章作业")
+        TextField {
+            id: titleField
+            width: 280
+            verticalAlignment: "AlignVCenter"
+            anchors.topMargin: 0
+            anchors.bottomMargin: 0
             anchors.right: parent.right
-            verticalAlignment: Text.AlignVCenter
-            font.pixelSize: 24
             anchors.top: parent.top
-            horizontalAlignment: Text.AlignHCenter
+            anchors.bottom: parent.bottom
+            font.pixelSize: 22
+            horizontalAlignment: Text.AlignRight
+            selectByMouse: true
             font.family: "Source Han Sans CN"
+            placeholderText: qsTr("输入作业标题")
+            maximumLength: 40
+            background: Rectangle {
+                anchors.fill: parent
+                border.width: 0
+            }
         }
         anchors.left: parent.left
         anchors.topMargin: 24
@@ -72,33 +99,35 @@ Rectangle {
         anchors.right: parent.right
         anchors.topMargin: 24
         anchors.rightMargin: 52
+
         Text {
             id: element31
-            width: 48
             height: 32
             text: qsTr("目标班级")
+            anchors.verticalCenter: parent.verticalCenter
             anchors.leftMargin: 0
             verticalAlignment: Text.AlignVCenter
             font.pixelSize: 24
-            font.weight: Font.Bold
+            font.weight: Font.Medium
             horizontalAlignment: Text.AlignLeft
             anchors.left: parent.left
             font.family: "Source Han Sans CN"
-            font.bold: true
         }
 
-        Text {
-            id: element32
-            x: 129
-            height: 32
-            text: qsTr("第七章作业")
-            verticalAlignment: Text.AlignVCenter
-            font.pixelSize: 24
+        ComboBox {
+            id: classSelector
+            width: 250
             anchors.right: parent.right
             anchors.top: parent.top
-            horizontalAlignment: Text.AlignHCenter
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 0
+            anchors.topMargin: 0
+            font.pointSize: 17
             font.family: "Source Han Sans CN"
+            anchors.rightMargin: 0
+            model: classList
         }
+
     }
 
     Rectangle {
@@ -121,17 +150,14 @@ Rectangle {
             horizontalAlignment: Text.AlignLeft
             anchors.left: parent.left
             font.family: "Source Han Sans CN"
-            font.bold: true
         }
-
-        TextInput {
-            id: textInput
-            height: 32
-            text: qsTr("2021年6月1日 23:59:59")
-            anchors.right: parent.right
-            horizontalAlignment: Text.AlignHCenter
-            font.pixelSize: 24
-        }
+//        Calendar {
+//            minimumDate: new Date()
+//            locale: Qt.locale("zh_CN")
+//            anchors.verticalCenter: parent.verticalCenter
+//            anchors.leftMargin: 0
+//            verticalAlignment: Text.AlignVCenter
+//        }
     }
 
     Rectangle {
@@ -149,6 +175,7 @@ Rectangle {
             text: qsTr("作业描述")
             anchors.top: parent.top
             horizontalAlignment: Text.AlignHCenter
+            font.bold: false
             font.family: "Source Han Sans CN"
             font.weight: Font.Medium
             font.pixelSize: 24
@@ -161,11 +188,14 @@ Rectangle {
             height: 329
             radius: 5
             clip: true
+            border.color: "#707070"
+            border.width: 1
 
             TextArea {
-                id: textArea
+                id: descArea
                 text: qsTr("")
                 anchors.fill: parent
+                font.pointSize: 17
                 placeholderText: "输入作业描述"
                 font.family: "Source Han Sans CN"
                 selectByMouse: true
@@ -184,11 +214,13 @@ Rectangle {
         anchors.bottomMargin: 32
 
         Text {
-            id: element2
+            id: setBtnText
             color: "#ffffff"
             text: qsTr("创建")
-            font.bold: true
+            font.bold: false
             verticalAlignment: Text.AlignVCenter
+            font.weight: Font.Medium
+            font.family: "Source Han Sans CN"
             horizontalAlignment: Text.AlignHCenter
             anchors.fill: parent
             font.pixelSize: 24
@@ -197,6 +229,17 @@ Rectangle {
         MouseArea {
             id: mouseArea
             anchors.fill: parent
+            onClicked: {
+                if (classSelector.currentIndex > -1 && titleField.text != "") {
+                    let res = assignmentVC.newAssignment(classSelector.currentIndex, titleField.text, descArea.text, element33.text)
+                    if (res) {
+                        newAssignmentPopup.close()
+                    } else {
+                        setBtnText.text = "创建失败"
+                        setTimeout(() => { setBtnText.text = "创建" }, 1500)
+                    }
+                }
+            }
         }
     }
 
@@ -216,6 +259,7 @@ Rectangle {
         source: "images/close.png"
         anchors.top: parent.top
     }
+
 }
 
 

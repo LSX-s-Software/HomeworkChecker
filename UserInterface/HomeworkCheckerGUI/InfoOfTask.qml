@@ -61,7 +61,7 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.left: parent.left
                 anchors.leftMargin: 16
-                font.bold: true
+                font.weight: Font.Medium
                 verticalAlignment: Text.AlignVCenter
                 font.family: "Source Han Sans CN"
                 font.pixelSize: 28
@@ -163,7 +163,6 @@ Rectangle {
             height: 32
             text: qsTr("班级")
             anchors.leftMargin: 0
-            font.bold: false
             anchors.left: parent.left
             font.family: "Source Han Sans CN"
             verticalAlignment: Text.AlignVCenter
@@ -211,7 +210,6 @@ Rectangle {
             color: "#ffffff"
             text: qsTr("删除")
             font.weight: Font.Medium
-            font.bold: false
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             anchors.fill: parent
@@ -237,7 +235,6 @@ Rectangle {
             height: 32
             text: qsTr("截止时间")
             anchors.leftMargin: 0
-            font.bold: false
             anchors.left: parent.left
             font.family: "Source Han Sans CN"
             verticalAlignment: Text.AlignVCenter
@@ -275,7 +272,6 @@ Rectangle {
             text: "继续批改"
             font.weight: Font.Medium
             font.pixelSize: 24
-            font.bold: false
             verticalAlignment: Text.AlignVCenter
             anchors.fill: parent
             horizontalAlignment: Text.AlignHCenter

@@ -206,10 +206,9 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                //console.log("123444")
                 sp.setWorkPath(textFolderPath.text)
                 sp.setWsClientUrl(serverURL.text)
-                sp.saveToFile()
+                sp.saveSettings()
             }
         }
     }
@@ -239,7 +238,7 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                sp.loadFromFile()
+                sp.loadSettings()
                 textFolderPath.text=sp.getWorkPath()
                 serverURL.text=sp.getWsClientUrl()
             }

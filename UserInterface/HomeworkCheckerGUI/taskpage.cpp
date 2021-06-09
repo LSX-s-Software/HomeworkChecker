@@ -1,30 +1,4 @@
-﻿#include "taskpage.h"
-
-//std::string TaskPage::time_t2string(const time_t time_t_time)
-//{
-//    char szTime[100] = { '\0' };
-//
-//    tm* pTm = new tm;
-//    localtime_s(pTm, &time_t_time);
-//    //pTm = localtime(&time_t_time);
-//    pTm->tm_year += 1900;
-//    pTm->tm_mon += 1;
-//
-//    sprintf_s(szTime, u8"%04d��%02d��%02d�� %02d:%02d:%02d",
-//        pTm->tm_year,
-//        pTm->tm_mon,
-//        pTm->tm_mday,
-//        pTm->tm_hour,
-//        pTm->tm_min,
-//        pTm->tm_sec);
-//
-//    std::string strTime = szTime;
-//
-//    delete pTm;
-//    pTm = NULL;
-//
-//    return strTime;
-//}
+#include "taskpage.h"
 
 std::string TaskPage::time_t2string(const time_t timep)
 {
@@ -37,6 +11,9 @@ void TaskPage::refresh()
 {
     while (assignmentList.count()) {
         assignmentList.pop_back();
+    }
+    while (classList.count()) {
+        classList.pop_back();
     }
     try {
         auto list = DataManager::getAssignmentList(Account::getId());
@@ -58,12 +35,33 @@ void TaskPage::refresh()
                 assignmentList.append(obj);
             }
         }
+        std::vector<DataManager::Class> cList = DataManager::getClassList(Account::getId());
+        for (auto item : cList) {
+            QJsonObject obj;
+            obj.insert("modelData", QString::fromStdString(item.getName()));
+            obj.insert("id", QString::fromStdString(std::to_string(item.getId())));
+            classList.append(obj);
+        }
     }
     catch (DataManager::DMError error) {
-        qDebug() << "[ERROR] [ClassViewController] " << error.what() << Qt::endl;
+        qDebug() << "[ERROR] [AssignmentViewController] " << error.what() << Qt::endl;
     }
 }
 
 QJsonArray TaskPage::getAssignmentList() {
     return assignmentList;
+}
+
+QJsonArray TaskPage::getClassList() {
+    return classList;
+}
+
+bool TaskPage::newAssignment(int classIndex, QString &title, QString &desc, QString &ddl) {
+    try {
+        DataManager::Assignment(Account::getId(), title.toStdString(), desc.toStdString(), ddl.toLong(), classList.at(classIndex)["id"].toInt());
+        return true;
+    } catch (DataManager::DMError error) {
+        qDebug() << "[ERROR] [AssignmentViewController] " << error.what() << Qt::endl;
+        return false;
+    }
 }

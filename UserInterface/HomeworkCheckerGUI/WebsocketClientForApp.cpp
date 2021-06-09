@@ -339,7 +339,7 @@ void WebsocketClientForApp::getFile(long homeworkId, std::filesystem::path fileN
 #ifdef _WIN32
 		Sleep(1);
 #else
-        sleep(1);
+        usleep(1000);
 #endif
 		if (completeFileTransfer)
 		{
@@ -356,7 +356,7 @@ void WebsocketClientForApp::sendHeartbeat()
 #ifdef _WIN32
         Sleep(5000);
 #else
-        sleep(5000);
+        sleep(5);
 #endif
 		std::string msg = "{\"action\":\"heartbeat\",\"time\":\"" + std::to_string(std::time(0)) + "\"}";
 		Send(msg);

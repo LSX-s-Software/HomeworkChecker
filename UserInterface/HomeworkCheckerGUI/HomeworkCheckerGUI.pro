@@ -1,4 +1,5 @@
 QT += quick
+QT += core
 
 CONFIG += c++17
 DEFINES += WIN32_LEAN_AND_MEAN

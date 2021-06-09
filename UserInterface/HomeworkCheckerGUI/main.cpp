@@ -1,4 +1,4 @@
-﻿#include <QGuiApplication>
+#include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
@@ -45,7 +45,9 @@ int main(int argc, char *argv[])
     }, Qt::QueuedConnection);
     
     DataManager::connectDatabase();
-    SettingPage::loadFromFile();
+    QCoreApplication::setOrganizationName("MySoft");
+    QCoreApplication::setApplicationName("Homework Checker");
+    SettingPage::loadSettings();
     std::string tmpPath = SettingPage::getWorkPath_str();
     websocketClient.rootPath = tmpPath.substr(8);
     //websocketClient.sendNewHomeworkNotification(1);

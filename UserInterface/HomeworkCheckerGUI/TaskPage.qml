@@ -23,16 +23,15 @@ StackView {
     }
 
     function refresh() {
-    assignmentListModel.clear()
-    assignmentFinishListModel.clear()
-    assignmentVC.refresh()
-    //assignmentListModel.remove(0,3)
-    assignmentVC.assignmentList.forEach(ele => {
-                                            if (ele.notSubmitted==="0")
+        assignmentListModel.clear()
+        assignmentFinishListModel.clear()
+        assignmentVC.refresh()
+        assignmentVC.assignmentList.forEach(ele => {
+                                                if (ele.notSubmitted==="0")
                                                 assignmentFinishListModel.append(ele)
-                                            else
+                                                else
                                                 assignmentListModel.append(ele)
-                              })
+                                            })
     }
 
 
@@ -197,9 +196,10 @@ StackView {
             anchors.rightMargin: 32
 
             MouseArea {
-                id: mouseArea16
-                hoverEnabled: true
                 anchors.fill: parent
+                onClicked: {
+                    newAssignment.show()
+                }
             }
         }
 
@@ -210,7 +210,6 @@ StackView {
 
         Popup {
             id: newAssignmentPopup
-            property string assignmentId: "-1"
             modal: true
             closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
             width: 922
@@ -222,6 +221,7 @@ StackView {
                 radius: 20
             }
             contentItem: NewAssignment {
+                id: newAssignment
                 anchors.centerIn: parent
                 anchors.fill: parent
             }

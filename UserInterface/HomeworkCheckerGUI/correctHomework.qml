@@ -123,7 +123,6 @@ Rectangle {
         text: qsTr("文件列表")
         anchors.left: homeworkOfStudents.right
         anchors.top: homeworkOfStudents.top
-        font.bold: false
         font.weight: Font.Medium
         verticalAlignment: Text.AlignVCenter
         anchors.topMargin: 0
@@ -169,9 +168,9 @@ Rectangle {
                    anchors.verticalCenter: parent.verticalCenter
                    anchors.left: parent.left
                    anchors.leftMargin: 8
-                   font.bold: false
                    font.family: "Source Han Sans CN"
                    font.pixelSize: 20
+                   font.weight: Font.Medium
                }
 
                MouseArea {

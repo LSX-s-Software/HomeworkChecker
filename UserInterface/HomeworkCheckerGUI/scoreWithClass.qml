@@ -186,7 +186,6 @@ Rectangle {
             color: "#ffffff"
             text: qsTr("导出成绩")
             font.weight: Font.Medium
-            font.bold: true
             verticalAlignment: Text.AlignVCenter
             font.family: "Source Han Sans CN"
             horizontalAlignment: Text.AlignHCenter

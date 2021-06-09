@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include <QObject>
 #include <QString>
 #include "qqml.h"
@@ -16,12 +16,12 @@ public:
     Q_INVOKABLE static QString getWsClientUrl();
     static std::string getWsClientUrl_str();
     Q_INVOKABLE static void setWsClientUrl(const QString& url);
-    Q_INVOKABLE static void loadFromFile();
-    Q_INVOKABLE static void saveToFile();
+    Q_INVOKABLE static void loadSettings();
+    Q_INVOKABLE static void saveSettings();
     
 private:
     static std::string wsClientUrl;
     static std::string workPath;
-    static void restoreFile();
+    static void restoreSettings();
 };
 

@@ -728,7 +728,7 @@ Assignment::Assignment(unsigned int teacherId, std::string title, std::string de
     title = DBManager::sqlInjectionCheck(title);
     description = DBManager::sqlInjectionCheck(description);
     if (connectDatabase()) {
-        int code = DBManager::insert("assignments", "teacher_id,title,description,start_time,deadline,class_id", std::to_string(teacherId) + ",'" + title + "','" + description + "',NOW()," + std::to_string(deadline) + "," + std::to_string(classId));
+        int code = DBManager::insert("assignments", "teacher_id,title,description,start_date,deadline,class_id", std::to_string(teacherId) + ",'" + title + "','" + description + "',NOW()," + std::to_string(deadline) + "," + std::to_string(classId));
         if (!code && DBManager::affectedRowCount() > 0) {
             if (!DBManager::select("assignments", "id", "teacher_id=" + std::to_string(teacherId), "start_time DESC LIMIT 1") && DBManager::numRows() == 1) {
                 MYSQL_ROW row = DBManager::fetchRow();
