@@ -1,6 +1,8 @@
 QT += quick
 QT += core
 
+RC_ICONS = icon.ico
+
 CONFIG += c++17
 DEFINES += WIN32_LEAN_AND_MEAN
 # CONFIG += no_autoqmake
