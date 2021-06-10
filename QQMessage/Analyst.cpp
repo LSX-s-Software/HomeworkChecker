@@ -153,9 +153,10 @@ std::string getHomeworkFilename(std::string raw)
 /// <returns>日期时间字符串</returns>
 std::string TimeConvert(std::string timeStamp)
 {
+	long timeStamp_long = atol(timeStamp.c_str());
 	std::stringstream ss;
 	time_t timeTemp;
-	ss << timeStamp;
+	ss << timeStamp_long;
 	ss >> timeTemp;
 	char temp[50];
 	struct tm* timeSet = gmtime(&timeTemp);
@@ -164,6 +165,7 @@ std::string TimeConvert(std::string timeStamp)
 }
 std::string TimeConvert(long timeStamp)
 {
+	timeStamp += 8 * 3600;
 	std::stringstream ss;
 	time_t timeTemp;
 	ss << timeStamp;
@@ -318,7 +320,7 @@ void AnaText(std::u16string data, long long qq_id)
 						for (auto& iter : homeworklist)
 						{
 							int status = iter.homework.getStatus();
-							message += (u8"【作业 " + std::to_string(iter.assignment.getId()) + u8"】  " + getHomeworkStatus(status) + u8"  ");
+							message += (u8"【作业" + std::to_string(iter.assignment.getId()) + u8"】 " + iter.assignment.getTitle() + u8"  " + getHomeworkStatus(status) + u8"  ");
 							if (status == 0)//未提交
 							{
 								if (std::time(0) > iter.assignment.getDeadline())
@@ -422,7 +424,7 @@ void AnaText(std::u16string data, long long qq_id)
 						for (auto& iter : homeworklist)
 						{
 							int status = iter.homework.getStatus();
-							message += (u8"【作业 " + std::to_string(iter.assignment.getId()) + u8"】  " + getHomeworkStatus(status) + u8"  ");
+							message += (u8"【作业" + std::to_string(iter.assignment.getId()) + u8"】 " + iter.assignment.getTitle() + u8"  " + getHomeworkStatus(status) + u8"  ");
 							if (status == 0)//未提交
 							{
 								if (std::time(0) > iter.assignment.getDeadline())
@@ -526,7 +528,7 @@ void AnaText(std::u16string data, long long qq_id)
 						for (auto& iter : homeworklist)
 						{
 							int status = iter.homework.getStatus();
-							message += (u8"【作业 " + std::to_string(iter.assignment.getId()) + u8"】  " + getHomeworkStatus(status) + u8"  ");
+							message += (u8"【作业" + std::to_string(iter.assignment.getId()) + u8"】 " + iter.assignment.getTitle() + u8"  " + getHomeworkStatus(status) + u8"  ");
 							if (status == 0)//未提交
 							{
 								if (std::time(0) > iter.assignment.getDeadline())
@@ -1081,7 +1083,7 @@ bool sendReview(long homeworkId)
 		DataManager::Student st(hm.getStudentId());
 
 		long long qq_id = atoll(st.getQQ().c_str());
-		std::string msg = u8"您提交的作业 " + std::to_string(as.getId()) + u8"已批改\n\n【分数】 " + std::to_string(hm.getScore()) + u8"\n【评语】\n" + hm.getComments();
+		std::string msg = u8"您提交的作业" + std::to_string(as.getId()) + u8"【" + as.getTitle() + u8"】" + u8"已批改\n\n【分数】 " + std::to_string(hm.getScore()) + u8"\n【评语】\n" + hm.getComments();
 		PrivateMessageSender sender(qq_id, msg);
 		sender.send();
 		return true;
@@ -1100,8 +1102,8 @@ void sendHomeworkNotification(long long assignmentId,int mode)
 	{
 		if (mode == 1)
 		{
-			std::string message = u8"您收到了新的作业  ";
-			message += (u8"【作业 " + std::to_string(assignmentId) + u8"】" + u8"\r\n");
+			std::string message = u8"您收到了新的作业\r\n";
+			message += (u8"【作业 " + std::to_string(assignmentId) + u8"】 " + assignment.getTitle() + u8"\r\n");
 			message += (u8"【作业内容】\r\n" + assignment.getDescription() + u8"\r\n");
 			message += (u8"【截止时间】  " + TimeConvert(assignment.getDeadline()) + u8"\r\n");
 			PrivateMessageSender sender(atoll(iter.getQQ().c_str()), message);
