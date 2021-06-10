@@ -44,7 +44,6 @@ int main(int argc, char *argv[])
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
     
-    DataManager::connectDatabase();
     QCoreApplication::setOrganizationName("MySoft");
     QCoreApplication::setApplicationName("Homework Checker");
     SettingPage::loadSettings();

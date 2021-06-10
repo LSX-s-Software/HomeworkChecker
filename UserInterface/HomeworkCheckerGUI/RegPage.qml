@@ -105,6 +105,7 @@ Rectangle {
                             generalPage.visible = true
                             generalPage.refresh()
                             setTimeout(() => {
+                                           launchScreen.visible = false
                                 regPopup.close()
                             }, 1500)
                             break;
@@ -153,7 +154,7 @@ Rectangle {
             x: 46
             width: 290
             height: 40
-            verticalAlignment: "AlignVCenter"
+            verticalAlignment: Text.AlignVCenter
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             placeholderText: qsTr("邮箱")
@@ -199,6 +200,7 @@ Rectangle {
             width: 290
             height: 40
             text: ""
+            verticalAlignment: Text.AlignVCenter
             font.family: "Source Han Sans CN"
             background: Rectangle {
                 color: "#f5f5f5"
@@ -245,6 +247,7 @@ Rectangle {
             width: 290
             height: 40
             font.family: "Source Han Sans CN"
+            verticalAlignment: Text.AlignVCenter
             background: Rectangle {
                 color: "#f5f5f5"
                 border.width: 0
