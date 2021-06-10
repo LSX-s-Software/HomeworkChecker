@@ -1,8 +1,12 @@
-﻿#include "account.h"
+#include "account.h"
 
 DataManager::User Account::user = DataManager::User();
 
 Account::Account(QObject *parent) : QObject(parent) {}
+
+bool Account::connectDB() {
+    return DataManager::connectDatabase();
+}
 
 int Account::reg(QString userName, QString password) {
     return user.reg(userName.toStdString(), password.toStdString());

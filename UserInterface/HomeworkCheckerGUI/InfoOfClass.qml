@@ -188,11 +188,12 @@ Rectangle {
     Rectangle {
         id: finish
         x: 286
-        width: 148
+        width: 218
         height: 56
         color: "#fa5151"
         radius: 10
         anchors.bottom: parent.bottom
+        anchors.horizontalCenterOffset: -150
         anchors.horizontalCenter: parent.horizontalCenter
         Text {
             id: element37
@@ -286,40 +287,42 @@ Rectangle {
         anchors.top: element28.bottom
     }
 
-    Rectangle {
-        id: editInFo
-        x: 52
-        y: 369
-        width: 218
-        height: 56
-        color: "#f5f5f5"
-        radius: 10
+//    Rectangle {
+//        id: editInFo
+//        x: 52
+//        y: 369
+//        width: 218
+//        height: 56
+//        color: "#f5f5f5"
+//        radius: 10
 
-        Text {
-            id: element
-            color: "#0098f7"
-            text: qsTr("编辑信息")
-            font.weight: Font.Medium
-            verticalAlignment: Text.AlignVCenter
-            horizontalAlignment: Text.AlignHCenter
-            anchors.fill: parent
-            font.pixelSize: 24
-        }
+//        Text {
+//            id: element
+//            color: "#0098f7"
+//            text: qsTr("编辑信息")
+//            font.weight: Font.Medium
+//            verticalAlignment: Text.AlignVCenter
+//            horizontalAlignment: Text.AlignHCenter
+//            anchors.fill: parent
+//            font.pixelSize: 24
+//        }
 
-        MouseArea {
-            id: mouseArea
-            anchors.fill: parent
-        }
-    }
+//        MouseArea {
+//            id: mouseArea
+//            anchors.fill: parent
+//        }
+//    }
 
     Rectangle {
         id: checkMark
-        x: 450
-        y: 369
         width: 218
         height: 56
         color: "#f5f5f5"
         radius: 10
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenterOffset: 150
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottomMargin: 36
 
         Text {
             id: element1

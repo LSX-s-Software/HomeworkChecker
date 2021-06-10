@@ -2,6 +2,7 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
+import Account 1.0
 
 Window {
     id: window
@@ -13,12 +14,16 @@ Window {
     title: qsTr("Homework Checker")
     property string assignmentId: ""
 
+    Account {
+        id: account
+    }
+
     Popup {
         id: logInPopup
         modal: true
         width: 400
         height: 378
-        visible: true
+        visible: false
         anchors.centerIn: Overlay.overlay
         closePolicy: Popup.NoAutoClose
         contentItem: LoginPage {
@@ -385,6 +390,25 @@ Window {
             height: window.height
         }
 
+    }
+
+    Timer {id: timer}
+    function setTimeout(cb,delayTime) {
+        timer.interval = delayTime;
+        timer.repeat = false;
+        timer.triggered.connect(cb);
+        timer.start();
+    }
+
+    LaunchScreen {
+        id: launchScreen
+        visible: true
+        property bool loading: true
+        Component.onCompleted: {
+            account.connectDB()
+            setTimeout(() => { loading = false }, 500)
+            setTimeout(() => { logInPopup.visible = true }, 1500)
+        }
     }
 
 }

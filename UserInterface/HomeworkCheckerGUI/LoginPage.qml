@@ -190,6 +190,7 @@ Rectangle {
                     logInBtnText.text = "登录成功"
                     generalPage.visible = true
                     generalPage.refresh()
+                    launchScreen.visible = false
                     logInPopup.close()
                     break
                 case 1:

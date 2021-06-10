@@ -46,6 +46,7 @@ qrc_qml.cpp: qml.qrc \
 		MarkPage.qml \
 		SettingPage.qml \
 		CorrectHomework.qml \
+		LaunchScreen.qml \
 		DateRectangle.qml \
 		NewAClass.qml \
 		ScoreWithClass.qml \

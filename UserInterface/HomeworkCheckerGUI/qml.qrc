@@ -27,5 +27,6 @@
         <file>LoginPage.qml</file>
         <file>images/name.png</file>
         <file>DateRectangle.qml</file>
+        <file>LaunchScreen.qml</file>
     </qresource>
 </RCC>

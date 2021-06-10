@@ -1,4 +1,4 @@
-﻿#ifndef ACCOUNT_H
+#ifndef ACCOUNT_H
 #define ACCOUNT_H
 
 #include <QObject>
@@ -16,6 +16,7 @@ public:
     explicit Account(QObject *parent = nullptr);
     Q_INVOKABLE int reg(QString userName, QString password);
     Q_INVOKABLE int login(QString userName, QString password);
+    Q_INVOKABLE bool connectDB();
     static int getId();
     static QString getName();
     static void setName(const QString &name);
