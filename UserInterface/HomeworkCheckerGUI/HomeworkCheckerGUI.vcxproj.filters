@@ -64,11 +64,11 @@
     <ClCompile Include="studentscoreviewcontroller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="correcthomework.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="WebsocketClientForApp.cpp">
       <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="correcthomework.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -97,7 +97,7 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="correcthomework.h">
-      <Filter>Generated Files</Filter>
+      <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
@@ -201,5 +201,8 @@
     <ClInclude Include="WebsocketClientForApp.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
   </ItemGroup>
 </Project>
