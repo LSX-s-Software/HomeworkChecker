@@ -1,7 +1,6 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
-import AssignmentVC 1.0
 
 Rectangle {
     id: newAssignment
@@ -95,10 +94,10 @@ Rectangle {
         id: targetClass
         width: 400
         height: 33
-        anchors.top: element.bottom
-        anchors.right: parent.right
+        anchors.left: title.left
+        anchors.top: title.bottom
+        anchors.leftMargin: 0
         anchors.topMargin: 24
-        anchors.rightMargin: 52
 
         Text {
             id: element31
@@ -122,7 +121,7 @@ Rectangle {
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 0
             anchors.topMargin: 0
-            font.pointSize: 17
+            font.pixelSize: 17
             font.family: "Source Han Sans CN"
             anchors.rightMargin: 0
             model: classList
@@ -132,16 +131,19 @@ Rectangle {
 
     Rectangle {
         id: deadline
-        width: 817
-        height: 33
-        anchors.top: title.bottom
-        anchors.left: parent.left
-        anchors.topMargin: 24
-        anchors.leftMargin: 52
+        x: 470
+        width: 400
+        height: 90
+        anchors.right: parent.right
+        anchors.top: title.top
+        clip: true
+        anchors.rightMargin: 52
+        anchors.topMargin: 0
         Text {
             id: element33
             height: 32
             text: qsTr("截止时间")
+            anchors.verticalCenter: parent.verticalCenter
             font.italic: false
             anchors.leftMargin: 0
             verticalAlignment: Text.AlignVCenter
@@ -151,13 +153,16 @@ Rectangle {
             anchors.left: parent.left
             font.family: "Source Han Sans CN"
         }
-//        Calendar {
-//            minimumDate: new Date()
-//            locale: Qt.locale("zh_CN")
-//            anchors.verticalCenter: parent.verticalCenter
-//            anchors.leftMargin: 0
-//            verticalAlignment: Text.AlignVCenter
-//        }
+        DateRectangle {
+            id: dateRectangle
+            width: 280
+            anchors.right: parent.right
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            anchors.topMargin: 0
+            anchors.bottomMargin: 0
+            anchors.rightMargin: 0
+        }
     }
 
     Rectangle {
@@ -188,17 +193,20 @@ Rectangle {
             height: 329
             radius: 5
             clip: true
-            border.color: "#707070"
-            border.width: 1
 
             TextArea {
                 id: descArea
                 text: qsTr("")
                 anchors.fill: parent
-                font.pointSize: 17
+                font.pixelSize: 17
                 placeholderText: "输入作业描述"
                 font.family: "Source Han Sans CN"
                 selectByMouse: true
+                background: Rectangle {
+                    color: "#f5f5f5"
+                    radius: 5
+                    clip: true
+                }
             }
         }
     }
@@ -217,7 +225,6 @@ Rectangle {
             id: setBtnText
             color: "#ffffff"
             text: qsTr("创建")
-            font.bold: false
             verticalAlignment: Text.AlignVCenter
             font.weight: Font.Medium
             font.family: "Source Han Sans CN"
@@ -231,9 +238,11 @@ Rectangle {
             anchors.fill: parent
             onClicked: {
                 if (classSelector.currentIndex > -1 && titleField.text != "") {
-                    let res = assignmentVC.newAssignment(classSelector.currentIndex, titleField.text, descArea.text, element33.text)
+                    let date = dateRectangle.year + "-" + dateRectangle.month + "-" + dateRectangle.day + " 00:00:00"
+                    let res = assignmentVC.newAssignment(classList.get(classSelector.currentIndex).id, titleField.text, descArea.text, date)
                     if (res) {
                         newAssignmentPopup.close()
+                        taskPage.refresh()
                     } else {
                         setBtnText.text = "创建失败"
                         setTimeout(() => { setBtnText.text = "创建" }, 1500)

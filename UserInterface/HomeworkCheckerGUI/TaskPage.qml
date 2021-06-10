@@ -205,7 +205,10 @@ StackView {
 
         Component {
             id: info
-            InfoOfTask {}
+            InfoOfTask {
+                width: taskPage.width
+                height: taskPage.height
+            }
         }
 
         Popup {

@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include <QObject>
 #include <QDebug>
 #include <QJsonArray>
@@ -25,6 +25,7 @@ public:
     Q_INVOKABLE int getUncheckNum();
     Q_INVOKABLE int getFinishNum();
     QJsonArray getHomeworkList();
+    Q_INVOKABLE bool deleteAssignment();
 
 signals:
 

@@ -1,4 +1,4 @@
-﻿//
+//
 //  DataManager.hpp
 //  DataManager
 //
@@ -346,7 +346,7 @@ public:
     /// @param description 描述
     /// @param deadline 截止时间
     /// @param classId 班级ID
-    Assignment(unsigned int teacherId, std::string title, std::string description, long deadline, unsigned long classId) noexcept(false);
+    Assignment(unsigned int teacherId, std::string title, std::string description, std::string deadline, unsigned long classId) noexcept(false);
     
     bool isEmpty() {
         return id == 0;

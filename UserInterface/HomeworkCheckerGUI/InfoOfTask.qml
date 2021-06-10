@@ -15,7 +15,7 @@ Rectangle {
     }
 
     ListModel {
-    id: homeworkListModel
+        id: homeworkListModel
     }
     property int uncheckNum: 0
     property int finishNum: 0
@@ -44,16 +44,11 @@ Rectangle {
         id: studentListItem
         Rectangle {
             id: rectangle1
-            x: 32
-            y: 248
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.rightMargin: 8
-            anchors.leftMargin: 16
+            width: listView.width
             height: 61
-            radius: 10;
+            radius: 10
             color:      (status === 1
-                        ? "#71c5fb"
+                        ? "#b8e4fe"
                         : "#f5f5f5")
             Text {
                 id: nameAndNumber
@@ -127,11 +122,11 @@ Rectangle {
 
     Text {
         id: element
-        x: 308
-        y: 70
         text: assignmentName
         font.weight: Font.Medium
         font.family: "Source Han Sans CN"
+        anchors.top: parent.top
+        anchors.topMargin: 40
         anchors.horizontalCenter: parent.horizontalCenter
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
@@ -140,10 +135,6 @@ Rectangle {
 
     ListView {
         id: listView
-        x: 0
-        y: 0
-        //width: 982
-        //height: 456
         clip: true
         spacing: 12
         anchors.left: parent.left
@@ -152,8 +143,8 @@ Rectangle {
         anchors.topMargin: 24
         anchors.rightMargin: 32
         anchors.leftMargin: 32
-        anchors.bottomMargin: 140
-        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 20
+        anchors.bottom: progressBar.top
         property int listIndex: currentIndex
         delegate: studentListItem
         model: homeworkListModel
@@ -161,16 +152,14 @@ Rectangle {
 
     Rectangle {
         id:classHere
-        x: 32
-        y: 120
         width: 322
         height: 28
-        anchors.leftMargin: 52
-        anchors.topMargin: 24
+        anchors.leftMargin: 32
+        anchors.topMargin: 120
         anchors.left: parent.left
+        anchors.top: parent.top
         Text {
             id: element29
-            width: 48
             height: 32
             text: qsTr("班级")
             anchors.leftMargin: 0
@@ -194,27 +183,30 @@ Rectangle {
             font.pixelSize: 24
             anchors.top: parent.top
         }
-       // anchors.top: element28.bottom
     }
 
     ProgressBar {
         id: progressBar
-        width: 982
-        height: 24
+        height: 20
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.rightMargin: 32
+        anchors.leftMargin: 32
         value: finishNum/(uncheckNum+finishNum)
-        anchors.bottomMargin: 96
-        anchors.bottom: parent.bottom
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottomMargin: 20
+        anchors.bottom: deleteTheTask.top
     }
 
     Rectangle {
         id: deleteTheTask
-        x: 265
-        y: 692
         width: 218
         height: 56
         color: "#fa5151"
         radius: 10
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenterOffset: -140
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottomMargin: 20
 
         Text {
             id: element1
@@ -222,6 +214,7 @@ Rectangle {
             text: qsTr("删除")
             font.weight: Font.Medium
             verticalAlignment: Text.AlignVCenter
+            font.family: "Source Han Sans CN"
             horizontalAlignment: Text.AlignHCenter
             anchors.fill: parent
             font.pixelSize: 24
@@ -230,19 +223,32 @@ Rectangle {
         MouseArea {
             id: mouseArea2
             anchors.fill: parent
+            onClicked: {
+                if (element1.text == "删除") {
+                    element1.text = "确认删除"
+                } else {
+                    if (homeworkVC.deleteAssignment()) {
+                        element1.text = "操作成功"
+                        taskPage.pop()
+                    } else {
+                        element1.text = "操作失败"
+                    }
+                    element1.text = "删除"
+                }
+            }
         }
     }
 
     Rectangle {
         id: deadLine
-        x: 562
-        y: 120
         width: 452
         height: 28
-        anchors.topMargin: 24
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.rightMargin: 32
+        anchors.topMargin: 120
         Text {
             id: element31
-            width: 48
             height: 32
             text: qsTr("截止时间")
             anchors.leftMargin: 0
@@ -271,12 +277,14 @@ Rectangle {
 
     Rectangle {
         id: continueCorrect
-        x: 563
-        y: 692
         width: 218
         height: 56
-        color: "#0098f7"
+        color: uncheckNum == 0 ? "#999999" : "#0098f7"
         radius: 10
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenterOffset: 140
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottomMargin: 20
         Text {
             id: element2
             color: "#ffffff"
@@ -284,6 +292,7 @@ Rectangle {
             font.weight: Font.Medium
             font.pixelSize: 24
             verticalAlignment: Text.AlignVCenter
+            font.family: "Source Han Sans CN"
             anchors.fill: parent
             horizontalAlignment: Text.AlignHCenter
         }
@@ -293,6 +302,9 @@ Rectangle {
             anchors.fill: parent
             onClicked:
             {
+                if (uncheckNum == 0) {
+                    return
+                }
                 if (homeworkListModel.get(0).status === 1)
                 {
                     var item=taskPage.push(correctHomework)
@@ -316,8 +328,6 @@ Rectangle {
 
     Rectangle {
         id: backBtn
-        x: -4
-        y: 3
         width: 76
         height: 28
         color: "#ffffff"
@@ -331,6 +341,7 @@ Rectangle {
             font.weight: Font.Medium
             font.pixelSize: 28
             verticalAlignment: Text.AlignVCenter
+            font.family: "Source Han Sans CN"
             anchors.fill: parent
             horizontalAlignment: Text.AlignRight
         }
@@ -357,9 +368,18 @@ Rectangle {
     Component
     {
         id:correctHomework
-        CorrectHomework{}
+        CorrectHomework {
+            width: taskPage.width
+            height: taskPage.height
+        }
     }
 
 
 
 }
+
+/*##^##
+Designer {
+    D{i:0;formeditorZoom:0.66}D{i:15}
+}
+##^##*/

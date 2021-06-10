@@ -41,20 +41,21 @@ compiler_rcc_clean:
 qrc_qml.cpp: qml.qrc \
 		../../../Qt/6.1.0/clang_64/libexec/rcc \
 		ClassPage.qml \
-		ScoreWithClass.qml \
 		RegPage.qml \
-		LoginPage.qml \
-		InfoOfClass.qml \
-		TaskPage.qml \
 		GeneralPage.qml \
 		MarkPage.qml \
 		SettingPage.qml \
-		NewAssignment.qml \
 		CorrectHomework.qml \
-		main.qml \
-		ScoreWithStudent.qml \
-		InfoOfTask.qml \
+		DateRectangle.qml \
 		NewAClass.qml \
+		ScoreWithClass.qml \
+		LoginPage.qml \
+		InfoOfClass.qml \
+		TaskPage.qml \
+		ScoreWithStudent.qml \
+		NewAssignment.qml \
+		main.qml \
+		InfoOfTask.qml \
 		images/person.png \
 		images/password.png \
 		images/backBtn.png \
@@ -176,6 +177,12 @@ moc_taskpage.cpp: taskpage.h \
 		../../DataManager/DataManager/DataManager.hpp \
 		account.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
+		WebsocketClientForApp.h \
+		../../packages/websocketpp/include/websocketpp/config/asio_no_tls_client.hpp \
+		../../packages/websocketpp/include/websocketpp/client.hpp \
+		../../packages/websocketpp/include/websocketpp/common/thread.hpp \
+		../../packages/websocketpp/include/websocketpp/common/memory.hpp \
+		settingpage.h \
 		moc_predefs.h \
 		../../../Qt/6.1.0/clang_64/libexec/moc
 	/Users/linsixing/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_predefs.h -I/Users/linsixing/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/DataManager/build/Debug -I/Users/linsixing/HomeworkChecker/packages/mysql/include -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/packages/json -I/Users/linsixing/HomeworkChecker/packages/asio/include -I/Users/linsixing/HomeworkChecker/packages/websocketpp/include -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQuick.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtOpenGL.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQmlModels.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQml.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtNetwork.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/linsixing/Qt/6.1.0/clang_64/lib taskpage.h -o moc_taskpage.cpp

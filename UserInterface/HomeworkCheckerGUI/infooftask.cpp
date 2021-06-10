@@ -1,4 +1,4 @@
-﻿#include "infooftask.h"
+#include "infooftask.h"
 
 std::string InfoOfTask::time_t2string(const time_t timep)
 {
@@ -41,6 +41,12 @@ void InfoOfTask::refresh()
     while (homeworkList.count()) {
         homeworkList.pop_back();
     }
+    while (homeworkFinishList.count()) {
+        homeworkFinishList.pop_back();
+    }
+    while (homeworkUncheckList.count()) {
+        homeworkUncheckList.pop_back();
+    }
     try {
         auto List = DataManager::getHomeworkListByAsmId(assignmentId);
         if (List.size() > 0)
@@ -71,7 +77,7 @@ void InfoOfTask::refresh()
         }
     }
     catch (DataManager::DMError error) {
-        qDebug() << "[ERROR] [ClassViewController] " << error.what() << Qt::endl;
+        qDebug() << "[ERROR] [HomeworkViewController] " << error.what() << Qt::endl;
     }
 
     homeworkList = homeworkUncheckList + homeworkFinishList;
@@ -89,4 +95,8 @@ int InfoOfTask::getFinishNum()
 
 QJsonArray InfoOfTask::getHomeworkList() {
     return homeworkList;
+}
+
+bool InfoOfTask::deleteAssignment() {
+    return DataManager::deleteAssignment(assignmentId) == DataManager::SUCCESS;
 }

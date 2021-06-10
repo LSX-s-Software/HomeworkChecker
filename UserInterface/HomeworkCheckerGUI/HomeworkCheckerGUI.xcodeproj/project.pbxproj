@@ -26,7 +26,6 @@
 		11CFF24F2F5C8393AC81A92D /* moc_settingpage.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 45944748CF86A466AE3C9828 /* moc_settingpage.cpp */; settings = {ATTRIBUTES = (); }; };
 		138DE42E469F00ECEDC56958 /* classscoreviewcontroller.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 5FEF695BF54FA381FCE778AA /* classscoreviewcontroller.cpp */; settings = {ATTRIBUTES = (); }; };
 		248840D0E04A7CAAEAD63031 /* moc_taskpage.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 72C3D689300903DEF17B388C /* moc_taskpage.cpp */; settings = {ATTRIBUTES = (); }; };
-		257A8203C78A668D19146CAA /* DataManager in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 4FF0BA158467D67F6F29534B /* DataManager */; };
 		29801961A6618F0281E009BA /* moc_account.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 5280D45F9AF689D446F61F65 /* moc_account.cpp */; settings = {ATTRIBUTES = (); }; };
 		3C6A242DA837982406446FF5 /* qrc_qml.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = C68AC075553BB1F5F3103E04 /* qrc_qml.cpp */; settings = {ATTRIBUTES = (); }; };
 		3CC4423DC9F3DF33CEEB8FD4 /* moc_infooftask.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 9CAC02FD6AAFA230D9A7DD3D /* moc_infooftask.cpp */; settings = {ATTRIBUTES = (); }; };
@@ -62,7 +61,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F5BEA69F2670E44B009633B5 /* PBXContainerItemProxy */ = {
+		F5BEA6DE267105FD009633B5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6DB9C3763D02B1415CD9D565 /* Project object */;
 			proxyType = 1;
@@ -96,7 +95,6 @@
 		3A8EF9C62A8D4790CBB89CEA /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = /System/Library/Frameworks/ImageIO.framework; sourceTree = "<absolute>"; };
 		45944748CF86A466AE3C9828 /* moc_settingpage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = moc_settingpage.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_settingpage.cpp; sourceTree = "<absolute>"; };
 		4730CE4FC3D7EF951CE67A84 /* HomeworkCheckerGUI.pro */ = {isa = PBXFileReference; lastKnownFileType = text; name = HomeworkCheckerGUI.pro; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/HomeworkCheckerGUI.pro; sourceTree = "<absolute>"; };
-		4FF0BA158467D67F6F29534B /* DataManager */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = DataManager; path = /Users/linsixing/HomeworkChecker/DataManager/build/Debug/libDataManager.a; sourceTree = "<absolute>"; };
 		5280D45F9AF689D446F61F65 /* moc_account.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = moc_account.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_account.cpp; sourceTree = "<absolute>"; };
 		5AF5E90F73AD6287FA37DC1A /* account.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = account.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/account.cpp; sourceTree = "<absolute>"; };
 		5FEF695BF54FA381FCE778AA /* classscoreviewcontroller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = classscoreviewcontroller.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/classscoreviewcontroller.cpp; sourceTree = "<absolute>"; };
@@ -143,7 +141,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				257A8203C78A668D19146CAA /* DataManager in Link Binary With Libraries */,
 				D3E047EA57DAAE1DAA003AB3 /* QtQuick.framework in Link Binary With Libraries */,
 				A2BB5888B0F06BFA16DA3749 /* QtOpenGL.framework in Link Binary With Libraries */,
 				951B7177F7777F57BB0E3B8D /* QtGui.framework in Link Binary With Libraries */,
@@ -230,7 +227,6 @@
 		AF39DD055C3EF8226FBE929D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4FF0BA158467D67F6F29534B /* DataManager */,
 				F00B4EB1C52BEF010ADF53FD /* QtQuick.framework */,
 				D0C2463FFD8EE73AC5E7DD51 /* QtOpenGL.framework */,
 				645234D636EE2C6AEB85D482 /* QtGui.framework */,
@@ -421,7 +417,7 @@
 		268D6FDCDC3B8DB9966C94E2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D8DEA599D58B29371C2B9F9D /* Qt Preprocess */;
-			targetProxy = F5BEA69F2670E44B009633B5 /* PBXContainerItemProxy */;
+			targetProxy = F5BEA6DE267105FD009633B5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -471,7 +467,6 @@
 				LDPLUSPLUS = "/Library/Developer/CommandLineTools/usr/bin/clang++";
 				LIBRARY_SEARCH_PATHS = (
 					../../DataManager/build/Debug/,
-					/Users/linsixing/HomeworkChecker/DataManager/build/Debug/,
 					/Users/linsixing/Qt/6.1.0/clang_64/lib,
 					/System/Library/Frameworks/,
 				);
@@ -517,6 +512,7 @@
 					"-Wl,-rpath,/Users/linsixing/Qt/6.1.0/clang_64/lib",
 					"-F/Users/linsixing/Qt/6.1.0/clang_64/lib",
 					"-L../../DataManager/build/Debug/",
+					"-lDataManager",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "LSX-s-Software.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = HomeworkCheckerGUI;
@@ -575,7 +571,6 @@
 				LDPLUSPLUS = "/Library/Developer/CommandLineTools/usr/bin/clang++";
 				LIBRARY_SEARCH_PATHS = (
 					../../DataManager/build/Debug/,
-					/Users/linsixing/HomeworkChecker/DataManager/build/Debug/,
 					/Users/linsixing/Qt/6.1.0/clang_64/lib,
 					/System/Library/Frameworks/,
 				);
@@ -622,6 +617,7 @@
 					"-Wl,-rpath,/Users/linsixing/Qt/6.1.0/clang_64/lib",
 					"-F/Users/linsixing/Qt/6.1.0/clang_64/lib",
 					"-L../../DataManager/build/Debug/",
+					"-lDataManager",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "LSX-s-Software.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = HomeworkCheckerGUI;

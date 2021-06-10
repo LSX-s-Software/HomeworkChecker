@@ -26,5 +26,6 @@
         <file>InfoOfTask.qml</file>
         <file>LoginPage.qml</file>
         <file>images/name.png</file>
+        <file>DateRectangle.qml</file>
     </qresource>
 </RCC>

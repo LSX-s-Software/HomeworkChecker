@@ -7,6 +7,8 @@
 #include "qqml.h"
 #include "DataManager.hpp"
 #include "account.h"
+#include "WebsocketClientForApp.h"
+#include "settingpage.h"
 
 class TaskPage :
     public QObject
@@ -21,7 +23,7 @@ public:
     Q_INVOKABLE void refresh();
     QJsonArray getAssignmentList();
     QJsonArray getClassList();
-    Q_INVOKABLE bool newAssignment(int classId, QString &title, QString &desc, QString &ddl);
+    Q_INVOKABLE bool newAssignment(long classId, QString &title, QString &desc, QString &ddl);
 
 signals:
 

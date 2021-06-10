@@ -51,17 +51,8 @@ std::string SettingPage::getWorkPath_str()
 
 void SettingPage::saveSettings()
 {
-//    std::filesystem::path settingFile = "./setting.config";
     settings.setValue("DownloadFolder", QString::fromStdString(workPath));
     settings.setValue("WsClientUrl", QString::fromStdString(wsClientUrl));
-//    std::ofstream out;
-//    out.open(settingFile, std::ios::trunc);
-//    nlohmann::json encode{
-//    { "DownloadFolder", workPath},
-//    { "WsClientUrl", wsClientUrl },
-//    };
-//    out << encode;
-//    out.close();
 }
 
 void SettingPage::restoreSettings()
@@ -75,37 +66,10 @@ void SettingPage::restoreSettings()
 
 void SettingPage::loadSettings()
 {
-//    std::filesystem::path settingFile = "./setting.config";
     if (settings.contains("DownloadFolder") && settings.contains("WsClientUrl")) {
         workPath = settings.value("DownloadFolder").toString().toStdString();
         wsClientUrl = settings.value("WsClientUrl").toString().toStdString();
     } else {
         restoreSettings();
     }
-//    if (!std::filesystem::exists(settingFile))
-//    {
-//        restoreFile();
-//    }
-//    if (std::filesystem::exists(settingFile))
-//    {
-//        std::ifstream in;
-//        in.open(settingFile);
-//        std::stringstream buffer;
-//        buffer << in.rdbuf();
-//        std::string contents(buffer.str());
-//        in.close();
-//        auto decode = nlohmann::json::parse(contents);
-//        wsClientUrl = "";
-//        workPath = "";
-//        if (decode.contains("DownloadFolder") && decode.contains("WsClientUrl"))
-//        {
-//            workPath = decode.at("DownloadFolder");
-//            wsClientUrl = decode.at("WsClientUrl");
-//        }
-//        if (wsClientUrl == "" || workPath == "")
-//        {
-//            restoreFile();
-//        }
-//    }
-    //std::cout << wsClientUrl << std::endl << workPath << std::endl;
 }

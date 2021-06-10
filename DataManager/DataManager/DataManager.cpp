@@ -1,4 +1,4 @@
-﻿//
+//
 //  DataManager.cpp
 //  DataManager
 //
@@ -724,13 +724,13 @@ DMErrorType deleteHomework(long id) {
 
 //MARK: - Assignment类实现
 
-Assignment::Assignment(unsigned int teacherId, std::string title, std::string description, long deadline, unsigned long classId) noexcept(false) {
+Assignment::Assignment(unsigned int teacherId, std::string title, std::string description, std::string deadline, unsigned long classId) noexcept(false) {
     title = DBManager::sqlInjectionCheck(title);
     description = DBManager::sqlInjectionCheck(description);
     if (connectDatabase()) {
-        int code = DBManager::insert("assignments", "teacher_id,title,description,start_date,deadline,class_id", std::to_string(teacherId) + ",'" + title + "','" + description + "',NOW()," + std::to_string(deadline) + "," + std::to_string(classId));
+        int code = DBManager::insert("assignments", "teacher_id,title,description,start_date,deadline,class_id", std::to_string(teacherId) + ",'" + title + "','" + description + "',NOW(),'" + deadline + "'," + std::to_string(classId));
         if (!code && DBManager::affectedRowCount() > 0) {
-            if (!DBManager::select("assignments", "id", "teacher_id=" + std::to_string(teacherId), "start_time DESC LIMIT 1") && DBManager::numRows() == 1) {
+            if (!DBManager::select("assignments", "id", "teacher_id=" + std::to_string(teacherId), "start_date DESC LIMIT 1") && DBManager::numRows() == 1) {
                 MYSQL_ROW row = DBManager::fetchRow();
                 std::string idStr = row[0];
                 id = atol(idStr.c_str());

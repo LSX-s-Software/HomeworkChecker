@@ -20,7 +20,7 @@ Window {
         height: 378
         visible: true
         anchors.centerIn: Overlay.overlay
-//        closePolicy: Popup.NoAutoClose
+        closePolicy: Popup.NoAutoClose
         contentItem: LoginPage {
             id: loginPage
             anchors.centerIn: parent

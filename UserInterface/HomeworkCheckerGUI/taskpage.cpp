@@ -1,5 +1,7 @@
 #include "taskpage.h"
 
+extern WebsocketClientForApp websocketClient;
+
 std::string TaskPage::time_t2string(const time_t timep)
 {
     char tmp[64];
@@ -56,9 +58,12 @@ QJsonArray TaskPage::getClassList() {
     return classList;
 }
 
-bool TaskPage::newAssignment(int classIndex, QString &title, QString &desc, QString &ddl) {
+bool TaskPage::newAssignment(long classId, QString &title, QString &desc, QString &ddl) {
     try {
-        DataManager::Assignment(Account::getId(), title.toStdString(), desc.toStdString(), ddl.toLong(), classList.at(classIndex)["id"].toInt());
+        DataManager::Assignment assm(Account::getId(), title.toStdString(), desc.toStdString(), ddl.toStdString(), classId);
+        websocketClient.Connect("ws://" + SettingPage::getWsClientUrl_str());
+        websocketClient.sendNewHomeworkNotification(assm.getId());
+        websocketClient.Close();
         return true;
     } catch (DataManager::DMError error) {
         qDebug() << "[ERROR] [AssignmentViewController] " << error.what() << Qt::endl;

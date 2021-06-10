@@ -47,16 +47,18 @@ Rectangle {
 
     Rectangle {
         id: homeworkOfStudents
-        y: 203
-        width: 748
-        height: 540
         color: "#ffffff"
         radius: 5
         border.color: "#707070"
         border.width: 1
         anchors.left: parent.left
+        anchors.right: listView.left
+        anchors.top: element1.bottom
+        anchors.bottom: nextStudent.top
+        anchors.rightMargin: 20
+        anchors.bottomMargin: 22
+        anchors.topMargin: 34
         anchors.leftMargin: 40
-        anchors.verticalCenter: parent.verticalCenter
 
         TextArea {
             id: textArea
@@ -109,8 +111,8 @@ Rectangle {
             id: mouseArea
             anchors.fill: parent
             onClicked: {
+                infoOfTask.refresh()
                 taskPage.pop()
-                //infoOfTask.refresh()
             }
         }
 
@@ -127,12 +129,12 @@ Rectangle {
     Text {
         id: element3
         text: qsTr("文件列表")
-        anchors.left: homeworkOfStudents.right
+        anchors.right: parent.right
         anchors.top: homeworkOfStudents.top
         font.weight: Font.Medium
         verticalAlignment: Text.AlignVCenter
+        anchors.rightMargin: 126
         anchors.topMargin: 0
-        anchors.leftMargin: 20
         font.family: "Source Han Sans CN"
         horizontalAlignment: Text.AlignLeft
         font.pixelSize: 28
@@ -195,7 +197,7 @@ Rectangle {
 
     Rectangle {
         id: nextStudent
-        y: 676
+        visible: !showCommentField
         width: 218
         height: 56
         color: "#f5f5f5"
@@ -225,6 +227,7 @@ Rectangle {
                 index++
                 if(index===continueIdList.length||continueIdList[index]==="")
                 {
+                    infoOfTask.refresh()
                     taskPage.pop()
                 }
                 else
@@ -275,39 +278,49 @@ Rectangle {
                     correctHomework.submit()
                     correctHomework.showCommentField = false
                     element7.text = "打分"
+                    index++
+                    if(index===continueIdList.length||continueIdList[index]==="")
+                    {
+                        infoOfTask.refresh()
+                        taskPage.pop()
+                    }
+                    else
+                    {
+                        homeworkId=continueIdList[index]
+                        refresh()
+                    }
                 }
             }
         }
     }
 
-    Rectangle {
-        id: runBtn
-        x: 780
-        y: 679
-        width: 218
-        height: 56
-        color: "#0098f7"
-        radius: 10
-        anchors.bottom: parent.bottom
-        anchors.horizontalCenter: parent.horizontalCenter
-        Text {
-            id: element8
-            color: "#ffffff"
-            text: qsTr("编译并运行")
-            anchors.fill: parent
-            font.pixelSize: 24
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            font.family: "Source Han Sans CN"
-            font.weight: Font.Medium
-        }
+//    Rectangle {
+//        id: runBtn
+//        width: 218
+//        height: 56
+//        color: "#0098f7"
+//        radius: 10
+//        visible: !showCommentField
+//        anchors.bottom: parent.bottom
+//        anchors.horizontalCenter: parent.horizontalCenter
+//        Text {
+//            id: element8
+//            color: "#ffffff"
+//            text: qsTr("编译并运行")
+//            anchors.fill: parent
+//            font.pixelSize: 24
+//            horizontalAlignment: Text.AlignHCenter
+//            verticalAlignment: Text.AlignVCenter
+//            font.family: "Source Han Sans CN"
+//            font.weight: Font.Medium
+//        }
 
-        MouseArea {
-            id: mouseArea5
-            anchors.fill: parent
-        }
-        anchors.bottomMargin: 36
-    }
+//        MouseArea {
+//            id: mouseArea5
+//            anchors.fill: parent
+//        }
+//        anchors.bottomMargin: 36
+//    }
 
     TextField {
         id: commentField
@@ -318,8 +331,9 @@ Rectangle {
         anchors.right: markField.left
         anchors.rightMargin: 16
         placeholderTextColor: "#8f8f8f"
-        font.pointSize: 24
+        font.pixelSize: 24
         font.family: "Source Han Sans CN"
+        verticalAlignment: Text.AlignVCenter
         anchors.leftMargin: 40
         placeholderText: qsTr("评语")
         background: Rectangle {
@@ -338,9 +352,10 @@ Rectangle {
         anchors.verticalCenter: markBtn.verticalCenter
         anchors.right: markBtn.left
         horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
         font.weight: Font.Medium
         anchors.rightMargin: 16
-        font.pointSize: 24
+        font.pixelSize: 24
         placeholderText: qsTr("分数")
         placeholderTextColor: "#8f8f8f"
         background: Rectangle {
@@ -353,8 +368,4 @@ Rectangle {
     }
 }
 
-/*##^##
-Designer {
-    D{i:0;formeditorZoom:0.66}D{i:27}
-}
-##^##*/
+
