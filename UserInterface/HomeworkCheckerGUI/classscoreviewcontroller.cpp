@@ -1,4 +1,4 @@
-﻿#include "classscoreviewcontroller.h"
+#include "classscoreviewcontroller.h"
 
 ClassScoreViewController::ClassScoreViewController(QObject *parent) : QObject(parent) {
     highestScore = 0;
@@ -18,7 +18,8 @@ void ClassScoreViewController::getData(long classId) {
         for (auto item : list) {
             if (item.score > max) {
                 max = item.score;
-            } else if (item.score < min) {
+            }
+            if (item.score < min) {
                 min = item.score;
             }
             sum += item.score;

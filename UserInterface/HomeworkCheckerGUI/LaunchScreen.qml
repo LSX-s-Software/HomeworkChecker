@@ -23,7 +23,7 @@ Rectangle {
 
     Text {
         id: text1
-        x: 497
+        color: "#999999"
         text: qsTr("Ultimate Teacher Experience")
         anchors.top: title.bottom
         font.pixelSize: 28
