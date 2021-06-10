@@ -23,6 +23,7 @@ void TaskPage::refresh()
         {
             auto studentList = DataManager::getStudentList(list.at(0).getClassId());
             int totolNum = studentList.size();
+            int finishNum = 0;
             for (auto& item : list)
             {
                 QJsonObject obj;
@@ -31,6 +32,13 @@ void TaskPage::refresh()
                 time_t timep = item.getDeadline();
                 obj.insert("deadline", QString::fromStdString(time_t2string(timep)));
                 auto homeworkList = DataManager::getHomeworkListByAsmId(item.getId());
+                for (auto& homeiter : homeworkList)
+                {
+                    if (homeiter.getStatus() == 2)
+                        finishNum++;
+                }
+                int isfinish = (finishNum == totolNum) ? 1 : 0;
+                obj.insert("finish", QString::number(isfinish));
                 int submitNum = homeworkList.size();
                 obj.insert("submitted", QString::number(submitNum));
                 obj.insert("notSubmitted", QString::number(totolNum - submitNum));

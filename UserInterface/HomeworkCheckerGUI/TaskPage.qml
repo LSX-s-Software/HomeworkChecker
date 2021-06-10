@@ -27,7 +27,7 @@ StackView {
         assignmentFinishListModel.clear()
         assignmentVC.refresh()
         assignmentVC.assignmentList.forEach(ele => {
-                                                if (ele.notSubmitted==="0")
+                                                if (ele.finish==="1")
                                                 assignmentFinishListModel.append(ele)
                                                 else
                                                 assignmentListModel.append(ele)
