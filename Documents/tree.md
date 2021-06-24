@@ -2,36 +2,29 @@
 HomeworkChecker
 ├─ .gitattributes
 ├─ .gitignore
-├─ DataManager  数据库管理项目  负责人：林思行
-│    ├─ DMTest
+├─ DataManager  数据管理项目  负责人：林思行
+│    ├─ DMTest  DataManager测试
 │    │    └─ main.cpp
 │    ├─ DataManager
 │    │    ├─ CMakeLists.txt
 │    │    ├─ DBManager.cpp
-│    │    ├─ DBManager.hpp
+│    │    ├─ DBManager.hpp  数据库操作函数
 │    │    ├─ DMError.cpp
-│    │    ├─ DMError.hpp
+│    │    ├─ DMError.hpp  DataManager操作异常类
 │    │    ├─ DMUtils.cpp
-│    │    ├─ DMUtils.hpp
+│    │    ├─ DMUtils.hpp  DataManager实用工具
 │    │    ├─ DataManager.cpp
-│    │    └─ DataManager.hpp
+│    │    └─ DataManager.hpp  DataManager数据管理类库（包含User、Class、Student、Homework、		Assignment类）
 │    ├─ DataManager.vcxproj
 │    ├─ DataManager.vcxproj.filters
 │    ├─ DataManager.vcxproj.user
-│    └─ DataManager.xcodeproj
-│           ├─ project.pbxproj
-│           ├─ project.xcworkspace
-│           └─ xcuserdata
+│    └─ DataManager.xcodeproj  Xcode项目
 ├─ Documents  文档文件  负责人：林思行 杨锦荣 伍思烨
-│    └─ tree.md  树状图
+│    ├─ tree.md  树状图（此文件）
+│    └─ Analysis  项目trace  负责人：林思行
+│         └─ MemoryTrace.trace  内存泄漏检查结果
 ├─ HomeworkChecker.sln  Visual Studio解决方案
-├─ HomeworkChecker.xcworkspace
-│    ├─ contents.xcworkspacedata
-│    ├─ xcshareddata
-│    │    ├─ IDEWorkspaceChecks.plist
-│    │    └─ WorkspaceSettings.xcsettings
-│    └─ xcuserdata
-│           └─ linsixing.xcuserdatad
+├─ HomeworkChecker.xcworkspace  Xcode工作区
 ├─ HomeworkCheckerServer  服务端项目  负责人：杨锦荣
 │    ├─ CMakeLists.txt
 │    ├─ HomeworkCheckerServer.cpp  服务端程序
@@ -67,58 +60,57 @@ HomeworkChecker
 ├─ Setup.sql  Mysql配置文件  负责人：林思行 
 ├─ UserInterface  学生端图形化界面程序  负责人：林思行 杨锦荣 伍思烨
 │    └─ HomeworkCheckerGUI
-│           ├─ .qmake.stash
-│           ├─ ClassPage.qml
-│           ├─ DateRectangle.qml
-│           ├─ GeneralPage.qml
-│           ├─ HomeworkCheckerGUI.pro
+│           ├─ ClassPage.qml  “班级”页面
+│           ├─ DateRectangle.qml  日期选择器
+│           ├─ GeneralPage.qml  “总览”页面
+│           ├─ HomeworkCheckerGUI.pro  Qt项目配置文件
 │           ├─ HomeworkCheckerGUI.pro.user
 │           ├─ HomeworkCheckerGUI.vcxproj
 │           ├─ HomeworkCheckerGUI.vcxproj.filters
 │           ├─ HomeworkCheckerGUI.vcxproj.user
 │           ├─ HomeworkCheckerGUI.xcodeproj
 │           ├─ Info.plist
-│           ├─ InfoOfClass.qml
-│           ├─ InfoOfTask.qml
-│           ├─ LaunchScreen.qml
-│           ├─ LoginPage.qml
-│           ├─ MarkPage.qml
-│           ├─ NewAClass.qml
-│           ├─ NewAssignment.qml
-│           ├─ RegPage.qml
-│           ├─ SettingPage.qml
-│           ├─ TaskPage.qml
+│           ├─ InfoOfClass.qml  班级信息
+│           ├─ InfoOfTask.qml  作业信息
+│           ├─ LaunchScreen.qml  启动页
+│           ├─ LoginPage.qml  登录页
+│           ├─ MarkPage.qml  “成绩”页面
+│           ├─ NewAClass.qml  新建班级
+│           ├─ NewAssignment.qml  新建作业
+│           ├─ RegPage.qml  注册页
+│           ├─ SettingPage.qml  “设置”页面
+│           ├─ TaskPage.qml  “作业”页面
 │           ├─ WebsocketClientForApp.cpp
 │           ├─ WebsocketClientForApp.h
 │           ├─ account.cpp
-│           ├─ account.h
+│           ├─ account.h  全局帐号管理
 │           ├─ classscoreviewcontroller.cpp
-│           ├─ classscoreviewcontroller.h
+│           ├─ classscoreviewcontroller.h  班级分数页面控制器
 │           ├─ classviewcontroller.cpp
-│           ├─ classviewcontroller.h
-│           ├─ correctHomework.qml
+│           ├─ classviewcontroller.h  ”班级“页面控制器
+│           ├─ correctHomework.qml  批改作业
 │           ├─ correcthomework.cpp
-│           ├─ correcthomework.h
-│           ├─ fonts
+│           ├─ correcthomework.h  批改页面控制器
+│           ├─ fonts  字体
 │           ├─ generalviewcontroller.cpp
-│           ├─ generalviewcontroller.h
-│           ├─ icon.ico
+│           ├─ generalviewcontroller.h  ”总览“页面控制器
+│           ├─ icon.ico  Windows应用图标
 │           ├─ icon.rc
-│           ├─ images
+│           ├─ images  图片
 │           ├─ infooftask.cpp
-│           ├─ infooftask.h
-│           ├─ main.cpp
-│           ├─ main.qml
-│           ├─ qml.qrc
-│           ├─ scoreWithClass.qml
-│           ├─ scoreWithStudent.qml
+│           ├─ infooftask.h  作业详情页面控制器
+│           ├─ main.cpp  启动函数
+│           ├─ main.qml  主窗口
+│           ├─ qml.qrc  qml资源配置文件
+│           ├─ scoreWithClass.qml  班级成绩
+│           ├─ scoreWithStudent.qml  学生成绩
 │           ├─ setting.config
 │           ├─ settingpage.cpp
-│           ├─ settingpage.h
+│           ├─ settingpage.h  ”设置“页面控制器
 │           ├─ studentscoreviewcontroller.cpp
-│           ├─ studentscoreviewcontroller.h
+│           ├─ studentscoreviewcontroller.h  学生成绩页面控制器
 │           ├─ taskpage.cpp
-│           ├─ taskpage.h
+│           ├─ taskpage.h  ”作业“页面控制器
 │           ├─ untitled.vcxproj
 │           └─ untitled.vcxproj.filters
 ├─ WebsocketClientForApp  学生端WebSocket库  负责人：杨锦荣
@@ -138,7 +130,7 @@ HomeworkChecker
 ├─ packages  引用第三方库文件
 │    ├─ asio  Asio网络库 (Header Only Library)
 │    ├─ json  json库 (Header Only Library)
-│    ├─ mysql mysql使用(Win端)
+│    ├─ mysql mysql使用(Win、Mac端)
 │    └─ websocketpp websocket库(Header Only Library)
 └─ src  资源文件
        ├─ icon  图标

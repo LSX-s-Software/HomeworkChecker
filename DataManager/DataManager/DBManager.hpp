@@ -18,9 +18,9 @@
  定义VERBOSE宏可让DBManager将完整的调试数据输出至控制台
  */
 
-#ifndef DEBUG
-#define DEBUG
-#endif
+//#ifndef DEBUG
+//#define DEBUG
+//#endif
 //#ifndef VERBOSE
 //#define VERBOSE
 //#endif

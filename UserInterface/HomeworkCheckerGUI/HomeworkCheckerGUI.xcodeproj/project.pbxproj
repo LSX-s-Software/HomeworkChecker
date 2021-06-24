@@ -5,697 +5,1156 @@
 	};
 	objectVersion = 46;
 	objects = {
-
-/* Begin PBXAggregateTarget section */
-		D8DEA599D58B29371C2B9F9D /* Qt Preprocess */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 6CC3B5D2136C7CD6A5CF5A59 /* Build configuration list for PBXNativeTarget "HomeworkCheckerGUI" */;
-			buildPhases = (
-				5E618435888B9D49F8540165 /* Qt Qmake */,
-				7EF0942E79C014DCEC8976BC /* Qt Preprocessors */,
-			);
-			dependencies = (
-			);
-			name = "Qt Preprocess";
-			productName = "Qt Preprocess";
+		5E618435888B9D49F8540165 = {
+			buildActionMask = 2147483647;
+			files = (
+				);
+			isa = PBXShellScriptBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+			name = "Qt Qmake";
+			shellPath = "/bin/sh";
+			shellScript = "make -C /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI -f HomeworkCheckerGUI.xcodeproj/qt_makeqmake.mak";
+			showEnvVarsInLog = "0";
 		};
-/* End PBXAggregateTarget section */
-
-/* Begin PBXBuildFile section */
-		0E08BD879F79D5C9BC8DE3ED /* moc_generalviewcontroller.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = E8EFCF776EA34ACEF2DA2A9F /* moc_generalviewcontroller.cpp */; settings = {ATTRIBUTES = (); }; };
-		11CFF24F2F5C8393AC81A92D /* moc_settingpage.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 45944748CF86A466AE3C9828 /* moc_settingpage.cpp */; settings = {ATTRIBUTES = (); }; };
-		138DE42E469F00ECEDC56958 /* classscoreviewcontroller.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 5FEF695BF54FA381FCE778AA /* classscoreviewcontroller.cpp */; settings = {ATTRIBUTES = (); }; };
-		248840D0E04A7CAAEAD63031 /* moc_taskpage.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 72C3D689300903DEF17B388C /* moc_taskpage.cpp */; settings = {ATTRIBUTES = (); }; };
-		257A8203C78A668D19146CAA /* DataManager in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 4FF0BA158467D67F6F29534B /* DataManager */; };
-		29801961A6618F0281E009BA /* moc_account.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 5280D45F9AF689D446F61F65 /* moc_account.cpp */; settings = {ATTRIBUTES = (); }; };
-		3C6A242DA837982406446FF5 /* qrc_qml.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = C68AC075553BB1F5F3103E04 /* qrc_qml.cpp */; settings = {ATTRIBUTES = (); }; };
-		3CC4423DC9F3DF33CEEB8FD4 /* moc_infooftask.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 9CAC02FD6AAFA230D9A7DD3D /* moc_infooftask.cpp */; settings = {ATTRIBUTES = (); }; };
-		439E3BA4055B49993CDC073B /* moc_correcthomework.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = B2826831919AE4484404FD5C /* moc_correcthomework.cpp */; settings = {ATTRIBUTES = (); }; };
-		4A1598CC6B88D2B6F2B7304C /* generalviewcontroller.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = B3DB7BBDC61E122FC07C17CE /* generalviewcontroller.cpp */; settings = {ATTRIBUTES = (); }; };
-		61EEC397DC8556BF8C4E36A7 /* ImageIO.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 3A8EF9C62A8D4790CBB89CEA /* ImageIO.framework */; };
-		63E5D355FCB0491EBB8ED407 /* QtNetwork.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 917FEA168813847797F7DB25 /* QtNetwork.framework */; };
-		78B52D3C072B06A10EA341D0 /* moc_studentscoreviewcontroller.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 2AF1695061B2CEE9AE133D67 /* moc_studentscoreviewcontroller.cpp */; settings = {ATTRIBUTES = (); }; };
-		8771A8C96E9C391044035D99 /* OpenGL.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = D4B32C2222F82AC56BADEB21 /* OpenGL.framework */; };
-		8D267F2E4776F0ECA2F49DC8 /* IOKit.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = A1A67BEAA744704B29168D39 /* IOKit.framework */; };
-		9233AB13CAF1B66800019886 /* QtCore.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = F06ECDA61940E46F5F523D46 /* QtCore.framework */; };
-		951B7177F7777F57BB0E3B8D /* QtGui.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 645234D636EE2C6AEB85D482 /* QtGui.framework */; };
-		9F8A8F0EEF145430F4CA3013 /* WebsocketClientForApp.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = A40715635BE55FBF552B8D6E /* WebsocketClientForApp.cpp */; settings = {ATTRIBUTES = (); }; };
-		A2613BB7306C683630726CC5 /* moc_classscoreviewcontroller.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = B33A1FFDAD9BC714FD5B2BB5 /* moc_classscoreviewcontroller.cpp */; settings = {ATTRIBUTES = (); }; };
-		A2BB5888B0F06BFA16DA3749 /* QtOpenGL.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = D0C2463FFD8EE73AC5E7DD51 /* QtOpenGL.framework */; };
-		A4BFC8537CF2230BB801A2E4 /* studentscoreviewcontroller.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 8C2FF41EE4C56C882021DB1A /* studentscoreviewcontroller.cpp */; settings = {ATTRIBUTES = (); }; };
-		A81FE869667C56A953B9B4E3 /* correcthomework.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 1BB141BFE30D75A54C3D0240 /* correcthomework.cpp */; settings = {ATTRIBUTES = (); }; };
-		A99B2AA0F9CBBDD12BA126A4 /* DiskArbitration.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 2B774D8E4178765CE52EAAF5 /* DiskArbitration.framework */; };
-		B08FA47E4B404C74DA7ABB6D /* account.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 5AF5E90F73AD6287FA37DC1A /* account.cpp */; settings = {ATTRIBUTES = (); }; };
-		B3FE8FAC746D3D5BB24FA398 /* Metal.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 1B2543FCC48E9436F21C4F63 /* Metal.framework */; };
-		BA842B4AE21321C0DDDECAF9 /* main.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = C778D5A150541001C855D0A3 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
-		BC77C631FDC76D41DF1575B1 /* QtQml.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = F3620E33FAFF3DCF4DB0E441 /* QtQml.framework */; };
-		BDE311FC561F39D9096C4E05 /* moc_classviewcontroller.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 331221CAC733BAFA8192CB89 /* moc_classviewcontroller.cpp */; settings = {ATTRIBUTES = (); }; };
-		BDEFF686E84CD710F92A92C7 /* settingpage.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = C91C12F93A1A484170A6F5F7 /* settingpage.cpp */; settings = {ATTRIBUTES = (); }; };
-		C3B1CC14C9DBB9A6845BBB49 /* classviewcontroller.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 70E25A88A8F18CDC797D062B /* classviewcontroller.cpp */; settings = {ATTRIBUTES = (); }; };
-		D3E047EA57DAAE1DAA003AB3 /* QtQuick.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = F00B4EB1C52BEF010ADF53FD /* QtQuick.framework */; };
-		DC95D5E501B4F8E71E1857F1 /* taskpage.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = A5E4278F257F2772E079A2D0 /* taskpage.cpp */; settings = {ATTRIBUTES = (); }; };
-		E1BE909975083DE17DEDFAB9 /* dummy.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = F6158C2343D0C40C5FABEADD /* dummy.cpp */; settings = {ATTRIBUTES = (); }; };
-		E376D88A890573722A24DD03 /* infooftask.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 82790200CA3C0F0A5E1FCBCC /* infooftask.cpp */; settings = {ATTRIBUTES = (); }; };
-		E45E51A644D5FC9F942ECE55 /* AGL.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 8D9815BDB5BD9F90D2BC05C5 /* AGL.framework */; };
-		EF9CF03C5A84523D341196B1 /* QtQmlModels.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 007C2FBE4328E53CBA207AC3 /* QtQmlModels.framework */; };
-		F2A75ACAC9DF6A3F4E5711E7 /* AppKit.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 723F90793B2C195E2CCB2233 /* AppKit.framework */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		F5BEA6DF2672168E009633B5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6DB9C3763D02B1415CD9D565 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D8DEA599D58B29371C2B9F9D;
-			remoteInfo = "Qt Preprocess";
+		A40715635BE55FBF552B8D6E = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/WebsocketClientForApp.cpp";
+			name = "WebsocketClientForApp.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
 		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		99542592E9780B9225F24AA8 /* Embed Frameworks */ = {
+		9F8A8F0EEF145430F4CA3013 = {
+			fileRef = "A40715635BE55FBF552B8D6E";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		5AF5E90F73AD6287FA37DC1A = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/account.cpp";
+			name = "account.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		B08FA47E4B404C74DA7ABB6D = {
+			fileRef = "5AF5E90F73AD6287FA37DC1A";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		5FEF695BF54FA381FCE778AA = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/classscoreviewcontroller.cpp";
+			name = "classscoreviewcontroller.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		138DE42E469F00ECEDC56958 = {
+			fileRef = "5FEF695BF54FA381FCE778AA";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		70E25A88A8F18CDC797D062B = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/classviewcontroller.cpp";
+			name = "classviewcontroller.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		C3B1CC14C9DBB9A6845BBB49 = {
+			fileRef = "70E25A88A8F18CDC797D062B";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		1BB141BFE30D75A54C3D0240 = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/correcthomework.cpp";
+			name = "correcthomework.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		A81FE869667C56A953B9B4E3 = {
+			fileRef = "1BB141BFE30D75A54C3D0240";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		B3DB7BBDC61E122FC07C17CE = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/generalviewcontroller.cpp";
+			name = "generalviewcontroller.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		4A1598CC6B88D2B6F2B7304C = {
+			fileRef = "B3DB7BBDC61E122FC07C17CE";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		82790200CA3C0F0A5E1FCBCC = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/infooftask.cpp";
+			name = "infooftask.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		E376D88A890573722A24DD03 = {
+			fileRef = "82790200CA3C0F0A5E1FCBCC";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		C778D5A150541001C855D0A3 = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/main.cpp";
+			name = "main.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		BA842B4AE21321C0DDDECAF9 = {
+			fileRef = "C778D5A150541001C855D0A3";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		C91C12F93A1A484170A6F5F7 = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/settingpage.cpp";
+			name = "settingpage.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		BDEFF686E84CD710F92A92C7 = {
+			fileRef = "C91C12F93A1A484170A6F5F7";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		8C2FF41EE4C56C882021DB1A = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/studentscoreviewcontroller.cpp";
+			name = "studentscoreviewcontroller.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		A4BFC8537CF2230BB801A2E4 = {
+			fileRef = "8C2FF41EE4C56C882021DB1A";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		A5E4278F257F2772E079A2D0 = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/taskpage.cpp";
+			name = "taskpage.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		DC95D5E501B4F8E71E1857F1 = {
+			fileRef = "A5E4278F257F2772E079A2D0";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		C68AC075553BB1F5F3103E04 = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/qrc_qml.cpp";
+			name = "qrc_qml.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		3C6A242DA837982406446FF5 = {
+			fileRef = "C68AC075553BB1F5F3103E04";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		5280D45F9AF689D446F61F65 = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_account.cpp";
+			name = "moc_account.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		29801961A6618F0281E009BA = {
+			fileRef = "5280D45F9AF689D446F61F65";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		B33A1FFDAD9BC714FD5B2BB5 = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_classscoreviewcontroller.cpp";
+			name = "moc_classscoreviewcontroller.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		A2613BB7306C683630726CC5 = {
+			fileRef = "B33A1FFDAD9BC714FD5B2BB5";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		331221CAC733BAFA8192CB89 = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_classviewcontroller.cpp";
+			name = "moc_classviewcontroller.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		BDE311FC561F39D9096C4E05 = {
+			fileRef = "331221CAC733BAFA8192CB89";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		B2826831919AE4484404FD5C = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_correcthomework.cpp";
+			name = "moc_correcthomework.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		439E3BA4055B49993CDC073B = {
+			fileRef = "B2826831919AE4484404FD5C";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		E8EFCF776EA34ACEF2DA2A9F = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_generalviewcontroller.cpp";
+			name = "moc_generalviewcontroller.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		0E08BD879F79D5C9BC8DE3ED = {
+			fileRef = "E8EFCF776EA34ACEF2DA2A9F";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		9CAC02FD6AAFA230D9A7DD3D = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_infooftask.cpp";
+			name = "moc_infooftask.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		3CC4423DC9F3DF33CEEB8FD4 = {
+			fileRef = "9CAC02FD6AAFA230D9A7DD3D";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		45944748CF86A466AE3C9828 = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_settingpage.cpp";
+			name = "moc_settingpage.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		11CFF24F2F5C8393AC81A92D = {
+			fileRef = "45944748CF86A466AE3C9828";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		2AF1695061B2CEE9AE133D67 = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_studentscoreviewcontroller.cpp";
+			name = "moc_studentscoreviewcontroller.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		78B52D3C072B06A10EA341D0 = {
+			fileRef = "2AF1695061B2CEE9AE133D67";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		72C3D689300903DEF17B388C = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_taskpage.cpp";
+			name = "moc_taskpage.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		248840D0E04A7CAAEAD63031 = {
+			fileRef = "72C3D689300903DEF17B388C";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		D3D90D01C3167FC9BA5FC18C = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/WebsocketClientForApp.h";
+			name = "WebsocketClientForApp.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		96942A7CCDFFE6051F408D51 = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/account.h";
+			name = "account.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		9A337FD89781EEAA924CB2E8 = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/classscoreviewcontroller.h";
+			name = "classscoreviewcontroller.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		64AACF74B94490AEA5B5A348 = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/classviewcontroller.h";
+			name = "classviewcontroller.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		DCAE89393122C2868FEC6505 = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/correcthomework.h";
+			name = "correcthomework.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		B19A04C9AC70374AFB7D5395 = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/generalviewcontroller.h";
+			name = "generalviewcontroller.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		6DA2CC13EFD118348EA72C93 = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/infooftask.h";
+			name = "infooftask.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		3A0DA0BA2B0E4C11596D1A3D = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/settingpage.h";
+			name = "settingpage.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		D775F8655D37FD477DD727C8 = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/studentscoreviewcontroller.h";
+			name = "studentscoreviewcontroller.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		76FF57D8A1948012D6021970 = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/taskpage.h";
+			name = "taskpage.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		8169E2B09301B49ABE55738C = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/qml.qrc";
+			name = "qml.qrc";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "text";
+		};
+		B0D1FABD844141630CF331B9 = {
+			fileRef = "8169E2B09301B49ABE55738C";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		F6158C2343D0C40C5FABEADD = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/Qt/6.1.0/clang_64/mkspecs/features/data/dummy.cpp";
+			name = "dummy.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		E1BE909975083DE17DEDFAB9 = {
+			fileRef = "F6158C2343D0C40C5FABEADD";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		4730CE4FC3D7EF951CE67A84 = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/HomeworkCheckerGUI.pro";
+			name = "HomeworkCheckerGUI.pro";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "text";
+		};
+		86EF4F64F3E6D59F6DF63DDE = {
+			isa = PBXFileReference;
+			path = "/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/.qmake.stash";
+			name = ".qmake.stash";
+			sourceTree = "<absolute>";
+		};
+		25B08E2869634E9BCBA333A2 = {
+			isa = PBXGroup;
+			children = (
+				"C68AC075553BB1F5F3103E04",
+				"5280D45F9AF689D446F61F65",
+				"B33A1FFDAD9BC714FD5B2BB5",
+				"331221CAC733BAFA8192CB89",
+				"B2826831919AE4484404FD5C",
+				"E8EFCF776EA34ACEF2DA2A9F",
+				"9CAC02FD6AAFA230D9A7DD3D",
+				"45944748CF86A466AE3C9828",
+				"2AF1695061B2CEE9AE133D67",
+				"72C3D689300903DEF17B388C");
+			name = "Generated Sources";
+			sourceTree = "<group>";
+		};
+		87DF60DE337FB58864343E39 = {
+			isa = PBXGroup;
+			children = (
+				"8169E2B09301B49ABE55738C");
+			name = "Resources";
+			sourceTree = "<group>";
+		};
+		2EB56BE3C2D93CDAB0C52E67 = {
+			isa = PBXGroup;
+			children = (
+				"A40715635BE55FBF552B8D6E",
+				"5AF5E90F73AD6287FA37DC1A",
+				"5FEF695BF54FA381FCE778AA",
+				"70E25A88A8F18CDC797D062B",
+				"1BB141BFE30D75A54C3D0240",
+				"B3DB7BBDC61E122FC07C17CE",
+				"82790200CA3C0F0A5E1FCBCC",
+				"C778D5A150541001C855D0A3",
+				"C91C12F93A1A484170A6F5F7",
+				"8C2FF41EE4C56C882021DB1A",
+				"A5E4278F257F2772E079A2D0",
+				"D3D90D01C3167FC9BA5FC18C",
+				"96942A7CCDFFE6051F408D51",
+				"9A337FD89781EEAA924CB2E8",
+				"64AACF74B94490AEA5B5A348",
+				"DCAE89393122C2868FEC6505",
+				"B19A04C9AC70374AFB7D5395",
+				"6DA2CC13EFD118348EA72C93",
+				"3A0DA0BA2B0E4C11596D1A3D",
+				"D775F8655D37FD477DD727C8",
+				"76FF57D8A1948012D6021970");
+			name = "Sources";
+			sourceTree = "<group>";
+		};
+		B8254625CFD509ED2A24A166 = {
+			isa = PBXGroup;
+			children = (
+				"F6158C2343D0C40C5FABEADD");
+			name = "Sources [moc_predefs]";
+			sourceTree = "<group>";
+		};
+		74B182DB50CB5611B5C1C297 = {
+			isa = PBXGroup;
+			children = (
+				"4730CE4FC3D7EF951CE67A84",
+				"86EF4F64F3E6D59F6DF63DDE");
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7EF0942E79C014DCEC8976BC = {
+			buildActionMask = 2147483647;
+			files = (
+				);
+			isa = PBXShellScriptBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+			name = "Qt Preprocessors";
+			outputPaths = (
+				"qrc_qml.cpp",
+				"moc_predefs.h",
+				"moc_account.cpp",
+				"moc_classscoreviewcontroller.cpp",
+				"moc_classviewcontroller.cpp",
+				"moc_correcthomework.cpp",
+				"moc_generalviewcontroller.cpp",
+				"moc_infooftask.cpp",
+				"moc_settingpage.cpp",
+				"moc_studentscoreviewcontroller.cpp",
+				"moc_taskpage.cpp");
+			shellPath = "/bin/sh";
+			shellScript = "make -C /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI -f HomeworkCheckerGUI.xcodeproj/qt_preprocess.mak";
+			showEnvVarsInLog = "0";
+		};
+		F7E50F631C51CD5B5DC0BC43 = {
+			buildActionMask = 2147483647;
+			files = (
+				"9F8A8F0EEF145430F4CA3013",
+				"B08FA47E4B404C74DA7ABB6D",
+				"138DE42E469F00ECEDC56958",
+				"C3B1CC14C9DBB9A6845BBB49",
+				"A81FE869667C56A953B9B4E3",
+				"4A1598CC6B88D2B6F2B7304C",
+				"E376D88A890573722A24DD03",
+				"BA842B4AE21321C0DDDECAF9",
+				"BDEFF686E84CD710F92A92C7",
+				"A4BFC8537CF2230BB801A2E4",
+				"DC95D5E501B4F8E71E1857F1",
+				"3C6A242DA837982406446FF5",
+				"29801961A6618F0281E009BA",
+				"A2613BB7306C683630726CC5",
+				"BDE311FC561F39D9096C4E05",
+				"439E3BA4055B49993CDC073B",
+				"0E08BD879F79D5C9BC8DE3ED",
+				"3CC4423DC9F3DF33CEEB8FD4",
+				"11CFF24F2F5C8393AC81A92D",
+				"78B52D3C072B06A10EA341D0",
+				"248840D0E04A7CAAEAD63031",
+				"E1BE909975083DE17DEDFAB9");
+			isa = PBXSourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+			name = "Compile Sources";
+		};
+		4FF0BA158467D67F6F29534B = {
+			isa = PBXFileReference;
+			name = "DataManager";
+			path = "/Users/linsixing/HomeworkChecker/DataManager/build/Debug/libDataManager.a";
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		257A8203C78A668D19146CAA = {
+			fileRef = "4FF0BA158467D67F6F29534B";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		F00B4EB1C52BEF010ADF53FD = {
+			isa = PBXFileReference;
+			name = "QtQuick.framework";
+			path = "/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQuick.framework";
+			refType = 0;
+			sourceTree = "<absolute>";
+			lastKnownFileType = "wrapper.framework";
+		};
+		D3E047EA57DAAE1DAA003AB3 = {
+			fileRef = "F00B4EB1C52BEF010ADF53FD";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		D0C2463FFD8EE73AC5E7DD51 = {
+			isa = PBXFileReference;
+			name = "QtOpenGL.framework";
+			path = "/Users/linsixing/Qt/6.1.0/clang_64/lib/QtOpenGL.framework";
+			refType = 0;
+			sourceTree = "<absolute>";
+			lastKnownFileType = "wrapper.framework";
+		};
+		A2BB5888B0F06BFA16DA3749 = {
+			fileRef = "D0C2463FFD8EE73AC5E7DD51";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		645234D636EE2C6AEB85D482 = {
+			isa = PBXFileReference;
+			name = "QtGui.framework";
+			path = "/Users/linsixing/Qt/6.1.0/clang_64/lib/QtGui.framework";
+			refType = 0;
+			sourceTree = "<absolute>";
+			lastKnownFileType = "wrapper.framework";
+		};
+		951B7177F7777F57BB0E3B8D = {
+			fileRef = "645234D636EE2C6AEB85D482";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		723F90793B2C195E2CCB2233 = {
+			isa = PBXFileReference;
+			name = "AppKit.framework";
+			path = "/System/Library/Frameworks/AppKit.framework";
+			refType = 0;
+			sourceTree = "<absolute>";
+			lastKnownFileType = "wrapper.framework";
+		};
+		F2A75ACAC9DF6A3F4E5711E7 = {
+			fileRef = "723F90793B2C195E2CCB2233";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		3A8EF9C62A8D4790CBB89CEA = {
+			isa = PBXFileReference;
+			name = "ImageIO.framework";
+			path = "/System/Library/Frameworks/ImageIO.framework";
+			refType = 0;
+			sourceTree = "<absolute>";
+			lastKnownFileType = "wrapper.framework";
+		};
+		61EEC397DC8556BF8C4E36A7 = {
+			fileRef = "3A8EF9C62A8D4790CBB89CEA";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		1B2543FCC48E9436F21C4F63 = {
+			isa = PBXFileReference;
+			name = "Metal.framework";
+			path = "/System/Library/Frameworks/Metal.framework";
+			refType = 0;
+			sourceTree = "<absolute>";
+			lastKnownFileType = "wrapper.framework";
+		};
+		B3FE8FAC746D3D5BB24FA398 = {
+			fileRef = "1B2543FCC48E9436F21C4F63";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		007C2FBE4328E53CBA207AC3 = {
+			isa = PBXFileReference;
+			name = "QtQmlModels.framework";
+			path = "/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQmlModels.framework";
+			refType = 0;
+			sourceTree = "<absolute>";
+			lastKnownFileType = "wrapper.framework";
+		};
+		EF9CF03C5A84523D341196B1 = {
+			fileRef = "007C2FBE4328E53CBA207AC3";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		F3620E33FAFF3DCF4DB0E441 = {
+			isa = PBXFileReference;
+			name = "QtQml.framework";
+			path = "/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQml.framework";
+			refType = 0;
+			sourceTree = "<absolute>";
+			lastKnownFileType = "wrapper.framework";
+		};
+		BC77C631FDC76D41DF1575B1 = {
+			fileRef = "F3620E33FAFF3DCF4DB0E441";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		917FEA168813847797F7DB25 = {
+			isa = PBXFileReference;
+			name = "QtNetwork.framework";
+			path = "/Users/linsixing/Qt/6.1.0/clang_64/lib/QtNetwork.framework";
+			refType = 0;
+			sourceTree = "<absolute>";
+			lastKnownFileType = "wrapper.framework";
+		};
+		63E5D355FCB0491EBB8ED407 = {
+			fileRef = "917FEA168813847797F7DB25";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		F06ECDA61940E46F5F523D46 = {
+			isa = PBXFileReference;
+			name = "QtCore.framework";
+			path = "/Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework";
+			refType = 0;
+			sourceTree = "<absolute>";
+			lastKnownFileType = "wrapper.framework";
+		};
+		9233AB13CAF1B66800019886 = {
+			fileRef = "F06ECDA61940E46F5F523D46";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		2B774D8E4178765CE52EAAF5 = {
+			isa = PBXFileReference;
+			name = "DiskArbitration.framework";
+			path = "/System/Library/Frameworks/DiskArbitration.framework";
+			refType = 0;
+			sourceTree = "<absolute>";
+			lastKnownFileType = "wrapper.framework";
+		};
+		A99B2AA0F9CBBDD12BA126A4 = {
+			fileRef = "2B774D8E4178765CE52EAAF5";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		A1A67BEAA744704B29168D39 = {
+			isa = PBXFileReference;
+			name = "IOKit.framework";
+			path = "/System/Library/Frameworks/IOKit.framework";
+			refType = 0;
+			sourceTree = "<absolute>";
+			lastKnownFileType = "wrapper.framework";
+		};
+		8D267F2E4776F0ECA2F49DC8 = {
+			fileRef = "A1A67BEAA744704B29168D39";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8D9815BDB5BD9F90D2BC05C5 = {
+			isa = PBXFileReference;
+			name = "AGL.framework";
+			path = "/System/Library/Frameworks/AGL.framework";
+			refType = 0;
+			sourceTree = "<absolute>";
+			lastKnownFileType = "wrapper.framework";
+		};
+		E45E51A644D5FC9F942ECE55 = {
+			fileRef = "8D9815BDB5BD9F90D2BC05C5";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		D4B32C2222F82AC56BADEB21 = {
+			isa = PBXFileReference;
+			name = "OpenGL.framework";
+			path = "/System/Library/Frameworks/OpenGL.framework";
+			refType = 0;
+			sourceTree = "<absolute>";
+			lastKnownFileType = "wrapper.framework";
+		};
+		8771A8C96E9C391044035D99 = {
+			fileRef = "D4B32C2222F82AC56BADEB21";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		AF39DD055C3EF8226FBE929D = {
+			children = (
+				"4FF0BA158467D67F6F29534B",
+				"F00B4EB1C52BEF010ADF53FD",
+				"D0C2463FFD8EE73AC5E7DD51",
+				"645234D636EE2C6AEB85D482",
+				"723F90793B2C195E2CCB2233",
+				"3A8EF9C62A8D4790CBB89CEA",
+				"1B2543FCC48E9436F21C4F63",
+				"007C2FBE4328E53CBA207AC3",
+				"F3620E33FAFF3DCF4DB0E441",
+				"917FEA168813847797F7DB25",
+				"F06ECDA61940E46F5F523D46",
+				"2B774D8E4178765CE52EAAF5",
+				"A1A67BEAA744704B29168D39",
+				"8D9815BDB5BD9F90D2BC05C5",
+				"D4B32C2222F82AC56BADEB21");
+			isa = PBXGroup;
+			name = "Frameworks";
+			sourceTree = "<group>";
+		};
+		D1C883685E82D5676953459A = {
+			buildActionMask = 2147483647;
+			files = (
+				"257A8203C78A668D19146CAA",
+				"D3E047EA57DAAE1DAA003AB3",
+				"A2BB5888B0F06BFA16DA3749",
+				"951B7177F7777F57BB0E3B8D",
+				"F2A75ACAC9DF6A3F4E5711E7",
+				"61EEC397DC8556BF8C4E36A7",
+				"B3FE8FAC746D3D5BB24FA398",
+				"EF9CF03C5A84523D341196B1",
+				"BC77C631FDC76D41DF1575B1",
+				"63E5D355FCB0491EBB8ED407",
+				"9233AB13CAF1B66800019886",
+				"A99B2AA0F9CBBDD12BA126A4",
+				"8D267F2E4776F0ECA2F49DC8",
+				"E45E51A644D5FC9F942ECE55",
+				"8771A8C96E9C391044035D99");
+			isa = PBXFrameworksBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+			name = "Link Binary With Libraries";
+		};
+		30414803F31797EB689AE508 = {
+			buildActionMask = 2147483647;
+			files = (
+				);
+			isa = PBXResourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+			name = "Copy Bundle Resources";
+		};
+		99542592E9780B9225F24AA8 = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-			);
+				);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXCopyFilesBuildPhase section */
-
-/* Begin PBXFileReference section */
-		007C2FBE4328E53CBA207AC3 /* QtQmlModels.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtQmlModels.framework; path = /Users/linsixing/Qt/6.1.0/clang_64/lib/QtQmlModels.framework; sourceTree = "<absolute>"; };
-		0206B9D03E5F345967F760C8 /* HomeworkCheckerGUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeworkCheckerGUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1B2543FCC48E9436F21C4F63 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = /System/Library/Frameworks/Metal.framework; sourceTree = "<absolute>"; };
-		1BB141BFE30D75A54C3D0240 /* correcthomework.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = correcthomework.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/correcthomework.cpp; sourceTree = "<absolute>"; };
-		2AF1695061B2CEE9AE133D67 /* moc_studentscoreviewcontroller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = moc_studentscoreviewcontroller.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_studentscoreviewcontroller.cpp; sourceTree = "<absolute>"; };
-		2B774D8E4178765CE52EAAF5 /* DiskArbitration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiskArbitration.framework; path = /System/Library/Frameworks/DiskArbitration.framework; sourceTree = "<absolute>"; };
-		331221CAC733BAFA8192CB89 /* moc_classviewcontroller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = moc_classviewcontroller.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_classviewcontroller.cpp; sourceTree = "<absolute>"; };
-		3A0DA0BA2B0E4C11596D1A3D /* settingpage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = settingpage.h; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/settingpage.h; sourceTree = "<absolute>"; };
-		3A8EF9C62A8D4790CBB89CEA /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = /System/Library/Frameworks/ImageIO.framework; sourceTree = "<absolute>"; };
-		45944748CF86A466AE3C9828 /* moc_settingpage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = moc_settingpage.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_settingpage.cpp; sourceTree = "<absolute>"; };
-		4730CE4FC3D7EF951CE67A84 /* HomeworkCheckerGUI.pro */ = {isa = PBXFileReference; lastKnownFileType = text; name = HomeworkCheckerGUI.pro; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/HomeworkCheckerGUI.pro; sourceTree = "<absolute>"; };
-		4FF0BA158467D67F6F29534B /* DataManager */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = DataManager; path = /Users/linsixing/HomeworkChecker/DataManager/build/Debug/libDataManager.a; sourceTree = "<absolute>"; };
-		5280D45F9AF689D446F61F65 /* moc_account.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = moc_account.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_account.cpp; sourceTree = "<absolute>"; };
-		5AF5E90F73AD6287FA37DC1A /* account.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = account.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/account.cpp; sourceTree = "<absolute>"; };
-		5FEF695BF54FA381FCE778AA /* classscoreviewcontroller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = classscoreviewcontroller.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/classscoreviewcontroller.cpp; sourceTree = "<absolute>"; };
-		645234D636EE2C6AEB85D482 /* QtGui.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtGui.framework; path = /Users/linsixing/Qt/6.1.0/clang_64/lib/QtGui.framework; sourceTree = "<absolute>"; };
-		64AACF74B94490AEA5B5A348 /* classviewcontroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = classviewcontroller.h; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/classviewcontroller.h; sourceTree = "<absolute>"; };
-		6DA2CC13EFD118348EA72C93 /* infooftask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = infooftask.h; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/infooftask.h; sourceTree = "<absolute>"; };
-		70E25A88A8F18CDC797D062B /* classviewcontroller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = classviewcontroller.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/classviewcontroller.cpp; sourceTree = "<absolute>"; };
-		723F90793B2C195E2CCB2233 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
-		72C3D689300903DEF17B388C /* moc_taskpage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = moc_taskpage.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_taskpage.cpp; sourceTree = "<absolute>"; };
-		76FF57D8A1948012D6021970 /* taskpage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = taskpage.h; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/taskpage.h; sourceTree = "<absolute>"; };
-		8169E2B09301B49ABE55738C /* qml.qrc */ = {isa = PBXFileReference; lastKnownFileType = text; name = qml.qrc; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/qml.qrc; sourceTree = "<absolute>"; };
-		82790200CA3C0F0A5E1FCBCC /* infooftask.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = infooftask.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/infooftask.cpp; sourceTree = "<absolute>"; };
-		86EF4F64F3E6D59F6DF63DDE /* .qmake.stash */ = {isa = PBXFileReference; lastKnownFileType = text; name = .qmake.stash; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/.qmake.stash; sourceTree = "<absolute>"; };
-		8C2FF41EE4C56C882021DB1A /* studentscoreviewcontroller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = studentscoreviewcontroller.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/studentscoreviewcontroller.cpp; sourceTree = "<absolute>"; };
-		8D9815BDB5BD9F90D2BC05C5 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
-		917FEA168813847797F7DB25 /* QtNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtNetwork.framework; path = /Users/linsixing/Qt/6.1.0/clang_64/lib/QtNetwork.framework; sourceTree = "<absolute>"; };
-		96942A7CCDFFE6051F408D51 /* account.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = account.h; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/account.h; sourceTree = "<absolute>"; };
-		9A337FD89781EEAA924CB2E8 /* classscoreviewcontroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = classscoreviewcontroller.h; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/classscoreviewcontroller.h; sourceTree = "<absolute>"; };
-		9CAC02FD6AAFA230D9A7DD3D /* moc_infooftask.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = moc_infooftask.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_infooftask.cpp; sourceTree = "<absolute>"; };
-		A1A67BEAA744704B29168D39 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
-		A40715635BE55FBF552B8D6E /* WebsocketClientForApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = WebsocketClientForApp.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/WebsocketClientForApp.cpp; sourceTree = "<absolute>"; };
-		A5E4278F257F2772E079A2D0 /* taskpage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = taskpage.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/taskpage.cpp; sourceTree = "<absolute>"; };
-		B19A04C9AC70374AFB7D5395 /* generalviewcontroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = generalviewcontroller.h; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/generalviewcontroller.h; sourceTree = "<absolute>"; };
-		B2826831919AE4484404FD5C /* moc_correcthomework.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = moc_correcthomework.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_correcthomework.cpp; sourceTree = "<absolute>"; };
-		B33A1FFDAD9BC714FD5B2BB5 /* moc_classscoreviewcontroller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = moc_classscoreviewcontroller.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_classscoreviewcontroller.cpp; sourceTree = "<absolute>"; };
-		B3DB7BBDC61E122FC07C17CE /* generalviewcontroller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = generalviewcontroller.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/generalviewcontroller.cpp; sourceTree = "<absolute>"; };
-		C68AC075553BB1F5F3103E04 /* qrc_qml.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = qrc_qml.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/qrc_qml.cpp; sourceTree = "<absolute>"; };
-		C778D5A150541001C855D0A3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/main.cpp; sourceTree = "<absolute>"; };
-		C91C12F93A1A484170A6F5F7 /* settingpage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = settingpage.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/settingpage.cpp; sourceTree = "<absolute>"; };
-		D0C2463FFD8EE73AC5E7DD51 /* QtOpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtOpenGL.framework; path = /Users/linsixing/Qt/6.1.0/clang_64/lib/QtOpenGL.framework; sourceTree = "<absolute>"; };
-		D3D90D01C3167FC9BA5FC18C /* WebsocketClientForApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WebsocketClientForApp.h; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/WebsocketClientForApp.h; sourceTree = "<absolute>"; };
-		D4B32C2222F82AC56BADEB21 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
-		D775F8655D37FD477DD727C8 /* studentscoreviewcontroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = studentscoreviewcontroller.h; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/studentscoreviewcontroller.h; sourceTree = "<absolute>"; };
-		DCAE89393122C2868FEC6505 /* correcthomework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = correcthomework.h; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/correcthomework.h; sourceTree = "<absolute>"; };
-		E8EFCF776EA34ACEF2DA2A9F /* moc_generalviewcontroller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = moc_generalviewcontroller.cpp; path = /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_generalviewcontroller.cpp; sourceTree = "<absolute>"; };
-		F00B4EB1C52BEF010ADF53FD /* QtQuick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtQuick.framework; path = /Users/linsixing/Qt/6.1.0/clang_64/lib/QtQuick.framework; sourceTree = "<absolute>"; };
-		F06ECDA61940E46F5F523D46 /* QtCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtCore.framework; path = /Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework; sourceTree = "<absolute>"; };
-		F3620E33FAFF3DCF4DB0E441 /* QtQml.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtQml.framework; path = /Users/linsixing/Qt/6.1.0/clang_64/lib/QtQml.framework; sourceTree = "<absolute>"; };
-		F6158C2343D0C40C5FABEADD /* dummy.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = dummy.cpp; path = /Users/linsixing/Qt/6.1.0/clang_64/mkspecs/features/data/dummy.cpp; sourceTree = "<absolute>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		D1C883685E82D5676953459A /* Link Binary With Libraries */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				257A8203C78A668D19146CAA /* DataManager in Link Binary With Libraries */,
-				D3E047EA57DAAE1DAA003AB3 /* QtQuick.framework in Link Binary With Libraries */,
-				A2BB5888B0F06BFA16DA3749 /* QtOpenGL.framework in Link Binary With Libraries */,
-				951B7177F7777F57BB0E3B8D /* QtGui.framework in Link Binary With Libraries */,
-				F2A75ACAC9DF6A3F4E5711E7 /* AppKit.framework in Link Binary With Libraries */,
-				61EEC397DC8556BF8C4E36A7 /* ImageIO.framework in Link Binary With Libraries */,
-				B3FE8FAC746D3D5BB24FA398 /* Metal.framework in Link Binary With Libraries */,
-				EF9CF03C5A84523D341196B1 /* QtQmlModels.framework in Link Binary With Libraries */,
-				BC77C631FDC76D41DF1575B1 /* QtQml.framework in Link Binary With Libraries */,
-				63E5D355FCB0491EBB8ED407 /* QtNetwork.framework in Link Binary With Libraries */,
-				9233AB13CAF1B66800019886 /* QtCore.framework in Link Binary With Libraries */,
-				A99B2AA0F9CBBDD12BA126A4 /* DiskArbitration.framework in Link Binary With Libraries */,
-				8D267F2E4776F0ECA2F49DC8 /* IOKit.framework in Link Binary With Libraries */,
-				E45E51A644D5FC9F942ECE55 /* AGL.framework in Link Binary With Libraries */,
-				8771A8C96E9C391044035D99 /* OpenGL.framework in Link Binary With Libraries */,
-			);
-			name = "Link Binary With Libraries";
-			runOnlyForDeploymentPostprocessing = 0;
+		0206B9D03E5F345967F760C8 = {
+			isa = PBXFileReference;
+			includeInIndex = 0;
+			explicitFileType = "wrapper.application";
+			path = "HomeworkCheckerGUI.app";
+			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		25B08E2869634E9BCBA333A2 /* Generated Sources */ = {
-			isa = PBXGroup;
+		FE0A091FDBFB3E9C31B7A1BD = {
 			children = (
-				C68AC075553BB1F5F3103E04 /* qrc_qml.cpp */,
-				5280D45F9AF689D446F61F65 /* moc_account.cpp */,
-				B33A1FFDAD9BC714FD5B2BB5 /* moc_classscoreviewcontroller.cpp */,
-				331221CAC733BAFA8192CB89 /* moc_classviewcontroller.cpp */,
-				B2826831919AE4484404FD5C /* moc_correcthomework.cpp */,
-				E8EFCF776EA34ACEF2DA2A9F /* moc_generalviewcontroller.cpp */,
-				9CAC02FD6AAFA230D9A7DD3D /* moc_infooftask.cpp */,
-				45944748CF86A466AE3C9828 /* moc_settingpage.cpp */,
-				2AF1695061B2CEE9AE133D67 /* moc_studentscoreviewcontroller.cpp */,
-				72C3D689300903DEF17B388C /* moc_taskpage.cpp */,
-			);
-			name = "Generated Sources";
+				"0206B9D03E5F345967F760C8");
+			isa = PBXGroup;
+			name = "Products";
 			sourceTree = "<group>";
 		};
-		2EB56BE3C2D93CDAB0C52E67 /* Sources */ = {
-			isa = PBXGroup;
+		E8C543AB96796ECAA2E65C57 = {
 			children = (
-				A40715635BE55FBF552B8D6E /* WebsocketClientForApp.cpp */,
-				5AF5E90F73AD6287FA37DC1A /* account.cpp */,
-				5FEF695BF54FA381FCE778AA /* classscoreviewcontroller.cpp */,
-				70E25A88A8F18CDC797D062B /* classviewcontroller.cpp */,
-				1BB141BFE30D75A54C3D0240 /* correcthomework.cpp */,
-				B3DB7BBDC61E122FC07C17CE /* generalviewcontroller.cpp */,
-				82790200CA3C0F0A5E1FCBCC /* infooftask.cpp */,
-				C778D5A150541001C855D0A3 /* main.cpp */,
-				C91C12F93A1A484170A6F5F7 /* settingpage.cpp */,
-				8C2FF41EE4C56C882021DB1A /* studentscoreviewcontroller.cpp */,
-				A5E4278F257F2772E079A2D0 /* taskpage.cpp */,
-				D3D90D01C3167FC9BA5FC18C /* WebsocketClientForApp.h */,
-				96942A7CCDFFE6051F408D51 /* account.h */,
-				9A337FD89781EEAA924CB2E8 /* classscoreviewcontroller.h */,
-				64AACF74B94490AEA5B5A348 /* classviewcontroller.h */,
-				DCAE89393122C2868FEC6505 /* correcthomework.h */,
-				B19A04C9AC70374AFB7D5395 /* generalviewcontroller.h */,
-				6DA2CC13EFD118348EA72C93 /* infooftask.h */,
-				3A0DA0BA2B0E4C11596D1A3D /* settingpage.h */,
-				D775F8655D37FD477DD727C8 /* studentscoreviewcontroller.h */,
-				76FF57D8A1948012D6021970 /* taskpage.h */,
-			);
-			name = Sources;
+				"2EB56BE3C2D93CDAB0C52E67",
+				"25B08E2869634E9BCBA333A2",
+				"87DF60DE337FB58864343E39",
+				"B8254625CFD509ED2A24A166",
+				"74B182DB50CB5611B5C1C297",
+				"AF39DD055C3EF8226FBE929D",
+				"FE0A091FDBFB3E9C31B7A1BD");
+			isa = PBXGroup;
+			name = "HomeworkCheckerGUI";
 			sourceTree = "<group>";
 		};
-		74B182DB50CB5611B5C1C297 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				4730CE4FC3D7EF951CE67A84 /* HomeworkCheckerGUI.pro */,
-				86EF4F64F3E6D59F6DF63DDE /* .qmake.stash */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		87DF60DE337FB58864343E39 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				8169E2B09301B49ABE55738C /* qml.qrc */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		AF39DD055C3EF8226FBE929D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				4FF0BA158467D67F6F29534B /* DataManager */,
-				F00B4EB1C52BEF010ADF53FD /* QtQuick.framework */,
-				D0C2463FFD8EE73AC5E7DD51 /* QtOpenGL.framework */,
-				645234D636EE2C6AEB85D482 /* QtGui.framework */,
-				723F90793B2C195E2CCB2233 /* AppKit.framework */,
-				3A8EF9C62A8D4790CBB89CEA /* ImageIO.framework */,
-				1B2543FCC48E9436F21C4F63 /* Metal.framework */,
-				007C2FBE4328E53CBA207AC3 /* QtQmlModels.framework */,
-				F3620E33FAFF3DCF4DB0E441 /* QtQml.framework */,
-				917FEA168813847797F7DB25 /* QtNetwork.framework */,
-				F06ECDA61940E46F5F523D46 /* QtCore.framework */,
-				2B774D8E4178765CE52EAAF5 /* DiskArbitration.framework */,
-				A1A67BEAA744704B29168D39 /* IOKit.framework */,
-				8D9815BDB5BD9F90D2BC05C5 /* AGL.framework */,
-				D4B32C2222F82AC56BADEB21 /* OpenGL.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B8254625CFD509ED2A24A166 /* Sources [moc_predefs] */ = {
-			isa = PBXGroup;
-			children = (
-				F6158C2343D0C40C5FABEADD /* dummy.cpp */,
-			);
-			name = "Sources [moc_predefs]";
-			sourceTree = "<group>";
-		};
-		E8C543AB96796ECAA2E65C57 /* HomeworkCheckerGUI */ = {
-			isa = PBXGroup;
-			children = (
-				2EB56BE3C2D93CDAB0C52E67 /* Sources */,
-				25B08E2869634E9BCBA333A2 /* Generated Sources */,
-				87DF60DE337FB58864343E39 /* Resources */,
-				B8254625CFD509ED2A24A166 /* Sources [moc_predefs] */,
-				74B182DB50CB5611B5C1C297 /* Supporting Files */,
-				AF39DD055C3EF8226FBE929D /* Frameworks */,
-				FE0A091FDBFB3E9C31B7A1BD /* Products */,
-			);
-			name = HomeworkCheckerGUI;
-			sourceTree = "<group>";
-		};
-		FE0A091FDBFB3E9C31B7A1BD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0206B9D03E5F345967F760C8 /* HomeworkCheckerGUI.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		3D418DA034E6D92F2CC94E91 /* HomeworkCheckerGUI */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6CC3B5D2136C7CD6A5CF5A59 /* Build configuration list for PBXNativeTarget "HomeworkCheckerGUI" */;
+		D8DEA599D58B29371C2B9F9D = {
 			buildPhases = (
-				F7E50F631C51CD5B5DC0BC43 /* Compile Sources */,
-				D1C883685E82D5676953459A /* Link Binary With Libraries */,
-				30414803F31797EB689AE508 /* Copy Bundle Resources */,
-				99542592E9780B9225F24AA8 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
+				"5E618435888B9D49F8540165",
+				"7EF0942E79C014DCEC8976BC");
 			dependencies = (
-				268D6FDCDC3B8DB9966C94E2 /* PBXTargetDependency */,
-			);
-			name = HomeworkCheckerGUI;
-			productName = HomeworkCheckerGUI;
-			productReference = 0206B9D03E5F345967F760C8 /* HomeworkCheckerGUI.app */;
-			productType = "com.apple.product-type.application";
+				);
+			buildConfigurationList = 6CC3B5D2136C7CD6A5CF5A59;
+			isa = PBXAggregateTarget;
+			buildRules = (
+);
+			productName = "Qt Preprocess";
+			name = "Qt Preprocess";
 		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		6DB9C3763D02B1415CD9D565 /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				TargetAttributes = {
-					3D418DA034E6D92F2CC94E91 = {
-						DevelopmentTeam = C2A3XCXCZS;
-					};
-					D8DEA599D58B29371C2B9F9D = {
-						DevelopmentTeam = C2A3XCXCZS;
-					};
-				};
+		268D6FDCDC3B8DB9966C94E2 = {
+			isa = PBXTargetDependency;
+			target = "D8DEA599D58B29371C2B9F9D";
+		};
+		3D418DA034E6D92F2CC94E91 = {
+			buildPhases = (
+				"F7E50F631C51CD5B5DC0BC43",
+				"D1C883685E82D5676953459A",
+				"30414803F31797EB689AE508",
+				"99542592E9780B9225F24AA8");
+			dependencies = (
+				"268D6FDCDC3B8DB9966C94E2");
+			productReference = "0206B9D03E5F345967F760C8";
+			buildConfigurationList = 6CC3B5D2136C7CD6A5CF5A59;
+			isa = PBXNativeTarget;
+			buildRules = (
+);
+			productType = "com.apple.product-type.application";
+			name = "HomeworkCheckerGUI";
+			productName = "HomeworkCheckerGUI";
+		};
+		3AA6C32AC930069E80220CF1 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = "NO";
+				"ARCHS[sdk=macosx*]" = "x86_64";
+				COPY_PHASE_STRIP = "NO";
+				DEVELOPMENT_TEAM = "C2A3XCXCZS";
+				ENABLE_BITCODE = "NO";
+				GCC_OPTIMIZATION_LEVEL = "0";
+				ONLY_ACTIVE_ARCH = "YES";
+				PRODUCT_BUNDLE_IDENTIFIER = "LSX-s-Software.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "HomeworkCheckerGUI";
+				QMAKE_FULL_VERSION = "1.0.0";
+				QMAKE_PKGINFO_TYPEINFO = "????";
+				QMAKE_SHORT_VERSION = "1.0";
+				QT_LIBRARY_SUFFIX = "";
+				SDKROOT = "macosx";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				CC = "/Library/Developer/CommandLineTools/usr/bin/clang";
+				LDPLUSPLUS = "/Library/Developer/CommandLineTools/usr/bin/clang++";
+				INFOPLIST_FILE = "Info.plist";
+				SYMROOT = ".xcode";
+				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				DYLIB_CURRENT_VERSION = "1.0.0";
+				DYLIB_COMPATIBILITY_VERSION = "1.0";
+				MACOSX_DEPLOYMENT_TARGET = "11.0";
+				HEADER_SEARCH_PATHS = (
+					".",
+					"../../DataManager/DataManager",
+					"../../DataManager/build/Debug",
+					"../../packages/mysql/include",
+					"../../DataManager/DataManager",
+					"../../packages/json",
+					"../../packages/asio/include",
+					"../../packages/websocketpp/include",
+					"../../../Qt/6.1.0/clang_64/lib/QtQuick.framework/Headers",
+					"../../../Qt/6.1.0/clang_64/lib/QtOpenGL.framework/Headers",
+					"../../../Qt/6.1.0/clang_64/lib/QtGui.framework/Headers",
+					"../../../Qt/6.1.0/clang_64/lib/QtQmlModels.framework/Headers",
+					"../../../Qt/6.1.0/clang_64/lib/QtQml.framework/Headers",
+					"../../../Qt/6.1.0/clang_64/lib/QtNetwork.framework/Headers",
+					"../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers",
+					".",
+					"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers",
+					"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AGL.framework/Headers",
+					"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers",
+					"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AGL.framework/Headers",
+					"../../../Qt/6.1.0/clang_64/mkspecs/macx-clang");
+				LIBRARY_SEARCH_PATHS = (
+					"/Users/linsixing/HomeworkChecker/DataManager/build/Debug",
+					"/Users/linsixing/Qt/6.1.0/clang_64/lib",
+					"/System/Library/Frameworks/");
+				FRAMEWORK_SEARCH_PATHS = (
+					"/Users/linsixing/Qt/6.1.0/clang_64/lib",
+					"/Users/linsixing/Qt/6.1.0/clang_64/lib");
+				OTHER_CFLAGS = (
+					"-pipe",
+					"-O2",
+					"-Wall",
+					"-Wextra",
+					"-fPIC",
+					"-DQT_NO_DEBUG",
+					"-DQT_QUICK_LIB",
+					"-DQT_OPENGL_LIB",
+					"-DQT_GUI_LIB",
+					"-DQT_QMLMODELS_LIB",
+					"-DQT_QML_LIB",
+					"-DQT_NETWORK_LIB",
+					"-DQT_CORE_LIB");
+				OTHER_CPLUSPLUSFLAGS = (
+					"-pipe",
+					"-stdlib=libc++",
+					"-O2",
+					"-std=gnu++1z",
+					"-Wall",
+					"-Wextra",
+					"-fPIC",
+					"-DQT_NO_DEBUG",
+					"-DQT_QUICK_LIB",
+					"-DQT_OPENGL_LIB",
+					"-DQT_GUI_LIB",
+					"-DQT_QMLMODELS_LIB",
+					"-DQT_QML_LIB",
+					"-DQT_NETWORK_LIB",
+					"-DQT_CORE_LIB");
+				OTHER_LDFLAGS = (
+						"-stdlib=libc++",
+						"-headerpad_max_install_names",
+						"-Wl,-rpath,@executable_path/../Frameworks",
+						"-Wl,-rpath,/Users/linsixing/Qt/6.1.0/clang_64/lib",
+						"-F/Users/linsixing/Qt/6.1.0/clang_64/lib",
+						"-L/Users/linsixing/HomeworkChecker/DataManager/build/Debug");
+				ARCHS = "x86_64";
 			};
-			buildConfigurationList = DAC4C1AA5EDEA1C85E9CA5E6 /* Build configuration list for PBXProject "HomeworkCheckerGUI" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = en;
+			name = "Debug";
+		};
+		77418F46922677BB04ED38DD = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = "NO";
+				"ARCHS[sdk=macosx*]" = "x86_64";
+				COPY_PHASE_STRIP = "NO";
+				DEVELOPMENT_TEAM = "C2A3XCXCZS";
+				ENABLE_BITCODE = "NO";
+				GCC_OPTIMIZATION_LEVEL = "0";
+				ONLY_ACTIVE_ARCH = "YES";
+				PRODUCT_BUNDLE_IDENTIFIER = "LSX-s-Software.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "HomeworkCheckerGUI";
+				QMAKE_FULL_VERSION = "1.0.0";
+				QMAKE_PKGINFO_TYPEINFO = "????";
+				QMAKE_SHORT_VERSION = "1.0";
+				QT_LIBRARY_SUFFIX = "";
+				SDKROOT = "macosx";
+				PRODUCT_NAME = "HomeworkCheckerGUI";
+			};
+			name = "Debug";
+		};
+		339EE1B2CC4FC24589A0EA95 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = "NO";
+				"ARCHS[sdk=macosx*]" = "x86_64";
+				COPY_PHASE_STRIP = "NO";
+				DEVELOPMENT_TEAM = "C2A3XCXCZS";
+				ENABLE_BITCODE = "NO";
+				PRODUCT_BUNDLE_IDENTIFIER = "LSX-s-Software.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "HomeworkCheckerGUI";
+				QMAKE_FULL_VERSION = "1.0.0";
+				QMAKE_PKGINFO_TYPEINFO = "????";
+				QMAKE_SHORT_VERSION = "1.0";
+				QT_LIBRARY_SUFFIX = "";
+				SDKROOT = "macosx";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				CC = "/Library/Developer/CommandLineTools/usr/bin/clang";
+				LDPLUSPLUS = "/Library/Developer/CommandLineTools/usr/bin/clang++";
+				INFOPLIST_FILE = "Info.plist";
+				SYMROOT = ".xcode";
+				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				DYLIB_CURRENT_VERSION = "1.0.0";
+				DYLIB_COMPATIBILITY_VERSION = "1.0";
+				MACOSX_DEPLOYMENT_TARGET = "11.0";
+				HEADER_SEARCH_PATHS = (
+					".",
+					"../../DataManager/DataManager",
+					"../../DataManager/build/Debug",
+					"../../packages/mysql/include",
+					"../../DataManager/DataManager",
+					"../../packages/json",
+					"../../packages/asio/include",
+					"../../packages/websocketpp/include",
+					"../../../Qt/6.1.0/clang_64/lib/QtQuick.framework/Headers",
+					"../../../Qt/6.1.0/clang_64/lib/QtOpenGL.framework/Headers",
+					"../../../Qt/6.1.0/clang_64/lib/QtGui.framework/Headers",
+					"../../../Qt/6.1.0/clang_64/lib/QtQmlModels.framework/Headers",
+					"../../../Qt/6.1.0/clang_64/lib/QtQml.framework/Headers",
+					"../../../Qt/6.1.0/clang_64/lib/QtNetwork.framework/Headers",
+					"../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers",
+					".",
+					"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers",
+					"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AGL.framework/Headers",
+					"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers",
+					"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AGL.framework/Headers",
+					"../../../Qt/6.1.0/clang_64/mkspecs/macx-clang");
+				LIBRARY_SEARCH_PATHS = (
+					"/Users/linsixing/HomeworkChecker/DataManager/build/Debug",
+					"/Users/linsixing/Qt/6.1.0/clang_64/lib",
+					"/System/Library/Frameworks/");
+				FRAMEWORK_SEARCH_PATHS = (
+					"/Users/linsixing/Qt/6.1.0/clang_64/lib",
+					"/Users/linsixing/Qt/6.1.0/clang_64/lib");
+				OTHER_CFLAGS = (
+					"-pipe",
+					"-O2",
+					"-Wall",
+					"-Wextra",
+					"-fPIC",
+					"-DQT_NO_DEBUG",
+					"-DQT_QUICK_LIB",
+					"-DQT_OPENGL_LIB",
+					"-DQT_GUI_LIB",
+					"-DQT_QMLMODELS_LIB",
+					"-DQT_QML_LIB",
+					"-DQT_NETWORK_LIB",
+					"-DQT_CORE_LIB");
+				OTHER_CPLUSPLUSFLAGS = (
+					"-pipe",
+					"-stdlib=libc++",
+					"-O2",
+					"-std=gnu++1z",
+					"-Wall",
+					"-Wextra",
+					"-fPIC",
+					"-DQT_NO_DEBUG",
+					"-DQT_QUICK_LIB",
+					"-DQT_OPENGL_LIB",
+					"-DQT_GUI_LIB",
+					"-DQT_QMLMODELS_LIB",
+					"-DQT_QML_LIB",
+					"-DQT_NETWORK_LIB",
+					"-DQT_CORE_LIB");
+				OTHER_LDFLAGS = (
+						"-stdlib=libc++",
+						"-headerpad_max_install_names",
+						"-Wl,-rpath,@executable_path/../Frameworks",
+						"-Wl,-rpath,/Users/linsixing/Qt/6.1.0/clang_64/lib",
+						"-F/Users/linsixing/Qt/6.1.0/clang_64/lib",
+						"-L/Users/linsixing/HomeworkChecker/DataManager/build/Debug");
+				ARCHS = "x86_64";
+			};
+			name = "Release";
+		};
+		6666AA5E688052234F6758D8 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = "NO";
+				"ARCHS[sdk=macosx*]" = "x86_64";
+				COPY_PHASE_STRIP = "NO";
+				DEVELOPMENT_TEAM = "C2A3XCXCZS";
+				ENABLE_BITCODE = "NO";
+				PRODUCT_BUNDLE_IDENTIFIER = "LSX-s-Software.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "HomeworkCheckerGUI";
+				QMAKE_FULL_VERSION = "1.0.0";
+				QMAKE_PKGINFO_TYPEINFO = "????";
+				QMAKE_SHORT_VERSION = "1.0";
+				QT_LIBRARY_SUFFIX = "";
+				SDKROOT = "macosx";
+				PRODUCT_NAME = "HomeworkCheckerGUI";
+			};
+			name = "Release";
+		};
+		DAC4C1AA5EDEA1C85E9CA5E6 = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"3AA6C32AC930069E80220CF1",
+				"339EE1B2CC4FC24589A0EA95");
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Release";
+		};
+		6CC3B5D2136C7CD6A5CF5A59 = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"77418F46922677BB04ED38DD",
+				"6666AA5E688052234F6758D8");
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Release";
+		};
+		6DB9C3763D02B1415CD9D565 = {
 			hasScannedForEncodings = 1;
-			knownRegions = (
-				en,
-				Base,
-			);
-			mainGroup = E8C543AB96796ECAA2E65C57 /* HomeworkCheckerGUI */;
-			productRefGroup = FE0A091FDBFB3E9C31B7A1BD /* Products */;
+			compatibilityVersion = "Xcode 3.2";
+			isa = PBXProject;
+			mainGroup = "E8C543AB96796ECAA2E65C57";
+			productRefGroup = "FE0A091FDBFB3E9C31B7A1BD";
+			buildConfigurationList = "DAC4C1AA5EDEA1C85E9CA5E6";
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3D418DA034E6D92F2CC94E91 /* HomeworkCheckerGUI */,
-				D8DEA599D58B29371C2B9F9D /* Qt Preprocess */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		30414803F31797EB689AE508 /* Copy Bundle Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			name = "Copy Bundle Resources";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		5E618435888B9D49F8540165 /* Qt Qmake */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			name = "Qt Qmake";
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "make -C /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI -f HomeworkCheckerGUI.xcodeproj/qt_makeqmake.mak";
-			showEnvVarsInLog = 0;
-		};
-		7EF0942E79C014DCEC8976BC /* Qt Preprocessors */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			name = "Qt Preprocessors";
-			outputPaths = (
-				qrc_qml.cpp,
-				moc_predefs.h,
-				moc_account.cpp,
-				moc_classscoreviewcontroller.cpp,
-				moc_classviewcontroller.cpp,
-				moc_correcthomework.cpp,
-				moc_generalviewcontroller.cpp,
-				moc_infooftask.cpp,
-				moc_settingpage.cpp,
-				moc_studentscoreviewcontroller.cpp,
-				moc_taskpage.cpp,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "make -C /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI -f HomeworkCheckerGUI.xcodeproj/qt_preprocess.mak";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		F7E50F631C51CD5B5DC0BC43 /* Compile Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9F8A8F0EEF145430F4CA3013 /* WebsocketClientForApp.cpp in Compile Sources */,
-				B08FA47E4B404C74DA7ABB6D /* account.cpp in Compile Sources */,
-				138DE42E469F00ECEDC56958 /* classscoreviewcontroller.cpp in Compile Sources */,
-				C3B1CC14C9DBB9A6845BBB49 /* classviewcontroller.cpp in Compile Sources */,
-				A81FE869667C56A953B9B4E3 /* correcthomework.cpp in Compile Sources */,
-				4A1598CC6B88D2B6F2B7304C /* generalviewcontroller.cpp in Compile Sources */,
-				E376D88A890573722A24DD03 /* infooftask.cpp in Compile Sources */,
-				BA842B4AE21321C0DDDECAF9 /* main.cpp in Compile Sources */,
-				BDEFF686E84CD710F92A92C7 /* settingpage.cpp in Compile Sources */,
-				A4BFC8537CF2230BB801A2E4 /* studentscoreviewcontroller.cpp in Compile Sources */,
-				DC95D5E501B4F8E71E1857F1 /* taskpage.cpp in Compile Sources */,
-				3C6A242DA837982406446FF5 /* qrc_qml.cpp in Compile Sources */,
-				29801961A6618F0281E009BA /* moc_account.cpp in Compile Sources */,
-				A2613BB7306C683630726CC5 /* moc_classscoreviewcontroller.cpp in Compile Sources */,
-				BDE311FC561F39D9096C4E05 /* moc_classviewcontroller.cpp in Compile Sources */,
-				439E3BA4055B49993CDC073B /* moc_correcthomework.cpp in Compile Sources */,
-				0E08BD879F79D5C9BC8DE3ED /* moc_generalviewcontroller.cpp in Compile Sources */,
-				3CC4423DC9F3DF33CEEB8FD4 /* moc_infooftask.cpp in Compile Sources */,
-				11CFF24F2F5C8393AC81A92D /* moc_settingpage.cpp in Compile Sources */,
-				78B52D3C072B06A10EA341D0 /* moc_studentscoreviewcontroller.cpp in Compile Sources */,
-				248840D0E04A7CAAEAD63031 /* moc_taskpage.cpp in Compile Sources */,
-				E1BE909975083DE17DEDFAB9 /* dummy.cpp in Compile Sources */,
-			);
-			name = "Compile Sources";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		268D6FDCDC3B8DB9966C94E2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D8DEA599D58B29371C2B9F9D /* Qt Preprocess */;
-			targetProxy = F5BEA6DF2672168E009633B5 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin XCBuildConfiguration section */
-		339EE1B2CC4FC24589A0EA95 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = NO;
-				ARCHS = x86_64;
-				"ARCHS[sdk=macosx*]" = x86_64;
-				CC = /Library/Developer/CommandLineTools/usr/bin/clang;
-				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = C2A3XCXCZS;
-				DYLIB_COMPATIBILITY_VERSION = 1.0;
-				DYLIB_CURRENT_VERSION = 1.0.0;
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					/Users/linsixing/Qt/6.1.0/clang_64/lib,
-					/Users/linsixing/Qt/6.1.0/clang_64/lib,
-				);
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				HEADER_SEARCH_PATHS = (
-					.,
-					../../DataManager/DataManager,
-					../../DataManager/build/Debug,
-					../../packages/mysql/include,
-					../../DataManager/DataManager,
-					../../packages/json,
-					../../packages/asio/include,
-					../../packages/websocketpp/include,
-					../../../Qt/6.1.0/clang_64/lib/QtQuick.framework/Headers,
-					../../../Qt/6.1.0/clang_64/lib/QtOpenGL.framework/Headers,
-					../../../Qt/6.1.0/clang_64/lib/QtGui.framework/Headers,
-					../../../Qt/6.1.0/clang_64/lib/QtQmlModels.framework/Headers,
-					../../../Qt/6.1.0/clang_64/lib/QtQml.framework/Headers,
-					../../../Qt/6.1.0/clang_64/lib/QtNetwork.framework/Headers,
-					../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers,
-					.,
-					/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers,
-					/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AGL.framework/Headers,
-					/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers,
-					/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AGL.framework/Headers,
-					"../../../Qt/6.1.0/clang_64/mkspecs/macx-clang",
-				);
-				INFOPLIST_FILE = Info.plist;
-				LDPLUSPLUS = "/Library/Developer/CommandLineTools/usr/bin/clang++";
-				LIBRARY_SEARCH_PATHS = (
-					../../DataManager/build/Debug/,
-					/Users/linsixing/HomeworkChecker/DataManager/build/Debug/,
-					/Users/linsixing/Qt/6.1.0/clang_64/lib,
-					/System/Library/Frameworks/,
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				OTHER_CFLAGS = (
-					"-pipe",
-					"-O2",
-					"-Wall",
-					"-Wextra",
-					"-fPIC",
-					"-DWIN32_LEAN_AND_MEAN",
-					"-DQT_NO_DEBUG",
-					"-DQT_QUICK_LIB",
-					"-DQT_OPENGL_LIB",
-					"-DQT_GUI_LIB",
-					"-DQT_QMLMODELS_LIB",
-					"-DQT_QML_LIB",
-					"-DQT_NETWORK_LIB",
-					"-DQT_CORE_LIB",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-pipe",
-					"-stdlib=libc++",
-					"-O2",
-					"-std=gnu++1z",
-					"-Wall",
-					"-Wextra",
-					"-fPIC",
-					"-DWIN32_LEAN_AND_MEAN",
-					"-DQT_NO_DEBUG",
-					"-DQT_QUICK_LIB",
-					"-DQT_OPENGL_LIB",
-					"-DQT_GUI_LIB",
-					"-DQT_QMLMODELS_LIB",
-					"-DQT_QML_LIB",
-					"-DQT_NETWORK_LIB",
-					"-DQT_CORE_LIB",
-				);
-				OTHER_LDFLAGS = (
-					"-stdlib=libc++",
-					"-headerpad_max_install_names",
-					"-Wl,-rpath,@executable_path/../Frameworks",
-					"-Wl,-rpath,/Users/linsixing/Qt/6.1.0/clang_64/lib",
-					"-F/Users/linsixing/Qt/6.1.0/clang_64/lib",
-					"-L../../DataManager/build/Debug/",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "LSX-s-Software.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = HomeworkCheckerGUI;
-				QMAKE_FULL_VERSION = 1.0.0;
-				QMAKE_PKGINFO_TYPEINFO = "????";
-				QMAKE_SHORT_VERSION = 1.0;
-				QT_LIBRARY_SUFFIX = "";
-				SDKROOT = macosx;
-				SYMROOT = .xcode;
+				"3D418DA034E6D92F2CC94E91",
+				"D8DEA599D58B29371C2B9F9D");
+			attributes = {
+				TargetAttributes = {
+				};
 			};
-			name = Release;
 		};
-		3AA6C32AC930069E80220CF1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = NO;
-				ARCHS = x86_64;
-				"ARCHS[sdk=macosx*]" = x86_64;
-				CC = /Library/Developer/CommandLineTools/usr/bin/clang;
-				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = C2A3XCXCZS;
-				DYLIB_COMPATIBILITY_VERSION = 1.0;
-				DYLIB_CURRENT_VERSION = 1.0.0;
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					/Users/linsixing/Qt/6.1.0/clang_64/lib,
-					/Users/linsixing/Qt/6.1.0/clang_64/lib,
-				);
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				HEADER_SEARCH_PATHS = (
-					.,
-					../../DataManager/DataManager,
-					../../DataManager/build/Debug,
-					../../packages/mysql/include,
-					../../DataManager/DataManager,
-					../../packages/json,
-					../../packages/asio/include,
-					../../packages/websocketpp/include,
-					../../../Qt/6.1.0/clang_64/lib/QtQuick.framework/Headers,
-					../../../Qt/6.1.0/clang_64/lib/QtOpenGL.framework/Headers,
-					../../../Qt/6.1.0/clang_64/lib/QtGui.framework/Headers,
-					../../../Qt/6.1.0/clang_64/lib/QtQmlModels.framework/Headers,
-					../../../Qt/6.1.0/clang_64/lib/QtQml.framework/Headers,
-					../../../Qt/6.1.0/clang_64/lib/QtNetwork.framework/Headers,
-					../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers,
-					.,
-					/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers,
-					/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AGL.framework/Headers,
-					/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers,
-					/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AGL.framework/Headers,
-					"../../../Qt/6.1.0/clang_64/mkspecs/macx-clang",
-				);
-				INFOPLIST_FILE = Info.plist;
-				LDPLUSPLUS = "/Library/Developer/CommandLineTools/usr/bin/clang++";
-				LIBRARY_SEARCH_PATHS = (
-					../../DataManager/build/Debug/,
-					/Users/linsixing/HomeworkChecker/DataManager/build/Debug/,
-					/Users/linsixing/Qt/6.1.0/clang_64/lib,
-					/System/Library/Frameworks/,
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = (
-					"-pipe",
-					"-O2",
-					"-Wall",
-					"-Wextra",
-					"-fPIC",
-					"-DWIN32_LEAN_AND_MEAN",
-					"-DQT_NO_DEBUG",
-					"-DQT_QUICK_LIB",
-					"-DQT_OPENGL_LIB",
-					"-DQT_GUI_LIB",
-					"-DQT_QMLMODELS_LIB",
-					"-DQT_QML_LIB",
-					"-DQT_NETWORK_LIB",
-					"-DQT_CORE_LIB",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-pipe",
-					"-stdlib=libc++",
-					"-O2",
-					"-std=gnu++1z",
-					"-Wall",
-					"-Wextra",
-					"-fPIC",
-					"-DWIN32_LEAN_AND_MEAN",
-					"-DQT_NO_DEBUG",
-					"-DQT_QUICK_LIB",
-					"-DQT_OPENGL_LIB",
-					"-DQT_GUI_LIB",
-					"-DQT_QMLMODELS_LIB",
-					"-DQT_QML_LIB",
-					"-DQT_NETWORK_LIB",
-					"-DQT_CORE_LIB",
-				);
-				OTHER_LDFLAGS = (
-					"-stdlib=libc++",
-					"-headerpad_max_install_names",
-					"-Wl,-rpath,@executable_path/../Frameworks",
-					"-Wl,-rpath,/Users/linsixing/Qt/6.1.0/clang_64/lib",
-					"-F/Users/linsixing/Qt/6.1.0/clang_64/lib",
-					"-L../../DataManager/build/Debug/",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "LSX-s-Software.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = HomeworkCheckerGUI;
-				QMAKE_FULL_VERSION = 1.0.0;
-				QMAKE_PKGINFO_TYPEINFO = "????";
-				QMAKE_SHORT_VERSION = 1.0;
-				QT_LIBRARY_SUFFIX = "";
-				SDKROOT = macosx;
-				SYMROOT = .xcode;
-			};
-			name = Debug;
-		};
-		6666AA5E688052234F6758D8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = NO;
-				"ARCHS[sdk=macosx*]" = x86_64;
-				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = C2A3XCXCZS;
-				ENABLE_BITCODE = NO;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "LSX-s-Software.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = HomeworkCheckerGUI;
-				QMAKE_FULL_VERSION = 1.0.0;
-				QMAKE_PKGINFO_TYPEINFO = "????";
-				QMAKE_SHORT_VERSION = 1.0;
-				QT_LIBRARY_SUFFIX = "";
-				SDKROOT = macosx;
-			};
-			name = Release;
-		};
-		77418F46922677BB04ED38DD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = NO;
-				"ARCHS[sdk=macosx*]" = x86_64;
-				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = C2A3XCXCZS;
-				ENABLE_BITCODE = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				MARKETING_VERSION = 1.0;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "LSX-s-Software.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = HomeworkCheckerGUI;
-				QMAKE_FULL_VERSION = 1.0.0;
-				QMAKE_PKGINFO_TYPEINFO = "????";
-				QMAKE_SHORT_VERSION = 1.0;
-				QT_LIBRARY_SUFFIX = "";
-				SDKROOT = macosx;
-			};
-			name = Debug;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		6CC3B5D2136C7CD6A5CF5A59 /* Build configuration list for PBXNativeTarget "HomeworkCheckerGUI" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				77418F46922677BB04ED38DD /* Debug */,
-				6666AA5E688052234F6758D8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DAC4C1AA5EDEA1C85E9CA5E6 /* Build configuration list for PBXProject "HomeworkCheckerGUI" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3AA6C32AC930069E80220CF1 /* Debug */,
-				339EE1B2CC4FC24589A0EA95 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
 	};
-	rootObject = 6DB9C3763D02B1415CD9D565 /* Project object */;
+	rootObject = "6DB9C3763D02B1415CD9D565";
 }

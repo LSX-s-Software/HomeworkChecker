@@ -4,7 +4,8 @@ QT += core
 RC_ICONS = icon.ico
 
 CONFIG += c++17
-DEFINES += WIN32_LEAN_AND_MEAN
+win32:DEFINES += WIN32_LEAN_AND_MEAN
+QMAKE_MACOSX_DEPLOYMENT_TARGET = 11.0
 # CONFIG += no_autoqmake
 
 # You can make your code fail to compile if it uses deprecated APIs.
@@ -51,9 +52,9 @@ HEADERS += \
     studentscoreviewcontroller.h \
     taskpage.h
 
-macx: LIBS += -L../../DataManager/build/Debug/ -lDataManager
+macx: LIBS += -L/Users/linsixing/HomeworkChecker/DataManager/build/Release -lDataManager
 
-macx: PRE_TARGETDEPS += ../../DataManager/build/Debug/libDataManager.a
+#macx: PRE_TARGETDEPS += ../../DataManager/build/Debug/libDataManager.a
 
 INCLUDEPATH += ../../DataManager/build/Debug
 DEPENDPATH += ../../DataManager/build/Debug
