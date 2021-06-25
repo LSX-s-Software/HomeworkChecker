@@ -82,7 +82,7 @@ struct RegInfo
 };
 
 /// <summary>
-/// 作业提交详情
+/// 学生信息
 /// </summary>
 struct StuInfo
 {
