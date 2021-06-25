@@ -7,12 +7,17 @@
 
 ## 引用
 - DataManager
+
 - json *(third-party library)*
+
 - websocketpp *(third-party library)*
+
 - asio *(third-party library)*
+
 - mysql *(third-party library)*
 
 ### 整体构成
+
 ```
 QQMessage               QQ消息处理程序  负责人：杨锦荣
 ├─ Analyst              文本处理及分析
@@ -28,6 +33,7 @@ QQMessage               QQ消息处理程序  负责人：杨锦荣
 ```
 
 ### 组件依赖
+
 ![QQMessage_class](pic/QQMessage/QQMessage_class.svg)
 
 ## 关键技术
@@ -39,10 +45,12 @@ QQMessage               QQ消息处理程序  负责人：杨锦荣
 WebSocket作为在单个TCP连接上进行的全双工通信，有效的克服了HTTP协议通讯发起的单向性，避免使用轮询，提高通信效率。
 
 - 第三方库选择
+
 由于目前C++17标准库中并没有网络库，需要使用Asio网络库，作为boost库中优秀的一部分，现以可以在C++17下单独使用，不再依赖于boost。基本网络库之上选择了[websocketpp](https://github.com/zaphoyd/websocketpp)，根据使用文档和相关例程简化websocket服务端与客户端，同时引入多线程避免网络通信时阻塞主线程。  
 ![websocketpp project](pic/QQMessage/websocketpp.png)
 
 - 多线程
+
   在编写网络通信部分时，会发现由于网络传输的速度远低于访存操作，当接受或发送大量数据时无法同时解析qq消息文本，会造成服务的中断，于是需引入异步编程与多线程技术。
 
   利用asio和c++标准库中的多线程技术，实现了websocket服务端和客户端独立于主线程运行，并在程序退出时终止其他线程。
@@ -54,6 +62,7 @@ WebSocket作为在单个TCP连接上进行的全双工通信，有效的克服�
   ```
 
 - 定义json传输规范
+
   服务端与客户端通信内容实用json编码，便于解析数据。
 
   设计时分析双端通信需求，简要列出关键数据及key值
@@ -84,14 +93,18 @@ WebSocket作为在单个TCP连接上进行的全双工通信，有效的克服�
 	[type] new_homework
   ```
 - 文件传输分块
+
   依据websocket的特性，在websocket之上可以一次性发送大量数据，但是实际操作中服务端发送大量数据，客户端在接受过程中由于长时间未响应会造成连接异常中断，导致数据传输不完整。所有要在应用层对所发送文件进行分块，根据分块顺序上传至客户端。
 
   - 接收到传输文件指令，获取文件本地路径及文件信息
+
     ```cpp
     File file(st.getClassId(), st.getId(), as.getId());
     std::string fileName = decode.at("file_name");
 	```
+	
   - 准备缓冲区，将文件分段存入内存
+
 	```cpp
 	std::ifstream ifs(file.getFilePath(fileName), std::ios::binary);
     ifs.seekg(0, ifs.end);
@@ -109,21 +122,28 @@ WebSocket作为在单个TCP连接上进行的全双工通信，有效的克服�
         }
     ifs.close();
 	```
+	
   - 发送文件分块传输初始化信息
+
   - 依次发送分段数据
+
   - 传输结束后发送结束消息
 
 ### Analyst分析模块
+
 该模块是整个QQMessage模块内逻辑关系最为复杂的一个部分，整体采用面向过程的方法进行编写，对QQ接收到的消息进行切分，识别相应指令并按照需求进行回应。
 
 - 分阶段处理消息
+
   设计时对学生输入命令的全过程进行详细的分析，确定关键的命令列表，将学生操作模式分为：未注册、空闲、注册中、提交作业中，四种状态。本地保存学生的各种状态信息，确保在一个消息结束后可以正常执行操作流程。
 
   ```cpp
   extern std::map<long long, PeerStatus> status;
   extern std::map<long long, RegInfo> regStatus;
   ```
+
 - 本地缓存学生信息
+
   由于测试时网络连接不稳定，访问服务器耗时较大，同时对服务器造成巨大开销。为减少服务器访问次数，对学生的关键信息进行本地保存，兼顾数据时效性的前提下尽可能缓存频繁使用的数据。
 
 ```cpp
@@ -178,13 +198,17 @@ struct HomeworkInfo
 ### 跨平台适配
 
 - 文件编码统一UTF-8
+
   在跨平台开发时(Win Mac Linux)，Win下的GBK文件编码导致发送中文消息时产生乱码。于是统一文件编码为UTF-8，并且在处理中文字符串时注明u8标识符。
 
 - 中文字符串采用u16string与u16char类型
+
   由于Windows与Linux下c++宽字符(wchar)的长度不统一，导致对字符串split操作时需要考虑wchar的两种大小。于是选用c++较新支持的u16string类型，减少不同平台的适配。
 
 - 宏定义区分不同平台
+
   软件需要使用部分系统函数，需要根据win和linux具体的情况进行适配，了解不同系统的库差异。
+
 ```cpp
 std::string File::downFile(std::string url, std::filesystem::path fileName)
 {
@@ -212,10 +236,13 @@ std::string File::downFile(std::string url, std::filesystem::path fileName)
 	}
 }
 ```
+
   - 处理服务端与客户端中文不同编码方式
+  
     由于不同系统采用GBK和UTF-8不同编码方式，对本地文件进行操控时需要适配客户端与服务端分别采用GBK和UTF-8多种情况。程序内部统一UTF-8编码，在进行本地文件读写时进行编码转换。
 
   - 编写CMake文件，实现跨平台编译
+  
 ```cmake
 cmake_minimum_required(VERSION 3.8)
 project(QQMessage)
@@ -246,7 +273,11 @@ C++下第三方库的使用，由于缺少较成熟的包管理，大多数库�
 
 由于时间和能力限制，本模块还有许多不足之处
 - 设计时类间过于复杂，导致编写程序时过于繁琐
+
 - 缓存设计不规范，后续学习中了解到规范的多路组相联缓存设计和LRU、LFU算法，同时缓存实现可以放入DataManager模块，减少模块间耦合程度
+
 - 异常处理并未完善，没有对不同异常进行分情况处理。很多时候捕获异常只是为了防止程序中断
+
 - 服务端配置信息未进行离线化本地保存，修改ws地址和端口需对程序源码修改
+
 - 分块文件上传模块只有基本功能，没有实现文件校验、乱序传输、断点续传等实用功能
