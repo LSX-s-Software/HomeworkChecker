@@ -5,9 +5,9 @@
 
 {
     // QQ号
-    uin: 2144369170
+    uin: 
     // QQ密码
-    password: "13550030216"
+    password: ""
     // 是否启用密码加密
     encrypt_password: false
     // 加密后的密码, 如未启用密码加密将为空, 请勿随意修改.
