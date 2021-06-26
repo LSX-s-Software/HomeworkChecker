@@ -561,15 +561,15 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			name = "Compile Sources";
 		};
-		4FF0BA158467D67F6F29534B = {
+		B7EFBC7980FD108CEB60DCB1 = {
 			isa = PBXFileReference;
 			name = "DataManager";
-			path = "/Users/linsixing/HomeworkChecker/DataManager/build/Debug/libDataManager.a";
+			path = "/Users/linsixing/HomeworkChecker/DataManager/build/Release/libDataManager.a";
 			refType = 0;
 			sourceTree = "<absolute>";
 		};
-		257A8203C78A668D19146CAA = {
-			fileRef = "4FF0BA158467D67F6F29534B";
+		56CA50576A5337589606B8E9 = {
+			fileRef = "B7EFBC7980FD108CEB60DCB1";
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -772,7 +772,7 @@
 		};
 		AF39DD055C3EF8226FBE929D = {
 			children = (
-				"4FF0BA158467D67F6F29534B",
+				"B7EFBC7980FD108CEB60DCB1",
 				"F00B4EB1C52BEF010ADF53FD",
 				"D0C2463FFD8EE73AC5E7DD51",
 				"645234D636EE2C6AEB85D482",
@@ -794,7 +794,7 @@
 		D1C883685E82D5676953459A = {
 			buildActionMask = 2147483647;
 			files = (
-				"257A8203C78A668D19146CAA",
+				"56CA50576A5337589606B8E9",
 				"D3E047EA57DAAE1DAA003AB3",
 				"A2BB5888B0F06BFA16DA3749",
 				"951B7177F7777F57BB0E3B8D",
@@ -941,7 +941,7 @@
 					"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AGL.framework/Headers",
 					"../../../Qt/6.1.0/clang_64/mkspecs/macx-clang");
 				LIBRARY_SEARCH_PATHS = (
-					"/Users/linsixing/HomeworkChecker/DataManager/build/Debug",
+					"/Users/linsixing/HomeworkChecker/DataManager/build/Release",
 					"/Users/linsixing/Qt/6.1.0/clang_64/lib",
 					"/System/Library/Frameworks/");
 				FRAMEWORK_SEARCH_PATHS = (
@@ -983,7 +983,7 @@
 						"-Wl,-rpath,@executable_path/../Frameworks",
 						"-Wl,-rpath,/Users/linsixing/Qt/6.1.0/clang_64/lib",
 						"-F/Users/linsixing/Qt/6.1.0/clang_64/lib",
-						"-L/Users/linsixing/HomeworkChecker/DataManager/build/Debug");
+						"-L/Users/linsixing/HomeworkChecker/DataManager/build/Release");
 				ARCHS = "x86_64";
 			};
 			name = "Debug";
@@ -1056,7 +1056,7 @@
 					"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AGL.framework/Headers",
 					"../../../Qt/6.1.0/clang_64/mkspecs/macx-clang");
 				LIBRARY_SEARCH_PATHS = (
-					"/Users/linsixing/HomeworkChecker/DataManager/build/Debug",
+					"/Users/linsixing/HomeworkChecker/DataManager/build/Release",
 					"/Users/linsixing/Qt/6.1.0/clang_64/lib",
 					"/System/Library/Frameworks/");
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1098,7 +1098,7 @@
 						"-Wl,-rpath,@executable_path/../Frameworks",
 						"-Wl,-rpath,/Users/linsixing/Qt/6.1.0/clang_64/lib",
 						"-F/Users/linsixing/Qt/6.1.0/clang_64/lib",
-						"-L/Users/linsixing/HomeworkChecker/DataManager/build/Debug");
+						"-L/Users/linsixing/HomeworkChecker/DataManager/build/Release");
 				ARCHS = "x86_64";
 			};
 			name = "Release";

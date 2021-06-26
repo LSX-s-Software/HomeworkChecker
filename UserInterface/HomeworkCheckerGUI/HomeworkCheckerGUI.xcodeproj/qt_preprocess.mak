@@ -81,78 +81,195 @@ compiler_moc_header_clean:
 	-$(DEL_FILE) moc_account.cpp moc_classscoreviewcontroller.cpp moc_classviewcontroller.cpp moc_correcthomework.cpp moc_generalviewcontroller.cpp moc_infooftask.cpp moc_settingpage.cpp moc_studentscoreviewcontroller.cpp moc_taskpage.cpp
 moc_account.cpp: account.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../Qt/6.1.0/clang_64/lib/QtQml.framework/Headers/qqml.h \
 		../../DataManager/DataManager/DataManager.hpp \
+		../../DataManager/DataManager/DBManager.hpp \
+		../../packages/mysql/include/mysql.h \
+		../../packages/mysql/include/field_types.h \
+		../../packages/mysql/include/my_list.h \
+		../../packages/mysql/include/mysql_com.h \
+		../../packages/mysql/include/my_command.h \
+		../../packages/mysql/include/my_compress.h \
+		../../packages/mysql/include/mysql/udf_registration_types.h \
+		../../packages/mysql/include/mysql/client_plugin.h \
+		../../packages/mysql/include/mysql/plugin_auth_common.h \
+		../../packages/mysql/include/mysql_version.h \
+		../../packages/mysql/include/mysql_time.h \
+		../../packages/mysql/include/errmsg.h \
+		../../DataManager/DataManager/DMUtils.hpp \
+		../../DataManager/DataManager/DMError.hpp \
 		moc_predefs.h \
 		../../../Qt/6.1.0/clang_64/libexec/moc
 	/Users/linsixing/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_predefs.h -I/Users/linsixing/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/DataManager/build/Debug -I/Users/linsixing/HomeworkChecker/packages/mysql/include -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/packages/json -I/Users/linsixing/HomeworkChecker/packages/asio/include -I/Users/linsixing/HomeworkChecker/packages/websocketpp/include -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQuick.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtOpenGL.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQmlModels.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQml.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtNetwork.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/linsixing/Qt/6.1.0/clang_64/lib account.h -o moc_account.cpp
 
 moc_classscoreviewcontroller.cpp: classscoreviewcontroller.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QJsonArray \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qjsonarray.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QJsonObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qjsonobject.h \
 		../../../Qt/6.1.0/clang_64/lib/QtQml.framework/Headers/qqml.h \
 		../../DataManager/DataManager/DataManager.hpp \
+		../../DataManager/DataManager/DBManager.hpp \
+		../../packages/mysql/include/mysql.h \
+		../../packages/mysql/include/field_types.h \
+		../../packages/mysql/include/my_list.h \
+		../../packages/mysql/include/mysql_com.h \
+		../../packages/mysql/include/my_command.h \
+		../../packages/mysql/include/my_compress.h \
+		../../packages/mysql/include/mysql/udf_registration_types.h \
+		../../packages/mysql/include/mysql/client_plugin.h \
+		../../packages/mysql/include/mysql/plugin_auth_common.h \
+		../../packages/mysql/include/mysql_version.h \
+		../../packages/mysql/include/mysql_time.h \
+		../../packages/mysql/include/errmsg.h \
+		../../DataManager/DataManager/DMUtils.hpp \
+		../../DataManager/DataManager/DMError.hpp \
 		moc_predefs.h \
 		../../../Qt/6.1.0/clang_64/libexec/moc
 	/Users/linsixing/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_predefs.h -I/Users/linsixing/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/DataManager/build/Debug -I/Users/linsixing/HomeworkChecker/packages/mysql/include -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/packages/json -I/Users/linsixing/HomeworkChecker/packages/asio/include -I/Users/linsixing/HomeworkChecker/packages/websocketpp/include -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQuick.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtOpenGL.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQmlModels.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQml.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtNetwork.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/linsixing/Qt/6.1.0/clang_64/lib classscoreviewcontroller.h -o moc_classscoreviewcontroller.cpp
 
 moc_classviewcontroller.cpp: classviewcontroller.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QJsonArray \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qjsonarray.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QJsonObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qjsonobject.h \
 		../../../Qt/6.1.0/clang_64/lib/QtQml.framework/Headers/qqml.h \
 		../../DataManager/DataManager/DataManager.hpp \
+		../../DataManager/DataManager/DBManager.hpp \
+		../../packages/mysql/include/mysql.h \
+		../../packages/mysql/include/field_types.h \
+		../../packages/mysql/include/my_list.h \
+		../../packages/mysql/include/mysql_com.h \
+		../../packages/mysql/include/my_command.h \
+		../../packages/mysql/include/my_compress.h \
+		../../packages/mysql/include/mysql/udf_registration_types.h \
+		../../packages/mysql/include/mysql/client_plugin.h \
+		../../packages/mysql/include/mysql/plugin_auth_common.h \
+		../../packages/mysql/include/mysql_version.h \
+		../../packages/mysql/include/mysql_time.h \
+		../../packages/mysql/include/errmsg.h \
+		../../DataManager/DataManager/DMUtils.hpp \
+		../../DataManager/DataManager/DMError.hpp \
 		account.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		moc_predefs.h \
 		../../../Qt/6.1.0/clang_64/libexec/moc
 	/Users/linsixing/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_predefs.h -I/Users/linsixing/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/DataManager/build/Debug -I/Users/linsixing/HomeworkChecker/packages/mysql/include -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/packages/json -I/Users/linsixing/HomeworkChecker/packages/asio/include -I/Users/linsixing/HomeworkChecker/packages/websocketpp/include -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQuick.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtOpenGL.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQmlModels.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQml.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtNetwork.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/linsixing/Qt/6.1.0/clang_64/lib classviewcontroller.h -o moc_classviewcontroller.cpp
 
 moc_correcthomework.cpp: correcthomework.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QJsonArray \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qjsonarray.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QJsonObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qjsonobject.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qfile.h \
 		../../../Qt/6.1.0/clang_64/lib/QtQml.framework/Headers/qqml.h \
 		../../DataManager/DataManager/DataManager.hpp \
+		../../DataManager/DataManager/DBManager.hpp \
+		../../packages/mysql/include/mysql.h \
+		../../packages/mysql/include/field_types.h \
+		../../packages/mysql/include/my_list.h \
+		../../packages/mysql/include/mysql_com.h \
+		../../packages/mysql/include/my_command.h \
+		../../packages/mysql/include/my_compress.h \
+		../../packages/mysql/include/mysql/udf_registration_types.h \
+		../../packages/mysql/include/mysql/client_plugin.h \
+		../../packages/mysql/include/mysql/plugin_auth_common.h \
+		../../packages/mysql/include/mysql_version.h \
+		../../packages/mysql/include/mysql_time.h \
+		../../packages/mysql/include/errmsg.h \
+		../../DataManager/DataManager/DMUtils.hpp \
+		../../DataManager/DataManager/DMError.hpp \
 		account.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		moc_predefs.h \
 		../../../Qt/6.1.0/clang_64/libexec/moc
 	/Users/linsixing/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_predefs.h -I/Users/linsixing/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/DataManager/build/Debug -I/Users/linsixing/HomeworkChecker/packages/mysql/include -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/packages/json -I/Users/linsixing/HomeworkChecker/packages/asio/include -I/Users/linsixing/HomeworkChecker/packages/websocketpp/include -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQuick.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtOpenGL.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQmlModels.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQml.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtNetwork.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/linsixing/Qt/6.1.0/clang_64/lib correcthomework.h -o moc_correcthomework.cpp
 
 moc_generalviewcontroller.cpp: generalviewcontroller.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../Qt/6.1.0/clang_64/lib/QtQml.framework/Headers/qqml.h \
 		../../DataManager/DataManager/DataManager.hpp \
+		../../DataManager/DataManager/DBManager.hpp \
+		../../packages/mysql/include/mysql.h \
+		../../packages/mysql/include/field_types.h \
+		../../packages/mysql/include/my_list.h \
+		../../packages/mysql/include/mysql_com.h \
+		../../packages/mysql/include/my_command.h \
+		../../packages/mysql/include/my_compress.h \
+		../../packages/mysql/include/mysql/udf_registration_types.h \
+		../../packages/mysql/include/mysql/client_plugin.h \
+		../../packages/mysql/include/mysql/plugin_auth_common.h \
+		../../packages/mysql/include/mysql_version.h \
+		../../packages/mysql/include/mysql_time.h \
+		../../packages/mysql/include/errmsg.h \
+		../../DataManager/DataManager/DMUtils.hpp \
+		../../DataManager/DataManager/DMError.hpp \
 		moc_predefs.h \
 		../../../Qt/6.1.0/clang_64/libexec/moc
 	/Users/linsixing/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_predefs.h -I/Users/linsixing/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/DataManager/build/Debug -I/Users/linsixing/HomeworkChecker/packages/mysql/include -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/packages/json -I/Users/linsixing/HomeworkChecker/packages/asio/include -I/Users/linsixing/HomeworkChecker/packages/websocketpp/include -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQuick.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtOpenGL.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQmlModels.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQml.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtNetwork.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/linsixing/Qt/6.1.0/clang_64/lib generalviewcontroller.h -o moc_generalviewcontroller.cpp
 
 moc_infooftask.cpp: infooftask.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QJsonArray \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qjsonarray.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QJsonObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qjsonobject.h \
 		../../../Qt/6.1.0/clang_64/lib/QtQml.framework/Headers/qqml.h \
 		../../DataManager/DataManager/DataManager.hpp \
+		../../DataManager/DataManager/DBManager.hpp \
+		../../packages/mysql/include/mysql.h \
+		../../packages/mysql/include/field_types.h \
+		../../packages/mysql/include/my_list.h \
+		../../packages/mysql/include/mysql_com.h \
+		../../packages/mysql/include/my_command.h \
+		../../packages/mysql/include/my_compress.h \
+		../../packages/mysql/include/mysql/udf_registration_types.h \
+		../../packages/mysql/include/mysql/client_plugin.h \
+		../../packages/mysql/include/mysql/plugin_auth_common.h \
+		../../packages/mysql/include/mysql_version.h \
+		../../packages/mysql/include/mysql_time.h \
+		../../packages/mysql/include/errmsg.h \
+		../../DataManager/DataManager/DMUtils.hpp \
+		../../DataManager/DataManager/DMError.hpp \
 		account.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		moc_predefs.h \
 		../../../Qt/6.1.0/clang_64/libexec/moc
 	/Users/linsixing/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_predefs.h -I/Users/linsixing/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/DataManager/build/Debug -I/Users/linsixing/HomeworkChecker/packages/mysql/include -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/packages/json -I/Users/linsixing/HomeworkChecker/packages/asio/include -I/Users/linsixing/HomeworkChecker/packages/websocketpp/include -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQuick.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtOpenGL.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQmlModels.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQml.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtNetwork.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/linsixing/Qt/6.1.0/clang_64/lib infooftask.h -o moc_infooftask.cpp
 
 moc_settingpage.cpp: settingpage.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		../../../Qt/6.1.0/clang_64/lib/QtQml.framework/Headers/qqml.h \
 		moc_predefs.h \
 		../../../Qt/6.1.0/clang_64/libexec/moc
@@ -160,29 +277,640 @@ moc_settingpage.cpp: settingpage.h \
 
 moc_studentscoreviewcontroller.cpp: studentscoreviewcontroller.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QJsonArray \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qjsonarray.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QJsonObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qjsonobject.h \
 		../../../Qt/6.1.0/clang_64/lib/QtQml.framework/Headers/qqml.h \
 		../../DataManager/DataManager/DataManager.hpp \
+		../../DataManager/DataManager/DBManager.hpp \
+		../../packages/mysql/include/mysql.h \
+		../../packages/mysql/include/field_types.h \
+		../../packages/mysql/include/my_list.h \
+		../../packages/mysql/include/mysql_com.h \
+		../../packages/mysql/include/my_command.h \
+		../../packages/mysql/include/my_compress.h \
+		../../packages/mysql/include/mysql/udf_registration_types.h \
+		../../packages/mysql/include/mysql/client_plugin.h \
+		../../packages/mysql/include/mysql/plugin_auth_common.h \
+		../../packages/mysql/include/mysql_version.h \
+		../../packages/mysql/include/mysql_time.h \
+		../../packages/mysql/include/errmsg.h \
+		../../DataManager/DataManager/DMUtils.hpp \
+		../../DataManager/DataManager/DMError.hpp \
 		moc_predefs.h \
 		../../../Qt/6.1.0/clang_64/libexec/moc
 	/Users/linsixing/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI/moc_predefs.h -I/Users/linsixing/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/linsixing/HomeworkChecker/UserInterface/HomeworkCheckerGUI -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/DataManager/build/Debug -I/Users/linsixing/HomeworkChecker/packages/mysql/include -I/Users/linsixing/HomeworkChecker/DataManager/DataManager -I/Users/linsixing/HomeworkChecker/packages/json -I/Users/linsixing/HomeworkChecker/packages/asio/include -I/Users/linsixing/HomeworkChecker/packages/websocketpp/include -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQuick.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtOpenGL.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQmlModels.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtQml.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtNetwork.framework/Headers -I/Users/linsixing/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/linsixing/Qt/6.1.0/clang_64/lib studentscoreviewcontroller.h -o moc_studentscoreviewcontroller.cpp
 
 moc_taskpage.cpp: taskpage.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QJsonArray \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qjsonarray.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QJsonObject \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qjsonobject.h \
 		../../../Qt/6.1.0/clang_64/lib/QtQml.framework/Headers/qqml.h \
 		../../DataManager/DataManager/DataManager.hpp \
+		../../DataManager/DataManager/DBManager.hpp \
+		../../packages/mysql/include/mysql.h \
+		../../packages/mysql/include/field_types.h \
+		../../packages/mysql/include/my_list.h \
+		../../packages/mysql/include/mysql_com.h \
+		../../packages/mysql/include/my_command.h \
+		../../packages/mysql/include/my_compress.h \
+		../../packages/mysql/include/mysql/udf_registration_types.h \
+		../../packages/mysql/include/mysql/client_plugin.h \
+		../../packages/mysql/include/mysql/plugin_auth_common.h \
+		../../packages/mysql/include/mysql_version.h \
+		../../packages/mysql/include/mysql_time.h \
+		../../packages/mysql/include/errmsg.h \
+		../../DataManager/DataManager/DMUtils.hpp \
+		../../DataManager/DataManager/DMError.hpp \
 		account.h \
 		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		WebsocketClientForApp.h \
 		../../packages/websocketpp/include/websocketpp/config/asio_no_tls_client.hpp \
-		../../packages/websocketpp/include/websocketpp/client.hpp \
+		../../packages/websocketpp/include/websocketpp/config/core_client.hpp \
+		../../packages/websocketpp/include/websocketpp/common/platforms.hpp \
+		../../packages/websocketpp/include/websocketpp/common/cpp11.hpp \
+		../../packages/websocketpp/include/websocketpp/common/stdint.hpp \
+		../../packages/websocketpp/include/websocketpp/concurrency/basic.hpp \
 		../../packages/websocketpp/include/websocketpp/common/thread.hpp \
+		../../packages/websocketpp/include/websocketpp/concurrency/none.hpp \
+		../../packages/websocketpp/include/websocketpp/transport/iostream/endpoint.hpp \
+		../../packages/websocketpp/include/websocketpp/transport/base/endpoint.hpp \
+		../../packages/websocketpp/include/websocketpp/common/functional.hpp \
+		../../packages/websocketpp/include/websocketpp/common/system_error.hpp \
+		../../packages/websocketpp/include/websocketpp/transport/iostream/connection.hpp \
+		../../packages/websocketpp/include/websocketpp/transport/iostream/base.hpp \
+		../../packages/websocketpp/include/websocketpp/common/connection_hdl.hpp \
 		../../packages/websocketpp/include/websocketpp/common/memory.hpp \
+		../../packages/websocketpp/include/websocketpp/transport/base/connection.hpp \
+		../../packages/websocketpp/include/websocketpp/uri.hpp \
+		../../packages/websocketpp/include/websocketpp/error.hpp \
+		../../packages/websocketpp/include/websocketpp/logger/levels.hpp \
+		../../packages/websocketpp/include/websocketpp/http/request.hpp \
+		../../packages/websocketpp/include/websocketpp/http/parser.hpp \
+		../../packages/websocketpp/include/websocketpp/utilities.hpp \
+		../../packages/websocketpp/include/websocketpp/impl/utilities_impl.hpp \
+		../../packages/websocketpp/include/websocketpp/http/constants.hpp \
+		../../packages/websocketpp/include/websocketpp/http/impl/parser.hpp \
+		../../packages/websocketpp/include/websocketpp/http/impl/request.hpp \
+		../../packages/websocketpp/include/websocketpp/http/response.hpp \
+		../../packages/websocketpp/include/websocketpp/http/impl/response.hpp \
+		../../packages/websocketpp/include/websocketpp/message_buffer/message.hpp \
+		../../packages/websocketpp/include/websocketpp/frame.hpp \
+		../../packages/websocketpp/include/websocketpp/common/network.hpp \
+		../../packages/websocketpp/include/websocketpp/message_buffer/alloc.hpp \
+		../../packages/websocketpp/include/websocketpp/logger/basic.hpp \
+		../../packages/websocketpp/include/websocketpp/common/time.hpp \
+		../../packages/websocketpp/include/websocketpp/random/random_device.hpp \
+		../../packages/websocketpp/include/websocketpp/common/random.hpp \
+		../../packages/websocketpp/include/websocketpp/endpoint_base.hpp \
+		../../packages/websocketpp/include/websocketpp/connection_base.hpp \
+		../../packages/websocketpp/include/websocketpp/extensions/permessage_deflate/disabled.hpp \
+		../../packages/websocketpp/include/websocketpp/extensions/extension.hpp \
+		../../packages/websocketpp/include/websocketpp/transport/asio/endpoint.hpp \
+		../../packages/websocketpp/include/websocketpp/transport/asio/connection.hpp \
+		../../packages/websocketpp/include/websocketpp/transport/asio/base.hpp \
+		../../packages/websocketpp/include/websocketpp/common/asio.hpp \
+		../../packages/asio/include/asio/version.hpp \
+		../../packages/asio/include/asio.hpp \
+		../../packages/asio/include/asio/associated_allocator.hpp \
+		../../packages/asio/include/asio/detail/config.hpp \
+		../../packages/asio/include/asio/detail/type_traits.hpp \
+		../../packages/asio/include/asio/detail/push_options.hpp \
+		../../packages/asio/include/asio/detail/pop_options.hpp \
+		../../packages/asio/include/asio/associated_executor.hpp \
+		../../packages/asio/include/asio/execution/executor.hpp \
+		../../packages/asio/include/asio/execution/execute.hpp \
+		../../packages/asio/include/asio/execution/detail/as_invocable.hpp \
+		../../packages/asio/include/asio/detail/atomic_count.hpp \
+		../../packages/asio/include/asio/detail/memory.hpp \
+		../../packages/asio/include/asio/execution/receiver_invocation_error.hpp \
+		../../packages/asio/include/asio/execution/impl/receiver_invocation_error.ipp \
+		../../packages/asio/include/asio/execution/set_done.hpp \
+		../../packages/asio/include/asio/traits/set_done_member.hpp \
+		../../packages/asio/include/asio/traits/set_done_free.hpp \
+		../../packages/asio/include/asio/execution/set_error.hpp \
+		../../packages/asio/include/asio/traits/set_error_member.hpp \
+		../../packages/asio/include/asio/traits/set_error_free.hpp \
+		../../packages/asio/include/asio/execution/set_value.hpp \
+		../../packages/asio/include/asio/detail/variadic_templates.hpp \
+		../../packages/asio/include/asio/traits/set_value_member.hpp \
+		../../packages/asio/include/asio/traits/set_value_free.hpp \
+		../../packages/asio/include/asio/execution/detail/as_receiver.hpp \
+		../../packages/asio/include/asio/traits/execute_member.hpp \
+		../../packages/asio/include/asio/traits/execute_free.hpp \
+		../../packages/asio/include/asio/execution/invocable_archetype.hpp \
+		../../packages/asio/include/asio/traits/equality_comparable.hpp \
+		../../packages/asio/include/asio/is_executor.hpp \
+		../../packages/asio/include/asio/detail/is_executor.hpp \
+		../../packages/asio/include/asio/system_executor.hpp \
+		../../packages/asio/include/asio/execution.hpp \
+		../../packages/asio/include/asio/execution/allocator.hpp \
+		../../packages/asio/include/asio/execution/scheduler.hpp \
+		../../packages/asio/include/asio/execution/schedule.hpp \
+		../../packages/asio/include/asio/traits/schedule_member.hpp \
+		../../packages/asio/include/asio/traits/schedule_free.hpp \
+		../../packages/asio/include/asio/execution/sender.hpp \
+		../../packages/asio/include/asio/execution/detail/void_receiver.hpp \
+		../../packages/asio/include/asio/execution/receiver.hpp \
+		../../packages/asio/include/asio/error_code.hpp \
+		../../packages/asio/include/asio/detail/noncopyable.hpp \
+		../../packages/asio/include/asio/impl/error_code.ipp \
+		../../packages/asio/include/asio/detail/local_free_on_block_exit.hpp \
+		../../packages/asio/include/asio/detail/socket_types.hpp \
+		../../packages/asio/include/asio/detail/old_win_sdk_compat.hpp \
+		../../packages/asio/include/asio/execution/connect.hpp \
+		../../packages/asio/include/asio/execution/detail/as_operation.hpp \
+		../../packages/asio/include/asio/traits/start_member.hpp \
+		../../packages/asio/include/asio/execution/operation_state.hpp \
+		../../packages/asio/include/asio/execution/start.hpp \
+		../../packages/asio/include/asio/traits/start_free.hpp \
+		../../packages/asio/include/asio/traits/connect_member.hpp \
+		../../packages/asio/include/asio/traits/connect_free.hpp \
+		../../packages/asio/include/asio/is_applicable_property.hpp \
+		../../packages/asio/include/asio/traits/query_static_constexpr_member.hpp \
+		../../packages/asio/include/asio/traits/static_query.hpp \
+		../../packages/asio/include/asio/execution/any_executor.hpp \
+		../../packages/asio/include/asio/detail/assert.hpp \
+		../../packages/asio/include/asio/detail/cstddef.hpp \
+		../../packages/asio/include/asio/detail/executor_function.hpp \
+		../../packages/asio/include/asio/detail/handler_alloc_helpers.hpp \
+		../../packages/asio/include/asio/detail/recycling_allocator.hpp \
+		../../packages/asio/include/asio/detail/thread_context.hpp \
+		../../packages/asio/include/asio/detail/call_stack.hpp \
+		../../packages/asio/include/asio/detail/tss_ptr.hpp \
+		../../packages/asio/include/asio/detail/null_tss_ptr.hpp \
+		../../packages/asio/include/asio/detail/keyword_tss_ptr.hpp \
+		../../packages/asio/include/asio/detail/win_tss_ptr.hpp \
+		../../packages/asio/include/asio/detail/impl/win_tss_ptr.ipp \
+		../../packages/asio/include/asio/detail/throw_error.hpp \
+		../../packages/asio/include/asio/detail/impl/throw_error.ipp \
+		../../packages/asio/include/asio/detail/throw_exception.hpp \
+		../../packages/asio/include/asio/system_error.hpp \
+		../../packages/asio/include/asio/detail/scoped_ptr.hpp \
+		../../packages/asio/include/asio/error.hpp \
+		../../packages/asio/include/asio/impl/error.ipp \
+		../../packages/asio/include/asio/detail/posix_tss_ptr.hpp \
+		../../packages/asio/include/asio/detail/impl/posix_tss_ptr.ipp \
+		../../packages/asio/include/asio/detail/thread_info_base.hpp \
+		../../packages/asio/include/asio/multiple_exceptions.hpp \
+		../../packages/asio/include/asio/impl/multiple_exceptions.ipp \
+		../../packages/asio/include/asio/handler_alloc_hook.hpp \
+		../../packages/asio/include/asio/impl/handler_alloc_hook.ipp \
+		../../packages/asio/include/asio/detail/handler_invoke_helpers.hpp \
+		../../packages/asio/include/asio/handler_invoke_hook.hpp \
+		../../packages/asio/include/asio/detail/non_const_lvalue.hpp \
+		../../packages/asio/include/asio/execution/bad_executor.hpp \
+		../../packages/asio/include/asio/execution/impl/bad_executor.ipp \
+		../../packages/asio/include/asio/execution/blocking.hpp \
+		../../packages/asio/include/asio/prefer.hpp \
+		../../packages/asio/include/asio/traits/prefer_free.hpp \
+		../../packages/asio/include/asio/traits/prefer_member.hpp \
+		../../packages/asio/include/asio/traits/require_free.hpp \
+		../../packages/asio/include/asio/traits/require_member.hpp \
+		../../packages/asio/include/asio/traits/static_require.hpp \
+		../../packages/asio/include/asio/query.hpp \
+		../../packages/asio/include/asio/traits/query_member.hpp \
+		../../packages/asio/include/asio/traits/query_free.hpp \
+		../../packages/asio/include/asio/require.hpp \
+		../../packages/asio/include/asio/execution/blocking_adaptation.hpp \
+		../../packages/asio/include/asio/detail/event.hpp \
+		../../packages/asio/include/asio/detail/null_event.hpp \
+		../../packages/asio/include/asio/detail/impl/null_event.ipp \
+		../../packages/asio/include/asio/detail/win_event.hpp \
+		../../packages/asio/include/asio/detail/impl/win_event.ipp \
+		../../packages/asio/include/asio/detail/posix_event.hpp \
+		../../packages/asio/include/asio/detail/impl/posix_event.ipp \
+		../../packages/asio/include/asio/detail/std_event.hpp \
+		../../packages/asio/include/asio/detail/mutex.hpp \
+		../../packages/asio/include/asio/detail/null_mutex.hpp \
+		../../packages/asio/include/asio/detail/scoped_lock.hpp \
+		../../packages/asio/include/asio/detail/win_mutex.hpp \
+		../../packages/asio/include/asio/detail/impl/win_mutex.ipp \
+		../../packages/asio/include/asio/detail/posix_mutex.hpp \
+		../../packages/asio/include/asio/detail/impl/posix_mutex.ipp \
+		../../packages/asio/include/asio/detail/std_mutex.hpp \
+		../../packages/asio/include/asio/execution/bulk_execute.hpp \
+		../../packages/asio/include/asio/execution/bulk_guarantee.hpp \
+		../../packages/asio/include/asio/execution/detail/bulk_sender.hpp \
+		../../packages/asio/include/asio/traits/bulk_execute_member.hpp \
+		../../packages/asio/include/asio/traits/bulk_execute_free.hpp \
+		../../packages/asio/include/asio/execution/context.hpp \
+		../../packages/asio/include/asio/execution/context_as.hpp \
+		../../packages/asio/include/asio/execution/mapping.hpp \
+		../../packages/asio/include/asio/execution/occupancy.hpp \
+		../../packages/asio/include/asio/execution/outstanding_work.hpp \
+		../../packages/asio/include/asio/execution/prefer_only.hpp \
+		../../packages/asio/include/asio/execution/relationship.hpp \
+		../../packages/asio/include/asio/execution/submit.hpp \
+		../../packages/asio/include/asio/execution/detail/submit_receiver.hpp \
+		../../packages/asio/include/asio/traits/submit_member.hpp \
+		../../packages/asio/include/asio/traits/submit_free.hpp \
+		../../packages/asio/include/asio/impl/system_executor.hpp \
+		../../packages/asio/include/asio/detail/executor_op.hpp \
+		../../packages/asio/include/asio/detail/fenced_block.hpp \
+		../../packages/asio/include/asio/detail/null_fenced_block.hpp \
+		../../packages/asio/include/asio/detail/std_fenced_block.hpp \
+		../../packages/asio/include/asio/detail/macos_fenced_block.hpp \
+		../../packages/asio/include/asio/detail/solaris_fenced_block.hpp \
+		../../packages/asio/include/asio/detail/gcc_arm_fenced_block.hpp \
+		../../packages/asio/include/asio/detail/gcc_hppa_fenced_block.hpp \
+		../../packages/asio/include/asio/detail/gcc_x86_fenced_block.hpp \
+		../../packages/asio/include/asio/detail/gcc_sync_fenced_block.hpp \
+		../../packages/asio/include/asio/detail/win_fenced_block.hpp \
+		../../packages/asio/include/asio/detail/scheduler_operation.hpp \
+		../../packages/asio/include/asio/detail/handler_tracking.hpp \
+		../../packages/asio/include/asio/detail/cstdint.hpp \
+		../../packages/asio/include/asio/detail/static_mutex.hpp \
+		../../packages/asio/include/asio/detail/null_static_mutex.hpp \
+		../../packages/asio/include/asio/detail/win_static_mutex.hpp \
+		../../packages/asio/include/asio/detail/impl/win_static_mutex.ipp \
+		../../packages/asio/include/asio/detail/posix_static_mutex.hpp \
+		../../packages/asio/include/asio/detail/std_static_mutex.hpp \
+		../../packages/asio/include/asio/detail/impl/handler_tracking.ipp \
+		../../packages/asio/include/asio/time_traits.hpp \
+		../../packages/asio/include/asio/detail/chrono.hpp \
+		../../packages/asio/include/asio/detail/chrono_time_traits.hpp \
+		../../packages/asio/include/asio/wait_traits.hpp \
+		../../packages/asio/include/asio/detail/op_queue.hpp \
+		../../packages/asio/include/asio/detail/global.hpp \
+		../../packages/asio/include/asio/detail/null_global.hpp \
+		../../packages/asio/include/asio/detail/win_global.hpp \
+		../../packages/asio/include/asio/detail/posix_global.hpp \
+		../../packages/asio/include/asio/detail/std_global.hpp \
+		../../packages/asio/include/asio/system_context.hpp \
+		../../packages/asio/include/asio/detail/scheduler.hpp \
+		../../packages/asio/include/asio/execution_context.hpp \
+		../../packages/asio/include/asio/impl/execution_context.hpp \
+		../../packages/asio/include/asio/detail/handler_type_requirements.hpp \
+		../../packages/asio/include/asio/async_result.hpp \
+		../../packages/asio/include/asio/detail/service_registry.hpp \
+		../../packages/asio/include/asio/detail/impl/service_registry.hpp \
+		../../packages/asio/include/asio/detail/impl/service_registry.ipp \
+		../../packages/asio/include/asio/impl/execution_context.ipp \
+		../../packages/asio/include/asio/detail/conditionally_enabled_event.hpp \
+		../../packages/asio/include/asio/detail/conditionally_enabled_mutex.hpp \
+		../../packages/asio/include/asio/detail/reactor_fwd.hpp \
+		../../packages/asio/include/asio/detail/thread.hpp \
+		../../packages/asio/include/asio/detail/null_thread.hpp \
+		../../packages/asio/include/asio/detail/posix_thread.hpp \
+		../../packages/asio/include/asio/detail/impl/posix_thread.ipp \
+		../../packages/asio/include/asio/detail/wince_thread.hpp \
+		../../packages/asio/include/asio/detail/winapp_thread.hpp \
+		../../packages/asio/include/asio/detail/win_thread.hpp \
+		../../packages/asio/include/asio/detail/impl/win_thread.ipp \
+		../../packages/asio/include/asio/detail/std_thread.hpp \
+		../../packages/asio/include/asio/detail/impl/scheduler.ipp \
+		../../packages/asio/include/asio/detail/concurrency_hint.hpp \
+		../../packages/asio/include/asio/detail/limits.hpp \
+		../../packages/asio/include/asio/detail/reactor.hpp \
+		../../packages/asio/include/asio/detail/epoll_reactor.hpp \
+		../../packages/asio/include/asio/detail/object_pool.hpp \
+		../../packages/asio/include/asio/detail/reactor_op.hpp \
+		../../packages/asio/include/asio/detail/operation.hpp \
+		../../packages/asio/include/asio/detail/win_iocp_operation.hpp \
+		../../packages/asio/include/asio/detail/select_interrupter.hpp \
+		../../packages/asio/include/asio/detail/socket_select_interrupter.hpp \
+		../../packages/asio/include/asio/detail/impl/socket_select_interrupter.ipp \
+		../../packages/asio/include/asio/detail/socket_holder.hpp \
+		../../packages/asio/include/asio/detail/socket_ops.hpp \
+		../../packages/asio/include/asio/detail/impl/socket_ops.ipp \
+		../../packages/asio/include/asio/detail/eventfd_select_interrupter.hpp \
+		../../packages/asio/include/asio/detail/impl/eventfd_select_interrupter.ipp \
+		../../packages/asio/include/asio/detail/pipe_select_interrupter.hpp \
+		../../packages/asio/include/asio/detail/impl/pipe_select_interrupter.ipp \
+		../../packages/asio/include/asio/detail/timer_queue_base.hpp \
+		../../packages/asio/include/asio/detail/timer_queue_set.hpp \
+		../../packages/asio/include/asio/detail/impl/timer_queue_set.ipp \
+		../../packages/asio/include/asio/detail/wait_op.hpp \
+		../../packages/asio/include/asio/detail/impl/epoll_reactor.hpp \
+		../../packages/asio/include/asio/detail/impl/epoll_reactor.ipp \
+		../../packages/asio/include/asio/detail/kqueue_reactor.hpp \
+		../../packages/asio/include/asio/detail/impl/kqueue_reactor.hpp \
+		../../packages/asio/include/asio/detail/impl/kqueue_reactor.ipp \
+		../../packages/asio/include/asio/detail/dev_poll_reactor.hpp \
+		../../packages/asio/include/asio/detail/hash_map.hpp \
+		../../packages/asio/include/asio/detail/reactor_op_queue.hpp \
+		../../packages/asio/include/asio/detail/impl/dev_poll_reactor.hpp \
+		../../packages/asio/include/asio/detail/impl/dev_poll_reactor.ipp \
+		../../packages/asio/include/asio/detail/null_reactor.hpp \
+		../../packages/asio/include/asio/detail/select_reactor.hpp \
+		../../packages/asio/include/asio/detail/fd_set_adapter.hpp \
+		../../packages/asio/include/asio/detail/posix_fd_set_adapter.hpp \
+		../../packages/asio/include/asio/detail/win_fd_set_adapter.hpp \
+		../../packages/asio/include/asio/detail/impl/select_reactor.hpp \
+		../../packages/asio/include/asio/detail/impl/select_reactor.ipp \
+		../../packages/asio/include/asio/detail/signal_blocker.hpp \
+		../../packages/asio/include/asio/detail/null_signal_blocker.hpp \
+		../../packages/asio/include/asio/detail/posix_signal_blocker.hpp \
+		../../packages/asio/include/asio/detail/scheduler_thread_info.hpp \
+		../../packages/asio/include/asio/detail/thread_group.hpp \
+		../../packages/asio/include/asio/impl/system_context.hpp \
+		../../packages/asio/include/asio/impl/system_context.ipp \
+		../../packages/asio/include/asio/awaitable.hpp \
+		../../packages/asio/include/asio/any_io_executor.hpp \
+		../../packages/asio/include/asio/executor.hpp \
+		../../packages/asio/include/asio/impl/executor.hpp \
+		../../packages/asio/include/asio/impl/executor.ipp \
+		../../packages/asio/include/asio/impl/awaitable.hpp \
+		../../packages/asio/include/asio/post.hpp \
+		../../packages/asio/include/asio/impl/post.hpp \
+		../../packages/asio/include/asio/detail/work_dispatcher.hpp \
+		../../packages/asio/include/asio/executor_work_guard.hpp \
+		../../packages/asio/include/asio/this_coro.hpp \
+		../../packages/asio/include/asio/basic_datagram_socket.hpp \
+		../../packages/asio/include/asio/basic_socket.hpp \
+		../../packages/asio/include/asio/detail/io_object_impl.hpp \
+		../../packages/asio/include/asio/io_context.hpp \
+		../../packages/asio/include/asio/detail/wrapped_handler.hpp \
+		../../packages/asio/include/asio/detail/bind_handler.hpp \
+		../../packages/asio/include/asio/detail/handler_cont_helpers.hpp \
+		../../packages/asio/include/asio/handler_continuation_hook.hpp \
+		../../packages/asio/include/asio/detail/winsock_init.hpp \
+		../../packages/asio/include/asio/detail/impl/winsock_init.ipp \
+		../../packages/asio/include/asio/detail/signal_init.hpp \
+		../../packages/asio/include/asio/detail/win_iocp_io_context.hpp \
+		../../packages/asio/include/asio/detail/win_iocp_thread_info.hpp \
+		../../packages/asio/include/asio/detail/impl/win_iocp_io_context.hpp \
+		../../packages/asio/include/asio/detail/completion_handler.hpp \
+		../../packages/asio/include/asio/detail/handler_work.hpp \
+		../../packages/asio/include/asio/detail/impl/win_iocp_io_context.ipp \
+		../../packages/asio/include/asio/impl/io_context.hpp \
+		../../packages/asio/include/asio/impl/io_context.ipp \
+		../../packages/asio/include/asio/io_context_strand.hpp \
+		../../packages/asio/include/asio/detail/strand_service.hpp \
+		../../packages/asio/include/asio/detail/impl/strand_service.hpp \
+		../../packages/asio/include/asio/detail/impl/strand_service.ipp \
+		../../packages/asio/include/asio/socket_base.hpp \
+		../../packages/asio/include/asio/detail/io_control.hpp \
+		../../packages/asio/include/asio/detail/socket_option.hpp \
+		../../packages/asio/include/asio/detail/null_socket_service.hpp \
+		../../packages/asio/include/asio/buffer.hpp \
+		../../packages/asio/include/asio/detail/array_fwd.hpp \
+		../../packages/asio/include/asio/detail/string_view.hpp \
+		../../packages/asio/include/asio/detail/functional.hpp \
+		../../packages/asio/include/asio/detail/is_buffer_sequence.hpp \
+		../../packages/asio/include/asio/detail/win_iocp_socket_service.hpp \
+		../../packages/asio/include/asio/detail/buffer_sequence_adapter.hpp \
+		../../packages/asio/include/asio/detail/impl/buffer_sequence_adapter.ipp \
+		../../packages/asio/include/asio/detail/win_iocp_null_buffers_op.hpp \
+		../../packages/asio/include/asio/detail/win_iocp_socket_accept_op.hpp \
+		../../packages/asio/include/asio/detail/win_iocp_socket_service_base.hpp \
+		../../packages/asio/include/asio/detail/win_iocp_socket_connect_op.hpp \
+		../../packages/asio/include/asio/detail/win_iocp_socket_send_op.hpp \
+		../../packages/asio/include/asio/detail/win_iocp_socket_recv_op.hpp \
+		../../packages/asio/include/asio/detail/win_iocp_socket_recvmsg_op.hpp \
+		../../packages/asio/include/asio/detail/win_iocp_wait_op.hpp \
+		../../packages/asio/include/asio/detail/impl/win_iocp_socket_service_base.ipp \
+		../../packages/asio/include/asio/detail/win_iocp_socket_recvfrom_op.hpp \
+		../../packages/asio/include/asio/detail/reactive_socket_service.hpp \
+		../../packages/asio/include/asio/detail/reactive_null_buffers_op.hpp \
+		../../packages/asio/include/asio/detail/reactive_socket_accept_op.hpp \
+		../../packages/asio/include/asio/detail/reactive_socket_connect_op.hpp \
+		../../packages/asio/include/asio/detail/reactive_socket_recvfrom_op.hpp \
+		../../packages/asio/include/asio/detail/reactive_socket_sendto_op.hpp \
+		../../packages/asio/include/asio/detail/reactive_socket_service_base.hpp \
+		../../packages/asio/include/asio/detail/reactive_socket_recv_op.hpp \
+		../../packages/asio/include/asio/detail/reactive_socket_recvmsg_op.hpp \
+		../../packages/asio/include/asio/detail/reactive_socket_send_op.hpp \
+		../../packages/asio/include/asio/detail/reactive_wait_op.hpp \
+		../../packages/asio/include/asio/detail/impl/reactive_socket_service_base.ipp \
+		../../packages/asio/include/asio/basic_deadline_timer.hpp \
+		../../packages/asio/include/asio/detail/deadline_timer_service.hpp \
+		../../packages/asio/include/asio/detail/timer_queue.hpp \
+		../../packages/asio/include/asio/detail/date_time_fwd.hpp \
+		../../packages/asio/include/asio/detail/timer_queue_ptime.hpp \
+		../../packages/asio/include/asio/detail/impl/timer_queue_ptime.ipp \
+		../../packages/asio/include/asio/detail/timer_scheduler.hpp \
+		../../packages/asio/include/asio/detail/timer_scheduler_fwd.hpp \
+		../../packages/asio/include/asio/detail/winrt_timer_scheduler.hpp \
+		../../packages/asio/include/asio/detail/impl/winrt_timer_scheduler.hpp \
+		../../packages/asio/include/asio/detail/impl/winrt_timer_scheduler.ipp \
+		../../packages/asio/include/asio/detail/wait_handler.hpp \
+		../../packages/asio/include/asio/basic_io_object.hpp \
+		../../packages/asio/include/asio/basic_raw_socket.hpp \
+		../../packages/asio/include/asio/basic_seq_packet_socket.hpp \
+		../../packages/asio/include/asio/basic_serial_port.hpp \
+		../../packages/asio/include/asio/serial_port_base.hpp \
+		../../packages/asio/include/asio/impl/serial_port_base.hpp \
+		../../packages/asio/include/asio/impl/serial_port_base.ipp \
+		../../packages/asio/include/asio/detail/win_iocp_serial_port_service.hpp \
+		../../packages/asio/include/asio/detail/win_iocp_handle_service.hpp \
+		../../packages/asio/include/asio/detail/win_iocp_handle_read_op.hpp \
+		../../packages/asio/include/asio/detail/win_iocp_handle_write_op.hpp \
+		../../packages/asio/include/asio/detail/impl/win_iocp_handle_service.ipp \
+		../../packages/asio/include/asio/detail/impl/win_iocp_serial_port_service.ipp \
+		../../packages/asio/include/asio/detail/reactive_serial_port_service.hpp \
+		../../packages/asio/include/asio/detail/descriptor_ops.hpp \
+		../../packages/asio/include/asio/detail/impl/descriptor_ops.ipp \
+		../../packages/asio/include/asio/detail/reactive_descriptor_service.hpp \
+		../../packages/asio/include/asio/detail/descriptor_read_op.hpp \
+		../../packages/asio/include/asio/detail/descriptor_write_op.hpp \
+		../../packages/asio/include/asio/posix/descriptor_base.hpp \
+		../../packages/asio/include/asio/detail/impl/reactive_descriptor_service.ipp \
+		../../packages/asio/include/asio/detail/impl/reactive_serial_port_service.ipp \
+		../../packages/asio/include/asio/basic_signal_set.hpp \
+		../../packages/asio/include/asio/detail/signal_set_service.hpp \
+		../../packages/asio/include/asio/detail/signal_handler.hpp \
+		../../packages/asio/include/asio/detail/signal_op.hpp \
+		../../packages/asio/include/asio/detail/impl/signal_set_service.ipp \
+		../../packages/asio/include/asio/basic_socket_acceptor.hpp \
+		../../packages/asio/include/asio/basic_socket_iostream.hpp \
+		../../packages/asio/include/asio/basic_socket_streambuf.hpp \
+		../../packages/asio/include/asio/basic_stream_socket.hpp \
+		../../packages/asio/include/asio/steady_timer.hpp \
+		../../packages/asio/include/asio/basic_waitable_timer.hpp \
+		../../packages/asio/include/asio/basic_streambuf.hpp \
+		../../packages/asio/include/asio/basic_streambuf_fwd.hpp \
+		../../packages/asio/include/asio/bind_executor.hpp \
+		../../packages/asio/include/asio/uses_executor.hpp \
+		../../packages/asio/include/asio/buffered_read_stream_fwd.hpp \
+		../../packages/asio/include/asio/buffered_read_stream.hpp \
+		../../packages/asio/include/asio/detail/buffer_resize_guard.hpp \
+		../../packages/asio/include/asio/detail/buffered_stream_storage.hpp \
+		../../packages/asio/include/asio/impl/buffered_read_stream.hpp \
+		../../packages/asio/include/asio/buffered_stream_fwd.hpp \
+		../../packages/asio/include/asio/buffered_stream.hpp \
+		../../packages/asio/include/asio/buffered_write_stream.hpp \
+		../../packages/asio/include/asio/buffered_write_stream_fwd.hpp \
+		../../packages/asio/include/asio/completion_condition.hpp \
+		../../packages/asio/include/asio/write.hpp \
+		../../packages/asio/include/asio/impl/write.hpp \
+		../../packages/asio/include/asio/detail/base_from_completion_cond.hpp \
+		../../packages/asio/include/asio/detail/consuming_buffers.hpp \
+		../../packages/asio/include/asio/detail/dependent_type.hpp \
+		../../packages/asio/include/asio/impl/buffered_write_stream.hpp \
+		../../packages/asio/include/asio/buffers_iterator.hpp \
+		../../packages/asio/include/asio/co_spawn.hpp \
+		../../packages/asio/include/asio/impl/co_spawn.hpp \
+		../../packages/asio/include/asio/dispatch.hpp \
+		../../packages/asio/include/asio/impl/dispatch.hpp \
+		../../packages/asio/include/asio/use_awaitable.hpp \
+		../../packages/asio/include/asio/detail/source_location.hpp \
+		../../packages/asio/include/asio/impl/use_awaitable.hpp \
+		../../packages/asio/include/asio/compose.hpp \
+		../../packages/asio/include/asio/impl/compose.hpp \
+		../../packages/asio/include/asio/connect.hpp \
+		../../packages/asio/include/asio/impl/connect.hpp \
+		../../packages/asio/include/asio/coroutine.hpp \
+		../../packages/asio/include/asio/deadline_timer.hpp \
+		../../packages/asio/include/asio/defer.hpp \
+		../../packages/asio/include/asio/impl/defer.hpp \
+		../../packages/asio/include/asio/detached.hpp \
+		../../packages/asio/include/asio/impl/detached.hpp \
+		../../packages/asio/include/asio/generic/basic_endpoint.hpp \
+		../../packages/asio/include/asio/generic/detail/endpoint.hpp \
+		../../packages/asio/include/asio/generic/detail/impl/endpoint.ipp \
+		../../packages/asio/include/asio/generic/datagram_protocol.hpp \
+		../../packages/asio/include/asio/generic/raw_protocol.hpp \
+		../../packages/asio/include/asio/generic/seq_packet_protocol.hpp \
+		../../packages/asio/include/asio/generic/stream_protocol.hpp \
+		../../packages/asio/include/asio/high_resolution_timer.hpp \
+		../../packages/asio/include/asio/io_service.hpp \
+		../../packages/asio/include/asio/io_service_strand.hpp \
+		../../packages/asio/include/asio/ip/address.hpp \
+		../../packages/asio/include/asio/ip/address_v4.hpp \
+		../../packages/asio/include/asio/detail/array.hpp \
+		../../packages/asio/include/asio/ip/impl/address_v4.hpp \
+		../../packages/asio/include/asio/ip/impl/address_v4.ipp \
+		../../packages/asio/include/asio/ip/address_v6.hpp \
+		../../packages/asio/include/asio/ip/impl/address_v6.hpp \
+		../../packages/asio/include/asio/ip/impl/address_v6.ipp \
+		../../packages/asio/include/asio/ip/bad_address_cast.hpp \
+		../../packages/asio/include/asio/ip/impl/address.hpp \
+		../../packages/asio/include/asio/ip/impl/address.ipp \
+		../../packages/asio/include/asio/ip/address_v4_iterator.hpp \
+		../../packages/asio/include/asio/ip/address_v4_range.hpp \
+		../../packages/asio/include/asio/ip/address_v6_iterator.hpp \
+		../../packages/asio/include/asio/ip/address_v6_range.hpp \
+		../../packages/asio/include/asio/ip/network_v4.hpp \
+		../../packages/asio/include/asio/ip/impl/network_v4.hpp \
+		../../packages/asio/include/asio/ip/impl/network_v4.ipp \
+		../../packages/asio/include/asio/ip/network_v6.hpp \
+		../../packages/asio/include/asio/ip/impl/network_v6.hpp \
+		../../packages/asio/include/asio/ip/impl/network_v6.ipp \
+		../../packages/asio/include/asio/ip/basic_endpoint.hpp \
+		../../packages/asio/include/asio/ip/detail/endpoint.hpp \
+		../../packages/asio/include/asio/ip/detail/impl/endpoint.ipp \
+		../../packages/asio/include/asio/ip/impl/basic_endpoint.hpp \
+		../../packages/asio/include/asio/ip/basic_resolver.hpp \
+		../../packages/asio/include/asio/ip/basic_resolver_iterator.hpp \
+		../../packages/asio/include/asio/ip/basic_resolver_entry.hpp \
+		../../packages/asio/include/asio/detail/winrt_utils.hpp \
+		../../packages/asio/include/asio/ip/basic_resolver_query.hpp \
+		../../packages/asio/include/asio/ip/resolver_query_base.hpp \
+		../../packages/asio/include/asio/ip/resolver_base.hpp \
+		../../packages/asio/include/asio/ip/basic_resolver_results.hpp \
+		../../packages/asio/include/asio/detail/winrt_resolver_service.hpp \
+		../../packages/asio/include/asio/detail/winrt_async_manager.hpp \
+		../../packages/asio/include/asio/detail/winrt_async_op.hpp \
+		../../packages/asio/include/asio/detail/winrt_resolve_op.hpp \
+		../../packages/asio/include/asio/detail/resolver_service.hpp \
+		../../packages/asio/include/asio/detail/resolve_endpoint_op.hpp \
+		../../packages/asio/include/asio/detail/resolve_op.hpp \
+		../../packages/asio/include/asio/detail/resolve_query_op.hpp \
+		../../packages/asio/include/asio/detail/resolver_service_base.hpp \
+		../../packages/asio/include/asio/detail/impl/resolver_service_base.ipp \
+		../../packages/asio/include/asio/ip/host_name.hpp \
+		../../packages/asio/include/asio/ip/impl/host_name.ipp \
+		../../packages/asio/include/asio/ip/icmp.hpp \
+		../../packages/asio/include/asio/ip/multicast.hpp \
+		../../packages/asio/include/asio/ip/detail/socket_option.hpp \
+		../../packages/asio/include/asio/ip/tcp.hpp \
+		../../packages/asio/include/asio/ip/udp.hpp \
+		../../packages/asio/include/asio/ip/unicast.hpp \
+		../../packages/asio/include/asio/ip/v6_only.hpp \
+		../../packages/asio/include/asio/is_read_buffered.hpp \
+		../../packages/asio/include/asio/is_write_buffered.hpp \
+		../../packages/asio/include/asio/local/basic_endpoint.hpp \
+		../../packages/asio/include/asio/local/detail/endpoint.hpp \
+		../../packages/asio/include/asio/local/detail/impl/endpoint.ipp \
+		../../packages/asio/include/asio/local/connect_pair.hpp \
+		../../packages/asio/include/asio/local/datagram_protocol.hpp \
+		../../packages/asio/include/asio/local/stream_protocol.hpp \
+		../../packages/asio/include/asio/packaged_task.hpp \
+		../../packages/asio/include/asio/detail/future.hpp \
+		../../packages/asio/include/asio/placeholders.hpp \
+		../../packages/asio/include/asio/posix/basic_descriptor.hpp \
+		../../packages/asio/include/asio/posix/basic_stream_descriptor.hpp \
+		../../packages/asio/include/asio/posix/descriptor.hpp \
+		../../packages/asio/include/asio/posix/stream_descriptor.hpp \
+		../../packages/asio/include/asio/read.hpp \
+		../../packages/asio/include/asio/impl/read.hpp \
+		../../packages/asio/include/asio/read_at.hpp \
+		../../packages/asio/include/asio/impl/read_at.hpp \
+		../../packages/asio/include/asio/read_until.hpp \
+		../../packages/asio/include/asio/detail/regex_fwd.hpp \
+		../../packages/asio/include/asio/impl/read_until.hpp \
+		../../packages/asio/include/asio/redirect_error.hpp \
+		../../packages/asio/include/asio/impl/redirect_error.hpp \
+		../../packages/asio/include/asio/require_concept.hpp \
+		../../packages/asio/include/asio/traits/require_concept_member.hpp \
+		../../packages/asio/include/asio/traits/require_concept_free.hpp \
+		../../packages/asio/include/asio/traits/static_require_concept.hpp \
+		../../packages/asio/include/asio/serial_port.hpp \
+		../../packages/asio/include/asio/signal_set.hpp \
+		../../packages/asio/include/asio/static_thread_pool.hpp \
+		../../packages/asio/include/asio/thread_pool.hpp \
+		../../packages/asio/include/asio/impl/thread_pool.hpp \
+		../../packages/asio/include/asio/detail/blocking_executor_op.hpp \
+		../../packages/asio/include/asio/detail/bulk_executor_op.hpp \
+		../../packages/asio/include/asio/impl/thread_pool.ipp \
+		../../packages/asio/include/asio/strand.hpp \
+		../../packages/asio/include/asio/detail/strand_executor_service.hpp \
+		../../packages/asio/include/asio/detail/impl/strand_executor_service.hpp \
+		../../packages/asio/include/asio/detail/impl/strand_executor_service.ipp \
+		../../packages/asio/include/asio/streambuf.hpp \
+		../../packages/asio/include/asio/system_timer.hpp \
+		../../packages/asio/include/asio/thread.hpp \
+		../../packages/asio/include/asio/use_future.hpp \
+		../../packages/asio/include/asio/impl/use_future.hpp \
+		../../packages/asio/include/asio/windows/basic_object_handle.hpp \
+		../../packages/asio/include/asio/detail/win_object_handle_service.hpp \
+		../../packages/asio/include/asio/detail/impl/win_object_handle_service.ipp \
+		../../packages/asio/include/asio/windows/basic_overlapped_handle.hpp \
+		../../packages/asio/include/asio/windows/basic_random_access_handle.hpp \
+		../../packages/asio/include/asio/windows/basic_stream_handle.hpp \
+		../../packages/asio/include/asio/windows/object_handle.hpp \
+		../../packages/asio/include/asio/windows/overlapped_handle.hpp \
+		../../packages/asio/include/asio/windows/overlapped_ptr.hpp \
+		../../packages/asio/include/asio/detail/win_iocp_overlapped_ptr.hpp \
+		../../packages/asio/include/asio/detail/win_iocp_overlapped_op.hpp \
+		../../packages/asio/include/asio/windows/random_access_handle.hpp \
+		../../packages/asio/include/asio/windows/stream_handle.hpp \
+		../../packages/asio/include/asio/write_at.hpp \
+		../../packages/asio/include/asio/impl/write_at.hpp \
+		../../packages/websocketpp/include/websocketpp/common/chrono.hpp \
+		../../packages/websocketpp/include/websocketpp/common/type_traits.hpp \
+		../../packages/websocketpp/include/websocketpp/base64/base64.hpp \
+		../../packages/websocketpp/include/websocketpp/transport/asio/security/none.hpp \
+		../../packages/websocketpp/include/websocketpp/transport/asio/security/base.hpp \
+		../../packages/websocketpp/include/websocketpp/client.hpp \
+		../../packages/websocketpp/include/websocketpp/roles/client_endpoint.hpp \
+		../../packages/websocketpp/include/websocketpp/endpoint.hpp \
+		../../packages/websocketpp/include/websocketpp/connection.hpp \
+		../../packages/websocketpp/include/websocketpp/close.hpp \
+		../../packages/websocketpp/include/websocketpp/utf8_validator.hpp \
+		../../packages/websocketpp/include/websocketpp/processors/processor.hpp \
+		../../packages/websocketpp/include/websocketpp/processors/base.hpp \
+		../../packages/websocketpp/include/websocketpp/impl/connection_impl.hpp \
+		../../packages/websocketpp/include/websocketpp/processors/hybi00.hpp \
+		../../packages/websocketpp/include/websocketpp/common/md5.hpp \
+		../../packages/websocketpp/include/websocketpp/processors/hybi07.hpp \
+		../../packages/websocketpp/include/websocketpp/processors/hybi08.hpp \
+		../../packages/websocketpp/include/websocketpp/processors/hybi13.hpp \
+		../../packages/websocketpp/include/websocketpp/sha1/sha1.hpp \
+		../../packages/websocketpp/include/websocketpp/version.hpp \
+		../../packages/websocketpp/include/websocketpp/impl/endpoint_impl.hpp \
 		settingpage.h \
 		moc_predefs.h \
 		../../../Qt/6.1.0/clang_64/libexec/moc
