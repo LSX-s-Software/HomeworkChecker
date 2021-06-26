@@ -482,3 +482,6 @@ profile
 DerivedData
 .idea/
 *.xcuserstate
+
+# VSCode
+.vscode/
