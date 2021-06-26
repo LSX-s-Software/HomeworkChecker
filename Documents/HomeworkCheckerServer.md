@@ -25,6 +25,8 @@ HomeworkCheckerServer           服务端项目  负责人：杨锦荣
 ### 软件运行
 ![服务端命令行界面](pic/HomeworkCheckerServer/1CommandWorking.png)  
 
+![服务端文件保存](pic/HomeworkCheckerServer/16FileSave.png)  
+
 ### QQ端交互
 
 #### 注册
