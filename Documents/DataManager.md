@@ -5,9 +5,9 @@ DataManager模块作为沟通教师端、学生端和后端的类库，负责对
 
 ## 项目结构
 
-## 引用
-- MySQL *(third-party library)*
-- OpenSSL *(third-party library)*
+### 引用
+- MySQL *(第三方库)*
+- OpenSSL *(第三方库)*
 
 ### 整体构成
 
@@ -31,13 +31,9 @@ DataManager  数据管理项目  负责人：林思行
 
 ### 层次关系
 
-#### DBManager
-
 #### DataManager
 
-#### DMError
-
-#### DMUtils
+![UML](pic/DataManager/uml.png)
 
 
 
