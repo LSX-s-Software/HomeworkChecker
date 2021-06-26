@@ -14,15 +14,28 @@ HomeworkChecker
 │    │    ├─ DMUtils.cpp
 │    │    ├─ DMUtils.hpp  DataManager实用工具
 │    │    ├─ DataManager.cpp
-│    │    └─ DataManager.hpp  DataManager数据管理类库（包含User、Class、Student、Homework、		Assignment类）
+│    │    └─ DataManager.hpp  DataManager数据管理类库（包含User、Class、Student、Homework、Assignment类）
 │    ├─ DataManager.vcxproj
 │    ├─ DataManager.vcxproj.filters
 │    ├─ DataManager.vcxproj.user
 │    └─ DataManager.xcodeproj  Xcode项目
 ├─ Documents  文档文件  负责人：林思行 杨锦荣 伍思烨
+│    ├─ DataManager.md
+│    ├─ General.md
+│    ├─ GUI.md
+│    ├─ HomeworkChecker.txt
+│    ├─ HomeworkCheckerServer.md
+│    ├─ QQMessage.md
 │    ├─ tree.md  树状图（此文件）
-│    └─ Analysis  项目trace  负责人：林思行
-│         └─ MemoryTrace.trace  内存泄漏检查结果
+│    │
+│    ├─Analysis  项目trace  负责人：林思行
+│    │  └─MemoryTrace.trace  内存泄漏检查结果
+│    │
+│    └─pic 文档图片
+│        ├─DataManager
+│        ├─General
+│        ├─HomeworkCheckerServer
+│        └─QQMessage
 ├─ HomeworkChecker.sln  Visual Studio解决方案
 ├─ HomeworkChecker.xcworkspace  Xcode工作区
 ├─ HomeworkCheckerServer  服务端项目  负责人：杨锦荣
