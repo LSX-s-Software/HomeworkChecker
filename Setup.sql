@@ -1,4 +1,4 @@
--- Database export via SQLPro (https://www.sqlprostudio.com/allapps.html)
+-- Database export
 -- Exported by linsixing at 10-06-2021 19:15.
 -- WARNING: This file may contain descructive statements such as DROPs.
 -- Please ensure that you are running the script at the proper location.
