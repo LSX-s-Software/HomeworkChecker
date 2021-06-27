@@ -10,9 +10,22 @@
 
 [**@WuSiye** Siye Wu](https://github.com/WuSiye)
 
-## 安装、使用方法
+## 编译、运行方法
 
-### 前期准备
+### Windows
+
+系统要求：
+
+- 安装Visual Studio 2019、Qt 5
+
+### Mac
+
+系统要求：
+
+- 系统版本不低于macOS 10.15（推荐11.0或以上）
+- 安装Xcode 12、Qt 6.1
+
+### 运行前准备
 
 1. 在本地或远程服务器上安装MySQL（版本不低于8.0）
 
@@ -23,16 +36,10 @@
    ```sql
    mysql> source /some/where/Setup.sql;
    ```
+   
+4. 在服务器上运行服务端程序
 
-### Windows
-
-系统要求：
-
-### Mac
-
-系统要求：
-
-- 系统版本不低于macOS 11.0
+5. 更新`DataManager/DataManager/DataManager.cpp`的`connectDatabase()`函数中的数据库登录信息和`UserInterface/HomeworkCheckerGUI/settingpage.cpp`中的`wsClientUrl`属性
 
 ## 产品介绍
 
