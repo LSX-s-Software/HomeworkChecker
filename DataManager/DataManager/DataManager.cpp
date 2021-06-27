@@ -17,9 +17,11 @@ bool connectDatabase() {
             std::cout << "[INFO] [DataManager] SQL Server connection lost, reconncting..." << std::endl;
 #endif
         DBManager::DBAccount remote;
-        remote.host = "vps.coyangjr.cn";
-        remote.username = "root";
-        remote.password = "Whu2020";
+        //WARNING: UPDATE THE FOLLOWING INFORMATION ACCORDING TO YOUR SERVER SETTINGS
+        remote.host = "********";
+        remote.username = "********";
+        remote.password = "********";
+        assert(remote.host != "********" && remote.username != "********" && remote.password != "********");
         return DBManager::connectDatabase(remote);
     } else
         return true;

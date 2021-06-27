@@ -15,7 +15,9 @@ QSettings settings;
 SettingPage::SettingPage(QObject* parent) : QObject(parent) 
 {
 	workPath = "file:///E:/tmp";
-	wsClientUrl = "42.193.50.174:6701";
+    //WARNING: UPDATE THE FOLLOWING INFORMATION ACCORDING TO YOUR SERVER SETTINGS
+	wsClientUrl = "********";
+    assert(wsClientUrl != "********");
     loadSettings();
 }
 
@@ -58,9 +60,11 @@ void SettingPage::saveSettings()
 void SettingPage::restoreSettings()
 {
     settings.setValue("DownloadFolder", "file:///E:/tmp");
-    settings.setValue("WsClientUrl", "42.193.50.174:6701");
+    //WARNING: UPDATE THE FOLLOWING INFORMATION ACCORDING TO YOUR SERVER SETTINGS
+    settings.setValue("WsClientUrl", "********");
     workPath = "file:///E:/tmp";
-    wsClientUrl = "42.193.50.174:6701";
+    //WARNING: UPDATE THE FOLLOWING INFORMATION ACCORDING TO YOUR SERVER SETTINGS
+    wsClientUrl = "********";
     saveSettings();
 }
 
