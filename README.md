@@ -2,6 +2,8 @@
 
 ## Homework Checker
 
+> 这是一个C++大作业项目，因水平有限、时间不充裕等原因，部分功能不够完善。
+
 ## 开发者
 
 [**@NagisaCo** NagisaCo](https://github.com/NagisaCo)
